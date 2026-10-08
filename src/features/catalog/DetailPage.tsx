@@ -38,7 +38,7 @@ function DetailContent({ nft }: { nft: Nft }) {
   const quantity = invalidQuantity ?? initialQuantity
   const setQuantity = (value: number) => { setInvalidQuantity(Number.isInteger(value) && value > 0 && value <= 100 ? null : value); if (Number.isInteger(value) && value > 0 && value <= 100) void navigate({ search: { edition: editionId, quantity: value }, replace: true, resetScroll: false }) }
   const chooseEdition = (value: string) => { void navigate({ search: { edition: value, quantity: 1 }, replace: true, resetScroll: false }) }
-  const add = (goToCart: boolean) => cart.mutate({ action: 'add', nftId: nft.id, editionId, quantity }, { onSuccess: () => { if (goToCart) void navigate({ to: '/cart' }) } })
+  const add = (goToCart: boolean) => cart.mutate({ action: 'add', nftId: nft.id, editionId, quantity }, { onSuccess: () => { if (goToCart) void navigate({ to: '/checkout' }) } })
   const unavailable = useUnavailable()
   const edition = nft.editions.find((e) => e.id === editionId) ?? nft.editions[0]
   const max = Math.min(edition.available, edition.maxQuantity)

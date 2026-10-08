@@ -200,6 +200,5 @@ test('keyboard dialog focus, accessible labels, responsive cart and pending chec
   await add(page); await page.goto('/cart'); await expect(row(page)).toBeVisible()
   await page.getByLabel('Código promocional').focus(); await expect(page.getByLabel('Código promocional')).toBeFocused(); await page.keyboard.press('Tab'); await expect(page.getByRole('button', { name: 'Aplicar', exact: true })).toBeFocused()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-  await page.getByRole('button', { name: 'Conectar e finalizar' }).click(); await expect(page.getByRole('dialog')).toContainText('Nenhuma operação foi realizada')
-  await page.keyboard.press('Escape'); await expect(page.getByRole('button', { name: 'Conectar e finalizar' })).toBeFocused()
+  await page.getByRole('button', { name: 'Conectar e finalizar' }).click(); await expect(page).toHaveURL(/\/login/); await expect(page.getByLabel('E-mail', { exact: true })).toBeVisible()
 })

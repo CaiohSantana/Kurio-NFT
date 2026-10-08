@@ -3,8 +3,9 @@ import type { Cart, CartItem, Quote } from '@/features/cart/contracts'
 import { readCatalogNft } from './catalog-state'
 import type { Profile } from '@/features/profile/contracts'
 import type { Wallet } from '@/features/wallets/contracts'
+import type { CheckoutState } from '@/features/orders/contracts'
 
-export interface Account extends User { salt: string; hash: string; favorites: string[]; cart: Cart; profile?: Omit<Profile, keyof User>; wallets?: Wallet[]; reusePrimary?: boolean }
+export interface Account extends User { salt: string; hash: string; favorites: string[]; cart: Cart; profile?: Omit<Profile, keyof User>; wallets?: Wallet[]; reusePrimary?: boolean; checkout?: CheckoutState }
 interface Store { users: Account[]; guestId: string; guest: Cart; session: { token: string; userId: string; expiresAt: number; notices: string[] } | null; merged: string[]; expired?: boolean }
 const key = 'kurio-commerce-v1'
 const emptyCart = (): Cart => ({ items: [], coupon: '', version: 1 })
@@ -107,8 +108,8 @@ export async function coupon(scope: string | null, code: string) {
   if (normalized && normalized !== 'KURIO10') throw new CommerceError(422, 'COUPON_INVALID', 'Cupom inválido.', { coupon: 'Use um código válido.' })
   c.coupon = normalized; c.version++; save(); return structuredClone(c)
 }
-const units = (value: string) => { const [whole, fraction = ''] = value.split('.'); return BigInt(whole) * 10n ** 18n + BigInt(fraction.padEnd(18, '0')) }
-const decimal = (value: bigint) => { const whole = value / 10n ** 18n; const tail = (value % 10n ** 18n).toString().padStart(18, '0').replace(/0+$/, ''); return `${whole}${tail ? `.${tail}` : ''}` }
+export const units = (value: string) => { const [whole, fraction = ''] = value.split('.'); return BigInt(whole) * 10n ** 18n + BigInt(fraction.padEnd(18, '0')) }
+export const decimal = (value: bigint) => { const whole = value / 10n ** 18n; const tail = (value % 10n ** 18n).toString().padStart(18, '0').replace(/0+$/, ''); return `${whole}${tail ? `.${tail}` : ''}` }
 export async function quote(scope: string | null): Promise<Quote> {
   const c = ownedCart(await authorize(scope))
   const lines = c.items.map((item) => {

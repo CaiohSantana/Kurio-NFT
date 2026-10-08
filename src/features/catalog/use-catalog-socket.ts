@@ -4,16 +4,19 @@ import { io, type Socket } from 'socket.io-client'
 import { catalogKey, detailKey } from './api'
 import type { NftResponse, CatalogResponse } from './contracts'
 import type { NftUpdated, ServerEvents } from '@/shared/api/events'
+import type { OrderUpdated, Order } from '@/features/orders/contracts'
+import type { Session } from '@/features/auth/contracts'
 
 export function useCatalogSocket(scope: string) {
   const queryClient = useQueryClient()
   const [notice, setNotice] = useState('')
   useEffect(() => {
     const versions = new Map<string, number>()
-    const socket: Socket<ServerEvents> = io(window.location.origin, { path: '/proof-socket.io/', transports: ['websocket'], autoConnect: false, forceNew: true, reconnectionDelay: 300, reconnectionDelayMax: 300, randomizationFactor: 0 })
+    const socket: Socket<ServerEvents> = io(window.location.origin, { path: '/proof-socket.io/', query: { scope }, transports: ['websocket'], autoConnect: false, forceNew: true, reconnectionDelay: 300, reconnectionDelayMax: 300, randomizationFactor: 0 })
     let connectedOnce = false
     let active = true
-    const reconcileCart = () => { if (active) void queryClient.cancelQueries({ queryKey: ['private', scope, 'quote'] }).then(() => { if (active) return queryClient.invalidateQueries({ queryKey: ['private', scope, 'quote'] }) }) }
+    const refreshPrivate = (resource: string) => { if (active) void queryClient.cancelQueries({ queryKey: ['private', scope, resource] }).then(() => { if (active) return queryClient.invalidateQueries({ queryKey: ['private', scope, resource] }) }) }
+    const reconcileCart = () => { refreshPrivate('quote'); refreshPrivate('checkout-quote') }
     const reconcile = () => {
       if (connectedOnce) {
         setNotice('Conexão restabelecida. Dados reconciliados com a API.')
@@ -21,6 +24,7 @@ export function useCatalogSocket(scope: string) {
         void queryClient.cancelQueries({ queryKey: catalogKey }).then(() => queryClient.invalidateQueries({ queryKey: catalogKey }))
         void queryClient.cancelQueries({ queryKey: ['nft'] }).then(() => queryClient.invalidateQueries({ queryKey: ['nft'] }))
         reconcileCart()
+        refreshPrivate('order'); refreshPrivate('attempt'); refreshPrivate('cart'); refreshPrivate('connection')
       }
       connectedOnce = true
     }
@@ -37,9 +41,17 @@ export function useCatalogSocket(scope: string) {
       void queryClient.cancelQueries({ queryKey: detailKey(event.resourceId) }).then(() => queryClient.invalidateQueries({ queryKey: detailKey(event.resourceId) }))
     }
     const disconnected = () => setNotice('Conexão interrompida. A reconexão será automática.')
-    socket.on('connect', reconcile); socket.on('disconnect', disconnected); socket.on('nft.updated', update)
+    const orderUpdated = (event: OrderUpdated) => {
+      if (!active || event.scope !== scope || event.userId !== queryClient.getQueryData<Session>(['session'])?.user?.id || !Number.isSafeInteger(event.version)) return
+      const key = ['private', scope, 'order', event.resourceId], current = queryClient.getQueryData<Order>(key)?.version ?? 0, seen = versions.get(`order:${event.resourceId}`) ?? 0
+      if (event.version <= Math.max(current, seen)) return
+      versions.set(`order:${event.resourceId}`, event.version)
+      setNotice(`Pedido atualizado por Socket.IO (versão ${event.version}). Consultando a API.`)
+      refreshPrivate('order'); refreshPrivate('attempt'); refreshPrivate('cart'); reconcileCart()
+    }
+    socket.on('connect', reconcile); socket.on('disconnect', disconnected); socket.on('nft.updated', update); socket.on('order.updated', orderUpdated)
     socket.connect()
-    return () => { active = false; socket.off('connect', reconcile); socket.off('disconnect', disconnected); socket.off('nft.updated', update); socket.disconnect() }
+    return () => { active = false; socket.off('connect', reconcile); socket.off('disconnect', disconnected); socket.off('nft.updated', update); socket.off('order.updated', orderUpdated); socket.disconnect() }
   }, [queryClient, scope])
   return notice
 }

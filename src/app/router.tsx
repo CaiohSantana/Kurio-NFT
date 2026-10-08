@@ -10,6 +10,8 @@ import { CartPage } from '@/features/cart/CartPage'
 import { RequireSession } from '@/features/auth/RequireSession'
 import { ProfilePage } from '@/features/profile/ProfilePage'
 import { WalletsPage } from '@/features/wallets/WalletsPage'
+import { CheckoutPage } from '@/features/checkout/CheckoutPage'
+import { OrderPage } from '@/features/orders/OrderPage'
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -26,6 +28,8 @@ const signupRoute = createRoute({ getParentRoute: () => marketRoute, path: '/sig
 const cartRoute = createRoute({ getParentRoute: () => marketRoute, path: '/cart', component: CartPage })
 const profileRoute = createRoute({ getParentRoute: () => marketRoute, path: '/account/profile', component: () => <RequireSession><ProfilePage /></RequireSession> })
 const walletsRoute = createRoute({ getParentRoute: () => marketRoute, path: '/account/wallets', validateSearch: (raw: Record<string, unknown>) => ({ returnTo: safeReturn(raw.returnTo) }), component: () => <RequireSession><WalletsPage /></RequireSession> })
+const checkoutRoute = createRoute({ getParentRoute: () => marketRoute, path: '/checkout', component: () => <RequireSession><CheckoutPage /></RequireSession> })
+export const orderRoute = createRoute({ getParentRoute: () => marketRoute, path: '/orders/$orderId', component: () => <RequireSession><OrderPage /></RequireSession> })
 const proofRoute = createRoute({ getParentRoute: () => rootRoute, path: '/integration', component: IntegrationProof })
-export const router = createRouter({ routeTree: rootRoute.addChildren([marketRoute.addChildren([catalogRoute, detailRoute, loginRoute, signupRoute, cartRoute, profileRoute, walletsRoute]), preparationRoute, proofRoute]), scrollRestoration: true })
+export const router = createRouter({ routeTree: rootRoute.addChildren([marketRoute.addChildren([catalogRoute, detailRoute, loginRoute, signupRoute, cartRoute, profileRoute, walletsRoute, checkoutRoute, orderRoute]), preparationRoute, proofRoute]), scrollRestoration: true })
 declare module '@tanstack/react-router' { interface Register { router: typeof router } }

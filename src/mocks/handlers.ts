@@ -1,42 +1,15 @@
-import { delay, http, HttpResponse, ws } from 'msw'
-import { toSocketIo } from '@mswjs/socket.io-binding'
+import { delay, http, HttpResponse } from 'msw'
+import { socketHandler, emitNft as broadcast, interruptTransport, resetOutage, connectionsCount } from './socket'
+import { checkoutHandlers } from './checkout-handlers'
 import { commerceHandlers } from './commerce-handlers'
-import type { NftUpdated, ScenarioAction, ScenarioResult } from '@/proof/contracts'
+import type { ScenarioAction, ScenarioResult } from '@/proof/contracts'
 import { changeNft, consumeFailure, duplicateEvent, failNextRead, oldEvent, resetProof } from './proof-state'
 import { catalogDelay, configureCatalog, consumeCatalogFailure, getLastCatalogEvent, queryCatalog, readCatalogNft, resetCatalog, updateCatalogNft } from './catalog-state'
 
-// A dedicated transport path avoids MSW's normalization of /socket.io/ to /
-// and prevents matching Vite's own HMR connection. Namespace is still /.
-const socketLink = ws.link(new URL('/proof-socket.io/', window.location.origin).href)
-const connections = new Set<ReturnType<typeof toSocketIo>>()
-let outageUntil = 0
-
-function broadcast(event: NftUpdated) {
-  for (const connection of connections) connection.client.emit('nft.updated', event)
-}
-
 export const handlers = [
   ...commerceHandlers,
-  socketLink.addEventListener('connection', (raw) => {
-    if (Date.now() < outageUntil) {
-      // Opening the Engine.IO transport before closing it lets the Manager
-      // observe the interruption and automatically schedule another attempt.
-      // Do not approve the Socket.IO namespace while the mock is unavailable.
-      queueMicrotask(() => {
-        raw.client.send('0' + JSON.stringify({ sid: 'unavailable', upgrades: [], pingInterval: 25000, pingTimeout: 5000 }))
-        window.setTimeout(() => raw.client.close(1013, 'Mock connection unavailable'), 50)
-      })
-      return
-    }
-    const connection = toSocketIo(raw)
-    connections.add(connection)
-    // Binding 0.2.0 provides the handshake but not the Engine.IO heartbeat.
-    const heartbeat = window.setInterval(() => raw.client.send('2'), 10000)
-    raw.client.addEventListener('close', () => {
-      window.clearInterval(heartbeat)
-      connections.delete(connection)
-    })
-  }),
+  ...checkoutHandlers,
+  socketHandler,
   http.get('/api/nfts', async ({ request }) => {
     const search = Object.fromEntries(new URL(request.url).searchParams)
     const result = queryCatalog(search)
@@ -58,10 +31,10 @@ export const handlers = [
   http.post('/api/__catalog/scenario', async ({ request }) => {
     const body = await request.json() as { action: string; id?: string; delay?: number }
     const id = body.id ?? 'emerald-042'
-    if (body.action === 'reset') { resetCatalog(); outageUntil = 0 }
+    if (body.action === 'reset') { resetCatalog(); resetOutage() }
     else if (body.action === 'slow') configureCatalog(body.delay ?? 1500)
     else if (body.action === 'fail') configureCatalog(250, true)
-    else if (body.action === 'disconnect') { outageUntil = Date.now() + 2000; for (const c of connections) c.rawClient.close(1012, 'Mock interruption') }
+    else if (body.action === 'disconnect') { interruptTransport() }
     else if (body.action === 'change' || body.action === 'sold-out') { const event = updateCatalogNft(id, body.action === 'sold-out'); if (event) broadcast(event) }
     else if (body.action === 'duplicate') { const event = getLastCatalogEvent(); if (event) broadcast(event) }
     else if (body.action === 'old') broadcast({ eventId: `old:${id}`, resourceId: id, version: 0 })
@@ -87,8 +60,7 @@ export const handlers = [
         message = 'Evento antigo emitido, sem alterar a base.'
         break
       case 'disconnect':
-        outageUntil = Date.now() + 2000
-        for (const connection of connections) connection.rawClient.close(1012, 'Mock transport interruption')
+        interruptTransport()
         message = 'Transporte interrompido por 2 segundos. A reconexão é automática.'
         break
       case 'fail-next':
@@ -97,7 +69,7 @@ export const handlers = [
         break
       case 'reset':
         resetProof()
-        outageUntil = 0
+        resetOutage()
         message = 'Cenário restaurado.'
         break
       default:
@@ -105,10 +77,10 @@ export const handlers = [
     }
     return HttpResponse.json<ScenarioResult>({ message })
   }),
-  http.get('/api/__proof/diagnostics', () => HttpResponse.json({ activeConnections: connections.size })),
+  http.get('/api/__proof/diagnostics', () => HttpResponse.json({ activeConnections: connectionsCount() })),
   http.post('/api/__proof/reset', () => {
     resetProof()
-    outageUntil = 0
+    resetOutage()
     return HttpResponse.json({ message: 'Cenário restaurado.' })
   }),
 ]

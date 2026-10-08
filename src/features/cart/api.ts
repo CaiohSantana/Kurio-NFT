@@ -24,8 +24,8 @@ export function useCartMutation() {
     onError: (error) => reportExpired(error, session.scope),
     onSuccess: async () => {
       if (!activeScope(client, session.scope)) return
-      await client.cancelQueries({ queryKey: privateKey(session.scope) })
-      await Promise.all([client.invalidateQueries({ queryKey: cartKey(session.scope) }), client.invalidateQueries({ queryKey: quoteKey(session.scope) })])
+      await Promise.all(['cart', 'quote', 'checkout-quote'].map((resource) => client.cancelQueries({ queryKey: [...privateKey(session.scope), resource] })))
+      await Promise.all([client.invalidateQueries({ queryKey: cartKey(session.scope) }), client.invalidateQueries({ queryKey: quoteKey(session.scope) }), client.invalidateQueries({ queryKey: [...privateKey(session.scope), 'checkout-quote'] })])
     },
   })
 }

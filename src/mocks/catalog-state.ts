@@ -41,5 +41,12 @@ export function updateCatalogNft(id: string, soldOut = false): NftUpdated | unde
   lastEvent = { eventId: `nft:${id}:${nft.version}`, resourceId: id, version: nft.version }; return lastEvent
 }
 export function getLastCatalogEvent() { return lastEvent }
+export function consumePurchasedStock(items: { nftId: string; editionId: string; quantity: number }[]): NftUpdated[] | null {
+  if (items.some((item) => { const e = records.find((n) => n.id === item.nftId)?.editions.find((edition) => edition.id === item.editionId); return !e || e.available < item.quantity })) return null
+  const touched = new Set<string>()
+  for (const item of items) { const nft = records.find((n) => n.id === item.nftId)!; nft.editions.find((e) => e.id === item.editionId)!.available -= item.quantity; nft.available = nft.editions.find((e) => e.id === 'fifty')!.available; touched.add(nft.id) }
+  const events = [...touched].map((id) => { const nft = records.find((n) => n.id === id)!; nft.version++; return { eventId: `nft:${id}:${nft.version}`, resourceId: id, version: nft.version } })
+  revision++; localStorage.setItem(storageKey, JSON.stringify(records)); return events
+}
 export function configureCatalog(delayMs: number, failure = false) { catalogDelay = Math.max(0, Math.min(5000, delayMs)); failNext = failure; localStorage.setItem('kurio-catalog-delay', String(catalogDelay)); localStorage.setItem('kurio-catalog-fail', String(failure)) }
 export function consumeCatalogFailure() { const fail = failNext; failNext = false; localStorage.removeItem('kurio-catalog-fail'); return fail }

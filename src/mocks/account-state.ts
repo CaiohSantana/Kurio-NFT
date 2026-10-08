@@ -57,6 +57,7 @@ export async function editWallet(scope: string | null, input: WalletInput, id?: 
   if ((a.wallets ?? []).some((w) => w.id !== id && (w.kind === input.kind || w.network === input.network && (input.network === 'Solana' ? w.address === input.address : w.address.toLowerCase() === input.address.toLowerCase())))) throw new CommerceError(409, 'WALLET_CONFLICT', 'Carteira ou endereço já cadastrado.', { address: 'Não duplique o registro; use Igual à principal para reutilizar.' })
   const wallet = { ...input, address: input.network === 'Solana' ? input.address : input.address.toLowerCase(), id: id ?? crypto.randomUUID() }
   await authorize(scope, true)
+  if (existing && a.checkout?.connection?.walletId === existing.id && (existing.address !== wallet.address || existing.network !== wallet.network || existing.provider !== wallet.provider)) a.checkout.connection.status = 'disconnected'
   a.wallets = [...(a.wallets ?? []).filter((w) => w.id !== id), wallet]; save(); return wallets(scope)
 }
 export async function reusePrimary(scope: string | null, enabled: boolean) {
