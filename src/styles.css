@@ -521,13 +521,13 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
   .checkout-collector .observation { max-width:none; }
   .auth-page { padding-top:132px; }.auth-brand { line-height:42px; margin-bottom:80px; }.auth-page h1 { line-height:24px; margin-bottom:34px; }.auth-page .auth-form form>button[type=submit] { margin-top:40px; }.auth-page .auth-switch { margin-top:42px; }
 }
-.market-modal:has(.auth-modal) { margin:160px auto auto; }
+.market-modal:has(.auth-modal) { --auth-dialog-top:160px; margin:var(--auth-dialog-top) auto auto; }
 .auth-social button { border-color:#55321f; color:#cfb28c; font-weight:500; }
 .form-field.placeholder-field input::placeholder,.auth-field input::placeholder { color:#b39463; opacity:1; }
-@media(min-width:640px) and (max-height:850px) { .market-modal:has(.auth-modal) { margin:64px auto auto; } }
+@media(max-height:850px) { .market-modal:has(.auth-modal) { --auth-dialog-top:64px; } }
 @media(min-width:640px) { .cart-row .cart-token { font-size:14px; font-weight:400; }.cart-row .cart-edition { position:absolute; } }
-.market-modal:has(.auth-modal) { min-height:600px; }
-.market-modal:has(.auth-modal input[name=username]) { min-height:656px; }
+.market-modal:has(.auth-modal) { min-height:min(600px,calc(100dvh - var(--auth-dialog-top) - 24px)); max-height:calc(100dvh - var(--auth-dialog-top) - 24px); }
+.market-modal:has(.auth-modal input[name=username]) { min-height:min(656px,calc(100dvh - var(--auth-dialog-top) - 24px)); }
 .market-modal:has(.auth-modal)>header { position:absolute; right:20px; top:12px; padding:0; }
 .market-modal:has(.auth-modal)>header button { width:24px; height:24px; padding:0; border:0; background:transparent; color:#d28a4c; font-size:24px; }
 .auth-modal { padding-top:26px; }

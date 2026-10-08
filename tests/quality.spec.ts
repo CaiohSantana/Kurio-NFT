@@ -1,5 +1,20 @@
 import { expect, test } from '@playwright/test'
 
+test('authentication keeps its draft and keyboard CTA when the viewport shrinks without reload', async ({ page }) => {
+  await page.goto('/signup')
+  await page.getByLabel('Nome de usuário', { exact: true }).fill('zoom-draft')
+  const dialog = page.getByRole('dialog', { name: 'Criar conta', exact: true })
+  const wasDialog = await dialog.isVisible()
+  const viewport = page.viewportSize()!
+  await page.setViewportSize({ width: Math.max(320, Math.floor(viewport.width / 2)), height: Math.floor(viewport.height / 2) })
+  await expect(page.getByLabel('Nome de usuário', { exact: true })).toHaveValue('zoom-draft')
+  if (wasDialog) await expect.poll(() => dialog.evaluate(node => { const box = node.getBoundingClientRect(); return box.top >= 0 && box.bottom <= innerHeight })).toBe(true)
+  const submit = page.locator('.auth-form button[type=submit]')
+  await submit.focus(); await expect(submit).toBeFocused()
+  await expect.poll(() => submit.evaluate(node => { const box = node.getBoundingClientRect(); return box.top >= 0 && box.bottom <= innerHeight })).toBe(true)
+  await expect(page).toHaveURL(/\/signup/)
+})
+
 test('detail quantity has a name, favorite has a usable target and selection has a shape', async ({ page }) => {
   await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()

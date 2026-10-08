@@ -1,4 +1,4 @@
-/* global process, fetch, document, innerWidth, console, getComputedStyle, chrome, devicePixelRatio */
+/* global process, fetch, document, innerWidth, innerHeight, console, getComputedStyle, chrome, devicePixelRatio, requestAnimationFrame */
 import { chromium, expect } from '@playwright/test'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -30,8 +30,11 @@ for (const width of nativeZoom ? [768, 1440] : [390, 414, 768, 1440]) {
     const reducedWidth = Math.max(320, Math.round(width / 2))
     if (nativeZoom) await zoom(2)
     else await page.setViewportSize({ width: reducedWidth, height: Math.max(640, Math.round(height / 2)) })
-    await page.reload(); await page.locator(ready).first().waitFor()
-    const reflow = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth, devicePixelRatio: devicePixelRatio }))
+    if (!nativeZoom) await page.reload()
+    await page.evaluate(() => new Promise(requestAnimationFrame))
+    await page.locator(ready).first().waitFor()
+    const reflow = await page.evaluate(nativeZoom => { const dialog = document.querySelector('dialog[open]'), box = dialog?.getBoundingClientRect(); return { overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth, height: innerHeight, devicePixelRatio, withoutReload: nativeZoom, dialogFits: box ? box.top >= 0 && box.bottom <= innerHeight : null } }, nativeZoom)
+    if (nativeZoom && (reflow.overflow || reflow.dialogFits === false)) throw Error(`Native zoom lost content: ${JSON.stringify(reflow)}`)
     if (nativeZoom) await zoom(1)
     else await page.setViewportSize({ width, height })
     await page.reload(); await page.locator(ready).first().waitFor()
