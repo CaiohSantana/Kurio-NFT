@@ -1,5 +1,6 @@
 import { delay, http, HttpResponse, ws } from 'msw'
 import { toSocketIo } from '@mswjs/socket.io-binding'
+import { commerceHandlers } from './commerce-handlers'
 import type { NftUpdated, ScenarioAction, ScenarioResult } from '@/proof/contracts'
 import { changeNft, consumeFailure, duplicateEvent, failNextRead, oldEvent, resetProof } from './proof-state'
 import { catalogDelay, configureCatalog, consumeCatalogFailure, getLastCatalogEvent, queryCatalog, readCatalogNft, resetCatalog, updateCatalogNft } from './catalog-state'
@@ -15,6 +16,7 @@ function broadcast(event: NftUpdated) {
 }
 
 export const handlers = [
+  ...commerceHandlers,
   socketLink.addEventListener('connection', (raw) => {
     if (Date.now() < outageUntil) {
       // Opening the Engine.IO transport before closing it lets the Manager
