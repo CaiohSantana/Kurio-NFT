@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
   // Every browser context is isolated. Reset also exercises an actual MSW handler.
-  await page.goto('/')
+  await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
   expect(await page.evaluate(async () => (await fetch('/api/__proof/reset', { method: 'POST' })).status)).toBe(200)
 })
@@ -86,7 +86,7 @@ test('route teardown releases connections; direct refresh, 404 and reduced motio
   await expect(page.getByTestId('connection')).toHaveText('Conectado')
   await expect(page.getByTestId('price')).toHaveText('1.19 ETH')
   // Navigation through Router, not a page unload, proves effect cleanup.
-  await page.goto('/')
+  await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
   await page.getByRole('link', { name: 'Abrir prova de integração' }).click()
   await expect(page.getByTestId('connection')).toHaveText('Conectado')

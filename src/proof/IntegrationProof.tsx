@@ -28,7 +28,7 @@ export function IntegrationProof() {
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-6 p-6 sm:p-10">
       <header className="space-y-3">
-        <Link to="/" className="text-sm text-primary underline">Voltar à preparação</Link>
+        <Link to="/preparation" className="text-sm text-primary underline">Voltar à preparação</Link>
         <p className="text-sm font-bold tracking-widest text-primary">KURIO · PROVA TÉCNICA</p>
         <h1 className="text-2xl font-bold sm:text-3xl">REST + Socket.IO</h1>
         <p className="text-sm leading-6 text-muted-foreground">Base de integração separada do marketplace. Os controles abaixo atuam nos handlers dos mocks.</p>
