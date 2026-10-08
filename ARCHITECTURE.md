@@ -1,6 +1,6 @@
 # Arquitetura — base e prova de integração
 
-Escopo atual: bootstrap e prova de um NFT. A arquitetura futura de sessão, carrinho/cotação e pedidos está proposta em SPEC.md, ainda não implementada. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
+Escopo atual: base, catálogo/detalhe, sessão, autenticação, favoritos e carrinho/cotação. A descrição inicial da prova é histórica; decisões atuais estão nas seções finais. Pagamento, perfil, carteiras, pedidos e confirmação ainda não estão implementados. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
 
 Atualização: catálogo e detalhe públicos implementados nesta etapa. A descrição da prova abaixo é histórica; o NFT da prova agora é uma projeção da mesma base canônica do catálogo. Contratos, cache, cenários e diferenças atuais estão na seção final.
 
@@ -79,3 +79,42 @@ REST:
 Pontos de integração: DTOs de edição/quantidade/NFT fornecem seleção para futuro carrinho; nenhuma mutation de compra/favorito foi criada. Botões exibem indisponibilidade explícita em diálogo, sem sucesso fictício. Galeria/zoom e conteúdo completo funcionam no mobile. Seções editoriais/newsletter mantidas visualmente, sem novas páginas/falso cadastro. Detalhes visuais estimados/desvios e baselines constam em docs/catalog-visual-review.md.
 
 Referências técnicas consultadas: [Router search params](https://tanstack.com/router/latest/docs/framework/react/guide/search-params) e [Query paginação/keys](https://tanstack.com/query/latest/docs/framework/react/guides/paginated-queries). Bibliotecas e lockfile não foram alterados nesta etapa.
+
+## Sessão, favoritos e carrinho — 2026-10-08
+
+Organização: `features/auth` reúne contratos, sessão e formulário; `features/favorites` contém o botão integrado aos cards e detalhe; `features/cart` reúne contratos, consultas/mutations e tela. `mocks/commerce-state.ts` concentra contas, sessão, favoritos, carrinhos, regras de cupom e cotação. `commerce-handlers.ts` expõe REST usando o mesmo estado. Nenhum componente importa os mocks. Sem dependências ou store adicionais.
+
+### Sessão e fronteira de identidade
+
+- GET `/api/session` recupera `{user,scope,expiresAt,notices,expired}`. Login POST `/api/session`, cadastro POST `/api/accounts` e logout DELETE `/api/session`. Cadastro inicia sessão. Dois usuários fictícios: `ana@kurio.test` e `bruno@kurio.test`; senha demonstrativa `Kurio123!` para ambos. Cadastro: usuário 3–32 letras/números/_/-, e-mail válido, senha 8–128 caracteres, confirmação igual. Limites são decisões da simulação, não medidas do Figma.
+- A simulação persiste somente salt aleatório e hash PBKDF2-SHA256 (100.000 iterações, 256 bits), nunca senha/confirmação. [Web Crypto deriveBits](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits) fundamenta a implementação. Senhas ficam somente no formulário/requisição/mutation em memória, sem URL/persistência. O estado local da simulação é uma demonstração no navegador, não um sistema real de autenticação ou cookie HttpOnly.
+- Token opaco aleatório identifica cada sessão, com expiração de 30 minutos. GET resolve identidade na API; cliente não lê localStorage para se autenticar. Requests de carrinho/favoritos/cotação usam `X-Session-Scope`, capturado pela operação; handler valida identidade antes e após a latência, antes de gravar. Token antigo nunca adquire a identidade nova. Visitante possui scope `guest:<uuid>`.
+- Query `['session']` é a fonte de sessão, staleTime Infinity, GET inicial após refresh, timer de expiração e erros 401 `SESSION_EXPIRED`. Não existe cópia React da conta. Chaves privadas `['private',scope,'favorites'|'cart'|'quote']` distinguem inclusive duas sessões da mesma conta. Favoritos: staleTime30s; carrinho/cotação: staleTime0; retryfalse e recuperação explícita. Axios consome AbortSignal nas leituras; mutations sem retry automático.
+- Troca/logout: cancelar e remover todas as queries privadas, liberar mutation cache e substituir a query de sessão. A subtree por scope desmonta listeners/socket anteriores e cria somente uma conexão nova. Callbacks de mutations verificam scope ativo antes de invalidar/restaurar cache. Um 401 atrasado da sessão anterior é ignorado pelo provider atual. Eventos existentes são públicos (`nft.updated`), sem dados de usuário; não se inventou um protocolo de eventos privados. Listener desmontado tem flag de descarte e não recota o carrinho da nova sessão.
+- `returnTo` interno seguro e intenção de adicionar/remover favorito ficam nos search params Router de `/login` e `/signup` (`favoriteMode=remove` para remoção); URLs externas, `//`, barras invertidas, CR/LF e retorno circular a auth têm fallback `/`. `edition` e quantidade inteira válida do detalhe também ficam na URL. Draft numérico inválido é local; seleção válida sobrevive ao login/refresh. Sessão expirada preserva carrinho privado na API e retorna ao fluxo após autenticar. Mutation de carrinho rejeitada não é reaplicada automaticamente; usuário revisa e tenta de novo. Favoritos retomam a intenção explícita por REST, sem inverter remoção em inclusão.
+- Login executa a intenção de favoritar por REST antes do retorno. Falha nessa operação informa que o favorito não foi salvo e permite tentar pelo coração, sem desfazer o login. Logout mantém carrinho/favoritos do usuário na API e cria visitante vazio. Troca por login direto não transfere o carrinho privado anterior. Google/Facebook e recuperação de senha apresentam indisponibilidade explícita, sem sessão ou sucesso fictício.
+
+### Favoritos
+
+GET `/api/favorites` e PUT/DELETE `/api/favorites/:nftId` exigem autenticação; API valida NFT e ownership. Cache é a única projeção na UI. Mutation cancela leitura, guarda snapshot e altera Query otimisticamente; erro restaura snapshot, sucesso/finalização reconcilia REST. Desabilitar corações durante uma mutation da sessão evita snapshots concorrentes conflitantes; callbacks antigos não recriam cache removido. Estratégia baseada em [TanStack Query useMutation](https://tanstack.com/query/latest/docs/framework/react/reference/functions/useMutation). Não foi acrescentada página separada de favoritos; integração é nos cards e detalhe.
+
+### Carrinho e conciliação
+
+- GET `/api/cart`; POST `/api/cart/items` com `nftId,editionId,quantity`; PATCH/DELETE `/api/cart/items/:id`, onde id canônico é `nftId:editionId`; PUT `/api/cart/coupon` com `code`, string vazia remove. Linhas diferentes por edição. API valida quantidade inteira >=1 e <=min(estoque da edição,maxQuantity); adição soma à linha existente. Erros 404/409/422 não alteram o carrinho.
+- Visitante persiste na simulação por origem. Ao autenticar, transferir atomicamente guest para a conta: somar linhas iguais, preservar distintas, manter cupom privado existente ou usar o visitante se privado vazio. Registrar `guestId:version` consumido, esvaziar guest e rotacionar guestId na mesma gravação. Repetir login/retry não transfere de novo. Transferência não acontece em efeitos React/refetch.
+- Somas acima do limite e edições esgotadas são preservadas com aviso e bloqueio do encaminhamento. Usuário ajusta ou remove; nunca cortar quantidades/remover itens silenciosamente. Redução de uma soma excessiva permite voltar ao limite atual. Logout cria visitante vazio e preserva os dados da conta; login em outra conta exibe somente seus itens, mais eventual visitante novo. Sem sincronização entre abas ou servidor externo.
+- Detalhe oferece adicionar e continuar ou COMPRAR, que adiciona a seleção e abre `/cart`. Pagamento ainda pendente: CTA “Conectar e finalizar” explica o encaminhamento futuro `/checkout`, sem enviar pedido nem abrir confirmação. Não foi criada rota vazia de compra.
+
+### Cotação e eventos
+
+POST `/api/quotes` devolve linhas enriquecidas com NFT/version/edição/quantidade/limite/disponibilidade/lineEth e `subtotalEth,discountEth,networkFeeEth,totalEth,coupon,cartVersion,purchasable,warnings`. Todos os valores ETH trafegam como string. Mocks calculam em BigInt de 18 casas e serializam decimal sem zeros supérfluos. UI não recalcula total.
+
+Cupom `KURIO10`: 10% do subtotal, truncamento apenas na unidade mínima (10^-18 ETH); `DROP2025`: expirado; outros: inválidos. Taxa demonstrativa por carrinho não vazio: `0.016` ETH, vazio: zero. Exemplo verificável: 2×1.19=2.38; desconto0.238; taxa0.016; total2.158. Cotação inclui itens indisponíveis, sinaliza bloqueio e permite recuperação. Taxa por carteira/rede, quoteId/validade, aceite de revisão e vínculo com pedido são da futura etapa de pagamento.
+
+Mutation de carrinho cancela consultas privadas conflitantes e invalida carrinho/cotação; UI mostra skeleton estável no resumo ao recotar. `nft.updated` mantém o protocolo e controle de versão validados: atualiza base canônica → evento pelo binding MSW → socket.io-client → cancelar/invalidate catálogo/detalhe/cotação da sessão ativa → REST calcula preço/estoque atuais. Duplicados/antigos são descartados; reconexão refaz cotação mesmo que evento tenha sido perdido. Callback de conexão anterior não altera cache da nova identidade.
+
+### Cenários e evidências
+
+POST `/api/__commerce/scenario`: reset,expire,slow(delay0–4000),fail(target session/login/signup/logout/favorites/cart/coupon/quote/all). Controles atuam somente nos mocks. Falha de uma chamada e latência persistem para testar refresh; identidade/latência/falha são capturadas no início do handler. Reset restaura contas, sessão, guest e dados privados; reset catálogo continua separado. Testes usam contextos isolados e os handlers reais, sem page.route ou setters.
+
+Revisão manual, decisões visuais, resultados finais e alcance em `docs/commerce-validation.md`. Baselines da aplicação revisada são distintas da comparação com PNGs do Figma. Lighthouse, autenticação de produção, pedidos e URL pública permanecem pendentes.

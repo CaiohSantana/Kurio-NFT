@@ -1,6 +1,6 @@
 # Plano de execução
 
-Status: etapa pública de catálogo/detalhe autorizada e executada após bootstrap. P00/P01 concluídos; P02 aplicada a catálogo/detalhe para nft.updated. P03 preparada sem URL pública. P04/P05 parciais, P07 comportamentos públicos concluídos, P08 parcial sem favoritos/compra. P06/P09–P16 pendentes. Evidências em docs/catalog-validation.md; parar ao fim desta etapa.
+Status 2026-10-08: sessão/login/cadastro/favoritos/carrinho/cotação executados. P00/P01 concluídos; P02 nft.updated preservada, sem order.updated. P03 preparada sem URL pública. P04/P05 parciais; P06 concluída para os fluxos existentes (retomada de checkout futuro pendente); P07 preservada; P08 parcial com favorito/adicionar, sem checkout; P09 concluída para carrinho e cotação demonstrativa, sem vínculo a pedido. P10–P16 continuam pendentes ou parciais conforme abaixo. Verificações84/84 em docs/commerce-validation.md; parar ao fim desta etapa.
 
 ## Ordem e critérios de conclusão
 
@@ -25,6 +25,17 @@ Status: etapa pública de catálogo/detalhe autorizada e executada após bootstr
 | P16 Entrega | P15 | README/ARCHITECTURE, comandos, limitações, checkout limpo, deploy final e correspondência commit. | Gate EL-01 e DE-01/03; URL pública testa rotas/refresh/mocks/socket e coincide com repositório. |
 
 P10/P11 podem anteceder P08/P09 se necessário, mantendo dependências. Não delegar trabalho a agentes sem solicitação explícita. Testes entram na etapa do fluxo; P14 consolida cobertura, não inicia testes do zero.
+
+## Acompanhamento sessão/favoritos/carrinho
+
+- P04 ampliada: duas contas fictícias, sessão com hash/token/expiração, estado privado e visitante persistidos, transferência única, validação/erros e cálculo ETH BigInt18. Contratos de perfil/carteiras/pedido continuam pendentes.
+- P06: cadastro/login/logout/refresh, retorno seguro com edição/quantidade/intenção, expiração/retomada, cancelamento/cache/subscription por scope; mutation antiga401 e isolamento A/B testados. Não marca retomada de tentativa de pedido.
+- P08: favoritos autenticados nos cards/detalhe, persistência/optimistic/rollback, adicionar e abrir carrinho. COMPRAR não cria pedido; checkout ainda pendente.
+- P09: linhas por NFT+edição, quantidades/remover/limites, visitante/refresh/merge com replay, cupom válido/inválido/expirado/remover, cotação/skeleton/falha/retry, update/duplicate/old/outage/esgotado por Socket.IO. Sem remoção silenciosa de itens ou confirmação local.
+- P05/P14 parciais: modal desktop/página mobile, carrinho/resumo e adaptação tablet; revisão manual dos exports,15 baselines atuais,84/84 E2E sem update;30 commerce,24 catálogo,15 prova,15 visuais. Typecheck/lint/build passaram. Diferenças em docs/commerce-validation.md.
+- P03/P10–P13/P15/P16: continuam pendentes. Nenhuma URL pública/checkout/perfil/carteiras/pedido/recibo/Lighthouse declarada concluída. Guia de primeiro deploy preservado; nenhuma ação externa nesta etapa.
+
+Próxima etapa depende de nova autorização. Preservar docs/commerce-validation.md e cenários isolados; não refazer baselines sem revisar visualmente uma mudança justificada.
 
 ## Validação e commits por etapa
 

@@ -1,6 +1,8 @@
 # Kurio — preparação técnica
 
-Esta entrega parcial contém catálogo em `/`, detalhe em `/nfts/emerald-042` e prova isolada em `/integration`. Conta, favoritos autenticados, carrinho e checkout ainda não implementados. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); detalhes: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências públicas e diferenças visuais em docs/catalog-validation.md e docs/catalog-visual-review.md.
+Credenciais fictícias: `ana@kurio.test` e `bruno@kurio.test`, senha `Kurio123!` para ambos. Cadastro cria outras contas locais. Cupom válido `KURIO10` (10%); expirado `DROP2025`; outros inválidos. Use exclusivamente dados fictícios na simulação.
+
+Esta entrega parcial contém catálogo `/`, detalhe `/nfts/emerald-042`, login `/login`, cadastro `/signup`, carrinho `/cart` e prova isolada `/integration`. Sessão e favoritos integram as telas públicas. Perfil, carteiras, pagamento e pedidos ainda não implementados. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); detalhes: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências atuais em [docs/commerce-validation.md](docs/commerce-validation.md), incluindo revisão visual e limites; etapas públicas anteriores em docs/catalog-validation.md.
 
 ## Executar
 
@@ -14,7 +16,7 @@ npm run dev
 
 Abra http://localhost:5173/integration. Inicialmente: 1.19 ETH, estoque 10, versão 1. “Alterar NFT” muda a base dos mocks e emite nft.updated; a interface obtém o novo estado por REST. “Evento duplicado/antigo” aumenta os contadores de recebidos/ignorados sem regredir o NFT. “Interromper conexão” fecha o transporte e recusa novas conexões por 2s; altere o NFT durante a interrupção e observe a reconciliação automática. “Falhar próxima consulta” seguido de “Consultar REST” demonstra 503 e retry. “Reiniciar cenário” restaura a fixture na camada de mocks e recarrega a página.
 
-Persistência desta prova: um NFT em localStorage, por origem do navegador. Sem contas/credenciais nesta etapa. Preço trafega como string; alterações usam centavos inteiros. Não há conexão com blockchain, carteira ou servidor real.
+Persistência da prova: NFT canônico em localStorage, por origem do navegador. `/integration` continua independente visualmente da sessão do marketplace. Preço trafega como string; alterações do NFT usam centavos inteiros e cotação do carrinho usa unidades BigInt de18 casas. Não há conexão com blockchain, carteira ou servidor real.
 
 | Comando | Finalidade |
 | --- | --- |
@@ -44,18 +46,18 @@ Roboto Mono é local, com origem, checksum e licença em [public/assets/fonts/RE
 
 Passos que dependem da conta do usuário:
 
-1. Criar/conectar um repositório remoto (o workspace ainda não possui Git configurado).
+1. Criar/conectar um repositório remoto (Git local configurado; nenhum remote cadastrado).
 2. Importá-lo em um projeto Vercel usando a própria conta, Node 22.x ou superior compatível, build/output do vercel.json. Garantir `VITE_ENABLE_MOCKS=true` no ambiente de build.
 3. Publicar e verificar a URL HTTPS: abrir `/integration` diretamente e dar refresh; conferir `/mockServiceWorker.js` como JavaScript; executar alteração/duplicata/outage e conferir REST/reconexão. Conferir fonte local e rota inexistente.
 4. Registrar URL pública, commit publicado e resultados do smoke. Sem isso P03/DE-02 permanecem pendentes.
 
-Git agora inicializado localmente; ainda não existe remote/URL pública. Passos exatos em [docs/first-deploy.md](docs/first-deploy.md). Lighthouse e testes dos nove fluxos ficam pendentes. Baselines de início/detalhe já versionadas após revisão manual; carrinho/pagamento ainda não possuem baselines.
+Git inicializado localmente; ainda não existe remote/URL pública. Passos exatos em [docs/first-deploy.md](docs/first-deploy.md). Lighthouse e testes dos nove fluxos ficam pendentes. Baselines de início/detalhe/login/cadastro/carrinho versionadas após revisão manual; pagamento ainda não possui baseline.
 
 ## Catálogo e detalhe: roteiro manual
 
 1. `npm run dev`: abrir http://localhost:5173/. Buscar Emerald com Enter; combinar coleções/redes no aside desktop ou botão de filtros mobile. Aplicar faixa de preço, ordenar e paginar; refresh/back/forward conservam estado da URL.
 2. Abrir um card ou `/nfts/emerald-042`; alternar galeria/ampliar, escolher1/10 e alterar quantidade. Quantidade5 excede limite4;1/1 está esgotada. Testar `/nfts/inexistente` e recuperação.
-3. Rolar no mobile para informações completas/rede/contrato/royalties/relacionados. Compra/favoritos/conta mostram indisponibilidade; não simulam sucesso.
+3. Rolar no mobile para informações completas/rede/contrato/royalties/relacionados. Adicionar grava por API; COMPRAR adiciona e abre carrinho. Favoritar exige login e retoma a seleção. Checkout/perfil/carteiras continuam indisponíveis, sem sucesso fictício.
 4. Para cenários de rede/eventos, executar no console do navegador (MSW já iniciado):
 
 ```js

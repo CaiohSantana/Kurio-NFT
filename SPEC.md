@@ -2,7 +2,22 @@
 
 Status: base e prova de integração executadas em 2026-10-07. Evidências e alcance parcial em [docs/proof-validation.md](docs/proof-validation.md). Os nove fluxos, gates finais e critérios completos de marketplace permanecem pendentes; não extrapolar a prova de um NFT para a aplicação inteira.
 
-Etapa catálogo/detalhe: comportamentos públicos FL-01 implementados e testados; FL-02 parcial (galeria/informações/edição/quantidade/404/realtime). Favoritos autenticados e compra não implementados por limite explícito desta etapa. Evidências em [docs/catalog-validation.md](docs/catalog-validation.md); revisão/desvios em [docs/catalog-visual-review.md](docs/catalog-visual-review.md). Fidelidade visual integral, gates dos nove fluxos e deploy continuam pendentes.
+Etapa catálogo/detalhe anterior: comportamentos públicos FL-01 implementados e testados; FL-02 então parcial. Evidências históricas em [docs/catalog-validation.md](docs/catalog-validation.md); revisão/desvios em [docs/catalog-visual-review.md](docs/catalog-visual-review.md).
+
+Atualização 2026-10-08: sessão/login/cadastro/favoritos e carrinho/cotação implementados; `npm run test:e2e` passou84/84 no build preview, incluindo30 cenários de commerce,24 catálogo,15 prova e15 visuais nos três tamanhos. Detalhe adiciona ao carrinho e COMPRAR abre `/cart`; envio ao checkout/pedidos continuam pendentes. Evidências, roteiro e desvios em [docs/commerce-validation.md](docs/commerce-validation.md); decisões em ARCHITECTURE.md. Gates dos nove fluxos, fidelidade integral, Lighthouse e deploy não estão concluídos.
+
+## Evidências desta etapa (escopo parcial do desafio)
+
+| Critério | Verificado em 2026-10-08 | Pendência |
+| --- | --- | --- |
+| FL-02 / IN-03 | Favoritos autenticados persistem; intenção retoma edição/quantidade; mutation otimista e rollback503. Adicionar valida estoque/edição e compra abre carrinho. | Início real do pagamento/compra. |
+| FL-03 / MK-01 / IN-04 | Visitante persiste; quantidade/remoção/cupom/cotação exata; transferência única com replay; itens esgotados/excesso preservados; eventos recotam. | Vínculo com revisão/pedido, taxa por carteira/rede no pagamento. |
+| FL-06 / FL-07 | Cadastro/422/confirmação/409, login/401, refresh, returnTo seguro, expiração inclusive refresh, logout/troca. Hash sem senha em persistência. | Retomada de checkout/tentativa de pedido, ainda não implementados. |
+| IN-02 / IN-05 / RT-01 / RT-02 | Cache por scope, cancelamento/cleanup, mutation atrasada recebe401 sem afetar nova conta; uma conexão ativa/zero no teardown. Estado API único para NFT/favoritos/carrinho. Eventos duplicados/antigos e reconexão verificados. | Perfil/carteiras/pedidos/eventos privados futuros. |
+| IN-01 / UI-01/02/03 / QA-01 / QA-02 | Slow/skeleton/vazio/erro/retry; 390/768/1440, labels, teclado/foco/Escape e overflow;30 commerce + verificações públicas/prova preservadas;15 baselines revisadas e regressão passou sem update. | Auditoria completa de acessibilidade, páginas futuras e baseline de pagamento. |
+| ST / DE-03 | Stack preservada, contratos/arquitetura/cenários/credenciais/comandos documentados; typecheck/lint/build e84E2E passaram. | Gates completos EL-01, QA-03 Lighthouse, DE-01 checkout limpo e DE-02 URL pública. |
+
+As evidências acima são operações realmente executadas, não aceite das partes futuras de cada requisito. Nomes exatos de IDs abrangentes permanecem nas tabelas originais abaixo.
 
 ## Fontes e limites
 

@@ -15,9 +15,9 @@ git push -u origin main
 Substituir o marcador pela URL real. Autenticar no GitHub quando solicitado, sem pôr token no arquivo/URL/comando versionado. Nome/e-mail Git já estavam configurados no ambiente; não foram alterados.
 
 3. Entrar em vercel.com → Add New → Project → importar esse repositório. Autorizar leitura do repositório na própria conta. Root Directory: raiz; Framework: Vite; Build: npm run build; Output: dist; Install: npm ci; Node22.x ou versão compatível com engines do package.json. Variável de build `VITE_ENABLE_MOCKS=true` (Production e Preview). Não adicionar segredos para a demonstração.
-4. Deploy. Guardar a URL HTTPS retornada e o commit correspondente. Abrir diretamente `/`, `/nfts/emerald-042`, `/nfts/inexistente`, `/integration` e atualizar cada rota.
+4. Deploy. Guardar a URL HTTPS retornada e o commit correspondente. Abrir diretamente `/`, `/nfts/emerald-042`, `/nfts/inexistente`, `/login`, `/signup`, `/cart`, `/integration` e atualizar cada rota.
 5. Conferir `/mockServiceWorker.js` como JavaScript, fonte WOFF2 local, assets e filtros/histórico. Disparar change/duplicate/disconnect pelos controles da prova ou endpoint de cenário do README; verificar REST/evento/reconexão na publicação.
-6. Registrar URL/commit/resultados do smoke em docs/catalog-validation.md. Somente após essa verificação P03/DE-02 podem ser marcados concluídos.
+6. Conferir login/cadastro/retorno/favoritos, carrinho visitante→login e isolamento entre as duas contas fictícias. Registrar URL/commit/resultados do smoke em docs/commerce-validation.md. Somente após essa verificação P03/DE-02 podem ser marcados concluídos.
 
 ## Preview local
 
