@@ -33,7 +33,7 @@ function MarketContent() {
   }
   const unavailable = (action: string) => setNotice(`${action} não está disponível no momento. Nenhuma operação foi realizada.`)
   return <NoticeContext.Provider value={unavailable}><SignOutContext.Provider value={() => logout.mutate()}>
-    <div className={`market ${pathname === '/' ? 'home-market' : 'detail-market'}`}>
+    <div className={`market ${pathname === '/' ? 'home-market' : pathname.startsWith('/nfts/') ? 'detail-market nft-market' : 'detail-market'}`}>
       <header className="desktop-header">
         <Link to="/" search={defaultCatalogSearch} className="wordmark">KURIO</Link>
         <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' || pathname.startsWith('/account') ? 'active' : ''}>Início</Link><CatalogLink className={pathname.startsWith('/nfts') || pathname === '/cart' || pathname === '/checkout' ? 'active' : ''}>Mercado</CatalogLink><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
@@ -60,7 +60,7 @@ function Footer() {
       <section className="newsletter"><h3>Antecipe-se ao próximo lançamento</h3><form onSubmit={(e) => { e.preventDefault(); unavailable('Newsletter') }}><label className="sr-only" htmlFor="newsletter">E-mail da newsletter</label><input id="newsletter" type="email" placeholder="digite seu e-mail..." /><button>Enviar</button></form><p>Receba lançamentos selecionados, histórias de criadores e novidades do mercado.</p></section>
     </div>
     <div className="contact-band"><span className="wordmark">KURIO</span><span>Feito para colecionadores,<br />criadores e cultura</span><button onClick={() => unavailable('Contato')}>contato@email.com</button><span>+55 11 4002 8922</span></div>
-    <div className="footer-links">{groups.map(([title, ...links]) => <section key={title}><h3>{title}</h3>{links.map((label) => label === 'Meu perfil' ? <Link to="/account/profile" key={label}>{label}</Link> : <button key={label} onClick={() => unavailable(label)}>{label}</button>)}</section>)}<section><h3>Redes sociais</h3><div className="social-icons">{['99280.svg', 'd48dd.svg', 'b4111.svg', 'b8b84.svg', 'ca2da.svg'].map((asset, i) => <button aria-label={['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'YouTube'][i]} key={asset} onClick={() => unavailable('Redes sociais')}><img src={`/assets/figma/${asset}`} width="30" height="30" alt="" /></button>)}</div><h3>Carteiras compatíveis</h3><p className="wallet-chip">METAMASK · WALLETCONNECT · COINBASE</p></section></div>
+    <div className="footer-links">{groups.map(([title, ...links]) => <section key={title}><h3>{title}</h3>{links.map((label) => label === 'Meu perfil' ? <Link to="/account/profile" key={label}>{label}</Link> : <button key={label} onClick={() => unavailable(label)}>{label}</button>)}</section>)}<section><h3>Redes sociais</h3><div className="social-icons">{['99280.svg', 'd48dd.svg', 'b4111.svg', 'b8b84.svg', 'ca2da.svg'].map((asset, i) => <button aria-label={['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'YouTube'][i]} key={asset} onClick={() => unavailable('Redes sociais')}><img src={`/assets/figma/${asset}`} width="30" height="30" alt="" /></button>)}</div><h3>Carteiras compatíveis</h3><p className="wallet-chip"><span>METAMASK</span><span>WALLETCONNECT</span><span>COINBASE</span></p></section></div>
     <p className="copyright">© 2026 Kurio. Propriedade digital para todos.</p>
   </footer>
 }

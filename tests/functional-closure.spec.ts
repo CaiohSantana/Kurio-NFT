@@ -6,7 +6,6 @@ test.beforeEach(async ({ page }) => { await page.clock.setFixedTime(new Date('20
 test('session expires during checkout submission and resumes draft without creating an order', async ({ page }) => {
   await setup(page); await connect(page)
   await page.getByLabel('Observação do colecionador (opcional)').fill('Retomar este contexto')
-  await page.getByLabel('Revisei os dados e aceito esta cotação').check()
   const oldScope = (await request(page, '/session')).data.scope
   await request(page, '/__commerce/scenario', 'POST', { action: 'expire' })
   const expired = page.waitForResponse((response) => response.url().endsWith('/api/order-attempt') && response.status() === 401)
@@ -17,7 +16,7 @@ test('session expires during checkout submission and resumes draft without creat
   await expect(page).toHaveURL(/\/checkout$/)
   const collector = page.locator('.checkout-collector'); if (await collector.getAttribute('open') === null) await collector.locator('summary').click()
   await expect(page.getByLabel('Observação do colecionador (opcional)')).toHaveValue('Retomar este contexto')
-  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).toHaveCount(0)
   const session = (await request(page, '/session')).data
   expect((await request(page, '/order-attempt', 'GET', undefined, { 'X-Session-Scope': session.scope })).data).toBeNull()
   expect((await request(page, '/cart', 'GET', undefined, { 'X-Session-Scope': oldScope })).status).toBe(401)
@@ -42,7 +41,6 @@ test('repeated UI clicks send one order and retain one persisted attempt', async
   await setup(page); await scenario(page, 'hold'); await connect(page)
   const creations: string[] = []
   page.on('request', (request) => { if (request.method() === 'POST' && request.url().endsWith('/api/orders')) creations.push(request.headers()['idempotency-key']) })
-  await page.getByLabel('Revisei os dados e aceito esta cotação').check()
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).dblclick()
   await expect(page).toHaveURL(/\/orders\//); await expect(page.getByRole('heading', { name: 'Pedido pendente' })).toBeVisible()
   expect(creations).toHaveLength(1); expect(creations[0]).toBeTruthy()
@@ -53,13 +51,13 @@ test('repeated UI clicks send one order and retain one persisted attempt', async
 })
 
 test('fee changed without an event is revalidated before purchase and needs new acceptance', async ({ page }) => {
-  await setup(page); await connect(page); await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  await setup(page); await connect(page)
   await scenario(page, 'fee-change')
   await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click()
   await expect(page.getByTestId('checkout-total')).toHaveText('2.397 ETH')
-  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
-  await expect(page.getByRole('button', { name: 'Confirmar compra', exact: true })).toBeDisabled()
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Confirmar nova cotação' })).toBeEnabled()
   const session = (await request(page, '/session')).data
   expect((await request(page, '/order-attempt', 'GET', undefined, { 'X-Session-Scope': session.scope })).data).toBeNull()
   const id = await purchase(page); await expect(page.getByTestId('receipt-total')).toHaveText('2.397 ETH')
@@ -71,18 +69,18 @@ test('applied coupon expires before submission, preserves cart and requires remo
   await page.getByLabel('Código promocional').fill('KURIO10'); await page.getByRole('button', { name: 'Aplicar', exact: true }).click()
   await expect(page.getByTestId('cart-total')).toHaveText('2.158 ETH')
   await page.getByRole('button', { name: 'Conectar e finalizar' }).click(); await connect(page)
-  await expect(page.getByTestId('checkout-total')).toHaveText('2.158 ETH'); await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.158 ETH')
   await request(page, '/__commerce/scenario', 'POST', { action: 'coupon-expired' })
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click()
-  await expect(page.getByRole('alert').filter({ hasText: 'Cupom expirado' })).toBeVisible()
+  await expect(page.getByRole('dialog', { name: 'Revisar cotação alterada' }).getByRole('alert').filter({ hasText: 'Cupom expirado' })).toBeVisible()
   await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
-  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Confirmar nova cotação' })).toBeDisabled()
   const session = (await request(page, '/session')).data, headers = { 'X-Session-Scope': session.scope }
   expect((await request(page, '/order-attempt', 'GET', undefined, headers)).data).toBeNull()
   expect((await request(page, '/cart', 'GET', undefined, headers)).data.items[0].quantity).toBe(2)
   await page.goto('/cart'); await page.getByRole('button', { name: 'Remover cupom' }).click()
   await expect(page.getByTestId('cart-total')).toHaveText('2.396 ETH'); await page.getByRole('button', { name: 'Conectar e finalizar' }).click()
-  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).toHaveCount(0)
   await purchase(page); await expect(page.getByTestId('receipt-total')).toHaveText('2.396 ETH')
 })
 

@@ -11,7 +11,7 @@ import { catalogOptions, detailOptions } from './api'
 import { validateCatalogSearch, type Nft } from './contracts'
 import { useUnavailable } from './MarketShell'
 import { CatalogLink } from './CatalogLink'
-import { NftCard } from './NftCard'
+import { RelatedNfts } from './RelatedNfts'
 import { FavoriteButton } from '@/features/favorites/FavoriteButton'
 import { useCartMutation } from '@/features/cart/api'
 import { apiMessage } from '@/features/auth/session'
@@ -28,7 +28,7 @@ export function DetailPage() {
     {query.isFetching && <p className="background-loading" role="status">Atualizando NFT…</p>}
     {query.isError && <div className="query-error" role="alert">Falha ao atualizar o NFT. <Button onClick={() => void query.refetch()}>Tentar novamente</Button></div>}
     <DetailContent key={`${nft.id}:${selection.edition}`} nft={nft} />
-    <section className="related"><h2>Mais desta coleção</h2><div>{related.data?.items.filter((item) => ['cosmic-118', 'violet-314', 'ivory-088', 'golden-207', 'signal-160'].includes(item.id) && item.id !== nft.id).map((item) => <NftCard nft={item} key={item.id} />)}</div></section>
+    <RelatedNfts title="Mais desta coleção" items={[...(related.data?.items ?? [])].filter((item) => item.id !== nft.id).sort((a, b) => Number(['cosmic-118', 'violet-314', 'ivory-088', 'golden-207', 'signal-160'].includes(b.id)) - Number(['cosmic-118', 'violet-314', 'ivory-088', 'golden-207', 'signal-160'].includes(a.id)))} />
   </main>
 }
 function DetailContent({ nft }: { nft: Nft }) {

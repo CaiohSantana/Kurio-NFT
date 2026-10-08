@@ -13,10 +13,11 @@ export async function setup(page: Page, quantity = 2) {
   await page.goto('/checkout'); await expect(page).toHaveURL(/\/login/); await login(page)
   await page.getByRole('link', { name: 'Cadastrar carteira e retornar' }).click()
   const primary = page.getByRole('form', { name: 'Carteira principal' })
+  await primary.getByRole('combobox', { name: 'Rede', exact: true }).selectOption('Ethereum'); await primary.getByLabel('Tipo de carteira').selectOption('MetaMask')
   await primary.getByLabel('Endereço da carteira').fill('0x' + '1'.repeat(40)); await primary.getByRole('button', { name: 'Salvar carteira' }).click(); await expect(primary.getByRole('status')).toHaveText('Carteira salva.')
   await page.getByRole('button', { name: 'Retomar fluxo' }).click(); await expect(page.getByTestId('checkout-total')).toHaveText(`${quantity === 2 ? '2.396' : '1.206'} ETH`)
   await revealCollector(page)
 }
-export async function connect(page: Page) { await page.getByRole('button', { name: 'Conectar carteira', exact: true }).click(); await expect(page.getByRole('button', { name: 'Carteira conectada · Gerenciar' })).toBeVisible() }
-export async function purchase(page: Page) { await page.getByLabel('Revisei os dados e aceito esta cotação').check(); await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click(); await expect(page).toHaveURL(/\/orders\//); await expect(page.locator('.receipt-card')).toBeVisible(); return new URL(page.url()).pathname.split('/').pop()! }
+export async function connect(page: Page) { const response = page.waitForResponse((r) => r.url().endsWith('/api/wallet-connection') && r.request().method() === 'POST' && r.status() === 200); await page.locator('.provider-list input:checked').click(); expect((await (await response).json()).status).toBe('connected'); await expect(page.locator('.checkout-submit')).toBeEnabled() }
+export async function purchase(page: Page) { const review = page.getByRole('dialog', { name: 'Revisar cota\u00e7\u00e3o alterada' }); if (await review.isVisible()) await review.getByRole('button', { name: 'Confirmar nova cota\u00e7\u00e3o' }).click(); else await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click(); await expect(page).toHaveURL(/\/orders\//); await expect(page.locator('.receipt-card')).toBeVisible(); return new URL(page.url()).pathname.split('/').pop()! }
 export async function resetCheckout(page: Page) { await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integra\u00e7\u00e3o' })).toBeVisible(); expect((await request(page, '/__scenario/reset', 'POST')).status).toBe(200) }
