@@ -2,7 +2,7 @@
 
 ## Auditoria de qualidade vigente
 
-P14: corrigidas lacunas comprovadas de foco/nome/alvo/contraste; revisão de capturas/baselines em curso. P15: npm run audit instalado/configurado; rodada final12 ainda em execução, metas mobile permanecem abaixo nas explorações. P16: checkout temporário limpo e relatórios entregáveis em preparação; URL pública continua pendente. Parar após a etapa, sem deploy.
+P14: correções localizadas validadas, 27 baselines preservadas após revisão, 186/3 no checkout limpo; acessibilidade manual ainda parcial. P15: runner e 12 medições HTML/JSON entregues; parcial pelas metas mobile 86/83. P16: instalação limpa/README/contratos/relatórios verificados; publicação HTTPS ainda pendente. Fonte auditada b6fba35; posteriores nesta etapa apenas documentação/evidências. Parar ao final, sem push/deploy.
 
 ## Revisão final das nove telas — etapa atual
 

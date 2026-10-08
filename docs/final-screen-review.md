@@ -1,5 +1,7 @@
 # Revisão final das nove telas — 2026-10-08
 
+Revisão posterior: [quality-audit.md](quality-audit.md) registra contraste de campos, foco e zoom nativo ao vivo, 12 medições Lighthouse e checkout limpo. As ressalvas de bordas/zoom desta página são históricas; verificações manuais e metas/publicação restantes estão na auditoria atual.
+
 Escopo: apontamentos do usuário no pedido anexado, exports originais desktop/mobile e SPEC. Correções localizadas; contratos REST, mocks, cache, precisão, isolamento, idempotência, snapshot e protocolo Socket.IO preservados. Lighthouse e publicação reservados à próxima etapa. Não houve edição do Figma, dependência nova ou substituição das quatro artes.
 
 ## Checklist dos apontamentos

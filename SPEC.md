@@ -2,7 +2,7 @@
 
 ## Auditoria de qualidade vigente
 
-UI-03: contraste de campos, nome de quantidade, alvo favorito, seleção não apenas por cor, foco circular em diálogos e zoom nativo200% verificados de forma direcionada. QA-03: runner/lockfile preparados;12 medições finais e metas ainda dependem da execução. DE-01: checkout limpo ainda em verificação. Resultados em docs/quality-audit.md prevalecem sobre pendências históricas; não marcar EL/DE completos sem evidência/publicação.
+ST/EL-01: stack efetivamente exercitada incluindo Lighthouse; critérios funcionais preservados. QA-01/02: checkout limpo da fonte b6fba35, 186 passados/3 skips, 27 baselines. UI-03: corrigidos contraste/nome/alvo/foco/zoom ao vivo; verificações manuais com leitor de tela/alto contraste permanecem pendentes. QA-03: 12 medições finais, A11y/BP/SEO 100; Performance início/detalhe mobile 86/83, desktop 100/99, portanto parcial. DE-01 verificado localmente; DE-02 URL pública pendente. Evidências atuais em docs/quality-audit.md prevalecem sobre as pendências históricas abaixo; desafio ainda não completo.
 
 ## Revisão final das nove telas
 

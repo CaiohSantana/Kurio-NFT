@@ -45,14 +45,62 @@ A instalação limpa revelou CSS extra originado das classes dos relatórios HTM
 
 ## Resultados finais e instalação limpa
 
-Typecheck, lint sem warnings e build demo passaram. Suíte completa: **183 passaram,3 skips intencionais,4,6min**, sem retries/update;156 comportamentais+27 visuais. Relatório HTML entregue em audits/playwright/index.html. Roteiro direcionado após corrigir foco/conta mobile:12/12 em35,4s.
+Fonte final auditada/testada: **b6fba354f90d3136e0b00fabfa687573a93837b4**. Os commits posteriores desta etapa acrescentam documentação e relatórios; não alteram aplicação, lockfile, testes, assets ou configuração de build. Lighthouse registrou dirtyAtStart=false no checkout desse commit.
 
-Smoke do preview:11 rotas com entrada direta+refresh, incluindo recibo realmente confirmado pela API e578px no desktop; worker, WOFF2, WebP e PNG local com200/tipos corretos. /integration confirmou REST, evento pelo socket.io-client e recurso na versão2. Evidência em audits/preview-smoke.json.
+Checkout temporário `.tmp/quality-delivery`, criado pelo Git, independente dos node_modules do diretório principal. Executados npm ci, npx playwright install chromium, typecheck, lint sem warnings, build demo e **189 casos E2E:186 passaram,3 skips,0 falhas,0 flaky,275727ms (4,6min)**, sem retries/update. São159 comportamentais e27 visuais. [HTML final](audits/playwright-clean/index.html), [contagem/duração](audits/playwright-clean/summary.json). A primeira consolidação183/3 foi preservada em audits/playwright/index.html; depois da correção de descoberta do Tailwind30/30 passaram; após o ajuste de zoom21/21 passaram e o checkout final executou a suíte inteira novamente.
 
-Ainda em execução:12 relatórios Lighthouse finais e instalação em checkout temporário limpo por commit. Metas não são declaradas satisfeitas antecipadamente.
+Smoke no **preview do checkout limpo**, porta4177:11 rotas com entrada direta+refresh, incluindo recibo criado pela interface e confirmado pela API, largura578px por acesso direto; worker, WOFF2, WebP e PNG local com200/tipos corretos. /integration confirmou REST, evento pelo socket.io-client e recurso na versão2. [Evidência](audits/clean-preview.json). Nenhum backend/serviço privado, arquivo de usuário ou configuração secreta foi necessário. `.env.demo` e todos os recursos vêm do Git; Chromium é instalado pelo comando documentado. npm ci reportou zero vulnerabilidades; relatório adicional em audits/dependency-audit.json. A geração automática do worker MSW mantém o mesmo conteúdo normalizado pelo Git.
+
+JS/CSS do build limpo e do diretório principal têm **26 arquivos com hashes idênticos**, registrados em audits/build-comparison.json. Diferença de newline do HTML pelo checkout Windows não altera execução. Não se depende do HTML dos relatórios para produzir CSS. Verificação em outros sistemas operacionais não executada; baselines entregues são Chromium/Windows.
+
+### Lighthouse:12 medições finais
+
+| Página | Perfil | Performance | Accessibility | Best Practices | SEO | LCP mediano(ms) | CLS mediano | TBT mediano(ms) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Início | mobile | **86** |100|100|100|3332|0,0486|65|
+| Início | desktop |100|100|100|100|732|0,0180|0|
+| Detalhe Emerald | mobile | **83** |100|100|100|3796|0|60|
+| Detalhe Emerald | desktop |99|100|100|100|832|0,0180|0|
+
+Todas as categorias atingiram as metas, **exceto Performance mobile nas duas páginas**. QA-03 continua parcial. [12 HTML/12 JSON e tabela](audits/lighthouse/README.md), [configurações/versões/resultados individuais](audits/lighthouse/summary.json). Nenhum relatório final contém runtimeError ou runWarnings. Os relatórios são entregáveis versionados, fora das pastas ignoradas de artefatos temporários.
+
+Ambiente: Windows_NT10.0.26300 x64, Intel Core i5-12400F,16GB, Node22.14.0/npm11.2.0, Playwright1.64.0, Chrome for Testing156.0.8078.4, Lighthouse12.8.2; sharp0.35.5. URLs http://127.0.0.1:4175/ e /nfts/emerald-042. Build demo completo, preview otimizado, cenário padrão; nenhuma execução de E2E/capturas em paralelo às medições finais. Chrome temporário novo por medição, reset de storage e cache frio padrão Lighthouse; sem preaquecer ou alterar mocks. Throttling **simulate**: mobile412×823/DPR1,75, RTT150ms/1638,4Kbps/CPU4×; desktop1350×940/DPR1, RTT40ms/10240Kbps/CPU1×. Flags de lançamento headless/disable-gpu/no-first-run; detalhes completos nos JSON.
+
+Resultados abaixo da meta são sustentados pelos relatórios finais: home-mobile-2 atribui86% do LCP a render delay (2875ms), com FCP3025ms. detail-mobile-2 atribui78% a descoberta tardia da imagem (2954ms), antes de132,7ms de transferência; FCP3020ms. Ambos apontam cerca de108–109KiB de JS não utilizado nesse primeiro carregamento. O bootstrap aguarda MSW, depois inicialização do app/sessão, e o detalhe consulta o NFT; esse caminho crítico permanece sob a simulação de rede/CPU móvel. Fontes/preloads, divisão por rota, WebP e skeleton corrigiram causas comprovadas, incluindo CLS do detalhe de0,292 para0. Não foi reduzida a latência padrão, escondida funcionalidade ou criado caminho de auditoria especial para atingir90. A pendência é otimizar esse caminho preservando API/sessão/realtime e repetir as combinações afetadas após autorização para a próxima etapa.
+
+## Status e pendências exatas
+
+| Critério SPEC | Evidência atual | Status |
+| --- | --- | --- |
+| ST/EL-01 uso efetivo da stack | Código, build,189 E2E e runner Lighthouse real | Verificado localmente; não equivale à entrega publicada |
+| UI-03 acessibilidade | Contraste/labels/alvos/foco corrigidos; reduced-motion; reflow320 e zoom nativo200% sem reload em18 casos; testes de erro/feedback/teclado | Parcial: leitores de tela/alto contraste/text-only/zoom interativo400% não executados |
+| QA-01/02 testes/isolamento/baselines |186 passados,3 skips justificados,27 baselines; REST/MSW e socket.io-client efetivos | Verificado no Chromium/Windows |
+| QA-03 auditoria/metas |12 HTML/JSON, medianas/ambiente; demais categorias100 | Parcial: Performance mobile86/83 precisa de90 |
+| DE-01 checkout limpo | npm ci/checks/E2E/preview/refresh/assets sem serviços privados | Verificado na fonte b6fba35 |
+| DE-03 documentação/evidências | README/ARCHITECTURE, contratos/cenários/reset/credenciais, relatórios e baselines no Git | Verificado nesta etapa |
+| DE-02 publicação | Configuração/roteiro preparados | Pendente: push/importação/deploy na conta, URL HTTPS verificada e smoke do commit publicado |
+
+Funcional: nenhum novo comportamento obrigatório ficou sem implementação nesta revisão; manter o alcance dos testes registrado, sem afirmar produção. Visual: preservar pendências de contexto/medidas do Figma e SVG original da confirmação em design-reference.md; sem nova reformulação. Acessibilidade: verificações manuais acima, sem certificação WCAG integral. Lighthouse: duas metas de Performance mobile abaixo. Publicação: nenhuma URL pública verificada, nem push/deploy executado.
 
 ## Reproduzir e publicar
 
 README documenta npm ci, instalação do Chromium, comandos, credenciais, cenários/reset e recuperação de falhas. `npm run audit` serve o build em4175 e gera12 HTML+12 JSON e medianas; não rodar E2E simultaneamente. Relatórios entregues em docs/audits, baselines em tests/*-snapshots, HTML Playwright preservado; traces de falhas permanecem configurados.
+
+Para repetir o smoke limpo, iniciar o preview no terminal do checkout:
+
+```powershell
+node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4177 --strictPort
+```
+
+Em outro terminal, no mesmo checkout:
+
+```powershell
+$env:REVIEW_URL = 'http://127.0.0.1:4177'
+node scripts/delivery-smoke.mjs
+$env:REVIEW_NATIVE_ZOOM = 'true'
+node scripts/visual-review.mjs native-zoom
+```
+
+O smoke e as capturas usam contextos de navegador próprios e cenários da API; não editar localStorage/React. Não fazer build enquanto o script captura o preview. Zoom automatizado usa a [API nativa de tabs do Chrome](https://developer.chrome.com/docs/extensions/reference/api/tabs#method-setZoom), conserva o documento sem reload e verifica limites de diálogos. A etapa registrou uma captura interrompida por fechamento do navegador e uma tentativa de teste com porta ocupada; ambas foram repetidas isoladamente, sem aceitar resultado incompleto. A evidência final de zoom tem18 verificações bem-sucedidas.
 
 Publicação pendente: enviar commits ao origin da conta, importar repositório na Vercel com npm ci/build/dist, Node compatível e VITE_ENABLE_MOCKS=true; verificar HTTPS, rotas diretas/refresh, worker/fontes/artes, sessão e fluxo REST/Socket.IO/pedido. Registrar URL e commit; roteiro exato em first-deploy.md. Preview local e repositório configurado não provam publicação.

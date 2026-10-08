@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "b6fba354f90d3136e0b00fabfa687573a93837b4",
+  "sameJavaScriptAndCssAsWorkspace": true,
+  "chunks": {
+    "AccountLayout-B_i35UL2.js": "196ccd3691fd9a48e390609835862cd3d427b31b676021c06f0095b3e193f3a4",
+    "api-BnzMVlt7.css": "b5783613aa7bbda3a56e4020efea83194452b1174f69af4784e802470e36c5d1",
+    "api-D4x2JOPq.js": "e3e68745eea9fac3e9e7e20452179818ac50501b65011224ac0abfa62cfbf389",
+    "api-DnKkpgu2.js": "a95e8529fb2d31d89c9df0994be9aca7ce7f13a7ca63cd8475fef0cd657b769a",
+    "api-q4fG28jX.js": "9feb686c47a11580d374c2a09e9b390b464a78767b5feaf63a9c2cfd2426b37c",
+    "api-vbyGv59U.js": "124668715e46537d06dc537688776d9cfad10ed5ae9e89202cbba4e8f1f05a51",
+    "api-_deMgjln.js": "afb4e5a30f8bc91448982faa0e72177e5b8a403b67ed28edbfa8fa4344498b40",
+    "AuthPage-CwpFQwrP.js": "45ba571972e0abb96b9d88bf015c6da8f45337592d4acc14899ec8db262cc95a",
+    "bootstrap-BBfaJIV-.js": "b8719bd6b1f3d98dcd7860e8d57afea1218e5a6f52cdcdf239d1e9a4212824c2",
+    "browser-Cmg1_Q_a.js": "0972e05541bcec802ef94f13b0b3cdfcf59404bc704054050c4846b5837e5eb4",
+    "CartPage-CSv8OYJu.js": "130372ea1049deed829ca333f39404ab3e0037fa9ed410c766699f568515f803",
+    "CheckoutPage-BNvDbNCC.js": "42d3249fcaf1241a15c86b3d1aea65a71d6de98db2f5a9f759ec702a109887eb",
+    "contracts-BFrKFeqe.js": "03bec18c448cd280ecdab64a981129a9c906f5befc3aa4db526cab7a1a89fbe7",
+    "esm-VAFpjErP.js": "8f83d8b3ca45a21c1c9c678e3cf103555ce2cb8be0c12abed8ecda4a612974d0",
+    "esm-vP8kplIw.js": "543a8d11934af864697846b8e3b7a5af48912cf0d53e1a956f8ef1cb97ee39de",
+    "eye-D8pvwSuH.js": "0716d24af8a66c11da747de0da94ff57775a652b39be6dd83a56c2438d6fc10d",
+    "http-tj_GNRh-.js": "6a79c4f4cae94d279686df14ab76030726e6693d25a83c76b6e794313622ff28",
+    "index-CotrEAVB.js": "36c649470187cc0aa41747708ed49fa8ebfb3fa881b81493b9566d5bd9bdf94e",
+    "index-Ct49w3Yr.css": "081f83926b575f76e0a4adfcb59c19b446a3910550beac99059584251e6dd2fc",
+    "IntegrationProof-DwTt15xW.js": "e51de5ffb7802ce7b3e7c39e99d5748d1c73da2be70836fc9c0119b4982cc74e",
+    "MarketShell-CraH47JQ.js": "79d5e3f0135e74e2f288f7548cc41e1f3a59cbd3efda7a92e8bd7cc1c8e99d26",
+    "modal-D0s16vqM.js": "ecd815c62c468d156e4051d89988b99f347ed11283cd8b8c7c6fe0c931a5efdf",
+    "NftCard-BACkpJ76.js": "1bb68ba67b6c0d6542b1b797bd1f02732b6e6c9016055b3c7675a93435113cde",
+    "OrderPage-bH_4ODUc.js": "6e483f4c5532a8a1417a2413a9aa287134ffc4e9d34b462b823d9f0789b4f42c",
+    "ProfilePage-DtVORZsp.js": "607130f2b00e726a14b2cbb13efd47d8f0fb51b0b10ee33c87ac71d186c76408",
+    "WalletsPage-DjPNNeiJ.js": "956f3f9d53960df30b9d6fa16e9b02acf632c58abbd27a16459191579cddc4fa"
+  },
+  "htmlNote": "Windows Git newline normalization changes HTML bytes only; runtime JS/CSS are identical."
+}

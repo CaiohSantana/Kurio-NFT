@@ -20,6 +20,8 @@ Autenticar no GitHub quando solicitado, sem pôr token no arquivo/URL/comando ve
 
 ## Preview local
 
+Preparação de qualidade atual: [quality-audit.md](quality-audit.md), fonte auditada b6fba35 e checkout limpo verificado. Performance mobile ainda está abaixo da meta (86/83); demais categorias Lighthouse100. Os commits de evidências posteriores não mudam a aplicação. Não houve push/deploy nesta etapa. Ao publicar, registrar o commit de entrega e a URL HTTPS e executar o smoke abaixo; a auditoria local não valida os rewrites públicos. Favicon/robots estão explicitamente fora do fallback SPA, junto de worker/assets.
+
 ```sh
 npm run build
 npm run preview
