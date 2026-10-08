@@ -10,7 +10,7 @@ async function openFilters(page: Page) {
   return page.locator('.catalog-sidebar')
 }
 async function closeFilters(page: Page) { const dialog = page.getByRole('dialog', { name: 'Filtros de NFTs' }); if (await dialog.isVisible()) await dialog.getByRole('button', { name: 'Ver resultados' }).click() }
-test.beforeEach(async ({ page }) => { await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible(); await scenario(page, 'reset') })
+test.beforeEach(async ({ page }) => { await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible(); expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200) })
 
 test('malformed URL parameters are validated before reaching the API', async ({ page }) => {
   const rest = page.waitForResponse((response) => response.url().includes('/api/nfts?') && response.status() === 200)

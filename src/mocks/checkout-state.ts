@@ -5,9 +5,9 @@ import { account, allAccounts, authorize, CommerceError, decimal, quote, save, s
 import { consumePurchasedStock } from './catalog-state'
 import { emitNft, emitOrder } from './socket'
 
-interface Configuration { hold: boolean; outcome: 'confirmed' | 'refused'; timeout: boolean; connectionRefused: boolean }
+interface Configuration { hold: boolean; outcome: 'confirmed' | 'refused'; timeout: boolean; connectionRefused: boolean; feeIncrease: boolean }
 const configKey = 'kurio-checkout-config'
-let configuration: Configuration = { hold: false, outcome: 'confirmed', timeout: false, connectionRefused: false }
+let configuration: Configuration = { hold: false, outcome: 'confirmed', timeout: false, connectionRefused: false, feeIncrease: false }
 try { configuration = { ...configuration, ...JSON.parse(localStorage.getItem(configKey) ?? '{}') } } catch { /* malformed scenario resets */ }
 const timers = new Map<string, number>()
 function state(a: Account) { return a.checkout ??= { connection: null, quotes: [], attempt: null, orders: [] } }
@@ -31,7 +31,7 @@ export async function connect(scope: string | null, walletId: string, network: N
 export async function checkoutQuote(scope: string | null, walletId: string, network: Network): Promise<CheckoutQuote> {
   const a = await account(scope), w = a.wallets?.find((wallet) => wallet.id === walletId)
   if (!w || w.network !== network) throw new CommerceError(422, 'WALLET_INVALID', 'Selecione uma carteira cadastrada e sua rede.', { network: 'Rede incompatível com a carteira.' })
-  const basic = await quote(scope), fee = basic.lines.length ? { Ethereum: '0.016', Polygon: '0.001', Solana: '0.0005' }[network] : '0'
+  const basic = await quote(scope), fee = basic.lines.length ? decimal(units({ Ethereum: '0.016', Polygon: '0.001', Solana: '0.0005' }[network]) + (configuration.feeIncrease ? units('0.001') : 0n)) : '0'
   const data = { ...basic, networkFeeEth: fee, totalEth: decimal(units(basic.subtotalEth) - units(basic.discountEth) + units(fee)), wallet: structuredClone(w), network }
   const fingerprint = stable(data), s = state(a), previous = s.quotes.find((q) => q.fingerprint === fingerprint && q.expiresAt > Date.now())
   if (previous) return structuredClone(previous)
@@ -113,13 +113,14 @@ export async function readOrder(scope: string | null, id: string): Promise<Order
   return structuredClone(found.order)
 }
 export async function checkoutScenario(action: string, id?: string) {
-  if (action === 'reset') { for (const timer of timers.values()) window.clearTimeout(timer); timers.clear(); for (const a of await allAccounts()) a.checkout = undefined; configuration = { hold: false, outcome: 'confirmed', timeout: false, connectionRefused: false }; save() }
+  if (action === 'reset') { for (const timer of timers.values()) window.clearTimeout(timer); timers.clear(); for (const a of await allAccounts()) a.checkout = undefined; configuration = { hold: false, outcome: 'confirmed', timeout: false, connectionRefused: false, feeIncrease: false }; save() }
   else if (action === 'hold') configuration.hold = true
   else if (action === 'auto') { configuration.hold = false; configuration.outcome = 'confirmed' }
   else if (action === 'order-refused') configuration.outcome = 'refused'
   else if (action === 'timeout') { configuration.timeout = true; configuration.hold = true }
   else if (action === 'connection-refused') configuration.connectionRefused = true
   else if (action === 'connection-allowed') configuration.connectionRefused = false
+  else if (action === 'fee-change') configuration.feeIncrease = true
   else if (action === 'disconnect-wallet') { for (const a of await allAccounts()) if (a.checkout?.connection) a.checkout.connection.status = 'disconnected'; save() }
   else if (id && (action === 'confirm' || action === 'refuse')) await settle(id, action === 'confirm' ? 'confirmed' : 'refused')
   else if (id && ['duplicate', 'old', 'foreign'].includes(action)) { const f = await find(id); if (f) await broadcast(f.order, true, action === 'old' ? 0 : f.order.version, action === 'foreign' ? 'old-session-scope' : undefined) }

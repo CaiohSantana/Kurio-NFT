@@ -20,8 +20,9 @@ function load(): Nft[] {
 let records = load(), reads = 0, revision = 1
 export let catalogDelay = Number(localStorage.getItem('kurio-catalog-delay') ?? 250)
 let failNext = localStorage.getItem('kurio-catalog-fail') === 'true'
+let networkFailNext = localStorage.getItem('kurio-catalog-network-failure') === 'true'
 let lastEvent: NftUpdated | undefined
-export function resetCatalog() { records = fixtures(); reads = 0; revision = 1; catalogDelay = 250; failNext = false; lastEvent = undefined; localStorage.removeItem(storageKey); localStorage.removeItem('kurio-catalog-delay'); localStorage.removeItem('kurio-catalog-fail') }
+export function resetCatalog() { records = fixtures(); reads = 0; revision = 1; catalogDelay = 250; failNext = false; networkFailNext = false; lastEvent = undefined; localStorage.removeItem(storageKey); localStorage.removeItem('kurio-catalog-delay'); localStorage.removeItem('kurio-catalog-fail'); localStorage.removeItem('kurio-catalog-network-failure') }
 export function readCatalogNft(id: string) { reads++; const nft = records.find((n) => n.id === id); return nft ? { nft: structuredClone(nft), readCount: reads } : undefined }
 export function catalogNftVersion(id: string) { return records.find((n) => n.id === id)?.version ?? 0 }
 const units = (price: string) => { const [whole, fraction = ''] = price.split('.'); return BigInt(whole) * 10n ** 18n + BigInt(fraction.padEnd(18, '0')) }
@@ -32,10 +33,11 @@ export function queryCatalog(raw: Record<string, unknown>): CatalogResponse {
   const facets = { collections: Object.fromEntries(categories.map((key) => [key, records.filter((n) => n.collection === key).length])) as Record<Collection, number>, networks: Object.fromEntries(networks.map((key) => [key, records.filter((n) => n.network === key).length])) as CatalogResponse['facets']['networks'] }
   return { items: structuredClone(result.slice((s.page - 1) * 9, s.page * 9)), total: result.length, pages: Math.ceil(result.length / 9), page: s.page, revision, facets }
 }
-export function updateCatalogNft(id: string, soldOut = false): NftUpdated | undefined {
+export function updateCatalogNft(id: string, soldOut = false, priceEth?: string): NftUpdated | undefined {
   const nft = records.find((n) => n.id === id); if (!nft) return
-  const cents = (units(nft.priceEth) / 10n ** 16n + 10n).toString()
-  nft.priceEth = `${cents.slice(0, -2)}.${cents.slice(-2)}`; nft.version++; nft.available = soldOut ? 0 : Math.max(0, nft.available - 1)
+  const amount = units(priceEth ?? nft.priceEth) + (priceEth === undefined ? units('0.10') : 0n)
+  const fraction = (amount % 10n ** 18n).toString().padStart(18, '0').replace(/0+$/, '')
+  nft.priceEth = `${amount / 10n ** 18n}${fraction ? `.${fraction}` : ''}`; nft.version++; nft.available = soldOut ? 0 : Math.max(0, nft.available - 1)
   nft.editions = nft.editions.map((e) => ({ ...e, available: soldOut ? 0 : Math.max(0, e.available - 1) }))
   revision++; localStorage.setItem(storageKey, JSON.stringify(records))
   lastEvent = { eventId: `nft:${id}:${nft.version}`, resourceId: id, version: nft.version }; return lastEvent
@@ -50,3 +52,5 @@ export function consumePurchasedStock(items: { nftId: string; editionId: string;
 }
 export function configureCatalog(delayMs: number, failure = false) { catalogDelay = Math.max(0, Math.min(5000, delayMs)); failNext = failure; localStorage.setItem('kurio-catalog-delay', String(catalogDelay)); localStorage.setItem('kurio-catalog-fail', String(failure)) }
 export function consumeCatalogFailure() { const fail = failNext; failNext = false; localStorage.removeItem('kurio-catalog-fail'); return fail }
+export function configureCatalogNetworkFailure() { networkFailNext = true; localStorage.setItem('kurio-catalog-network-failure', 'true') }
+export function consumeCatalogNetworkFailure() { const fail = networkFailNext; networkFailNext = false; localStorage.removeItem('kurio-catalog-network-failure'); return fail }

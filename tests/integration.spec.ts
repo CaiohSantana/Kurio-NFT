@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   // Every browser context is isolated. Reset also exercises an actual MSW handler.
   await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
-  expect(await page.evaluate(async () => (await fetch('/api/__proof/reset', { method: 'POST' })).status)).toBe(200)
+  expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200)
 })
 
 test('REST, loading and Socket.IO updates; duplicate/old events cannot regress data', async ({ page }) => {

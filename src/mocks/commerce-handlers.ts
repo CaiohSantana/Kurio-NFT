@@ -9,11 +9,12 @@ import type { WalletInput } from '@/features/wallets/contracts'
 // Capture identity at request time. Reauthorize after latency, before any write:
 // an old request cannot acquire the user that logged in while it was waiting.
 export async function run(request: Request, target: string, operation: (scope: string | null) => Promise<JsonBodyType>, anonymous = false) {
-  const scope = request.headers.get('X-Session-Scope'), failure = target !== 'scenario' && state.consumeCommerceFailure(target), latency = state.commerceDelay
+  const scope = request.headers.get('X-Session-Scope'), failure = target !== 'scenario' && state.consumeCommerceFailure(target), networkFailure = target !== 'scenario' && state.consumeNetworkFailure(target), latency = state.commerceDelay
   try {
     if (!anonymous) await state.authorize(scope)
     await delay(target === 'scenario' ? 0 : latency)
     if (!anonymous) await state.authorize(scope)
+    if (networkFailure) return HttpResponse.error()
     if (failure) return HttpResponse.json({ code: 'TEMPORARY', message: 'Falha transitória. Tente novamente.' }, { status: 503 })
     return HttpResponse.json(await operation(scope), { headers: { 'X-Mock-Handler': target, 'Cache-Control': 'no-store' } })
   } catch (error) {

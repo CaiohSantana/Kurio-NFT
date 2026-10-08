@@ -1,0 +1,147 @@
+import { expect, test } from '@playwright/test'
+import { connect, login, nftScenario, purchase, readOrder, request, resetCheckout, scenario, setup } from './checkout-support'
+
+test.beforeEach(async ({ page }) => { await page.clock.setFixedTime(new Date('2026-10-08T12:00:00Z')); await resetCheckout(page) })
+
+test('session expires during checkout submission and resumes draft without creating an order', async ({ page }) => {
+  await setup(page); await connect(page)
+  await page.getByLabel('Observação do colecionador (opcional)').fill('Retomar este contexto')
+  await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  const oldScope = (await request(page, '/session')).data.scope
+  await request(page, '/__commerce/scenario', 'POST', { action: 'expire' })
+  const expired = page.waitForResponse((response) => response.url().endsWith('/api/order-attempt') && response.status() === 401)
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click(); await expired
+  await expect(page).toHaveURL(/\/login\?.*returnTo/)
+  await expect(page.getByRole('alert')).toContainText('Sua sessão expirou')
+  await login(page)
+  await expect(page).toHaveURL(/\/checkout$/)
+  const collector = page.locator('.checkout-collector'); if (await collector.getAttribute('open') === null) await collector.locator('summary').click()
+  await expect(page.getByLabel('Observação do colecionador (opcional)')).toHaveValue('Retomar este contexto')
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
+  const session = (await request(page, '/session')).data
+  expect((await request(page, '/order-attempt', 'GET', undefined, { 'X-Session-Scope': session.scope })).data).toBeNull()
+  expect((await request(page, '/cart', 'GET', undefined, { 'X-Session-Scope': oldScope })).status).toBe(401)
+  await connect(page); await scenario(page, 'hold'); const id = await purchase(page)
+  await expect(page.getByRole('heading', { name: 'Pedido pendente' })).toBeVisible()
+  await request(page, '/__commerce/scenario', 'POST', { action: 'expire' })
+  const recover = page.getByRole('button', { name: 'Consultar estado do pedido' })
+  if (await recover.isVisible()) await recover.click()
+  await expect(page).toHaveURL(/\/login\?.*returnTo/); await login(page)
+  await expect(page).toHaveURL(new RegExp(`/orders/${id}$`))
+  await expect(page.getByRole('heading', { name: 'Pedido pendente' })).toBeVisible()
+  const resumed = (await request(page, '/session')).data
+  const attempt = (await request(page, '/order-attempt', 'GET', undefined, { 'X-Session-Scope': resumed.scope })).data
+  expect(attempt.orderId).toBe(id); expect(attempt.key).toBe((await readOrder(page, id)).idempotencyKey)
+  await scenario(page, 'confirm', id)
+  await expect(page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' })).toBeVisible()
+  await expect(page.getByTestId('receipt-total')).toHaveText('2.396 ETH')
+  expect((await readOrder(page, id)).status).toBe('confirmed')
+})
+
+test('repeated UI clicks send one order and retain one persisted attempt', async ({ page }) => {
+  await setup(page); await scenario(page, 'hold'); await connect(page)
+  const creations: string[] = []
+  page.on('request', (request) => { if (request.method() === 'POST' && request.url().endsWith('/api/orders')) creations.push(request.headers()['idempotency-key']) })
+  await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).dblclick()
+  await expect(page).toHaveURL(/\/orders\//); await expect(page.getByRole('heading', { name: 'Pedido pendente' })).toBeVisible()
+  expect(creations).toHaveLength(1); expect(creations[0]).toBeTruthy()
+  const id = new URL(page.url()).pathname.split('/').pop()!, order = await readOrder(page, id)
+  expect(order.idempotencyKey).toBe(creations[0]); await scenario(page, 'confirm', id)
+  await expect(page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' })).toHaveAttribute('aria-live', 'polite')
+  await expect(page.getByTestId('cart-badge').first()).toHaveText('0')
+})
+
+test('fee changed without an event is revalidated before purchase and needs new acceptance', async ({ page }) => {
+  await setup(page); await connect(page); await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  await scenario(page, 'fee-change')
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click()
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.397 ETH')
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
+  await expect(page.getByRole('button', { name: 'Confirmar compra', exact: true })).toBeDisabled()
+  const session = (await request(page, '/session')).data
+  expect((await request(page, '/order-attempt', 'GET', undefined, { 'X-Session-Scope': session.scope })).data).toBeNull()
+  const id = await purchase(page); await expect(page.getByTestId('receipt-total')).toHaveText('2.397 ETH')
+  expect((await readOrder(page, id)).snapshot.networkFeeEth).toBe('0.017')
+})
+
+test('applied coupon expires before submission, preserves cart and requires removal and review', async ({ page }) => {
+  await setup(page); await page.goto('/cart')
+  await page.getByLabel('Código promocional').fill('KURIO10'); await page.getByRole('button', { name: 'Aplicar', exact: true }).click()
+  await expect(page.getByTestId('cart-total')).toHaveText('2.158 ETH')
+  await page.getByRole('button', { name: 'Conectar e finalizar' }).click(); await connect(page)
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.158 ETH'); await page.getByLabel('Revisei os dados e aceito esta cotação').check()
+  await request(page, '/__commerce/scenario', 'POST', { action: 'coupon-expired' })
+  await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click()
+  await expect(page.getByRole('alert').filter({ hasText: 'Cupom expirado' })).toBeVisible()
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).toBeDisabled()
+  const session = (await request(page, '/session')).data, headers = { 'X-Session-Scope': session.scope }
+  expect((await request(page, '/order-attempt', 'GET', undefined, headers)).data).toBeNull()
+  expect((await request(page, '/cart', 'GET', undefined, headers)).data.items[0].quantity).toBe(2)
+  await page.goto('/cart'); await page.getByRole('button', { name: 'Remover cupom' }).click()
+  await expect(page.getByTestId('cart-total')).toHaveText('2.396 ETH'); await page.getByRole('button', { name: 'Conectar e finalizar' }).click()
+  await expect(page.getByLabel('Revisei os dados e aceito esta cotação')).not.toBeChecked()
+  await purchase(page); await expect(page.getByTestId('receipt-total')).toHaveText('2.396 ETH')
+})
+
+test('18 decimal places survive Socket.IO change, API discount and receipt without float rounding', async ({ page }) => {
+  await setup(page)
+  await request(page, '/__catalog/scenario', 'POST', { action: 'price', id: 'emerald-042', priceEth: '0.123456789012345678' })
+  await expect(page.getByTestId('checkout-total')).toHaveText('0.262913578024691356 ETH')
+  await nftScenario(page, 'change')
+  await expect(page.getByTestId('checkout-total')).toHaveText('0.462913578024691356 ETH')
+  await page.goto('/cart'); await page.getByLabel('Código promocional').fill('KURIO10'); await page.getByRole('button', { name: 'Aplicar', exact: true }).click()
+  await expect(page.getByTestId('discount')).toHaveText('0.044691357802469135 ETH')
+  await expect(page.getByTestId('cart-total')).toHaveText('0.418222220222222221 ETH')
+  await page.getByRole('button', { name: 'Conectar e finalizar' }).click(); await connect(page); const id = await purchase(page)
+  await expect(page.getByTestId('receipt-total')).toHaveText('0.418222220222222221 ETH')
+  const order = await readOrder(page, id)
+  expect(order.snapshot.lines[0].nft.priceEth).toBe('0.223456789012345678'); expect(order.snapshot.lines[0].quantity).toBe(2)
+  expect(order.snapshot.subtotalEth).toBe('0.446913578024691356'); expect(order.snapshot.discountEth).toBe('0.044691357802469135')
+  expect(order.snapshot.totalEth).toBe('0.418222220222222221')
+})
+
+test('real REST transport failures recover through Axios and reduced-motion cart skeleton is stable', async ({ page }) => {
+  await request(page, '/__catalog/scenario', 'POST', { action: 'network-error' })
+  const failed = page.waitForEvent('requestfailed', { predicate: (request) => request.url().endsWith('/api/nfts/emerald-042') })
+  await page.goto('/nfts/emerald-042'); await failed
+  await expect(page.getByRole('heading', { name: 'Não foi possível carregar o NFT' })).toBeVisible()
+  await page.getByRole('button', { name: 'Tentar novamente' }).click(); await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeEnabled()
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click(); await expect(page.getByTestId('cart-badge').first()).toHaveText('1')
+  await request(page, '/__commerce/scenario', 'POST', { action: 'slow', delay: 1200 })
+  await request(page, '/__commerce/scenario', 'POST', { action: 'network-error', target: 'quote' })
+  await page.emulateMedia({ reducedMotion: 'no-preference' }); await page.goto('/cart')
+  const skeleton = page.locator('.cart-summary-skeleton')
+  await expect(skeleton).toBeVisible(); await expect(skeleton).toHaveCSS('animation-name', 'shimmer')
+  await page.emulateMedia({ reducedMotion: 'reduce' }); await expect(skeleton).toHaveCSS('animation-name', 'none')
+  expect((await skeleton.boundingBox())!.height).toBeGreaterThan(100)
+  await expect(page.getByRole('alert')).toContainText('Falha de conexão')
+  await page.getByRole('button', { name: 'Tentar novamente' }).click(); await expect(page.getByTestId('cart-total')).toHaveText('1.206 ETH')
+})
+
+test('integral reset clears orders accounts drafts proof failures network flags and scenario configuration', async ({ page }) => {
+  await setup(page); await scenario(page, 'hold'); await connect(page)
+  await page.getByLabel('Observação do colecionador (opcional)').fill('Este draft deve ser removido')
+  const id = await purchase(page), session = (await request(page, '/session')).data, headers = { 'X-Session-Scope': session.scope }
+  await request(page, '/favorites/emerald-042', 'PUT', {}, headers)
+  await request(page, '/profile', 'PATCH', { displayName: 'Nome alterado', username: 'ana', email: 'ana@kurio.test', nickname: 'Alterado', ens: '' }, headers)
+  await request(page, '/profile/password', 'PATCH', { currentPassword: 'Kurio123!', password: 'Nova123!', confirmation: 'Nova123!' }, headers)
+  await scenario(page, 'fee-change'); await scenario(page, 'connection-refused'); await nftScenario(page, 'sold-out')
+  await request(page, '/__proof/scenario', 'POST', { action: 'fail-next' })
+  await request(page, '/__catalog/scenario', 'POST', { action: 'network-error' })
+  await request(page, '/__commerce/scenario', 'POST', { action: 'coupon-expired' })
+  await request(page, '/__commerce/scenario', 'POST', { action: 'network-error', target: 'all' })
+  expect((await request(page, '/__scenario/reset', 'POST')).status).toBe(200)
+  expect(await page.evaluate(() => Object.keys(sessionStorage).filter((key) => key.startsWith('kurio-checkout-draft:')))).toEqual([])
+  await page.goto('/integration'); await expect(page.getByTestId('price')).toHaveText('1.19 ETH')
+  await page.goto('/login?returnTo=/cart'); await login(page)
+  await expect(page.getByRole('heading', { name: 'Seu carrinho está vazio' })).toBeVisible()
+  const restored = (await request(page, '/session')).data, restoredHeaders = { 'X-Session-Scope': restored.scope }
+  expect((await request(page, `/orders/${id}`, 'GET', undefined, restoredHeaders)).status).toBe(404)
+  expect((await request(page, '/wallets', 'GET', undefined, restoredHeaders)).data.items).toEqual([])
+  expect((await request(page, '/favorites', 'GET', undefined, restoredHeaders)).data).toEqual([])
+  expect((await request(page, '/profile', 'GET', undefined, restoredHeaders)).data.displayName).toBe('ana')
+  expect((await request(page, '/cart', 'GET', undefined, headers)).status).toBe(401)
+})

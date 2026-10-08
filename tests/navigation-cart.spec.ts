@@ -2,7 +2,7 @@ import { accountAction, expectAccount } from './session-support'
 import { expect, test, type Page } from '@playwright/test'
 async function reset(page: Page) {
   await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
-  await page.evaluate(async () => { for (const area of ['commerce', 'catalog']) await fetch(`/api/__${area}/scenario`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'reset' }) }) })
+  expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200)
 }
 async function login(page: Page, name: string) { await page.getByLabel('E-mail', { exact: true }).fill(`${name}@kurio.test`); await page.getByLabel('Senha', { exact: true }).fill('Kurio123!'); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expectAccount(page, name) }
 async function count(page: Page, value: number) { await expect(page.getByTestId('cart-badge').first()).toHaveText(String(value)); const visible = page.getByRole('link', { name: `Carrinho, ${value} ${value === 1 ? 'item' : 'itens'}`, exact: true }).filter({ visible: true }); if (await visible.count()) await expect(visible.first()).toBeVisible() }

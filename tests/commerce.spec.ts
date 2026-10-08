@@ -24,8 +24,7 @@ const row = (page: Page, edition = 'fifty') => page.getByTestId(`cart-emerald-04
 test.beforeEach(async ({ page }) => {
   await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
-  await scenario(page, 'reset')
-  expect((await api(page, '/__catalog/scenario', 'POST', { action: 'reset' })).status).toBe(200)
+  expect((await api(page, '/__scenario/reset', 'POST')).status).toBe(200)
 })
 
 test('signup validation, conflict, session refresh and hashed persistence', async ({ page }) => {

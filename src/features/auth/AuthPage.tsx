@@ -8,7 +8,7 @@ import { Button } from '@/shared/ui/button'
 import { http } from '@/shared/api/http'
 import { defaultCatalogSearch } from '@/features/catalog/contracts'
 import { CatalogPage } from '@/features/catalog/CatalogPage'
-import { apiMessage, replaceSession, scopedConfig } from './session'
+import { apiMessage, replaceSession, scopedConfig, useSession } from './session'
 import { authSearch, type ApiError, type Credentials, type Session } from './contracts'
 
 export function AuthPage({ signup = false }: { signup?: boolean }) {
@@ -19,6 +19,7 @@ export function AuthPage({ signup = false }: { signup?: boolean }) {
 }
 function AuthForm({ signup }: { signup: boolean }) {
   const client = useQueryClient(), navigate = useNavigate(), search = authSearch(useSearch({ strict: false }))
+  const session = useSession()
   const [show, setShow] = useState(false), [auxiliary, setAuxiliary] = useState('')
   const mutation = useMutation({ retry: false, mutationFn: async (body: Credentials) => {
     const result = (await http.post<Session>(signup ? '/accounts' : '/session', body)).data
@@ -32,6 +33,7 @@ function AuthForm({ signup }: { signup: boolean }) {
   const errors = isAxiosError<ApiError>(mutation.error) ? mutation.error.response?.data.fieldErrors ?? {} : {}
   const fields = [...(signup ? [['username', 'Nome de usuário', 'text']] : []), ['email', 'E-mail', 'email'], ['password', 'Senha', show ? 'text' : 'password'], ...(signup ? [['confirmation', 'Confirmar senha', show ? 'text' : 'password']] : [])]
   return <div className="auth-form"><div className="auth-tabs"><Link to="/login" search={search}>Entrar</Link><span>|</span><Link to="/signup" search={search}>Criar conta</Link></div><p className="auth-intro">{signup ? 'Crie seu perfil de colecionador.' : 'Entre para gerenciar sua carteira, coleção e perfil de criador.'}</p>
+    {session.expired && <p role="alert">Sua sessão expirou. Entre novamente para continuar.</p>}
     <form onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); mutation.mutate({ email: String(data.get('email')), password: String(data.get('password')), username: String(data.get('username') ?? ''), confirmation: String(data.get('confirmation') ?? '') }) }}>
       {fields.map(([name, label, type]) => <div className="auth-field" key={name}><label htmlFor={`auth-${name}`}>{label}</label><div><input id={`auth-${name}`} name={name} type={type} required minLength={name === 'username' ? 3 : name === 'password' || name === 'confirmation' ? 8 : undefined} maxLength={name === 'username' ? 32 : name === 'email' ? 254 : 128} autoComplete={name === 'password' ? signup ? 'new-password' : 'current-password' : name === 'confirmation' ? 'new-password' : name} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `error-${name}` : undefined} />{name === 'password' && <button type="button" aria-label={show ? 'Ocultar senha' : 'Mostrar senha'} onClick={() => setShow(!show)}>{show ? <EyeOff size={18} /> : <Eye size={18} />}</button>}</div>{errors[name] && <p id={`error-${name}`}>{errors[name]}</p>}</div>)}
       {!signup && <button type="button" className="forgot" onClick={() => setAuxiliary('Recuperação de senha indisponível no momento.')}>Esqueceu a senha?</button>}

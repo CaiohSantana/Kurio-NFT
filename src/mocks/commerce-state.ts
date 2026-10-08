@@ -104,7 +104,7 @@ export async function editCart(scope: string | null, action: 'add' | 'quantity' 
 }
 export async function coupon(scope: string | null, code: string) {
   const c = ownedCart(await authorize(scope)); const normalized = code.trim().toUpperCase()
-  if (normalized === 'DROP2025') throw new CommerceError(422, 'COUPON_EXPIRED', 'Cupom expirado.', { coupon: 'Este cupom expirou.' })
+  if (normalized === 'DROP2025' || normalized === 'KURIO10' && couponExpired) throw new CommerceError(422, 'COUPON_EXPIRED', 'Cupom expirado.', { coupon: 'Este cupom expirou.' })
   if (normalized && normalized !== 'KURIO10') throw new CommerceError(422, 'COUPON_INVALID', 'Cupom inválido.', { coupon: 'Use um código válido.' })
   c.coupon = normalized; c.version++; save(); return structuredClone(c)
 }
@@ -117,17 +117,23 @@ export async function quote(scope: string | null): Promise<Quote> {
     const limit = Math.min(e.available, e.maxQuantity)
     return { ...item, nft, editionLabel: e.label, limit, available: item.quantity <= limit, lineEth: decimal(units(nft.priceEth) * BigInt(item.quantity)) }
   })
-  const subtotal = lines.reduce((sum, line) => sum + units(line.lineEth), 0n), discount = c.coupon === 'KURIO10' ? subtotal / 10n : 0n, fee = lines.length ? units('0.016') : 0n
-  return { lines, subtotalEth: decimal(subtotal), discountEth: decimal(discount), networkFeeEth: decimal(fee), totalEth: decimal(subtotal - discount + fee), coupon: c.coupon, cartVersion: c.version, purchasable: !!lines.length && lines.every((l) => l.available), warnings: lines.filter((l) => !l.available).map((l) => `${l.nft.name} · ${l.editionLabel}: ${l.limit === 0 ? 'edição esgotada' : `limite atual ${l.limit}`}. Item preservado; ajuste ou remova.`) }
+  const expired = c.coupon === 'KURIO10' && couponExpired
+  const subtotal = lines.reduce((sum, line) => sum + units(line.lineEth), 0n), discount = c.coupon === 'KURIO10' && !expired ? subtotal / 10n : 0n, fee = lines.length ? units('0.016') : 0n
+  return { lines, subtotalEth: decimal(subtotal), discountEth: decimal(discount), networkFeeEth: decimal(fee), totalEth: decimal(subtotal - discount + fee), coupon: c.coupon, cartVersion: c.version, purchasable: !!lines.length && !expired && lines.every((l) => l.available), warnings: [...(expired ? ['Cupom expirado. Remova o cupom e revise os valores antes de continuar.'] : []), ...lines.filter((l) => !l.available).map((l) => `${l.nft.name} · ${l.editionLabel}: ${l.limit === 0 ? 'edição esgotada' : `limite atual ${l.limit}`}. Item preservado; ajuste ou remova.`)] }
 }
 export let commerceDelay = Number(localStorage.getItem('kurio-commerce-delay') ?? 200)
 let fail: string | null = localStorage.getItem('kurio-commerce-failure')
+let networkFailure: string | null = localStorage.getItem('kurio-commerce-network-failure')
+let couponExpired = localStorage.getItem('kurio-coupon-expired') === 'true'
 export function consumeCommerceFailure(target: string) { if (fail !== target && fail !== 'all') return false; fail = null; localStorage.removeItem('kurio-commerce-failure'); return true }
+export function consumeNetworkFailure(target: string) { if (networkFailure !== target && networkFailure !== 'all') return false; networkFailure = null; localStorage.removeItem('kurio-commerce-network-failure'); return true }
 export async function commerceScenario(action: string, target?: string, milliseconds?: number) {
   await ready
-  if (action === 'reset') { store = await seed(); commerceDelay = 200; fail = null; localStorage.removeItem('kurio-commerce-delay'); localStorage.removeItem('kurio-commerce-failure'); save() }
+  if (action === 'reset') { store = await seed(); commerceDelay = 200; fail = null; networkFailure = null; couponExpired = false; for (const item of ['kurio-commerce-delay', 'kurio-commerce-failure', 'kurio-commerce-network-failure', 'kurio-coupon-expired']) localStorage.removeItem(item); save() }
   else if (action === 'expire') { if (store.session) store.session.expiresAt = 0; save() }
   else if (action === 'fail') { fail = target ?? 'all'; localStorage.setItem('kurio-commerce-failure', fail) }
+  else if (action === 'network-error') { networkFailure = target ?? 'all'; localStorage.setItem('kurio-commerce-network-failure', networkFailure) }
+  else if (action === 'coupon-expired') { couponExpired = true; localStorage.setItem('kurio-coupon-expired', 'true') }
   else if (action === 'slow') { commerceDelay = Math.max(0, Math.min(4000, milliseconds ?? 1500)); localStorage.setItem('kurio-commerce-delay', String(commerceDelay)) }
   else throw new CommerceError(400, 'SCENARIO', 'Cenário inválido.')
 }

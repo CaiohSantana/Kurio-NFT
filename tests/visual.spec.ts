@@ -3,8 +3,7 @@ import { expect, test } from '@playwright/test'
 test.beforeEach(async ({ page }) => {
   await page.goto('/preparation')
   await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
-  await page.evaluate(() => fetch('/api/__catalog/scenario', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'reset' }) }))
-  await page.evaluate(() => fetch('/api/__commerce/scenario', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'reset' }) }))
+  expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200)
 })
 for (const [name, path] of [['home', '/'], ['detail', '/nfts/emerald-042']]) {
   test(`visual baseline ${name}`, async ({ page }) => {

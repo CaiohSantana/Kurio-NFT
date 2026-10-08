@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './checkout.css'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
@@ -36,6 +36,7 @@ function initialDraft(profile: Profile, wallets: Wallet[]): CheckoutDraft {
 }
 function CheckoutContent({ profile, wallets }: { profile: Profile; wallets: Wallet[] }) {
   const session = useSession(), client = useQueryClient(), navigate = useNavigate()
+  const submitting = useRef(false)
   const [draft, setDraft] = useState(() => initialDraft(profile, wallets)), [accepted, setAccepted] = useState(''), [chooseWallet, setChooseWallet] = useState(false), [detailsOpen, setDetailsOpen] = useState(() => matchMedia('(min-width:640px)').matches)
   const update = (next: CheckoutDraft) => { setDraft(next); sessionStorage.setItem(`kurio-checkout-draft:${profile.id}`, JSON.stringify(next)) }
   const wallet = wallets.find((w) => w.id === draft.walletId), quoteConfig = checkoutQuoteOptions(session.scope, wallet?.id ?? '', draft.network), quote = useQuery(quoteConfig), connection = useQuery(connectionOptions(session.scope)), attempt = useQuery(attemptOptions(session.scope))
@@ -53,7 +54,7 @@ function CheckoutContent({ profile, wallets }: { profile: Profile; wallets: Wall
     const prepared = (await http.put<Attempt>('/order-attempt', payload, config)).data
     if (activeScope(client, session.scope)) client.setQueryData(attemptKey(session.scope), prepared)
     return (await http.post<Order>('/orders', prepared.payload, { ...config, headers: { ...config.headers, 'Idempotency-Key': prepared.key } })).data
-  }, onSuccess: (order) => { if (activeScope(client, session.scope)) { void client.invalidateQueries({ queryKey: cartKey(session.scope) }); void navigate({ to: '/orders/$orderId', params: { orderId: order.id } }) } }, onError: (error) => { reportExpired(error, session.scope); if (activeScope(client, session.scope)) void client.invalidateQueries({ queryKey: attemptKey(session.scope) }) } })
+  }, onSuccess: (order) => { if (activeScope(client, session.scope)) { void client.invalidateQueries({ queryKey: cartKey(session.scope) }); void navigate({ to: '/orders/$orderId', params: { orderId: order.id } }) } }, onError: (error) => { reportExpired(error, session.scope); if (activeScope(client, session.scope)) void client.invalidateQueries({ queryKey: attemptKey(session.scope) }) }, onSettled: () => { submitting.current = false } })
   const connected = connection.data?.scope === session.scope && connection.data.status === 'connected' && connection.data.walletId === wallet?.id && connection.data.network === draft.network && connection.data.provider === wallet?.provider
   const errorFields = apiFields(submit.error)
   const selectWallet = (value: Wallet) => { setAccepted(''); update({ ...draft, walletId: value.id, network: value.network }); setChooseWallet(false) }
@@ -62,7 +63,7 @@ function CheckoutContent({ profile, wallets }: { profile: Profile; wallets: Wall
     <nav className="checkout-breadcrumb" aria-label="Breadcrumb"><Link to="/" search={defaultCatalogSearch}>Início</Link><span>/</span><CatalogLink>Mercado</CatalogLink><span>/</span><span aria-current="page">Pagamento</span></nav>
     <div className="checkout-mobile-title"><Link to="/cart" aria-label="Voltar ao carrinho">‹</Link><h1>Pagamento com carteira</h1></div>
     {!wallets.length ? <div className="empty-state"><h2>Nenhuma carteira cadastrada</h2><Link to="/account/wallets" search={{ returnTo: '/checkout' }}>Cadastrar carteira e retornar</Link></div> : <>
-      <form aria-label="Pagamento" onSubmit={(event) => { event.preventDefault(); submit.mutate() }} className="checkout-layout">
+      <form aria-label="Pagamento" onSubmit={(event) => { event.preventDefault(); if (!submitting.current) { submitting.current = true; submit.mutate() } }} className="checkout-layout">
         <details className="checkout-collector" open={detailsOpen || Object.keys(errorFields).length > 0} onToggle={(event) => setDetailsOpen(event.currentTarget.open)}><summary><h2>Perfil do colecionador</h2></summary><div className="form-grid">
           {collectorField('displayName', 'Nome de exibição', true)}{collectorField('username', 'Nome de usuário / perfil', true)}
           <Field name="network" label="Rede" required error={apiFields(quote.error).network} options={networks} value={draft.network} onChange={(network) => { setAccepted(''); update({ ...draft, network: network as CheckoutDraft['network'] }) }} />
