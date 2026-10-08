@@ -12,13 +12,15 @@ import { http } from '@/shared/api/http'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const NoticeContext = createContext<(action: string) => void>(() => undefined)
+const SignOutContext = createContext<() => void>(() => undefined)
 export const useUnavailable = () => useContext(NoticeContext)
+export const useSignOut = () => useContext(SignOutContext)
 export function MarketShell() {
   return <SessionProvider><MarketContent /></SessionProvider>
 }
 function MarketContent() {
   const session = useSession(), client = useQueryClient()
-  const [notice, setNotice] = useState('')
+  const [notice, setNotice] = useState(''), [accountOpen, setAccountOpen] = useState(false)
   const realtime = useCatalogSocket(session.scope)
   const pathname = useLocation({ select: (location) => location.pathname })
   const navigate = useNavigate()
@@ -29,26 +31,26 @@ function MarketContent() {
     if (input) input.focus()
     else void navigate({ to: '/', search: defaultCatalogSearch }).then(() => document.getElementById('catalog-search')?.focus())
   }
-  const unavailable = (action: string) => setNotice(`${action} ainda não está disponível nesta etapa. Nenhuma operação foi realizada.`)
-  return <NoticeContext.Provider value={unavailable}>
+  const unavailable = (action: string) => setNotice(`${action} não está disponível no momento. Nenhuma operação foi realizada.`)
+  return <NoticeContext.Provider value={unavailable}><SignOutContext.Provider value={() => logout.mutate()}>
     <div className={`market ${pathname === '/' ? 'home-market' : 'detail-market'}`}>
       <header className="desktop-header">
         <Link to="/" search={defaultCatalogSearch} className="wordmark">KURIO</Link>
-        <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' ? 'active' : ''}>Início</Link><CatalogLink>Mercado</CatalogLink><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
-        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><CartLink />{session.user ? <button onClick={() => logout.mutate()} disabled={logout.isPending}>Sair ({session.user.username})</button> : <button className="login-button" onClick={login}><LogIn size={18} />Entrar</button>}</div>
+        <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' || pathname.startsWith('/account') ? 'active' : ''}>Início</Link><CatalogLink className={pathname.startsWith('/nfts') || pathname === '/cart' || pathname === '/checkout' ? 'active' : ''}>Mercado</CatalogLink><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
+        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><CartLink />{session.user ? <button className="login-button" aria-label={`Minha conta: ${session.user.username}`} onClick={() => setAccountOpen(true)}><User size={18} />{session.user.username}</button> : <button className="login-button" onClick={login}><LogIn size={18} />Entrar</button>}</div>
       </header>
-      <div className="sr-only" role="status" aria-live="polite">{realtime}</div>
-      {realtime && <p className="realtime-notice" role="status">{realtime}</p>}
+      {session.user && <button className="mobile-account-button" aria-label={`Minha conta: ${session.user.username}`} onClick={() => setAccountOpen(true)}><User size={18} /></button>}
+      {realtime && !pathname.startsWith('/orders') && <p className="realtime-notice" role="status">{realtime}</p>}
       {session.notices.filter((message) => message.startsWith('Não foi possível favoritar')).map((message) => <p role="alert" key={message}>{message}</p>)}
       <Outlet />
-      {session.user && <div className="session-controls"><p>Sessão: {session.user.username}</p><Link to="/account/profile">Meu perfil</Link><Link to="/account/wallets" search={{ returnTo: '/' }}>Carteiras</Link><button onClick={() => logout.mutate()} disabled={logout.isPending}>Encerrar sessão</button><button onClick={login}>Trocar usuário</button></div>}
       <Footer />
       {pathname === '/' && <nav className="mobile-navigation" aria-label="Navegação mobile">
         <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><CartLink size={20} /><Link to="/account/profile" aria-label="Perfil"><User size={20} /></Link>
       </nav>}
       <Modal title="Funcionalidade indisponível" open={!!notice} onClose={() => setNotice('')}><p>{notice}</p></Modal>
+      <Modal title="Minha conta" open={accountOpen} onClose={() => setAccountOpen(false)}><nav className="account-actions" aria-label="Ações da conta"><Link to="/account/profile" onClick={() => setAccountOpen(false)}>Meu perfil</Link><Link to="/account/wallets" search={{ returnTo: '/' }} onClick={() => setAccountOpen(false)}>Carteiras</Link><button onClick={() => { setAccountOpen(false); logout.mutate() }} disabled={logout.isPending}>Encerrar sessão</button><button onClick={() => { setAccountOpen(false); login() }}>Trocar usuário</button></nav></Modal>
     </div>
-  </NoticeContext.Provider>
+  </SignOutContext.Provider></NoticeContext.Provider>
 }
 function Footer() {
   const unavailable = useUnavailable()
@@ -59,6 +61,6 @@ function Footer() {
     </div>
     <div className="contact-band"><span className="wordmark">KURIO</span><span>Feito para colecionadores,<br />criadores e cultura</span><button onClick={() => unavailable('Contato')}>contato@email.com</button><span>+55 11 4002 8922</span></div>
     <div className="footer-links">{groups.map(([title, ...links]) => <section key={title}><h3>{title}</h3>{links.map((label) => label === 'Meu perfil' ? <Link to="/account/profile" key={label}>{label}</Link> : <button key={label} onClick={() => unavailable(label)}>{label}</button>)}</section>)}<section><h3>Redes sociais</h3><div className="social-icons">{['99280.svg', 'd48dd.svg', 'b4111.svg', 'b8b84.svg', 'ca2da.svg'].map((asset, i) => <button aria-label={['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'YouTube'][i]} key={asset} onClick={() => unavailable('Redes sociais')}><img src={`/assets/figma/${asset}`} width="30" height="30" alt="" /></button>)}</div><h3>Carteiras compatíveis</h3><p className="wallet-chip">METAMASK · WALLETCONNECT · COINBASE</p></section></div>
-    <p className="copyright">© 2026 Kurio. Propriedade digital para todos.</p><Link className="proof-link" to="/integration">Abrir prova de integração</Link>
+    <p className="copyright">© 2026 Kurio. Propriedade digital para todos.</p>
   </footer>
 }

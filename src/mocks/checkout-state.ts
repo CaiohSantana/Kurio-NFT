@@ -97,7 +97,7 @@ export async function settle(id: string, outcome: 'confirmed' | 'refused') {
   const found = await find(id); if (!found || found.order.status !== 'pending') return found?.order ?? null
   const { a, order } = found
   const stockEvents = outcome === 'confirmed' ? consumePurchasedStock(order.snapshot.lines) : null
-  order.status = outcome === 'confirmed' && stockEvents ? 'confirmed' : 'refused'; order.reason = order.status === 'refused' ? stockEvents === null && outcome === 'confirmed' ? 'Estoque insuficiente na confirmação.' : 'Pagamento recusado pela simulação.' : ''; order.version++
+  order.status = outcome === 'confirmed' && stockEvents ? 'confirmed' : 'refused'; order.reason = order.status === 'refused' ? stockEvents === null && outcome === 'confirmed' ? 'Estoque insuficiente na confirmação.' : 'Pagamento recusado.' : ''; order.version++
   if (order.status === 'confirmed' && !order.cartApplied) {
     a.cart.items = a.cart.items.flatMap((item) => { const purchased = order.snapshot.lines.find((line) => line.id === item.id)?.quantity ?? 0; const quantity = Math.max(0, item.quantity - purchased); return quantity ? [{ ...item, quantity }] : [] })
     a.cart.version++; if (!a.cart.items.length) a.cart.coupon = ''; order.cartApplied = true

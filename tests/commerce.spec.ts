@@ -1,3 +1,4 @@
+import { accountAction, expectAccount } from './session-support'
 import { expect, test, type Page } from '@playwright/test'
 
 async function api(page: Page, path: string, method = 'GET', body?: unknown, scope?: string) {
@@ -11,7 +12,7 @@ async function login(page: Page, username = 'ana') {
   await page.getByLabel('E-mail', { exact: true }).fill(`${username}@kurio.test`)
   await page.getByLabel('Senha', { exact: true }).fill('Kurio123!')
   await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click()
-  await expect(page.getByText(`Sessão: ${username}`, { exact: true })).toBeAttached()
+  await expectAccount(page, username)
 }
 async function add(page: Page, edition = 'fifty', quantity = 1, id = 'emerald-042') {
   await page.goto(`/nfts/${id}?edition=${edition}&quantity=${quantity}`)
@@ -40,10 +41,10 @@ test('signup validation, conflict, session refresh and hashed persistence', asyn
   await page.getByRole('button', { name: 'Criar perfil', exact: true }).click()
   expect((await registered).headers()['x-mock-handler']).toBe('signup')
   await expect(page).toHaveURL(/\/nfts\/emerald-042/)
-  await page.reload(); await expect(page.getByText('Sessão: nova')).toBeAttached()
+  await page.reload(); await expectAccount(page, 'nova')
   const stored = await page.evaluate(() => localStorage.getItem('kurio-commerce-v1')!)
   expect(stored).not.toContain('Nova123!'); expect(stored).not.toContain('Kurio123!'); expect(stored).not.toContain('Diferente123!')
-  await page.getByRole('button', { name: 'Encerrar sessão' }).click(); await expect(page.getByText(/^Sessão:/)).toHaveCount(0)
+  await accountAction(page, 'Encerrar sessão'); await expect(page.getByRole('button', { name: /^Minha conta:/ })).toHaveCount(0)
   await page.goto('/signup')
   await page.getByLabel('Nome de usuário', { exact: true }).fill('outra')
   await page.getByLabel('E-mail', { exact: true }).fill('nova@kurio.test')
@@ -64,7 +65,7 @@ test('invalid credentials, auxiliary actions and safe return URL', async ({ page
   await page.getByRole('button', { name: 'Mostrar senha' }).click(); await expect(page.getByLabel('Senha', { exact: true })).toHaveAttribute('type', 'text')
   await page.getByRole('button', { name: 'Continuar com Google' }).click(); await expect(page.getByRole('status').filter({ hasText: 'Nenhuma sessão' })).toBeVisible()
   expect((await api(page, '/session')).data.user).toBeNull()
-  await page.getByRole('button', { name: 'Esqueceu a senha?' }).click(); await expect(page.getByText(/Recuperação de senha não disponível/)).toBeVisible()
+  await page.getByRole('button', { name: 'Esqueceu a senha?' }).click(); await expect(page.getByText(/Recuperação de senha indisponível/)).toBeVisible()
   await login(page); await expect(page).toHaveURL(/\/(\?.*)?$/)
 })
 
@@ -115,17 +116,17 @@ test('visitor merge happens once, logout and switch isolate private carts and fa
   const replay = await api(page, '/session', 'POST', { email: 'ana@kurio.test', password: 'Kurio123!' })
   expect(replay.status).toBe(200)
   await page.reload(); await expect(row(page, 'ten').getByRole('spinbutton')).toHaveValue('2')
-  await page.getByRole('button', { name: 'Encerrar sessão' }).click(); await expect(page.getByText(/^Sessão:/)).toHaveCount(0)
+  await accountAction(page, 'Encerrar sessão'); await expect(page.getByRole('button', { name: /^Minha conta:/ })).toHaveCount(0)
   await page.goto('/cart'); await expect(page.getByRole('heading', { name: 'Seu carrinho está vazio' })).toBeVisible()
   await add(page, 'ten', 3); await page.goto('/cart'); await page.getByRole('link', { name: 'Entrar para conciliar carrinho' }).click(); await login(page)
   await expect(row(page, 'ten').getByRole('spinbutton')).toHaveValue('5')
   await expect(page.getByRole('alert').filter({ hasText: 'Item preservado; ajuste' })).toBeVisible()
   await row(page, 'ten').getByRole('button', { name: /^Diminuir/ }).click(); await expect(row(page, 'ten').getByRole('spinbutton')).toHaveValue('4')
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'bruno')
+  await accountAction(page, 'Trocar usuário'); await login(page, 'bruno')
   await expect(page.getByRole('heading', { name: 'Seu carrinho está vazio' })).toBeVisible()
   await page.goto('/nfts/emerald-042'); const favorite = page.getByRole('button', { name: 'Favoritar Emerald Ape #042', exact: true }).first(); await expect(favorite).toBeEnabled(); await favorite.click()
   await expect(page.getByRole('button', { name: 'Desfavoritar Emerald Ape #042', exact: true }).first()).toBeEnabled()
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page)
+  await accountAction(page, 'Trocar usuário'); await login(page)
   await expect(page.getByRole('button', { name: 'Favoritar Emerald Ape #042', exact: true }).first()).toBeEnabled()
   await page.goto('/cart'); await expect(row(page, 'ten').getByRole('spinbutton')).toHaveValue('4')
 })
@@ -181,14 +182,14 @@ test('late private mutation cannot update another session; sockets clean up', as
   await expect(page.getByRole('button', { name: 'Desfavoritar Emerald Ape #042', exact: true }).first()).toBeDisabled()
   // API scenario changes latency only; the already pending write keeps its delay.
   await scenario(page, 'slow', undefined, 0)
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'bruno')
+  await accountAction(page, 'Trocar usuário'); await login(page, 'bruno')
   await expect(page.getByRole('button', { name: 'Favoritar Emerald Ape #042', exact: true }).first()).toBeEnabled()
   expect((await (await rejected).json()).code).toBe('SESSION_EXPIRED')
   const current = (await api(page, '/session')).data
   expect((await api(page, '/favorites', 'GET', undefined, current.scope)).data).toEqual([])
   expect((await api(page, '/cart/items', 'POST', { nftId: 'emerald-042', editionId: 'ten', quantity: 1 }, old)).status).toBe(401)
   await expect.poll(async () => (await api(page, '/__proof/diagnostics')).data.activeConnections).toBe(1)
-  await page.getByRole('button', { name: 'Encerrar sessão' }).click(); await expect(page.getByText(/^Sessão:/)).toHaveCount(0)
+  await accountAction(page, 'Encerrar sessão'); await expect(page.getByRole('button', { name: /^Minha conta:/ })).toHaveCount(0)
   await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible(); await expect.poll(async () => (await api(page, '/__proof/diagnostics')).data.activeConnections).toBe(0)
 })
 

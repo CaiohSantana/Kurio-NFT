@@ -1,5 +1,6 @@
+import { accountAction, expectAccount } from './session-support'
 import { expect, test, type Page } from '@playwright/test'
-async function login(page: Page, name = 'ana', password = 'Kurio123!') { await page.getByLabel('E-mail', { exact: true }).fill(`${name}@kurio.test`); await page.getByLabel('Senha', { exact: true }).fill(password); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expect(page.getByText(`Sessão: ${name}`, { exact: true })).toBeAttached() }
+async function login(page: Page, name = 'ana', password = 'Kurio123!') { await page.getByLabel('E-mail', { exact: true }).fill(`${name}@kurio.test`); await page.getByLabel('Senha', { exact: true }).fill(password); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expectAccount(page, name) }
 test.beforeEach(async ({ page }) => { await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible(); await page.evaluate(() => fetch('/api/__commerce/scenario', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'reset' }) })); await page.goto('/account/profile'); await expect(page).toHaveURL(/\/login/); await login(page) })
 test('profile validates, keeps failed draft, persists, and isolates accounts', async ({ page }) => {
   const form = page.getByRole('form', { name: 'Dados do perfil' })
@@ -12,7 +13,7 @@ test('profile validates, keeps failed draft, persists, and isolates accounts', a
   await form.getByLabel('E-mail').fill('ana@kurio.test'); await form.getByLabel('Nome ENS (opcional)').fill('ana.kurio.eth'); await form.getByRole('button', { name: 'Salvar perfil' }).click()
   await expect(form.getByRole('status')).toHaveText('Perfil salvo.')
   await page.reload(); await expect(form.getByLabel('Nome de exibição')).toHaveValue('Ana Colecionadora'); await expect(form.getByLabel('Nome ENS (opcional)')).toHaveValue('ana.kurio.eth')
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'bruno')
+  await accountAction(page, 'Trocar usuário'); await login(page, 'bruno')
   await expect(form.getByLabel('Nome de exibição')).toHaveValue('bruno')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
@@ -27,13 +28,14 @@ test('avatar rejects invalid bytes, uploads local PNG, persists and removes', as
 })
 test('password API errors, confirmation, old credentials rejected and new password works', async ({ page }) => {
   const form = page.getByRole('form', { name: 'Alterar senha' })
-  await form.getByLabel('Senha atual').fill('Incorreta123!'); await form.getByLabel(/^Nova senha/).fill('Alterada123!'); await form.getByLabel('Confirmar nova senha').fill('Alterada123!'); await form.getByRole('button', { name: 'Salvar senha' }).click()
+  await form.getByRole('button', { name: 'Mostrar nova senha', exact: true }).click(); await expect(form.getByLabel(/^Nova senha/)).toHaveAttribute('type', 'text'); await form.getByRole('button', { name: 'Ocultar nova senha', exact: true }).click()
+  await form.getByLabel('Senha atual').and(page.locator('input')).fill('Incorreta123!'); await form.getByLabel(/^Nova senha/).fill('Alterada123!'); await form.getByLabel('Confirmar nova senha').and(page.locator('input')).fill('Alterada123!'); await form.getByRole('button', { name: 'Salvar senha' }).click()
   await expect(form.getByRole('alert')).toHaveText('Senha atual incorreta.')
-  await form.getByLabel('Senha atual').fill('Kurio123!'); await form.getByLabel('Confirmar nova senha').fill('Diferente123!'); await form.getByRole('button', { name: 'Salvar senha' }).click(); await expect(form.getByText('As senhas não coincidem.')).toBeVisible()
-  await form.getByLabel('Confirmar nova senha').fill('Alterada123!'); await form.getByRole('button', { name: 'Salvar senha' }).click(); await expect(form.getByRole('status')).toHaveText('Senha alterada.')
+  await form.getByLabel('Senha atual').and(page.locator('input')).fill('Kurio123!'); await form.getByLabel('Confirmar nova senha').and(page.locator('input')).fill('Diferente123!'); await form.getByRole('button', { name: 'Salvar senha' }).click(); await expect(form.getByText('As senhas não coincidem.')).toBeVisible()
+  await form.getByLabel('Confirmar nova senha').and(page.locator('input')).fill('Alterada123!'); await form.getByRole('button', { name: 'Salvar senha' }).click(); await expect(form.getByRole('status')).toHaveText('Senha alterada.')
   const state = await page.evaluate(() => localStorage.getItem('kurio-commerce-v1')!)
   expect(state).not.toContain('Alterada123!'); expect(state).not.toContain('Kurio123!')
-  await page.getByRole('button', { name: 'Encerrar sessão' }).click(); await expect(page.getByText(/^Sessão:/)).toHaveCount(0)
+  await accountAction(page, 'Encerrar sessão'); await expect(page.getByRole('button', { name: /^Minha conta:/ })).toHaveCount(0)
   await page.goto('/login?returnTo=/account/profile'); await page.getByLabel('E-mail', { exact: true }).fill('ana@kurio.test'); await page.getByLabel('Senha', { exact: true }).fill('Kurio123!'); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expect(page.getByRole('alert')).toContainText('E-mail ou senha inválidos')
   await login(page, 'ana', 'Alterada123!'); await expect(page).toHaveURL(/\/account\/profile/)
 })
@@ -46,13 +48,13 @@ test('wallets validate address, persist primary/secondary, reject duplicates and
   await primary.getByLabel('Endereço da carteira').fill(address); await primary.getByRole('button', { name: 'Salvar carteira' }).click(); await expect(primary.getByRole('status')).toHaveText('Carteira salva.')
   await page.reload(); await expect(primary.getByLabel('Endereço da carteira')).toHaveValue(address)
   await primary.getByLabel('Tipo de carteira').selectOption('WalletConnect'); await primary.getByRole('button', { name: 'Salvar carteira' }).click(); await expect(primary.getByRole('status')).toHaveText('Carteira salva.')
-  await page.getByLabel('Igual à carteira principal').click(); await expect(page.getByText('A seleção secundária reutiliza a principal. Nenhum registro duplicado é criado.')).toBeVisible(); await page.reload(); await expect(page.getByLabel('Igual à carteira principal')).toBeChecked()
+  await page.getByLabel('Igual à carteira principal').click(); await expect(page.getByText('A carteira principal será usada também como secundária.')).toBeVisible(); await page.reload(); await expect(page.getByLabel('Igual à carteira principal')).toBeChecked()
   await page.getByLabel('Igual à carteira principal').click(); await expect(page.getByLabel('Igual à carteira principal')).not.toBeChecked(); await page.getByRole('button', { name: 'Adicionar carteira secundária' }).click()
   const secondary = page.getByRole('form', { name: 'Carteira secundária' })
   await secondary.getByLabel('Endereço da carteira').fill(address); await secondary.getByRole('button', { name: 'Salvar carteira' }).click(); await expect(secondary.getByRole('alert')).toContainText('já cadastrado')
   await secondary.getByLabel('Rede').selectOption('Solana'); await secondary.getByLabel('Endereço da carteira').fill('1'.repeat(32)); await secondary.getByRole('button', { name: 'Salvar carteira' }).click(); await expect(secondary.getByRole('status')).toHaveText('Carteira salva.')
   await page.reload(); await expect(secondary.getByLabel('Rede')).toHaveValue('Solana')
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'bruno'); await expect(primary.getByLabel('Endereço da carteira')).toHaveValue(''); await expect(page.getByRole('button', { name: 'Adicionar carteira secundária' })).toBeVisible()
+  await accountAction(page, 'Trocar usuário'); await login(page, 'bruno'); await expect(primary.getByLabel('Endereço da carteira')).toHaveValue(''); await expect(page.getByRole('button', { name: 'Adicionar carteira secundária' })).toBeVisible()
   await primary.getByLabel('Endereço da carteira').focus(); await expect(primary.getByLabel('Endereço da carteira')).toBeFocused()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })

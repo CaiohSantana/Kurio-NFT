@@ -19,7 +19,7 @@ export function useCatalogSocket(scope: string) {
     const reconcileCart = () => { refreshPrivate('quote'); refreshPrivate('checkout-quote') }
     const reconcile = () => {
       if (connectedOnce) {
-        setNotice('Conexão restabelecida. Dados reconciliados com a API.')
+        setNotice('')
         // Cancel even a first pending read: its pre-outage snapshot may be old.
         void queryClient.cancelQueries({ queryKey: catalogKey }).then(() => queryClient.invalidateQueries({ queryKey: catalogKey }))
         void queryClient.cancelQueries({ queryKey: ['nft'] }).then(() => queryClient.invalidateQueries({ queryKey: ['nft'] }))
@@ -46,7 +46,7 @@ export function useCatalogSocket(scope: string) {
       const key = ['private', scope, 'order', event.resourceId], current = queryClient.getQueryData<Order>(key)?.version ?? 0, seen = versions.get(`order:${event.resourceId}`) ?? 0
       if (event.version <= Math.max(current, seen)) return
       versions.set(`order:${event.resourceId}`, event.version)
-      setNotice(`Pedido atualizado por Socket.IO (versão ${event.version}). Consultando a API.`)
+      if (import.meta.env.MODE === 'demo') console.debug('[Kurio realtime] order.updated', event.resourceId, event.version)
       refreshPrivate('order'); refreshPrivate('attempt'); refreshPrivate('cart'); reconcileCart()
     }
     socket.on('connect', reconcile); socket.on('disconnect', disconnected); socket.on('nft.updated', update); socket.on('order.updated', orderUpdated)

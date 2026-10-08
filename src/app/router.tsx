@@ -3,7 +3,7 @@ import { IntegrationProof } from '@/proof/IntegrationProof'
 import { CatalogPage } from '@/features/catalog/CatalogPage'
 import { DetailPage } from '@/features/catalog/DetailPage'
 import { MarketShell } from '@/features/catalog/MarketShell'
-import { validateCatalogSearch } from '@/features/catalog/contracts'
+import { validateCatalogSearch, defaultCatalogSearch } from '@/features/catalog/contracts'
 import { AuthPage } from '@/features/auth/AuthPage'
 import { authSearch, safeReturn } from '@/features/auth/contracts'
 import { CartPage } from '@/features/cart/CartPage'
@@ -15,7 +15,7 @@ import { OrderPage } from '@/features/orders/OrderPage'
 
 const rootRoute = createRootRoute({
   component: Outlet,
-  notFoundComponent: () => <main className="p-8"><h1>Rota inexistente</h1><Link to="/integration" className="underline">Voltar à prova</Link></main>,
+  notFoundComponent: () => <main className="p-8"><h1>Rota inexistente</h1><Link to="/" search={defaultCatalogSearch} className="underline">Voltar ao início</Link></main>,
 })
 const preparationRoute = createRoute({ getParentRoute: () => rootRoute, path: '/preparation',
   component: () => <main className="p-8"><h1 className="mb-4 text-2xl font-bold">Kurio · Preparação técnica</h1><Link to="/integration" className="text-primary underline">Abrir prova de integração</Link></main>,

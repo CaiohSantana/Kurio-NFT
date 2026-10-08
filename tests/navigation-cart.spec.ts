@@ -1,9 +1,10 @@
+import { accountAction, expectAccount } from './session-support'
 import { expect, test, type Page } from '@playwright/test'
 async function reset(page: Page) {
   await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible()
   await page.evaluate(async () => { for (const area of ['commerce', 'catalog']) await fetch(`/api/__${area}/scenario`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'reset' }) }) })
 }
-async function login(page: Page, name: string) { await page.getByLabel('E-mail', { exact: true }).fill(`${name}@kurio.test`); await page.getByLabel('Senha', { exact: true }).fill('Kurio123!'); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expect(page.getByText(`Sessão: ${name}`)).toBeAttached() }
+async function login(page: Page, name: string) { await page.getByLabel('E-mail', { exact: true }).fill(`${name}@kurio.test`); await page.getByLabel('Senha', { exact: true }).fill('Kurio123!'); await page.locator('.auth-form').getByRole('button', { name: 'Entrar', exact: true }).click(); await expectAccount(page, name) }
 async function count(page: Page, value: number) { await expect(page.getByTestId('cart-badge').first()).toHaveText(String(value)); const visible = page.getByRole('link', { name: `Carrinho, ${value} ${value === 1 ? 'item' : 'itens'}`, exact: true }).filter({ visible: true }); if (await visible.count()) await expect(visible.first()).toBeVisible() }
 test.beforeEach(async ({ page }) => reset(page))
 test('catalog navigation keeps document, DOM, URL filters and history; reduced motion', async ({ page }) => {
@@ -38,8 +39,8 @@ test('global badge sums quantities outside cart, refresh, merge, logout and acco
   await page.goto('/login?returnTo=/'); await login(page, 'ana'); await count(page, 2)
   await page.goto('/cart'); await page.getByRole('button', { name: 'Aumentar Emerald Ape #042 1/10' }).click(); await count(page, 3)
   await page.goto('/'); await count(page, 3)
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'bruno'); await count(page, 0)
-  await page.getByRole('button', { name: 'Trocar usuário' }).click(); await login(page, 'ana'); await count(page, 3)
+  await accountAction(page, 'Trocar usuário'); await login(page, 'bruno'); await count(page, 0)
+  await accountAction(page, 'Trocar usuário'); await login(page, 'ana'); await count(page, 3)
   await page.goto('/cart'); await page.getByRole('button', { name: 'Remover Emerald Ape #042 1/10' }).click(); await count(page, 0)
-  await page.getByRole('button', { name: 'Encerrar sessão' }).click(); await expect(page.getByText(/^Sessão:/)).toHaveCount(0); await count(page, 0)
+  await accountAction(page, 'Encerrar sessão'); await expect(page.getByRole('button', { name: /^Minha conta:/ })).toHaveCount(0); await count(page, 0)
 })

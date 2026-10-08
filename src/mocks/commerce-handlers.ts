@@ -14,7 +14,7 @@ export async function run(request: Request, target: string, operation: (scope: s
     if (!anonymous) await state.authorize(scope)
     await delay(target === 'scenario' ? 0 : latency)
     if (!anonymous) await state.authorize(scope)
-    if (failure) return HttpResponse.json({ code: 'TEMPORARY', message: 'Falha transitória simulada. Tente novamente.' }, { status: 503 })
+    if (failure) return HttpResponse.json({ code: 'TEMPORARY', message: 'Falha transitória. Tente novamente.' }, { status: 503 })
     return HttpResponse.json(await operation(scope), { headers: { 'X-Mock-Handler': target, 'Cache-Control': 'no-store' } })
   } catch (error) {
     if (error instanceof state.CommerceError) return HttpResponse.json({ code: error.code, message: error.message, fieldErrors: error.fieldErrors }, { status: error.status })
