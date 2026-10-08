@@ -4,14 +4,24 @@ import { Search, ShoppingCart, LogIn, Heart, Home, User, ScanLine } from 'lucide
 import { Modal } from '@/shared/ui/modal'
 import { useCatalogSocket } from './use-catalog-socket'
 import { defaultCatalogSearch } from './contracts'
+import { SessionProvider, useSession, replaceSession, scopedConfig, apiMessage } from '@/features/auth/session'
+import type { Session } from '@/features/auth/contracts'
+import { http } from '@/shared/api/http'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const NoticeContext = createContext<(action: string) => void>(() => undefined)
 export const useUnavailable = () => useContext(NoticeContext)
 export function MarketShell() {
+  return <SessionProvider><MarketContent /></SessionProvider>
+}
+function MarketContent() {
+  const session = useSession(), client = useQueryClient()
   const [notice, setNotice] = useState('')
-  const realtime = useCatalogSocket()
+  const realtime = useCatalogSocket(session.scope)
   const pathname = useLocation({ select: (location) => location.pathname })
   const navigate = useNavigate()
+  const logout = useMutation({ mutationFn: async () => (await http.delete<Session>('/session', scopedConfig(session.scope))).data, onSuccess: async (incoming) => { await replaceSession(client, incoming); void navigate({ to: '/', search: defaultCatalogSearch }) }, onError: (error) => setNotice(apiMessage(error)) })
+  const login = () => { void navigate({ to: '/login', search: { returnTo: window.location.pathname + window.location.search, favorite: '' } }) }
   const focusSearch = () => {
     const input = document.getElementById('catalog-search')
     if (input) input.focus()
@@ -23,14 +33,16 @@ export function MarketShell() {
       <header className="desktop-header">
         <Link to="/" search={defaultCatalogSearch} className="wordmark">KURIO</Link>
         <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' ? 'active' : ''}>Início</Link><a href="/#catalog">Mercado</a><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
-        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><button aria-label="Carrinho" onClick={() => unavailable('Carrinho')}><ShoppingCart size={24} /></button><button className="login-button" onClick={() => unavailable('Login')}><LogIn size={18} />Entrar</button></div>
+        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><Link to="/cart" aria-label="Carrinho"><ShoppingCart size={24} /></Link>{session.user ? <button onClick={() => logout.mutate()} disabled={logout.isPending}>Sair ({session.user.username})</button> : <button className="login-button" onClick={login}><LogIn size={18} />Entrar</button>}</div>
       </header>
       <div className="sr-only" role="status" aria-live="polite">{realtime}</div>
       {realtime && <p className="realtime-notice" role="status">{realtime}</p>}
+      {session.notices.filter((message) => message.startsWith('Não foi possível favoritar')).map((message) => <p role="alert" key={message}>{message}</p>)}
       <Outlet />
+      {session.user && <div className="session-controls"><p>Sessão: {session.user.username}</p><button onClick={() => logout.mutate()} disabled={logout.isPending}>Encerrar sessão</button><button onClick={login}>Trocar usuário</button></div>}
       <Footer />
       {pathname === '/' && <nav className="mobile-navigation" aria-label="Navegação mobile">
-        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Favoritos')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><button aria-label="Carrinho" onClick={() => unavailable('Carrinho')}><ShoppingCart size={20} /></button><button aria-label="Perfil" onClick={() => unavailable('Perfil')}><User size={20} /></button>
+        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><Link to="/cart" aria-label="Carrinho"><ShoppingCart size={20} /></Link><button aria-label="Perfil" onClick={session.user ? () => unavailable('Perfil') : login}><User size={20} /></button>
       </nav>}
       <Modal title="Funcionalidade indisponível" open={!!notice} onClose={() => setNotice('')}><p>{notice}</p></Modal>
     </div>

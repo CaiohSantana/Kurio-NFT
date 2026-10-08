@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate, useSearch } from '@tanstack/react-router'
 import { Search, SlidersHorizontal } from 'lucide-react'
-import { catalogRoute } from '@/app/router'
 import { Modal } from '@/shared/ui/modal'
 import { Button } from '@/shared/ui/button'
 import { Skeleton } from '@/shared/ui/skeleton'
 import { catalogOptions } from './api'
 import type { CatalogSearch } from './contracts'
+import { validateCatalogSearch } from './contracts'
 import { Filters } from './Filters'
 import { NftCard } from './NftCard'
 import { Hero, HomeSections } from './HomeSections'
 
 export function CatalogPage() {
-  const search = catalogRoute.useSearch(), navigate = useNavigate({ from: '/' })
+  const search = validateCatalogSearch(useSearch({ strict: false })), navigate = useNavigate({ from: '/' })
   const query = useQuery(catalogOptions(search))
   const [filterOpen, setFilterOpen] = useState(false)
   const change = (patch: Partial<CatalogSearch>) => { void navigate({ search: { ...search, ...patch, page: patch.page ?? 1 } }) }
