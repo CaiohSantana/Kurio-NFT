@@ -1,0 +1,16 @@
+node_modules/
+dist/
+playwright-report/
+playwright-report-dev/
+test-results/
+.env
+.env.*
+!.env.example
+!.env.demo
+.tmp/
+artifacts/
+.aws/
+.codex/
+.agents/
+.vercel/
+*.tsbuildinfo

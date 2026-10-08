@@ -1,0 +1,122 @@
+﻿[
+    {
+        "path":  "Frontend Challenge/Desktop/Cadastro.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1981,
+        "bytes":  1254565,
+        "sha256":  "71D5AD350DEB2342FCCB71BD54EDCA89F7011FFE16754235BBE4479A02519E6B"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Carrinho de NFTs.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1754,
+        "bytes":  586877,
+        "sha256":  "3E93FE15ED1D0E899416F9B9262E928D4391C523F4C89A0C0B738A7366B216F0"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Carteiras.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1080,
+        "bytes":  72658,
+        "sha256":  "749789B1F015A895E72925576824676189426F16DD3EEC5F4EE8D1DDFB54A7BA"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Confirmação de Pedido.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1657,
+        "bytes":  103280,
+        "sha256":  "C4C67A20CBE2A363CF765E64A5AA097AD2C5B9553F849A38922A17B5A3221874"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Detalhes do NFT.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  2246,
+        "bytes":  954453,
+        "sha256":  "1FFA273D7DC8C80258F0084D9B03B7DFBE754383ED73568A200952091F64DD4D"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Início.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  3668,
+        "bytes":  2465504,
+        "sha256":  "E9A308F72D44276730A6F47B01F0C10156D8A0BD1701C7703F423414C2BF636D"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Login.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1981,
+        "bytes":  1294750,
+        "sha256":  "A90369A03AC2F429280F1083304A716655A79E2B6D5B94B7858727006F48A466"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Pagamento.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1657,
+        "bytes":  224971,
+        "sha256":  "A4A03098B0D1B46E79B73DEBB407A5B05C64460E7248419F871B6ED923597515"
+    },
+    {
+        "path":  "Frontend Challenge/Desktop/Perfil do Colecionador.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  1440,
+        "height":  1080,
+        "bytes":  53374,
+        "sha256":  "3C065AC12E254AB87A86026545898947EBDF2F16856E68F3BB53C158F5A03FF1"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Cadastro.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  26815,
+        "sha256":  "960CA71C6A8CEC4AAB0CDED1AA3DF4ED2108B664A96999A71E406DEB7A82B61C"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Carrinho de NFTs.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  175984,
+        "sha256":  "95502057E51B0AE48126CCE709451AEB329665A7C9C84B08ED3F83D737D7D0DF"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Detalhes do NFT.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  262717,
+        "sha256":  "065596D93E1A3256B00CFE16CCCECC84D1D13706877AD63A08BF3FE11BDC2B61"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Início.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  337160,
+        "sha256":  "5B13C6F0C3F5EF244EAF727691137523C9C7BCB24E6D71E365486332B4AC7989"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Login.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  23039,
+        "sha256":  "4D6DC6D39DE0FA7B1C57689988DB4C05DCBC1EDF99A11FFF045F2AA27FF36659"
+    },
+    {
+        "path":  "Frontend Challenge/Mobile/Pagamento.png",
+        "origin":  "Export completo fornecido pelo usuário",
+        "width":  414,
+        "height":  896,
+        "bytes":  78973,
+        "sha256":  "6610D5412B9E1A1FCA6F9C646CCC441D952DCD267E005AAF4D0995F6965DF407"
+    }
+]

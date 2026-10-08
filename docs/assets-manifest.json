@@ -1,0 +1,2903 @@
+﻿{
+    "fileKey":  "y1ACuUlG8c6eRylaa4qWI2",
+    "retrievedDate":  "2026-10-07",
+    "assets":  [
+                   {
+                       "filename":  "5053c.svg",
+                       "path":  "public/assets/figma/5053c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/5053c.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5053c.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/5053c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgEllipse5"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgEllipse5"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgEllipse5"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/5053c.svg",
+                       "bytes":  273,
+                       "sha256":  "985DC1B36D38D596BF200437A23E66282A529CA3FE9CC5511B30146B155990CC",
+                       "rootWidth":  "21",
+                       "rootHeight":  "21",
+                       "viewBox":  "0 0 21 21",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "7c6d1.svg",
+                       "path":  "public/assets/figma/7c6d1.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/7c6d1.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/7c6d1.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/7c6d1.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgLine6"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine6"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine6"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/7c6d1.svg",
+                       "bytes":  280,
+                       "sha256":  "23D6A111F1A7961E41B5DCD19A805F4FF02D13E8B8DDE1566655199488F4AEE2",
+                       "rootWidth":  "161",
+                       "rootHeight":  "4",
+                       "viewBox":  "0 0 161 4",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "2ac35.svg",
+                       "path":  "public/assets/figma/2ac35.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/2ac35.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/2ac35.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/2ac35.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgLine5"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine5"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine5"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/2ac35.svg",
+                       "bytes":  277,
+                       "sha256":  "9FBECF2F2EF888C8FF6AED858FFA177EEF66DCFC906438EA4600982D0F355082",
+                       "rootWidth":  "55",
+                       "rootHeight":  "4",
+                       "viewBox":  "0 0 55 4",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "8f387.png",
+                       "path":  "public/assets/figma/8f387.png",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/8f387.png",
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/8f387.png"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame136"
+                                    },
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgMobileNftArtwork1"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgNftCartArtwork6"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgNftReceiptArtwork1"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgNftAuthArtwork1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgNftAuthArtwork1"
+                                    },
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgRectangle106"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/8f387.png",
+                       "bytes":  1885435,
+                       "sha256":  "F20B58B99DE12B6ECEEDE2090607E4B999275BBA95DE7674BB14F26B59666B21",
+                       "width":  1254,
+                       "height":  1254,
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "83794.png",
+                       "path":  "public/assets/figma/83794.png",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/83794.png",
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/83794.png"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgNftArtwork18"
+                                    },
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgMobileNftArtwork2"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgNftCartArtwork7"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgNftReceiptArtwork2"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgNftAuthArtwork6"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgNftAuthArtwork6"
+                                    },
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgRectangle108"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/83794.png",
+                       "bytes":  2068526,
+                       "sha256":  "9B25D8D72395AA62F919F6AD33B95B7BA7BBFEE6049E95CF159A319B03ECB8D9",
+                       "width":  1254,
+                       "height":  1254,
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "9add2.png",
+                       "path":  "public/assets/figma/9add2.png",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/9add2.png",
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/9add2.png"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgNftArtwork05"
+                                    },
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgMobileNftArtwork5"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgNftCartArtwork8"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgNftReceiptArtwork3"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgNftAuthArtwork4"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgNftAuthArtwork4"
+                                    },
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgRectangle110"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/9add2.png",
+                       "bytes":  2027336,
+                       "sha256":  "326DF4C1C08C31C88B9F407E51BE3991E46667183AF62AA1501927ADC76F52B5",
+                       "width":  1254,
+                       "height":  1254,
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b7cfc.png",
+                       "path":  "public/assets/figma/b7cfc.png",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b7cfc.png",
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/b7cfc.png",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/b7cfc.png",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/b7cfc.png",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/b7cfc.png",
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/b7cfc.png"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgNftArtwork09"
+                                    },
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgMobileNftArtwork6"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgNftCartArtwork4"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgNftAuthArtwork3"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgNftAuthArtwork3"
+                                    },
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgRectangle112"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b7cfc.png",
+                       "bytes":  1978600,
+                       "sha256":  "2A42BA5ADC341C3D0E1AD6905058E2762D995FC988113A7CD28B0D15F6A4BA28",
+                       "width":  1254,
+                       "height":  1254,
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "66cfd.svg",
+                       "path":  "public/assets/figma/66cfd.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/66cfd.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/66cfd.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/66cfd.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/66cfd.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/66cfd.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgActiveUnderline"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgActiveUnderline"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgActiveUnderline"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgActiveUnderline"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgActiveUnderline"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/66cfd.svg",
+                       "bytes":  261,
+                       "sha256":  "38C1EC2F37B1261D4D83C8613EFC36FA260CB84E34CBE2BEFB33D92689E32021",
+                       "rootWidth":  "58",
+                       "rootHeight":  "3",
+                       "viewBox":  "0 0 58 3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "bd8c9.svg",
+                       "path":  "public/assets/figma/bd8c9.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/bd8c9.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/bd8c9.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgSearchIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgSearchIcon"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/bd8c9.svg",
+                       "bytes":  1073,
+                       "sha256":  "4DD4063CC36FA06642D3E31E757EB7A2DDB03C5E4686E862E22E6C098CD24941",
+                       "rootWidth":  "20.0009",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20.0009 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "c0c08.svg",
+                       "path":  "public/assets/figma/c0c08.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/c0c08.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/c0c08.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgCartIcon"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgCartIcon"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/c0c08.svg",
+                       "bytes":  1449,
+                       "sha256":  "3AEF2CCFB0974CDAA554FB293723E1A7E68B78641812917B10412F04C66DEEC4",
+                       "rootWidth":  "24.0042",
+                       "rootHeight":  "24",
+                       "viewBox":  "0 0 24.0042 24",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "aa630.svg",
+                       "path":  "public/assets/figma/aa630.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/aa630.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/aa630.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgBadge"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgBadge"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/aa630.svg",
+                       "bytes":  265,
+                       "sha256":  "2FF83916B491481CE14E4908A30ECAFA7698521D48A6E57DF8D59F2CBC4DD89E",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "62554.svg",
+                       "path":  "public/assets/figma/62554.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/62554.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/62554.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/62554.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/62554.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/62554.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgLogout"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgLogout"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgLogout"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgLogout"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgLogout"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/62554.svg",
+                       "bytes":  786,
+                       "sha256":  "2994A232290CFF66BD1ED55239CF8AF6186615D6C36CD7895BE887294F649AE3",
+                       "rootWidth":  "17.7779",
+                       "rootHeight":  "16.9167",
+                       "viewBox":  "0 0 17.7779 16.9167",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "57141.svg",
+                       "path":  "public/assets/figma/57141.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/57141.svg",
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/57141.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/57141.svg",
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/57141.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/57141.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgLine1"
+                                    },
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine1"
+                                    },
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgLine1"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgLine1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/57141.svg",
+                       "bytes":  265,
+                       "sha256":  "1A298A9B83EF87DFC0999826B2501D9113D177CD02D32B9B8E6AFBD424DB5E01",
+                       "rootWidth":  "1200",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 1200 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "dc76c.svg",
+                       "path":  "public/assets/figma/dc76c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/dc76c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgRectangle3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/dc76c.svg",
+                       "bytes":  199,
+                       "sha256":  "7794C68C7090F9E0EF137F544699C583A9F8B2DE1B293F504631CAEC71863C4D",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "a11b7.svg",
+                       "path":  "public/assets/figma/a11b7.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/a11b7.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgGroup4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/a11b7.svg",
+                       "bytes":  375,
+                       "sha256":  "0FF55C193B808AFD4687BBE57909E205132DF46D8D4FD37E2CE9547DA6237377",
+                       "rootWidth":  "40",
+                       "rootHeight":  "8",
+                       "viewBox":  "0 0 40 8",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "7e373.svg",
+                       "path":  "public/assets/figma/7e373.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/7e373.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgArrowDown2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/7e373.svg",
+                       "bytes":  371,
+                       "sha256":  "68926A037170DDD74043FED37D6ACBD665FF4EA54655CCE870B6D0BD87F57E49",
+                       "rootWidth":  "10.8333",
+                       "rootHeight":  "6.16667",
+                       "viewBox":  "0 0 10.8333 6.16667",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "ba93b.svg",
+                       "path":  "public/assets/figma/ba93b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/ba93b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgLine3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/ba93b.svg",
+                       "bytes":  250,
+                       "sha256":  "49E12CB04B0A08CCA76FD40A64B6CBF115F3A1C52874219FAA62D1828702880E",
+                       "rootWidth":  "101",
+                       "rootHeight":  "2",
+                       "viewBox":  "0 0 101 2",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "1fbca.svg",
+                       "path":  "public/assets/figma/1fbca.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/1fbca.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgArrowRight2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/1fbca.svg",
+                       "bytes":  451,
+                       "sha256":  "8CE4A787EFF59595D8A63A01DB3211D5A37DA58FB064E4286D28FA9A411F85FF",
+                       "rootWidth":  "12.0002",
+                       "rootHeight":  "6.75012",
+                       "viewBox":  "0 0 12.0002 6.75012",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "e0393.svg",
+                       "path":  "public/assets/figma/e0393.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/e0393.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgArrowRight"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/e0393.svg",
+                       "bytes":  565,
+                       "sha256":  "FB0C196C6B04F45FFBE31C3124E911335EC8FB2D64B97F25DAC014385616AC23",
+                       "rootWidth":  "10.537",
+                       "rootHeight":  "12.75",
+                       "viewBox":  "0 0 10.537 12.75",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "68d8c.svg",
+                       "path":  "public/assets/figma/68d8c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/68d8c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgMaskGroup"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/68d8c.svg",
+                       "bytes":  577,
+                       "sha256":  "494FF24D1FDE323A6709C9173E5CDEE4A4F95CADDF36A8BF8CFE16FC8FEC785B",
+                       "rootWidth":  "586",
+                       "rootHeight":  "250",
+                       "viewBox":  "0 0 586 250",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "99280.svg",
+                       "path":  "public/assets/figma/99280.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/99280.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/99280.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/99280.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame108"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame108"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame108"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/99280.svg",
+                       "bytes":  477,
+                       "sha256":  "6A984B7EEB4D8B6F88561C31CA45CBDF22F77C536DC85E5CD7BB10A7B45D1688",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "d48dd.svg",
+                       "path":  "public/assets/figma/d48dd.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/d48dd.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/d48dd.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/d48dd.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame109"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame109"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame109"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/d48dd.svg",
+                       "bytes":  1723,
+                       "sha256":  "129783E293BEB8F856FA0117B3806BD98C1A61455812671FE0FAA1D34B92EA59",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b4111.svg",
+                       "path":  "public/assets/figma/b4111.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b4111.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/b4111.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/b4111.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame110"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame110"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame110"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b4111.svg",
+                       "bytes":  1288,
+                       "sha256":  "90AC152D2C8AD501109137DB7EE03BAF7493122D1AFC6EE0FB435ED1835E2D94",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b8b84.svg",
+                       "path":  "public/assets/figma/b8b84.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b8b84.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/b8b84.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/b8b84.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame111"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame111"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame111"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/b8b84.svg",
+                       "bytes":  677,
+                       "sha256":  "BE57D179A85ED75BB0D1D221979EB71D6516C99AB892343420C84DC5921BB71E",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "ca2da.svg",
+                       "path":  "public/assets/figma/ca2da.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/ca2da.svg",
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/ca2da.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/ca2da.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "2:2",
+                                        "name":  "imgFrame112"
+                                    },
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame112"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame112"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/cf7a422d-1412-4b68-8442-4f2e261cce96/ca2da.svg",
+                       "bytes":  1188,
+                       "sha256":  "04E452C45971DE68E07C70D5DEF0A341069E63B9858CFED3B5A0C80B7EFB9107",
+                       "rootWidth":  "32",
+                       "rootHeight":  "32",
+                       "viewBox":  "0 0 32 32",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "352b3.svg",
+                       "path":  "public/assets/figma/352b3.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/352b3.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgShop"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/352b3.svg",
+                       "bytes":  1211,
+                       "sha256":  "B139C41EF0E3CD55A37BC5E6C59A1D12397EDEA0BC673A68D14EE0E27EDE4847",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "99dca.svg",
+                       "path":  "public/assets/figma/99dca.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/99dca.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgUser"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/99dca.svg",
+                       "bytes":  783,
+                       "sha256":  "685A52BEE52914A28FA470D693AF74235322F879E4CE77C823C6357B7DE114A7",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "ce4db.svg",
+                       "path":  "public/assets/figma/ce4db.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/ce4db.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgSearch"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/ce4db.svg",
+                       "bytes":  919,
+                       "sha256":  "BEC3E9B82CD46B72D4F3196E14662E203695E65FF0166F4649FDBE691D4DD207",
+                       "rootWidth":  "22",
+                       "rootHeight":  "22",
+                       "viewBox":  "0 0 22 22",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "bc3bf.svg",
+                       "path":  "public/assets/figma/bc3bf.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/bc3bf.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgFilter"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/bc3bf.svg",
+                       "bytes":  1177,
+                       "sha256":  "9A56CEDDD2A86FA6186AE28028F64B0513BC5D39F9A85647B39AC7EC9D4F94C6",
+                       "rootWidth":  "16.1463",
+                       "rootHeight":  "16.1066",
+                       "viewBox":  "0 0 16.1463 16.1066",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f545d.svg",
+                       "path":  "public/assets/figma/f545d.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/f545d.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgMaskGroup"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/f545d.svg",
+                       "bytes":  1409,
+                       "sha256":  "81E705A5E521900CC42861CD468F817AE73541F7286CAF942716E543DF6173F0",
+                       "rootWidth":  "366",
+                       "rootHeight":  "190",
+                       "viewBox":  "0 0 366 190",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "bf307.svg",
+                       "path":  "public/assets/figma/bf307.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/bf307.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgArrowRight"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/bf307.svg",
+                       "bytes":  568,
+                       "sha256":  "B486E6C7B9C712D7EFC955D3EC478BD6811937D9E966164DCDB1C692296BABB7",
+                       "rootWidth":  "9.53296",
+                       "rootHeight":  "11.5",
+                       "viewBox":  "0 0 9.53296 11.5",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "c6c5e.svg",
+                       "path":  "public/assets/figma/c6c5e.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/c6c5e.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgFrame4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/c6c5e.svg",
+                       "bytes":  393,
+                       "sha256":  "9243A5140BC3A208BF7C002A6FDA07D8D7F8E5AC2442A494A1A1B943935A736F",
+                       "rootWidth":  "33",
+                       "rootHeight":  "7",
+                       "viewBox":  "0 0 33 7",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "88160.svg",
+                       "path":  "public/assets/figma/88160.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/88160.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgLine3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/88160.svg",
+                       "bytes":  250,
+                       "sha256":  "148DC021512FB9F607FF41040DF43EB7391F2891C191EC1E667873A9544288B6",
+                       "rootWidth":  "110",
+                       "rootHeight":  "2",
+                       "viewBox":  "0 0 110 2",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "364ee.svg",
+                       "path":  "public/assets/figma/364ee.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/364ee.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgFrame410"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/364ee.svg",
+                       "bytes":  1938,
+                       "sha256":  "3C3DC151493F0B8ADD40AF0B0B2BFA955ADE927CA7CCB4E077A35EA17819916A",
+                       "rootWidth":  "28",
+                       "rootHeight":  "28",
+                       "viewBox":  "0 0 28 28",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "d6529.svg",
+                       "path":  "public/assets/figma/d6529.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/d6529.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgGroup58"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/d6529.svg",
+                       "bytes":  1844,
+                       "sha256":  "3A8082DE748471557F2A6E73B97BBB64152E063A02403FD78EB8191DECDEFFED",
+                       "rootWidth":  "28",
+                       "rootHeight":  "28",
+                       "viewBox":  "0 0 28 28",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "3b81f.svg",
+                       "path":  "public/assets/figma/3b81f.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/3b81f.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/3b81f.svg",
+                       "bytes":  1216,
+                       "sha256":  "5E4A0CDCC377948550B28D2AAE6C5709B7E27EBF1EBDBE41BE06393FB42623E7",
+                       "rootWidth":  "474",
+                       "rootHeight":  "154.95",
+                       "viewBox":  "0 0 474 154.95",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b1ba5.svg",
+                       "path":  "public/assets/figma/b1ba5.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/b1ba5.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgEllipse39"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/b1ba5.svg",
+                       "bytes":  486,
+                       "sha256":  "88966BA04E6896065DBF8E98A615FEA2C41ADCD49F1F25AE7C02A577965D3ED6",
+                       "rootWidth":  "65",
+                       "rootHeight":  "65",
+                       "viewBox":  "0 0 65 65",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b096d.svg",
+                       "path":  "public/assets/figma/b096d.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/b096d.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgHome"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/b096d.svg",
+                       "bytes":  958,
+                       "sha256":  "440D150F9CB6DA287B66400BA0C888EE437DD2EBF5275BAFB984B931A1F3FF4A",
+                       "rootWidth":  "15.8333",
+                       "rootHeight":  "16.6668",
+                       "viewBox":  "0 0 15.8333 16.6668",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "c40be.svg",
+                       "path":  "public/assets/figma/c40be.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/c40be.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/c40be.svg",
+                       "bytes":  925,
+                       "sha256":  "FD0BBA2847544E3DEFEE9D845AF26B2E6CD1242BBEDA89DC1A7EFD95F492DD05",
+                       "rootWidth":  "20",
+                       "rootHeight":  "17.7936",
+                       "viewBox":  "0 0 20 17.7936",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "d5458.svg",
+                       "path":  "public/assets/figma/d5458.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/d5458.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/d5458.svg",
+                       "bytes":  873,
+                       "sha256":  "6E762EDF1DFD8E8FE482370CB42BAB8A0AA34E96DD1D8C1ACA5B06CD926463CB",
+                       "rootWidth":  "26.8227",
+                       "rootHeight":  "1.78827",
+                       "viewBox":  "0 0 26.8227 1.78827",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f7581.svg",
+                       "path":  "public/assets/figma/f7581.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/f7581.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/f7581.svg",
+                       "bytes":  746,
+                       "sha256":  "1160114846EC91BF1FABFF113C3B215263B7E8B1134E1FA34F3E529DCCB8E5AE",
+                       "rootWidth":  "10.3456",
+                       "rootHeight":  "10.3127",
+                       "viewBox":  "0 0 10.3456 10.3127",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "97351.svg",
+                       "path":  "public/assets/figma/97351.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/97351.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/97351.svg",
+                       "bytes":  934,
+                       "sha256":  "225FF31A985101FD13F10BA6B7554B8B1F200DE5E42F5995380FDFD2502CD672",
+                       "rootWidth":  "10.3856",
+                       "rootHeight":  "10.2993",
+                       "viewBox":  "0 0 10.3856 10.2993",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "db42b.svg",
+                       "path":  "public/assets/figma/db42b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/db42b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector5"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/db42b.svg",
+                       "bytes":  795,
+                       "sha256":  "571DE991AD81DE97C6F034E73CA035D2A37907555F932E9F3FDE2C31C87B342B",
+                       "rootWidth":  "10.3167",
+                       "rootHeight":  "10.2514",
+                       "viewBox":  "0 0 10.3167 10.2514",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "ca931.svg",
+                       "path":  "public/assets/figma/ca931.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/ca931.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "14:5226",
+                                        "name":  "imgVector6"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/98253b53-64f9-4dfe-b8e8-c023ca4a9bfb/ca931.svg",
+                       "bytes":  881,
+                       "sha256":  "47847A1295705E574809D191CABB20F20DB93A8878614D627349E1DD64ED5282",
+                       "rootWidth":  "10.39",
+                       "rootHeight":  "10.3063",
+                       "viewBox":  "0 0 10.39 10.3063",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "c902b.svg",
+                       "path":  "public/assets/figma/c902b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/c902b.svg",
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/c902b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgActiveUnderline"
+                                    },
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgActiveUnderline"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/c902b.svg",
+                       "bytes":  261,
+                       "sha256":  "6E47A74644A14404E57981C01CC7CDB6450AE8C0DF480378FD3CBD106E0C54E5",
+                       "rootWidth":  "68",
+                       "rootHeight":  "3",
+                       "viewBox":  "0 0 68 3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "1690e.svg",
+                       "path":  "public/assets/figma/1690e.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/1690e.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgLine2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/1690e.svg",
+                       "bytes":  262,
+                       "sha256":  "3B728FB8E671EBFC434A8838898DC22AE3411B6ED1C586B956925CF09542214B",
+                       "rootWidth":  "782",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 782 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "4453a.svg",
+                       "path":  "public/assets/figma/4453a.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/4453a.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/4453a.svg",
+                       "bytes":  280,
+                       "sha256":  "0B504B1508310C2A10AF08DD071B3DAF44DF8826D2E54DEB8D2E3E6884E07AF9",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f8641.svg",
+                       "path":  "public/assets/figma/f8641.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/f8641.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgFrame1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/f8641.svg",
+                       "bytes":  344,
+                       "sha256":  "5727571B6801480B34DA01EB9144CFBDF9B9889A59A00E0F6E53327C1A56D174",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "e196c.svg",
+                       "path":  "public/assets/figma/e196c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/e196c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgDelete"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/e196c.svg",
+                       "bytes":  772,
+                       "sha256":  "13229FB6350E8861B309751B32C825DFB95ED8B40184444D45CA93CE2AEF8E64",
+                       "rootWidth":  "17.6505",
+                       "rootHeight":  "19.9838",
+                       "viewBox":  "0 0 17.6505 19.9838",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "b1dba.svg",
+                       "path":  "public/assets/figma/b1dba.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/b1dba.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgLine3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/b1dba.svg",
+                       "bytes":  262,
+                       "sha256":  "1087D24D6F773F5330E67BD5505F2E46B98AF923E16FBAE8277437789C47D8B7",
+                       "rootWidth":  "332",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 332 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "73b34.svg",
+                       "path":  "public/assets/figma/73b34.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/73b34.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgLine7"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/73b34.svg",
+                       "bytes":  265,
+                       "sha256":  "35C8945445122FA8548CD54CC1EA40DB3CD86C9DDCA787E67FABEDFD6748EA5C",
+                       "rootWidth":  "1200",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 1200 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "699c0.svg",
+                       "path":  "public/assets/figma/699c0.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/699c0.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:1278",
+                                        "name":  "imgCarouselDots"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/682b1bfc-1a1d-432c-92f4-c88840e73c37/699c0.svg",
+                       "bytes":  563,
+                       "sha256":  "5AACC5DB1787852C561BBC31DBE87B17EDC5233707383E2045A5F1AFFD744BBE",
+                       "rootWidth":  "52",
+                       "rootHeight":  "12",
+                       "viewBox":  "0 0 52 12",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "510ea.svg",
+                       "path":  "public/assets/figma/510ea.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/510ea.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgArrowDown"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/510ea.svg",
+                       "bytes":  605,
+                       "sha256":  "F911AEC8A70E5EC293F4A21ECEE7FA0AA8888B4388DEB05C90EEC6F550F69A52",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "64528.svg",
+                       "path":  "public/assets/figma/64528.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/64528.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgArrowDown1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/64528.svg",
+                       "bytes":  605,
+                       "sha256":  "50A4E70F469CF88AA7C108DA8BF65DE29F84AAFBE659B2A0B4730FB8F3C8AC13",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "ec1ea.svg",
+                       "path":  "public/assets/figma/ec1ea.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/ec1ea.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgEllipse31"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/ec1ea.svg",
+                       "bytes":  259,
+                       "sha256":  "C266677A41A1C80991D89CE054A1728D23463CD9D2EA3C2FB7E4648D0F437F8D",
+                       "rootWidth":  "15",
+                       "rootHeight":  "15",
+                       "viewBox":  "0 0 15 15",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "1f432.svg",
+                       "path":  "public/assets/figma/1f432.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/1f432.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgLine2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/1f432.svg",
+                       "bytes":  262,
+                       "sha256":  "F6DF873F4F60CF58FD886D449029528E1ACB59D9EACC4D16180F20CAF1A2A856",
+                       "rootWidth":  "405",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 405 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "84839.svg",
+                       "path":  "public/assets/figma/84839.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/84839.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgLine3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/84839.svg",
+                       "bytes":  262,
+                       "sha256":  "FB911E2F705C26CFE26F6504ECC4FC5CDD47DB35A07AD55E69303E34C2838C43",
+                       "rootWidth":  "405",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 405 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "fbc42.svg",
+                       "path":  "public/assets/figma/fbc42.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/fbc42.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgEllipse32"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/fbc42.svg",
+                       "bytes":  257,
+                       "sha256":  "C1CE33E754C7AED56ECDEE047544E562F80D130B705488287BBBDEA8AE0A07A3",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "79e5b.svg",
+                       "path":  "public/assets/figma/79e5b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/79e5b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "11:2862",
+                                        "name":  "imgFrame323"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/30f6f989-6097-48ed-b24a-b30a3510f5af/79e5b.svg",
+                       "bytes":  342,
+                       "sha256":  "EE503666BBB95E56437421F3145DFB15D6B21D0ED0EE7483FC8B807374BC5BCF",
+                       "rootWidth":  "39",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 39 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "3c6c3.svg",
+                       "path":  "public/assets/figma/3c6c3.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/3c6c3.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/3c6c3.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgX"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgX"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/3c6c3.svg",
+                       "bytes":  787,
+                       "sha256":  "093C0405AE98704974EA98F831E581144BE8410BB4AADAA40E367594F89BCEFE",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "88a3c.svg",
+                       "path":  "public/assets/figma/88a3c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/88a3c.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/88a3c.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/88a3c.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/88a3c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/88a3c.svg",
+                       "bytes":  491,
+                       "sha256":  "C293E9DDF51016E74411FFA71AAE83A04CEE53060BDD0624623B913F5CD4B4BB",
+                       "rootWidth":  "15.0117",
+                       "rootHeight":  "8.46484",
+                       "viewBox":  "0 0 15.0117 8.46484",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "75804.svg",
+                       "path":  "public/assets/figma/75804.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/75804.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/75804.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/75804.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/75804.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector1"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector1"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/75804.svg",
+                       "bytes":  374,
+                       "sha256":  "A0AC95235F757B6F820778C7641B4DFCBEA6B86B3007FEEBB1EA88D9B9728D6C",
+                       "rootWidth":  "6.43358",
+                       "rootHeight":  "5.73436",
+                       "viewBox":  "0 0 6.43358 5.73436",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "a3c98.svg",
+                       "path":  "public/assets/figma/a3c98.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/a3c98.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/a3c98.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/a3c98.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/a3c98.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgGroup"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgGroup"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgGroup"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgGroup"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/a3c98.svg",
+                       "bytes":  479,
+                       "sha256":  "502D5067F7550430197C65C62645D2513E83F88337A42F2E9008FE4A4EADAE6E",
+                       "rootWidth":  "4.94922",
+                       "rootHeight":  "10.125",
+                       "viewBox":  "0 0 4.94922 10.125",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "1c266.svg",
+                       "path":  "public/assets/figma/1c266.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/1c266.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/1c266.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/1c266.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/1c266.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector2"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector2"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector2"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/1c266.svg",
+                       "bytes":  556,
+                       "sha256":  "D8D5466E16C1FBA7A46FE895157F51F31029390F256BB7C20B832EDB753D8553",
+                       "rootWidth":  "10.5859",
+                       "rootHeight":  "9.94921",
+                       "viewBox":  "0 0 10.5859 9.94921",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "1174b.svg",
+                       "path":  "public/assets/figma/1174b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/1174b.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/1174b.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/1174b.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/1174b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector3"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector3"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector3"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/1174b.svg",
+                       "bytes":  435,
+                       "sha256":  "74177B5F0BC699619FA0299CC25077FC38864199D99AD1DA481B89E41E4001D5",
+                       "rootWidth":  "10",
+                       "rootHeight":  "9.94921",
+                       "viewBox":  "0 0 10 9.94921",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "5f1dc.svg",
+                       "path":  "public/assets/figma/5f1dc.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5f1dc.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/5f1dc.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/5f1dc.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/5f1dc.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector4"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector4"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector4"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5f1dc.svg",
+                       "bytes":  600,
+                       "sha256":  "E6E795DFE25A3D9D5AD477EFEA06552C8B8423B2EF5A3D500B9548472B9F0957",
+                       "rootWidth":  "15.1771",
+                       "rootHeight":  "8.46484",
+                       "viewBox":  "0 0 15.1771 8.46484",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "e1073.svg",
+                       "path":  "public/assets/figma/e1073.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/e1073.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/e1073.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/e1073.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/e1073.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgVector5"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgVector5"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgVector5"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgVector5"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/e1073.svg",
+                       "bytes":  495,
+                       "sha256":  "E97EC91AD93BF0E756547500EB622DCC5D6041B1A943C3DEAB483048BA48B330",
+                       "rootWidth":  "6.59891",
+                       "rootHeight":  "5.89858",
+                       "viewBox":  "0 0 6.59891 5.89858",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "5561e.svg",
+                       "path":  "public/assets/figma/5561e.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5561e.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/5561e.svg",
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/5561e.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/5561e.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgFacebook1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgFacebook1"
+                                    },
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgFacebook1"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgFacebook1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5561e.svg",
+                       "bytes":  644,
+                       "sha256":  "989807E1D00EC515D541E0C737162EF3C086D676E06FCF40225D78B85CB23E6F",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f74bc.svg",
+                       "path":  "public/assets/figma/f74bc.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/f74bc.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLogout"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/f74bc.svg",
+                       "bytes":  786,
+                       "sha256":  "2994A232290CFF66BD1ED55239CF8AF6186615D6C36CD7895BE887294F649AE3",
+                       "rootWidth":  "17.7779",
+                       "rootHeight":  "16.9167",
+                       "viewBox":  "0 0 17.7779 16.9167",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "29138.svg",
+                       "path":  "public/assets/figma/29138.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/29138.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/29138.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgGroup4"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgGroup4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/29138.svg",
+                       "bytes":  375,
+                       "sha256":  "0FF55C193B808AFD4687BBE57909E205132DF46D8D4FD37E2CE9547DA6237377",
+                       "rootWidth":  "40",
+                       "rootHeight":  "8",
+                       "viewBox":  "0 0 40 8",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "88722.svg",
+                       "path":  "public/assets/figma/88722.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/88722.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/88722.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine3"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine3"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/88722.svg",
+                       "bytes":  250,
+                       "sha256":  "4F07CEBB29D8857EDF57277D061047B49BB72D9734F766027E999698592EAF2F",
+                       "rootWidth":  "104",
+                       "rootHeight":  "2",
+                       "viewBox":  "0 0 104 2",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "a1082.svg",
+                       "path":  "public/assets/figma/a1082.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/a1082.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgArrowDown2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/a1082.svg",
+                       "bytes":  371,
+                       "sha256":  "68926A037170DDD74043FED37D6ACBD665FF4EA54655CCE870B6D0BD87F57E49",
+                       "rootWidth":  "10.8333",
+                       "rootHeight":  "6.16667",
+                       "viewBox":  "0 0 10.8333 6.16667",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "51942.svg",
+                       "path":  "public/assets/figma/51942.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/51942.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/51942.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine4"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine4"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/51942.svg",
+                       "bytes":  234,
+                       "sha256":  "1F34D3D38AB958E2D449D56AE205B4606D7A68AE4A34C778C8EAC0E618F2C91F",
+                       "rootWidth":  "65",
+                       "rootHeight":  "1",
+                       "viewBox":  "0 0 65 1",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "3e723.svg",
+                       "path":  "public/assets/figma/3e723.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/3e723.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/3e723.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgShopping1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgShopping1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/3e723.svg",
+                       "bytes":  1628,
+                       "sha256":  "87C1891C989D13761042B7EAFED139D7791E9C95FA8BD91062682BF5A4396052",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "149fd.svg",
+                       "path":  "public/assets/figma/149fd.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/149fd.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/149fd.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgHeart1"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgHeart1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/149fd.svg",
+                       "bytes":  1792,
+                       "sha256":  "5E54B72E7DAD45E8EB429734267BE70E8EDD9CE5A2A250C86FC908C0BF729553",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "dec44.svg",
+                       "path":  "public/assets/figma/dec44.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/dec44.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/dec44.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgFrame"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgFrame"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/dec44.svg",
+                       "bytes":  1228,
+                       "sha256":  "7E74C795D766357B6B5A82FA6C79CF512DC1813B4751D9570AD45BBC6CA1D808",
+                       "rootWidth":  "19.9913",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 19.9913 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "5cb53.svg",
+                       "path":  "public/assets/figma/5cb53.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5cb53.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgHide"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/5cb53.svg",
+                       "bytes":  1318,
+                       "sha256":  "88A2AD3213B58F9071A9B88D8ED01AA501A08E1557C069470F7A4F29F934B8F4",
+                       "rootWidth":  "18.9814",
+                       "rootHeight":  "14.645",
+                       "viewBox":  "0 0 18.9814 14.645",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f0bae.svg",
+                       "path":  "public/assets/figma/f0bae.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/f0bae.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/f0bae.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine7"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine7"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/f0bae.svg",
+                       "bytes":  237,
+                       "sha256":  "8592CB4E8AEAD9944F0B9EBD05C19BA726DE74856A18751363C1C56E32644AFE",
+                       "rootWidth":  "179",
+                       "rootHeight":  "1",
+                       "viewBox":  "0 0 179 1",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "10a7c.svg",
+                       "path":  "public/assets/figma/10a7c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/10a7c.svg",
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/10a7c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:115",
+                                        "name":  "imgLine8"
+                                    },
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLine8"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/bb18f6a0-d5ac-4f8f-85c0-1b5a52a763c0/10a7c.svg",
+                       "bytes":  237,
+                       "sha256":  "05163ACAB958D6854AFBB6E48CC283A357F1A1BDB7B9E51ACE253D1BBCD6F401",
+                       "rootWidth":  "179",
+                       "rootHeight":  "1",
+                       "viewBox":  "0 0 179 1",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "400d7.svg",
+                       "path":  "public/assets/figma/400d7.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/400d7.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgLogout"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/400d7.svg",
+                       "bytes":  786,
+                       "sha256":  "2994A232290CFF66BD1ED55239CF8AF6186615D6C36CD7895BE887294F649AE3",
+                       "rootWidth":  "17.7779",
+                       "rootHeight":  "16.9167",
+                       "viewBox":  "0 0 17.7779 16.9167",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "feb57.svg",
+                       "path":  "public/assets/figma/feb57.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/feb57.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgArrowDown2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/feb57.svg",
+                       "bytes":  371,
+                       "sha256":  "68926A037170DDD74043FED37D6ACBD665FF4EA54655CCE870B6D0BD87F57E49",
+                       "rootWidth":  "10.8333",
+                       "rootHeight":  "6.16667",
+                       "viewBox":  "0 0 10.8333 6.16667",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f5a88.svg",
+                       "path":  "public/assets/figma/f5a88.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/f5a88.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1022",
+                                        "name":  "imgHide"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/e9f39c5c-99ff-4ef3-86cf-4cd8c4499387/f5a88.svg",
+                       "bytes":  1318,
+                       "sha256":  "88A2AD3213B58F9071A9B88D8ED01AA501A08E1557C069470F7A4F29F934B8F4",
+                       "rootWidth":  "18.9814",
+                       "rootHeight":  "14.645",
+                       "viewBox":  "0 0 18.9814 14.645",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "76790.svg",
+                       "path":  "public/assets/figma/76790.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/76790.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgHide"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/76790.svg",
+                       "bytes":  3806,
+                       "sha256":  "EFEF07737945F26D9A34CD61ACFCDCD078C5E2C174BCB8EDB438FBC7989843EE",
+                       "rootWidth":  "16.6667",
+                       "rootHeight":  "14.3942",
+                       "viewBox":  "0 0 16.6667 14.3942",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "61106.svg",
+                       "path":  "public/assets/figma/61106.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/61106.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/61106.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgArrowDown"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgArrowDown"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/61106.svg",
+                       "bytes":  602,
+                       "sha256":  "8DB20352F3F9724C6F3EE888D3F66703C59374B51B251F83A72E2900526FCC7A",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "55e96.svg",
+                       "path":  "public/assets/figma/55e96.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/55e96.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgUser"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/55e96.svg",
+                       "bytes":  1422,
+                       "sha256":  "BB13740B6296B8B924F9F0CCAFB9B4FF4F0AC6FE338523B6C5362983CF109662",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "8a4e9.svg",
+                       "path":  "public/assets/figma/8a4e9.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8a4e9.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgLocation"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8a4e9.svg",
+                       "bytes":  1540,
+                       "sha256":  "EC088C3536AF765056024470C1015FF5F2FC9329DBD84B81B8D6A618F63E3828",
+                       "rootWidth":  "13.7497",
+                       "rootHeight":  "16.2502",
+                       "viewBox":  "0 0 13.7497 16.2502",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "0586d.svg",
+                       "path":  "public/assets/figma/0586d.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/0586d.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/0586d.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgShopping1"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgShopping1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/0586d.svg",
+                       "bytes":  1617,
+                       "sha256":  "DB0AE6853D91D741CB04554899FCC04E21194B00D8A57277B40CDEC7B9B56A14",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "8b13b.svg",
+                       "path":  "public/assets/figma/8b13b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8b13b.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/8b13b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgHeart1"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgHeart1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8b13b.svg",
+                       "bytes":  1778,
+                       "sha256":  "D3B60820CC91342D7A0921434A30D5C18AC05DF8A91BC88769A16667A967C169",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "83e14.svg",
+                       "path":  "public/assets/figma/83e14.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/83e14.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/83e14.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgActivity"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgActivity"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/83e14.svg",
+                       "bytes":  1066,
+                       "sha256":  "D77DCB38BBB312810D14D01A371C65FBB520FB8588881D1A5043E2AF86CB87A3",
+                       "rootWidth":  "15.8547",
+                       "rootHeight":  "15.9022",
+                       "viewBox":  "0 0 15.8547 15.9022",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "65d5d.svg",
+                       "path":  "public/assets/figma/65d5d.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/65d5d.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/65d5d.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgDownload"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgDownload"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/65d5d.svg",
+                       "bytes":  798,
+                       "sha256":  "462F0CBCC9AEE465F8572BB81DB07FBE5216DE42B465A36D33636FCE92EC9A92",
+                       "rootWidth":  "15.375",
+                       "rootHeight":  "15.4565",
+                       "viewBox":  "0 0 15.375 15.4565",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "8d6ff.svg",
+                       "path":  "public/assets/figma/8d6ff.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8d6ff.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/8d6ff.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgDangerTriangle"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgDangerTriangle"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/8d6ff.svg",
+                       "bytes":  918,
+                       "sha256":  "46AC7C89DAFB538EF08306BF362C373FCD107B368A0AFC3ACD71E8D3F096854F",
+                       "rootWidth":  "15.7499",
+                       "rootHeight":  "15",
+                       "viewBox":  "0 0 15.7499 15",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "dfa3f.svg",
+                       "path":  "public/assets/figma/dfa3f.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/dfa3f.svg",
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/dfa3f.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgLine2"
+                                    },
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgLine2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/dfa3f.svg",
+                       "bytes":  262,
+                       "sha256":  "BEE6212B2D8696600DAB484E4304B9E81465E8F18A04505840980C63451A9E33",
+                       "rootWidth":  "310",
+                       "rootHeight":  "0.3",
+                       "viewBox":  "0 0 310 0.3",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "eaa87.svg",
+                       "path":  "public/assets/figma/eaa87.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/eaa87.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgLogout1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/eaa87.svg",
+                       "bytes":  786,
+                       "sha256":  "E01152C35CF54CCBB0783622D5BD054016F62BBCF89F432A162541E30AF2630D",
+                       "rootWidth":  "17.7779",
+                       "rootHeight":  "16.9167",
+                       "viewBox":  "0 0 17.7779 16.9167",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "19cc8.svg",
+                       "path":  "public/assets/figma/19cc8.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/19cc8.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1238",
+                                        "name":  "imgImage2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/34c63ea3-a605-4cab-a09a-fb2d547e099b/19cc8.svg",
+                       "bytes":  1126,
+                       "sha256":  "3857A127BA1E16F906EBE23763D555EC7A577D70EDAE52007084C7802E1AB4A8",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "afd8a.svg",
+                       "path":  "public/assets/figma/afd8a.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/afd8a.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgUser"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/afd8a.svg",
+                       "bytes":  1422,
+                       "sha256":  "5C1852A25A331FAE8B0494F744D5B00D9415310B383C06C0B727D9DC6EC1DBC0",
+                       "rootWidth":  "18",
+                       "rootHeight":  "18",
+                       "viewBox":  "0 0 18 18",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "6bc28.svg",
+                       "path":  "public/assets/figma/6bc28.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/6bc28.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgLocation"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/6bc28.svg",
+                       "bytes":  1530,
+                       "sha256":  "FDEFB443AB867956696CD7578CFF106103F0A29058F319F7BD10902E764661C2",
+                       "rootWidth":  "13.7497",
+                       "rootHeight":  "16.2502",
+                       "viewBox":  "0 0 13.7497 16.2502",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "eef82.svg",
+                       "path":  "public/assets/figma/eef82.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/eef82.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgLogout1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/eef82.svg",
+                       "bytes":  786,
+                       "sha256":  "E01152C35CF54CCBB0783622D5BD054016F62BBCF89F432A162541E30AF2630D",
+                       "rootWidth":  "17.7779",
+                       "rootHeight":  "16.9167",
+                       "viewBox":  "0 0 17.7779 16.9167",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f7226.svg",
+                       "path":  "public/assets/figma/f7226.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/f7226.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgArrowDown1"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/f7226.svg",
+                       "bytes":  602,
+                       "sha256":  "356466FCD4755805C10A3ACACD66151585DA5CB155C81E9ADAFC3E4C4502CBAA",
+                       "rootWidth":  "20",
+                       "rootHeight":  "20",
+                       "viewBox":  "0 0 20 20",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "d1881.svg",
+                       "path":  "public/assets/figma/d1881.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/d1881.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "9:1670",
+                                        "name":  "imgEllipse22"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/9cf4d6ee-b099-4d2b-a4e9-c1bdb0b1ea78/d1881.svg",
+                       "bytes":  258,
+                       "sha256":  "9C81B17C55C14E8B6683E2482027DD6BDD695F996BBBFCBD0C367B12EEA96952",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "24586.svg",
+                       "path":  "public/assets/figma/24586.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/24586.svg",
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/24586.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgEllipse38"
+                                    },
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgEllipse38"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/24586.svg",
+                       "bytes":  258,
+                       "sha256":  "9179EF5F31877BC35A75883422837F3AD8E74F5748886FA27F409483455D7FC0",
+                       "rootWidth":  "35",
+                       "rootHeight":  "35",
+                       "viewBox":  "0 0 35 35",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "90c5a.svg",
+                       "path":  "public/assets/figma/90c5a.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/90c5a.svg",
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/90c5a.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgArrowLeft2"
+                                    },
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgArrowLeft2"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/90c5a.svg",
+                       "bytes":  450,
+                       "sha256":  "90E5F2C305A50570C4B29CE660018EB35698BEB3E7276C4221F05C4935394891",
+                       "rootWidth":  "13.1669",
+                       "rootHeight":  "7.33345",
+                       "viewBox":  "0 0 13.1669 7.33345",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "057e5.svg",
+                       "path":  "public/assets/figma/057e5.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/057e5.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgGroup65"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/057e5.svg",
+                       "bytes":  408,
+                       "sha256":  "3EC4FA796CA7590CC71AAEB5C66AFCFD927A3D56501B095AFAA1302CA485BEDD",
+                       "rootWidth":  "24",
+                       "rootHeight":  "24",
+                       "viewBox":  "0 0 24 24",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "79655.svg",
+                       "path":  "public/assets/figma/79655.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/79655.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgGroup72"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/79655.svg",
+                       "bytes":  408,
+                       "sha256":  "9D0E12393662E8134836E5316600F5C2B86136B89025CA5C97E43AA9377FCEFB",
+                       "rootWidth":  "24",
+                       "rootHeight":  "24",
+                       "viewBox":  "0 0 24 24",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "6afc8.svg",
+                       "path":  "public/assets/figma/6afc8.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/6afc8.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:360",
+                                        "name":  "imgDelete"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/a9f4ec3f-6148-45a0-8e54-4687ab6c2a92/6afc8.svg",
+                       "bytes":  772,
+                       "sha256":  "6C6FD9123B9250DF5561221CB19D2E39D4621818DEFB61012CD0665660202499",
+                       "rootWidth":  "17.6505",
+                       "rootHeight":  "19.9838",
+                       "viewBox":  "0 0 17.6505 19.9838",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "a616c.svg",
+                       "path":  "public/assets/figma/a616c.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/a616c.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgGroup87"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/a616c.svg",
+                       "bytes":  396,
+                       "sha256":  "00B69EE0EACAAACBBC474A9724DF7A7F35D0949D5856E427385D1233C41B554D",
+                       "rootWidth":  "3",
+                       "rootHeight":  "15",
+                       "viewBox":  "0 0 3 15",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "de520.svg",
+                       "path":  "public/assets/figma/de520.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/de520.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgGroup90"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/de520.svg",
+                       "bytes":  341,
+                       "sha256":  "8271C209A2D34B496570DE9BB9892B323997EFBBC51EFD9A9B7B14DAF5E83BBD",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "fd4f7.svg",
+                       "path":  "public/assets/figma/fd4f7.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/fd4f7.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgEllipse46"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/fd4f7.svg",
+                       "bytes":  257,
+                       "sha256":  "44919C0B9ADA2266B9EDC2F5519BE54D205E02E35078D759547BCDE1390F6040",
+                       "rootWidth":  "16",
+                       "rootHeight":  "16",
+                       "viewBox":  "0 0 16 16",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "a79bb.svg",
+                       "path":  "public/assets/figma/a79bb.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/a79bb.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgEllipse44"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/a79bb.svg",
+                       "bytes":  256,
+                       "sha256":  "5DA9BA21C6BAC4C3B91D6454B62BEEAC603BE185B9FC8C53AA280AFABE1B0A16",
+                       "rootWidth":  "40",
+                       "rootHeight":  "40",
+                       "viewBox":  "0 0 40 40",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "75870.svg",
+                       "path":  "public/assets/figma/75870.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/75870.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:748",
+                                        "name":  "imgWallet"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/4c2e5301-e147-4899-86d4-794848353aa0/75870.svg",
+                       "bytes":  1048,
+                       "sha256":  "7B4310B7CE5092273FFAB3A198330F3707CB01A134A615CAAAD745ABE34895C3",
+                       "rootWidth":  "20.101",
+                       "rootHeight":  "18.5781",
+                       "viewBox":  "0 0 20.101 18.5781",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "f587b.svg",
+                       "path":  "public/assets/figma/f587b.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/f587b.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/f587b.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgLine7"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgLine7"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/f587b.svg",
+                       "bytes":  237,
+                       "sha256":  "5C6BF27D3E457525AFF816732A740FDDCB3FEAEDC6C404EDA0199BBB60ECDB10",
+                       "rootWidth":  "110",
+                       "rootHeight":  "1",
+                       "viewBox":  "0 0 110 1",
+                       "validated":  true
+                   },
+                   {
+                       "filename":  "76f46.svg",
+                       "path":  "public/assets/figma/76f46.svg",
+                       "urls":  [
+                                    "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/76f46.svg",
+                                    "https://www.figma.com/api/mcp/asset/0fe727a5-5462-4a66-858c-6cf1e3af7abc/76f46.svg"
+                                ],
+                       "uses":  [
+                                    {
+                                        "frame":  "16:1022",
+                                        "name":  "imgHide"
+                                    },
+                                    {
+                                        "frame":  "16:1228",
+                                        "name":  "imgHide"
+                                    }
+                                ],
+                       "status":  "downloaded",
+                       "fetchedFrom":  "https://www.figma.com/api/mcp/asset/8636e5a7-bcad-4aa7-9b2d-b7ac1f37147b/76f46.svg",
+                       "bytes":  1309,
+                       "sha256":  "26F63404D8DA190B102B37E1B171DFE633D061830F4263344EEF8F7895BBD2CB",
+                       "rootWidth":  "15.3823",
+                       "rootHeight":  "13.3305",
+                       "viewBox":  "0 0 15.3823 13.3305",
+                       "validated":  true
+                   }
+               ]
+}
