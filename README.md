@@ -1,5 +1,7 @@
 # Kurio — preparação técnica
 
+A aplicação é uma simulação local de marketplace: MSW mantém contas/carteiras/cotações/pedidos e intercepta REST/Socket.IO. Referências `SIM-…` são fictícias; nenhum NFT, valor ou transação é enviado a uma blockchain. O explorador do recibo é local e identificado. Diagnósticos ficam em `/integration` ou no console do modo demo; as telas do produto usam os textos da referência. Revisão e capturas antes/depois: [docs/visual-refinement.md](docs/visual-refinement.md).
+
 Credenciais fictícias: `ana@kurio.test` e `bruno@kurio.test`, senha `Kurio123!` para ambos. Cadastro cria outras contas locais. Cupom válido `KURIO10` (10%); expirado `DROP2025`; outros inválidos. Use exclusivamente dados fictícios na simulação.
 
 Esta entrega contém catálogo `/`, detalhe `/nfts/emerald-042`, login `/login`, cadastro `/signup`, carrinho `/cart`, perfil `/account/profile`, carteiras `/account/wallets`, pagamento `/checkout`, recibo privado `/orders/$orderId` e prova preservada `/integration`. Tudo é simulado localmente por MSW. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); decisões: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências e roteiro atual em [docs/checkout-validation.md](docs/checkout-validation.md). Lighthouse, publicação e refinamento visual finais pendentes.

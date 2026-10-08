@@ -1,6 +1,10 @@
 # Plano de execução
 
-## Acompanhamento vigente
+## Revisão visual — etapa atual
+
+P05/P14: checkout, recibo, perfil/carteiras/mobile corrigidos, comparação manual com exports em escala1 antes das baselines;27 referências de regressão,150/150 E2E passaram em3,7min sem update, com typecheck/lint/build. Ajustes finais validados por18/18 conta e12/12 pagamento/recibo. Evidência em docs/visual-refinement.md, incluindo limitações/ajuste final direcionado. Funcionalidades existentes e /integration preservados; não avançar para novas funcionalidades nesta revisão. P14 segue parcial por contraste/zoom/acessibilidade integral, SVG/contextos pendentes; P15/Lighthouse, publicação e P16/entrega final ainda não concluídos.
+
+## Acompanhamento da entrega anterior
 
 Checks executados: typecheck/lint/build;144/144 E2E em6,1min, incluindo21 baselines sem update, no build preview e três tamanhos. P12/P13 verificadas para cenários documentados; P14 parcial pelas auditorias finais restantes. Origem Git já configurada; nenhum push/deploy executado.
 

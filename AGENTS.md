@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual abrange primeiro corrigir/validar navegação Mercado e badge global com commit isolado; em seguida perfil, avatar/senha, carteiras, pagamento simulado, pedidos idempotentes e confirmação, com API/eventos, responsividade, testes, documentação e commits. Preservar os fluxos existentes e /integration. Não alterar Figma ou acrescentar edição administrativa de NFT, blockchain ou pagamento real. Lighthouse, publicação pública e ajustes visuais restantes ficam explicitamente para a etapa final; não declarar o desafio completo. O enunciado preservado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/design-reference.md.
+A autorização atual prioriza a revisão visual das telas implementadas, especialmente pagamento e confirmação, usando exports/contextos disponíveis, capturas determinísticas antes/depois, correções, testes e baselines somente após revisão. Revisar também perfil, carteiras e mobile; preservar catálogo, detalhe, carrinho, sessão, idempotência, cotação, pedidos, isolamento, Socket.IO e /integration. Não avançar para novas funcionalidades, alterar Figma ou acrescentar blockchain/pagamento real. Lighthouse e publicação pública continuam pendentes; não declarar o desafio completo. O enunciado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/design-reference.md.
 
 ## Organização e responsabilidades
 
@@ -15,6 +15,8 @@ A autorização atual abrange primeiro corrigir/validar navegação Mercado e ba
 - Confirmação depende de pedido confirmed na simulação; idempotência e snapshot preservados. Não confirmar por navegação, temporizador ou estado local de UI.
 
 ## Implementação e qualidade
+
+- Nas telas do produto, não adicionar avisos genéricos de simulação nem detalhes técnicos (Socket.IO, versões, cache, diagnósticos). Documentar a natureza simulada no README/ARCHITECTURE; diagnósticos ficam em /integration ou ferramentas de desenvolvimento. Manter apenas feedback necessário para decisões: preço/estoque alterados, sessão expirada, conexão recusada e falha de pagamento. Exploração usa destino local identificado, sem sugerir registro em blockchain real.
 
 - Implementar pelos IDs/critérios de SPEC; testes acompanham cada fluxo e falhas. Não marcar requisito atendido sem execução e evidência.
 - Reutilizar assets locais com origem; manter exports originais, não usar screenshots de tela como UI nem substituições silenciosas. Documentar desvios de design/acessibilidade.

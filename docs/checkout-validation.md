@@ -1,5 +1,7 @@
 # Perfil, pagamento e pedidos — evidências de 2026-10-08
 
+Revisão visual posterior: composição atual, capturas, baselines e verificações finais em [visual-refinement.md](visual-refinement.md). As descrições visuais e contagens abaixo registram a entrega anterior; seus contratos funcionais foram preservados.
+
 ## Escopo entregue
 
 Correções Mercado/badge estão no commit c1534ed e em navigation-cart-fixes.md. Perfil/avatar/senha/carteiras estão no commit b0ef2cb e em account-validation.md. Esta entrega acrescenta `/checkout` e `/orders/$orderId`, preservando catálogo, detalhe, autenticação, favoritos, carrinho e `/integration`. A aplicação não usa blockchain, extensões ou pagamentos reais.

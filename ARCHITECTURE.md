@@ -1,5 +1,7 @@
 # Arquitetura — marketplace simulado
 
+Revisão visual: checkout segue formulário/resumo desktop e expansões mobile; seleção/desconexão usa diálogo contextual, com carteira/provider/rede ainda controlados pela API/Query. Recibo é diálogo nativo sobre fundo estável; acesso direto/refresh continua consultando pedido privado e sucesso exige confirmed. Campos internos/versões não aparecem na UI; testes verificam versões por REST e observam order.updated no console do modo demo, disparado exclusivamente no listener Socket.IO real. Menu de conta e sidebar compartilham a mutation de logout já existente. Modal local de exploração usa o snapshot e identifica a referência fictícia; não há blockchain/Etherscan. Os dados e a natureza simulada ficam documentados, sem banners genéricos nas telas. Evidências/desvios em docs/visual-refinement.md; contrato/idempotência/cache/reconciliação abaixo preservados.
+
 ## Estado atual e pagamento/pedidos
 
 Catálogo, detalhe, sessão, favoritos, carrinho, perfil, carteiras, pagamento e recibo estão implementados na simulação. Os relatos anteriores são históricos; esta seção prevalece para o estado atual. Evidências e limites em docs/checkout-validation.md. Lighthouse, publicação e refinamento visual integral seguem pendentes.

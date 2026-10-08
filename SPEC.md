@@ -1,6 +1,10 @@
 # Especificação do desafio
 
-## Estado vigente — perfil, pagamento e pedidos
+## Revisão visual vigente
+
+UI-01/02/03 e QA-02 ampliados: checkout/formulário/resumo e modal de confirmação revisados contra os exports, com dados da API; perfil/carteiras/mobile preservam campos e fluxos. Textos técnicos/genéricos de simulação removidos do produto; política registrada em AGENTS. Typecheck/lint/build passaram;150/150 E2E em3,7min,390/768/1440, incluindo27 visuais sem update. Ajustes finais:18/18 conta e12/12 pagamento/recibo passaram nas verificações direcionadas. Comparação manual adicional em414 e capturas antes/depois/medidas/desvios em [docs/visual-refinement.md](docs/visual-refinement.md). Idempotência, cotação, sessão, pedidos, isolamento e Socket.IO continuam cobertos. SVG original da confirmação/contextos bloqueados, fidelidade integral, auditorias finais e publicação seguem pendentes; não marcar gates EL/DE concluídos.
+
+## Entrega anterior — perfil, pagamento e pedidos
 
 Verificação executada: typecheck/lint/build passaram; suíte144/144 em6,1min no preview,390/768/1440, com33 pagamento/pedido,12 conta e21 regressões visuais. Relatório e composição em docs/checkout-validation.md. Esses resultados não substituem Lighthouse, auditorias finais ou publicação.
 

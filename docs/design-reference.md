@@ -1,5 +1,7 @@
 # Referência visual — Kurio
 
+Revisão implementada em2026-10-08: docs/visual-refinement.md separa medidas confirmadas, estimativas dos exports, capturas DOM e desvios necessários. Consulta adicional de pagamento bloqueada pelo limiteStarter; nada foi alterado no Figma. Propostas anteriores de banners/provedores “simulados” na UI foram substituídas por textos normais da referência e documentação da natureza simulada, conforme nova instrução do usuário.
+
 Análise registrada em 2026-10-07. Fonte visual: [cópia do Figma](https://www.figma.com/design/y1ACuUlG8c6eRylaa4qWI2/Frontend-Challenge--Copy-?node-id=0-1), página `0:1`, “Marketplace de NFTs GreenMint”. O enunciado em challenge-original.md define comportamento; medidas visuais não substituem suas regras. Nenhuma edição no Figma foi feita.
 
 ## Evidências e alcance
