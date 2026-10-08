@@ -1,5 +1,9 @@
 # Especificação do desafio
 
+## Fechamento funcional vigente
+
+Matriz de requisitos, aceite, implementação conferida e testes em [docs/functional-closure.md](docs/functional-closure.md). Corrigidos precisão18 no incremento de preço, revalidação de cupom expirado/taxa mutável, falha real de transporte REST, reset integral, trava de clique repetido e shimmer comum. Novos testes cobrem envio com sessão expirada/retomada, cotação, precisão, reset e rede; feedback de expiração/estado do pedido acessível. Resultados reais estão na matriz, sem extrapolar para auditorias ou produção. Composição visual/baselines preservadas. EL-01 segue parcial porque Lighthouse ainda não participa efetivamente; QA-03, DE-02 e certificação de checkout limpo continuam pendentes.
+
 ## Revisão visual vigente
 
 UI-01/02/03 e QA-02 ampliados: checkout/formulário/resumo e modal de confirmação revisados contra os exports, com dados da API; perfil/carteiras/mobile preservam campos e fluxos. Textos técnicos/genéricos de simulação removidos do produto; política registrada em AGENTS. Typecheck/lint/build passaram;150/150 E2E em3,7min,390/768/1440, incluindo27 visuais sem update. Ajustes finais:18/18 conta e12/12 pagamento/recibo passaram nas verificações direcionadas. Comparação manual adicional em414 e capturas antes/depois/medidas/desvios em [docs/visual-refinement.md](docs/visual-refinement.md). Idempotência, cotação, sessão, pedidos, isolamento e Socket.IO continuam cobertos. SVG original da confirmação/contextos bloqueados, fidelidade integral, auditorias finais e publicação seguem pendentes; não marcar gates EL/DE concluídos.
@@ -49,7 +53,7 @@ As evidências acima são operações realmente executadas, não aceite das part
 - Escopo: nove telas, descoberta, compra e conta, desktop/tablet/mobile. Blockchain, extensões e pagamentos reais excluídos. Páginas editoriais, suporte, atividade, ofertas e downloads excluídos.
 - Interfaces auxiliares fora do escopo devem informar indisponibilidade ou levar a destino real coerente, sem falso sucesso. Newsletter, OAuth real, scanner e estúdio do criador não serão implementados. Botões sociais da referência terão aviso explícito de ação fora do escopo, sem criar sessão; login/cadastro REST continuam completos. Favoritos pertencem ao fluxo obrigatório.
 
-## Stack e responsabilidades propostas
+## Stack e responsabilidades
 
 | ID | Obrigação / critério de aceite | Verificação prevista |
 | --- | --- | --- |
@@ -65,7 +69,7 @@ Proposta de build: Vite, npm e lockfile; versões serão escolhidas e fixadas ap
 
 ## Nove telas e critérios de aceite
 
-| ID / rota proposta | Critério de aceite | Verificação prevista |
+| ID / rota | Critério de aceite | Verificação prevista |
 | --- | --- | --- |
 | FL-01 Início `/` | Destaques, catálogo, busca, coleções/redes combináveis, faixa de preço, ordenação e paginação. URL validada contém `q`, `collections`, `networks`, `minPrice`, `maxPrice`, `sort`, `page`; filtros reiniciam page=1. API recebe esses parâmetros; refresh/back/forward restauram resultados. Respostas obsoletas não vencem a busca atual. | E2E busca+combinação+ordem+paginação+histórico; vazio, 500, latência fora de ordem; visual desktop/mobile. |
 | FL-02 Detalhe `/nfts/$nftId` | Acesso direto, galeria com seleção/ampliação, dados/atributos, edição, quantidade inteira válida, favoritos autenticados e compra. 404 recuperável; edição esgotada e limite impedem ação inválida. Comprar adiciona a seleção ao carrinho e inicia checkout; adicionar ao carrinho permite continuar. Favorito persiste e faz atualização otimista com rollback. | E2E detalhe direto/404/edição/limite, galeria, favorito sucesso/falha/refresh; visual. |
@@ -89,11 +93,11 @@ Proposta de build: Vite, npm e lockfile; versões serão escolhidas e fixadas ap
 | IN-06 | Tentativa de pedido tem chave persistida por usuário e payload estável; chave igual+payload igual retorna mesmo pedido; diferente retorna conflito. Timeout mantém chave. Cotação revisada é vinculada à tentativa; nova revisão não reaproveita chave com payload distinto. | E2E duplo clique, timeout após criação, refresh e 409 por chave alterada. |
 | IN-07 | Estados pending → confirmed/refused; terminais não regridem. Snapshot do pedido é congelado. Confirmação remove somente quantidades compradas uma única vez na simulação; itens acrescentados durante pending ficam. | E2E duplicatas, eventos antigos e carrinho alterado durante compra. |
 
-Política inicial proposta: staleTime de 30s para catálogo/detalhe e 0 para recursos privados/cotação; refetch ao focar/reconectar para recursos ativos. Consultas somente leitura: até 2 retries em conexão/5xx, sem retry de 4xx; mutations sem retry automático. Pending reconcilia por GET ao retornar/reconectar/refresh, com consulta periódica de recuperação se o socket falhar. Documentar parâmetros finais em ARCHITECTURE.md. Persistência de negócio fica nos mocks, não em uma segunda cópia do cache Query. Guard consulta sessão antes de renderizar dados privados.
+Política inicial histórica (substituída pela política real de ARCHITECTURE): staleTime de 30s para catálogo/detalhe e 0 para recursos privados/cotação; refetch ao focar/reconectar para recursos ativos. Consultas somente leitura: até 2 retries em conexão/5xx, sem retry de 4xx; mutations sem retry automático. Pending reconcilia por GET ao retornar/reconectar/refresh, com consulta periódica de recuperação se o socket falhar. Documentar parâmetros finais em ARCHITECTURE.md. Persistência de negócio fica nos mocks, não em uma segunda cópia do cache Query. Guard consulta sessão antes de renderizar dados privados.
 
-Sessão proposta: token opaco e sessão na simulação, expiração configurável, hash de senha com salt (Web Crypto) no estado persistido; drafts nunca incluem senha na persistência. Avatar fictício armazenado pela API simulada com validação de formato/tamanho. Persistência local serve apenas à demonstração. Merge do carrinho visitante é idempotente e valida estoque; excessos geram aviso sem perda silenciosa.
+Sessão inicial histórica (contrato real em ARCHITECTURE): token opaco e sessão na simulação, expiração configurável, hash de senha com salt (Web Crypto) no estado persistido; drafts nunca incluem senha na persistência. Avatar fictício armazenado pela API simulada com validação de formato/tamanho. Persistência local serve apenas à demonstração. Merge do carrinho visitante é idempotente e valida estoque; excessos geram aviso sem perda silenciosa.
 
-## Contratos previstos (nomes são propostas)
+## Contratos iniciais (históricos; implementados em ARCHITECTURE)
 
 | Recurso | REST proposto | Dados/erros essenciais |
 | --- | --- | --- |
@@ -111,7 +115,7 @@ Erros tipados: `code`, `message`, `fieldErrors?`, `retryable?`, `currentVersion?
 
 Eventos mínimos: `nft.updated` e `order.updated`, envelope com eventId estável, resourceId, version, payload e escopo de sessão/usuário quando privado. Controle monotônico por recurso: ignorar duplicata/versão antiga; não reaplicar limpeza do carrinho; invalidar/refazer consultas filtradas e cotação para considerar mudanças de ordenação/estoque. Reconexão reconcilia recursos ativos por REST antes de considerar dados atuais. Registrar/liberar listeners no ciclo de vida da sessão.
 
-## Resolução proposta das diferenças do design
+## Resolução inicial das diferenças do design
 
 - Checkout desktop mantém formulário+resumo; mobile preserva cards de carteiras/provedores e acrescenta seções “Dados” e “Revisão” antes do envio. Os mesmos campos, schema e regras servem a todos os tamanhos. Review não é uma décima página obrigatória, mas seção do pagamento.
 - Todos os campos do layout continuam disponíveis. Nome de exibição, e-mail, nome de usuário/perfil e carteira/rede/provider são validados; campos duplicados são ligados ao mesmo dado canônico. ENS/secundária, indicação e observação opcionais. Regras específicas não dadas pelo enunciado (limites de texto, senha e avatar) devem ser documentadas como decisões, não atribuídas à fonte.
@@ -131,7 +135,7 @@ Eventos mínimos: `nft.updated` e `order.updated`, envelope com eventId estável
 | RT-01 | MSW+binding compatível recebe conexão real do socket.io-client, emite ambos os eventos e compartilha estado REST; sem setter/callback direto como substituto do socket. | Prova bloqueante inicial e E2E pelo transporte. |
 | RT-02 | Preço/estoque muda com NFT no carrinho, UI informa e recota; checkout bloqueia aceite antigo. Duplicatas/antigos ignorados, reconexão recupera pendente e sessão antiga é isolada. | E2E cenário completo, reconexão/refresh e usuário A/B. |
 
-Proposta a provar: transporte WebSocket explícito, namespace padrão, eventos JSON de texto, sem acknowledgements ou anexos binários. O [binding oficial](https://github.com/mswjs/socket.io-binding#limitations) documenta essas limitações; compatibilidade de versões e reconnect real ainda não verificados. A prova deve verificar handshake, MSW/worker no build, reconexão automática e interceptação sob HTTPS. Se não funcionar, investigar integração compatível sem substituir o requisito por atualizações diretas de UI.
+Proposta inicial histórica, já comprovada localmente em docs/proof-validation.md e docs/functional-closure.md; HTTPS ainda pendente: transporte WebSocket explícito, namespace padrão, eventos JSON de texto, sem acknowledgements ou anexos binários. O [binding oficial](https://github.com/mswjs/socket.io-binding#limitations) documenta essas limitações; compatibilidade de versões e reconnect real ainda não verificados. A prova deve verificar handshake, MSW/worker no build, reconexão automática e interceptação sob HTTPS. Se não funcionar, investigar integração compatível sem substituir o requisito por atualizações diretas de UI.
 
 ## Interface e acessibilidade
 
@@ -153,14 +157,14 @@ Proposta a provar: transporte WebSocket explícito, namespace padrão, eventos J
 | DE-02 | Deploy obrigatório; URL pública e repositório; publicado corresponde ao commit entregue e permanece acessível. Rotas diretas/refresh, REST e realtime funcionam publicados. | Primeiro deploy cedo, smoke final HTTPS e registro do commit/URL. |
 | DE-03 | README: setup/env/credenciais fictícias/cenários/reset/comandos/falhas. ARCHITECTURE: contratos REST/eventos, sessão/carrinho/cache/reconciliação, limitações/UX/desvios. | Checklist documental contra fonte e execução dos comandos. |
 
-Comandos dev com mocks, build, preview, typecheck, lint e Playwright disponíveis em package.json e README. Lighthouse e atualização de baselines dos frames ainda pendentes. Pesos de avaliação: visual 20, fluxos 20, integração 15, realtime 10, mocks 10, testes 10, acessibilidade 5, performance 5, arquitetura/documentação 5.
+Comandos dev com mocks, build, preview, typecheck, lint e Playwright disponíveis em package.json e README. Lighthouse ainda pendente;27 baselines já versionadas e preservadas nesta etapa. Pesos de avaliação: visual 20, fluxos 20, integração 15, realtime 10, mocks 10, testes 10, acessibilidade 5, performance 5, arquitetura/documentação 5.
 
-## Pendências
+## Rastreabilidade e pendências
 
 Rastreabilidade da fonte: §§1–3 → FL-01/09 e limites; §2 → ST-01/07; §4 → IN-01/03; §5 → contratos e IN-06; §§6–7 → MK-01/02, RT-01/02, IN-05/07; §8 → UI-01/03; §9 → QA-01/02; §10 → QA-03; §11 → EL-01; §12 → DE-01/03. Regras monetárias/sessão/pedidos de §3 também estão em IN-02/04/06/07.
 
-1. Compatibilidade MSW 2.15.0 + binding 0.2.0 + socket.io-client 4.8.4 provada para nft.updated; order.updated, sessão e reconciliação dos fluxos privados ainda pendentes.
-2. Contextos de detalhe desktop/mobile e confirmação bloquearam por limite Figma; exports locais permitem inspeção visual, não medidas tipográficas exatas. Roboto Mono já local com licença; valor resolvido de font/family ainda pendente.
-3. Vercel configurada; repositório remoto, conta de hospedagem, publicação/URL verificada e ambiente Lighthouse pendentes. Nenhum deploy declarado concluído.
-4. Assets: consultar estado de recuperação no manifesto e README de assets; nenhuma substituição silenciosa.
-5. Prazo informado de dois dias sem início explícito; não inventar data de entrega.
+1. Funcional: conferir matriz de fechamento e resultados reais em docs/functional-closure.md; instalação de checkout limpo ainda não certificada. Não há backend/blockchain real exigido.
+2. Visual/acessibilidade: contexto Figma limitado, SVG original do envelope e fidelidade integral; auditoria completa de contraste/zoom/leitor de tela/CLS ainda pendente.
+3. Lighthouse: runner/comando/configuração e12 medições/HTML/JSON/medianas/LCP/CLS/TBT ainda não executados.
+4. Publicação: Vercel/origin configurados, sem push ou URL pública HTTPS verificada; registrar commit publicado e smoke das rotas/mocks/socket.
+5. Assets/fontes/exports/licenças/enunciado/lockfile preservados. Prazo original de dois dias sem início explícito; não inventar data de entrega.

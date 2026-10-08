@@ -1,5 +1,36 @@
 # Arquitetura — marketplace simulado
 
+## Fechamento funcional vigente
+
+Matriz conferida no código/testes em [docs/functional-closure.md](docs/functional-closure.md). Nenhuma nova composição visual ou infraestrutura. Nova trava síncrona `useRef` controla somente o gesto de enviar o formulário até a mutation terminar; tentativa, chave, cotação e pedido permanecem remotos. Backend ainda protege concorrência/replay e payload distinto409.
+
+Os cenários ganharam erro real de transporte REST (`HttpResponse.error`), expiração de KURIO10 já aplicado e aumento de taxa em0.001ETH. Taxa/cupom podem mudar sem evento: o POST de cotação no envio detecta a alteração, invalida o aceite e a criação revalida novamente. Cupom expirado permanece registrado para explicar o bloqueio, sem desconto e sem remover itens; usuário o remove no carrinho e revisa. Todos os cálculos e incrementos de preço usam BigInt18; `price` recebe string decimal válida até18 casas apenas no endpoint de cenários, sem UI de administração.
+
+POST `/api/__scenario/reset` é reset integral exclusivo da simulação. Para timers de settlement antes de substituir contas, limpa checkout/config, commerce, prova+catálogo/falhas/outage e drafts `kurio-checkout-draft:*`. Storage alheio não é apagado. Recarregar após reset recria Query/listeners. Testes usam contextos isolados; nenhum estado de negócio é alterado por setter. Latências e disparos são configurados nos handlers; novos casos fixam Date em2026-10-08 e usam hold/confirm para estados sensíveis.
+
+Skeleton aplica shimmer compartilhado e respeita reduced-motion. Quantidade do detalhe informa aria-invalid; login explica expiração apenas nesse estado; título do pedido usa aria-live para anunciar transições. Diálogos nativos/labels continuam; auditoria integral de acessibilidade, CLS, contraste e zoom permanece pendente.
+
+### Contratos e política reais, prevalecem sobre propostas históricas
+
+| Recurso | Métodos / rotas `/api` | Autoridade / erros |
+| --- | --- | --- |
+| Sessão/conta | GET/POST/DELETE `/session`, POST `/accounts` | Token/scope/expiração, merge guest na autenticação;401/409/422 |
+| NFTs | GET `/nfts`, GET `/nfts/:id` | Busca/coleções/redes/preço/tab/sort/page, 9/página, dados/edições/versões;404/503/transporte |
+| Favoritos | GET `/favorites`, PUT/DELETE `/favorites/:id` | IDs por usuário; otimista só na projeção Query, rollback/reconciliação;401/404/503 |
+| Carrinho/cupom | GET `/cart`, POST `/cart/items`, PATCH/DELETE `/cart/items/:id`, PUT `/cart/coupon` | Quantidade inteira/edição/estoque; cupom string vazia remove;401/404/409/422 |
+| Cotação | POST `/quotes`, POST `/checkout-quotes` | Carrinho na API; checkout recebe walletId/network e retorna ID/fingerprint/validade120s; ETH string18, warnings/purchasable;401/422 |
+| Conexão | GET/POST/DELETE `/wallet-connection` | Scope+registro+rede/provider, connected/refused/disconnected;401/422 |
+| Tentativa/pedido | GET/PUT/DELETE `/order-attempt`, POST `/orders`, GET `/orders/:id` | Idempotency-Key+payload estável, snapshot, versões e terminal;401/403/404/409/422 |
+| Perfil/avatar/senha | GET/PATCH `/profile`, PUT/DELETE `/profile/avatar`, PATCH `/profile/password` | Identidade canônica, PNG/JPEG/WebP decodificado ≤2MB, PBKDF2-SHA256/salt;401/409/422 |
+| Carteiras | GET/POST `/wallets`, PATCH `/wallets/:id`, PATCH `/wallet-preferences` | Principal/secundária, endereço EVM ou Solana, duplicidade/reuso;401/404/409/422 |
+| Cenários | POST `/__catalog/scenario`, `/__commerce/scenario`, `/__checkout/scenario`, `/__scenario/reset`; prova preservada | Só controles de mocks; reset/reload e receitas no README;400/422 para cenário/preço inválido |
+
+Erros privados: `{code,message,fieldErrors?}`; HTTP503 e network-error ocorrem antes da operação. Respostas catalog/prova têm message e status; UI trata sem inferir sucesso. Timeout de pedido ocorre depois da persistência, excedendo Axios5s. O teste distingue timeout com pedido recuperável de indisponibilidade antes de escrever.
+
+Query: catálogo/detalhe/favoritos staleTime30s; sessão Infinity/refetchOnWindowFocusfalse e timer/401; demais privados staleTime0. Queries e mutations retryfalse, com recuperação explícita; polling2s apenas pending. GETs e consultas canceláveis de cotação recebem AbortSignal. Favoritos cancelam leitura/snapshot/rollback e reconciliam; carrinho cancela/invalida cart/quote/checkout-quote. Chaves públicas incluem busca completa ou ID; privadas incluem scope, recurso e ID/carteira/rede relevantes. Cancelar/remover cache privado e liberar socket ao trocar sessão; callbacks/mutations atrasados verificam scope.
+
+`nft.updated={eventId,resourceId,version}` público e `order.updated={eventId,resourceId,version,userId,scope}` privado. Versões vistas/cache impedem regressão, depois cancel/invalidate→Axios→MSW. Reconexão faz REST dos recursos ativos. Testes UI exercitam Axios e socket.io-client; fetch dos helpers apenas configura/inspeciona a API nos handlers. WebSocket somente, namespace padrão e heartbeat Engine.IO; sem polling de transporte, ACK/binários/rooms, segurança de produção ou sincronização multiaba.
+
 Revisão visual: checkout segue formulário/resumo desktop e expansões mobile; seleção/desconexão usa diálogo contextual, com carteira/provider/rede ainda controlados pela API/Query. Recibo é diálogo nativo sobre fundo estável; acesso direto/refresh continua consultando pedido privado e sucesso exige confirmed. Campos internos/versões não aparecem na UI; testes verificam versões por REST e observam order.updated no console do modo demo, disparado exclusivamente no listener Socket.IO real. Menu de conta e sidebar compartilham a mutation de logout já existente. Modal local de exploração usa o snapshot e identifica a referência fictícia; não há blockchain/Etherscan. Os dados e a natureza simulada ficam documentados, sem banners genéricos nas telas. Evidências/desvios em docs/visual-refinement.md; contrato/idempotência/cache/reconciliação abaixo preservados.
 
 ## Estado atual e pagamento/pedidos
@@ -24,7 +55,11 @@ Perfil/carteiras: contratos e API em features/profile e features/wallets; regras
 
 Correções de navegação/badge em 2026-10-08: CatalogLink coordena hash/scroll na montagem do catálogo, respeita reduced-motion e preserva search/contexto no history do Router; CartLink observa a query global do carrinho por scope e soma quantities. Causas, contrato de acessibilidade e evidência78/78 em docs/navigation-cart-fixes.md. Nenhum contador local independente.
 
-Escopo atual: base, catálogo/detalhe, sessão, autenticação, favoritos e carrinho/cotação. A descrição inicial da prova é histórica; decisões atuais estão nas seções finais. Pagamento, perfil, carteiras, pedidos e confirmação ainda não estão implementados. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
+## Histórico da base e das etapas anteriores
+
+O relato a seguir preserva as decisões da época; escopo, contratos e resultados vigentes estão acima e na matriz.
+
+Escopo naquela etapa: base, catálogo/detalhe, sessão, autenticação, favoritos e carrinho/cotação. A descrição inicial da prova é histórica; decisões atuais estão nas seções finais. Pagamento, perfil, carteiras, pedidos e confirmação ainda não estão implementados. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
 
 Atualização: catálogo e detalhe públicos implementados nesta etapa. A descrição da prova abaixo é histórica; o NFT da prova agora é uma projeção da mesma base canônica do catálogo. Contratos, cache, cenários e diferenças atuais estão na seção final.
 

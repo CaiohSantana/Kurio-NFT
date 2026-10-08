@@ -44,11 +44,11 @@ const scenario = (action, id) => fetch('/api/__checkout/scenario', {
   body: JSON.stringify({ action, id })
 })
 await scenario('hold') // próximo pedido permanece pending
-// Após envio, obter ID exibido na tela e usar:
-await scenario('confirm', 'ID_EXIBIDO')
+// Após envio, obter ID na URL /orders/ID e usar:
+await scenario('confirm', 'ID_DA_URL')
 ```
 
-Outras ações: `refuse` com ID; `order-refused` para próxima compra; `timeout` perde a resposta após persistir pedido e mantém pending; `connection-refused`, `connection-allowed`, `disconnect-wallet`, `auto`, `duplicate`, `old`, `foreign` (estas três com ID). Eventos passam pelo Socket.IO interceptado. Para preço/estoque, endpoint `/api/__catalog/scenario` com `change`/`sold-out`, id `emerald-042`. Para reiniciar tudo, abrir `/preparation`, enviar `reset` aos três endpoints `__commerce/scenario`, `__catalog/scenario`, `__checkout/scenario` e recarregar; não resetar uma compra que deseja recuperar.
+Outras ações: `refuse` com ID; `order-refused` para próxima compra; `timeout` perde a resposta após persistir pedido e mantém pending; `connection-refused`, `connection-allowed`, `disconnect-wallet`, `auto`, `duplicate`, `old`, `foreign` (estas três com ID). Eventos passam pelo Socket.IO interceptado. Para preço/estoque, endpoint `/api/__catalog/scenario` com `change`/`sold-out`, id `emerald-042`. Para reiniciar tudo, abrir `/preparation`, enviar POST `/api/__scenario/reset` e recarregar (reset integral introduzido no fechamento funcional); não resetar uma compra que deseja recuperar.
 
 ## Pendências finais
 

@@ -1,5 +1,9 @@
 # Plano de execução
 
+## Fechamento funcional — etapa atual
+
+P04/P06/P09/P12/P13 e parte funcional de P14 revisados no código/testes. Correções obrigatórias e matriz em docs/functional-closure.md; receitas de falha/reset no README, contratos/cache/cenários atualizados em ARCHITECTURE. Não houve nova reformulação visual ou update de baselines. Resultados executados estão na matriz; encerrar esta etapa após commits/checks. P14 ainda parcial por auditoria integral de acessibilidade/contraste/zoom/CLS; P15 Lighthouse não executada; P03/DE-02 sem URL pública; P16 sem instalação limpa/gates finais. Não declarar o desafio completo nem marcar tarefas futuras por autorização.
+
 ## Revisão visual — etapa atual
 
 P05/P14: checkout, recibo, perfil/carteiras/mobile corrigidos, comparação manual com exports em escala1 antes das baselines;27 referências de regressão,150/150 E2E passaram em3,7min sem update, com typecheck/lint/build. Ajustes finais validados por18/18 conta e12/12 pagamento/recibo. Evidência em docs/visual-refinement.md, incluindo limitações/ajuste final direcionado. Funcionalidades existentes e /integration preservados; não avançar para novas funcionalidades nesta revisão. P14 segue parcial por contraste/zoom/acessibilidade integral, SVG/contextos pendentes; P15/Lighthouse, publicação e P16/entrega final ainda não concluídos.

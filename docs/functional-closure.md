@@ -1,0 +1,67 @@
+# Fechamento funcional — 2026-10-08
+
+Fonte: [enunciado original](challenge-original.md), §§1–12; IDs da [SPEC](../SPEC.md). Inspeção do código e execução dos testes, sem nova reformulação visual. `verificado` significa o critério funcional observado no ambiente local descrito abaixo; não certifica produção, equivalência integral ao Figma ou auditorias ainda não executadas.
+
+## Matriz obrigatória
+
+Locais abaixo são relativos a `src/`; testes relativos a `tests/`. As evidências anteriores permanecem históricas; os resultados desta execução prevalecem.
+
+| Requisito / aceite | Implementação conferida | Teste / evidência | Status |
+| --- | --- | --- | --- |
+| ST-01 React/TS: UI e contratos estritos | `main.tsx`, `features/*/contracts.ts`, `tsconfig.json` na raiz | Typecheck e build; sem backend alternativo nos componentes | verificado |
+| ST-02 Router: nove telas, guards, URLs e retorno seguro | `app/router.tsx`, `auth/RequireSession.tsx`, `auth/contracts.ts` em features | `catalog.spec.ts`: URL malformada, filtros/histórico/refresh; `commerce.spec.ts`: retorno seguro; `checkout.spec.ts`: rotas privadas diretas | verificado |
+| ST-03 Query: remoto/cache/mutations sem segunda cópia de negócio | `features/*/api.ts`, `auth/session.tsx`, `favorites/FavoriteButton.tsx` | Revisão de keys/signal/cleanup; testes de sessão, favoritos, catálogo e checkout | verificado |
+| ST-04 REST/Axios/MSW efetivos | `shared/api/http.ts`, chamadas `http` nas features; `mocks/*handlers.ts`, `main.tsx` | UI chama Axios e respostas trazem `X-Mock-Handler`; helpers de cenários/inspeção usam fetch aos handlers, sem substituir o transporte da aplicação | verificado |
+| ST-05/RT-01 Socket.IO real interceptado | `mocks/socket.ts`, `catalog/use-catalog-socket.ts`, `proof/use-nft-socket.ts` | `integration.spec.ts`: handshake/heartbeat/cleanup; checkout observa `order.updated` no listener real e GET posterior | verificado |
+| ST-06 Tailwind e shadcn/ui participam da UI | `styles.css` importa Tailwind/tokens; `shared/ui/button.tsx` usa CVA/Slot/utilities; Skeleton compartilhado | Uso em filtros, formulários, compra e carregamento; build CSS e regressões visuais | verificado |
+| ST-07 Playwright: E2E e imagens versionadas | `playwright.config.ts`, `tests/*spec.ts`, pastas `*-snapshots` | Chromium 390/768/1440, relatório HTML e traces em falhas, sem update de imagens nesta etapa; Lighthouse em QA-03 abaixo | verificado |
+| FL-01 catálogo: destaques, busca, filtros combinados, ordenação/paginação | `features/catalog/CatalogPage.tsx`, `Filters.tsx`, `contracts.ts`, `mocks/catalog-state.ts` | `catalog.spec.ts`: parâmetros REST, reset de página, vazio, back/forward/refresh e resposta fora de ordem | verificado |
+| FL-02 detalhe: galeria, informações, edição/quantidade, direto/404/esgotado | `features/catalog/DetailPage.tsx`, `catalog/api.ts` | `catalog.spec.ts`: galeria/foco, informações mobile, inexistente, limites e seleção | verificado |
+| FL-06/07 sessão e formulários: cadastro/conflito/login/logout/refresh | `features/auth`, `mocks/commerce-state.ts` | `commerce.spec.ts`: 422/409/credenciais/refresh/hash sem senha em claro | verificado |
+| IN-02 expiração durante envio: preservar destino/draft/tentativa e retomar autenticação | `auth/session.tsx`, `RequireSession.tsx`, `checkout/CheckoutPage.tsx` | `functional-closure.spec.ts`: expire antes de submit → 401 → login → mesmo checkout/draft; expira também com pending e retorna à mesma rota/chave/pedido | verificado |
+| IN-02 isolamento: limpar cache/subscriptions, ignorar respostas/eventos da sessão anterior | `replaceSession`, keys por scope, handlers reautorizam; listener filtra scope/userId/versão | `commerce.spec.ts`: mutation atrasada/cleanup; `checkout.spec.ts`: leitura/evento tardios, token antigo401 e recibo403 | verificado |
+| IN-03 favoritos: autenticação/intenção, persistência, otimista e rollback | `features/favorites/FavoriteButton.tsx`, `auth/AuthPage.tsx`, `mocks/commerce-state.ts` | `commerce.spec.ts`: favorito/remoção retomados, refresh e rollback503 | verificado |
+| FL-03 carrinho: por NFT+edição, quantidades inteiras, limites, remover/vazio | `features/cart`, `mocks/commerce-state.ts` | `commerce.spec.ts`: duas edições, 409, inteiros, remoção, cupom e cotação; badge global em `navigation-cart.spec.ts` | verificado |
+| FL-03/IN-05 visitante: persistência e conciliação única no login | Merge atômico em `commerce-state.authenticate`; identificação/versionamento do guest | `commerce.spec.ts`: replay de login não soma novamente; excesso preservado; logout/troca isolam carrinhos | verificado |
+| IN-04 ETH: strings decimais/BigInt18, cotação autoritativa | `mocks/commerce-state.ts`, `checkout-state.ts`, `catalog-state.ts`; DTOs de quote/order | `functional-closure.spec.ts`: 18 casas, incremento por evento, desconto truncado em 10^-18 e recibo exato | verificado |
+| FL-04 revalidar preço/estoque/cupom/taxa/conexão antes de comprar | Fresh quote no submit e novamente em `createOrder`; fingerprint/validade, seleção de carteira/rede | `checkout.spec.ts`: preço/esgotamento/socket/reaceite/rede/recusa; novos testes expiram cupom e alteram taxa sem evento antes do envio | verificado |
+| IN-06 compra idempotente: clique repetido/timeout/replay/conflict409 | Trava síncrona local de submit; tentativa/chave/payload persistidos; segunda conferência antes de append em `createOrder` | Novo teste de dblclick pela UI; `checkout.spec.ts`: primeira criação concorrente, payload distinto409, timeout após criação e mesmo ID | verificado |
+| IN-07 pending recuperável; terminais não regridem | `checkout-state.readOrder/settle`, `orders/api.ts`, listener Socket.IO | `checkout.spec.ts`: refresh/reconnect/outage, confirmed/refused terminais e antigos/duplicados | verificado |
+| IN-07 limpar só quantidades compradas uma vez, preservar adições posteriores | `checkout-state.settle`, `cartApplied` persistido | `checkout.spec.ts`: adicionar enquanto pending, confirmar, duplicar/antigo/refresh mantém quantidade restante | verificado |
+| FL-05 recibo: snapshot imutável, sucesso só confirmed, privado | `features/orders/OrderPage.tsx`, `mocks/checkout-state.ts` | `checkout.spec.ts`: preço posterior não altera recibo, ID/versão por REST, 403/404, exploração local/foco | verificado |
+| FL-08/09 perfil/avatar/senha/carteiras: erros, persistência e isolamento | `features/profile`, `features/wallets`, `mocks/account-state.ts` | `account.spec.ts`: validação/conflito/draft, avatar real inválido/válido/remover, senha antiga rejeitada, duas carteiras/reuso; checkout usa secundária | verificado |
+| MK-01 configuração dev/demo/teste, variedade e reset integral | `main.tsx`, `.env.demo`, `mocks/browser.ts`, 45 NFTs/duas contas, POST `/api/__scenario/reset` | `functional-closure.spec.ts`: reset limpa pedido/draft/favoritos/carteiras/perfil/senha/config/falhas da prova e rede; contextos Playwright isolados; HTTPS em DE-02 abaixo | verificado |
+| MK-02 cenários determinísticos de falha e recuperação | Cenários catalog/commerce/checkout; MSW HttpResponse.error, 4xx/503, latência, timeout e outage | Suítes de catálogo/commerce/checkout/prova e fechamento; relógio fixo nos novos casos, hold/confirm nos sensíveis; receitas no README | verificado |
+| RT-02 REST/eventos consistentes, duplicatas/antigos, reconciliação | Base canônica nos mocks; cancel/invalidate, versões e GET após conexão | `catalog.spec.ts`, `commerce.spec.ts`, `checkout.spec.ts`, `integration.spec.ts`; não há setters simulando transporte | verificado |
+| UI-01 responsividade/composição e assets locais | Features e CSS existentes; artes/fontes/licenças/exports preservados | 27 baselines e evidência anterior `visual-refinement.md`; acesso mobile completo | parcial: fidelidade integral/asset original pendentes |
+| UI-02 shimmer/reduced-motion, carregamento/empty/error/background | Skeleton compartilhado/CSS, Query flags e recuperação explícita | Catálogo/detalhe slow/retry; novo teste verifica shimmer e none no resumo do carrinho, altura200px | parcial: comportamento verificado; CLS/estabilidade global ainda sem auditoria |
+| UI-03 teclado/foco/labels/feedback acessível/zoom/contraste | Native dialog, Field/Auth labels/aria-describedby, status/alert, CSS focus-visible | Testes de teclado/Escape/retorno de foco/erros/overflow; quantity do detalhe agora aria-invalid | parcial: auditoria integral de contraste/zoom/leitor de tela pendente |
+| QA-01/02 testes executáveis, estado isolado e baselines | Suítes/fixtures/handlers, resets por contexto, relatório HTML/traces | Resultado real desta execução abaixo; baselines anteriores preservadas | verificado no alcance dos casos executados |
+| QA-03 Lighthouse real: 12 medições, medianas/metas e LCP/CLS/TBT | Ainda sem runner/configuração/relatórios Lighthouse | Nenhuma medição reivindicada | pendente |
+| EL-01 eliminatórios | Fluxos de negócio, API, isolamento e socket inspecionados/testados | Não há compra fictícia por navegação/setter; E2E executável; stack inclui auditoria obrigatória ainda ausente | parcial: gate final depende de Lighthouse/stack completa |
+| DE-01/03 entrega reproduzível/documentação | Fonte/lockfile/assets/config/scripts, README e ARCHITECTURE | Execução local dos checks e cenários; contratos documentados | parcial: instalação a partir de checkout limpo não executada nesta etapa |
+| DE-02 deploy público correspondente ao commit | `vercel.json`, `docs/first-deploy.md`; origin existente | Preview local não é publicação; nenhuma URL HTTPS verificada | pendente |
+
+## Lacunas corrigidas
+
+1. O incremento de preço dos cenários truncava frações para centavos. Agora soma 0.10 ETH em unidades BigInt18 e preserva todas as casas. Cenário `price` permite um preço decimal tipado/validado, exclusivamente nos mocks; não existe edição administrativa na UI.
+2. Cupom já aplicado não podia expirar durante uma compra. `coupon-expired` desativa KURIO10; cotação retira desconto, avisa e bloqueia envio até remoção/revisão. Taxa mutável por `fee-change` permite provar revalidação sem depender do evento.
+3. Cenários REST tinham 503, mas não erro de transporte. `network-error` retorna HttpResponse.error na rede interceptada; Axios e a UI recuperam por retry explícito.
+4. Resets por domínio não limpavam a falha da prova e podiam deixar timers/drafts/configuração. Reset integral para settlements, restaura contas/fixtures/falhas/outage, remove apenas drafts Kurio e requer reload para reconstruir cache/listeners. Não apaga storage de aplicações alheias.
+5. Dblclick podia enviar dois POSTs com a mesma chave. API já retornava um único pedido; trava síncrona no formulário evita também a segunda requisição, mantendo o backend como autoridade idempotente.
+6. Skeletons de carrinho/conta não compartilhavam shimmer. Primitiva agora aplica a animação comum, desativada com reduced-motion. Estado normal e baselines visuais não foram redesenhados. Quantidade inválida no detalhe informa aria-invalid; login anuncia expiração e título do recibo anuncia transições por aria-live.
+
+## Verificação desta etapa
+
+Typecheck, lint sem warnings e build demo passaram. A primeira rodada direcionada detectou o duplo envio; também mostrou uma asserção consultando o pedido ainda pending, corrigida para esperar confirmed na UI. Segunda rodada:21/21 novos casos passaram em1,4min. Depois do shimmer comum, suíte completa **171/171 passou em4,4min**, `npx playwright test --workers=6`, Chromium390/768/1440, sem retry e sem update de snapshots:144 comportamentais e27 visuais.
+
+Feedback final de expiração/aria-live teve build e **21/21 verificações direcionadas em58,6s**, incluindo nove regressões de login/cadastro/recibo sem update, favoritos/retomada e duplo clique. Extensão final do caso de expiração, incluindo recuperação da mesma tentativa pending após novo login: **3/3 passaram em20,6s**, com novo build/typecheck. O relatório HTML da execução171 está em playwright-report; `npm run test:report`. Execuções direcionadas usam reporter=list para preservá-lo. A execução completa precede esses ajustes/extensão finais; não confundir seus alcances. Relatórios não equivalem a Lighthouse nem publicação.
+
+## O que falta, exatamente
+
+- **Funcional:** nenhuma lacuna conhecida nos critérios cobertos pela matriz após as correções e testes locais. Falta certificar execução de instalação limpa para entrega; não é uma nova funcionalidade. Persistência multiaba/backend real não é exigida e permanece fora do escopo.
+- **Visual/acessibilidade:** fidelidade integral restante, SVG original do envelope/contextos bloqueados do Figma; auditoria de contraste, zoom/reflow, leitor de tela e estabilidade global de layout. Preservadas nesta etapa as composições já revisadas; não houve nova aprovação visual ou update de baselines.
+- **Lighthouse:** comando/runner e configuração versionados,12 medições de início/detalhe em mobile/desktop, HTML/JSON, medianas ≥90/95/95/90, LCP/CLS/TBT, versões/ambiente e causas de resultados abaixo das metas.
+- **Publicação:** push pelo usuário autenticado, hospedagem/URL pública HTTPS correspondente ao commit entregue, smoke de todas as rotas diretas/refresh, assets/worker, REST/Socket.IO/reconnect e permanência acessível. URL pública não verificada.
+
+Roteiro de falhas e reset sem editar código em [README](../README.md#cenários-críticos-sem-editar-código). Limitações de autenticação/persistência/protocolo continuam em [ARCHITECTURE](../ARCHITECTURE.md).
