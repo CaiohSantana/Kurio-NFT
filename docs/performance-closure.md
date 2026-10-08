@@ -37,3 +37,26 @@ Resultados Lighthouse e commit fonte serão acrescentados após a execução. Ty
 - Chrome/Edge, janela1280px e zoom400%: nove telas, diálogos, teclado e compra. Esperado: reflow320CSSpx, sem scroll horizontal de página, campos/CTA acessíveis; conferir foco/anúncios subjetivos mesmo após a geometria automatizada.
 
 Publicação não verificada: GitHub permite push; Vercel não tem token/login/projeto vinculado neste ambiente. Importação pela conta do usuário e smoke HTTPS ainda necessários: [first-deploy.md](first-deploy.md). Repositório público e preview local não são URL da aplicação publicada.
+
+## Conjunto final de12 medições
+
+Fonte auditada: **1a5dc91ee65271fee6803a0414ffb004404bc52a**, dirtyAtStart=false. Commits posteriores de entrega acrescentam documentação/relatórios, sem mudar a aplicação. Três execuções por combinação, todas incluídas nas medianas; nenhuma nova rodada para escolher um resultado melhor.
+
+| Página/perfil | Performance antes → depois | LCP antes → depois (ms) | CLS | TBT(ms) | FCP(ms) | Speed Index(ms) |
+| --- | --- | --- | --- | --- | --- | --- |
+| home/mobile | 86 → 85 | 3332 → 3371 | 0.0486 | 117 | 3057 | 3057 |
+| home/desktop | 100 → 99 | 732 → 759 | 0.0180 | 6 | 647 | 647 |
+| detail/mobile | 83 → 85 | 3796 → 3494 | 0.0000 | 74 | 3035 | 3035 |
+| detail/desktop | 99 → 99 | 832 → 788 | 0.0180 | 0 | 643 | 643 |
+
+Accessibility/Best Practices/SEO:100 em todas as12. Performance mobile ainda abaixo de90; QA-03 permanece parcial, conforme permissão do enunciado para justificar limitações. O detalhe melhora a descoberta da arte ao consultar sessão/NFT em paralelo; início não mostrou melhoria consistente. Variação de TBT entre rodadas não permite atribuir toda diferença a um componente. Caminho inicial MSW/React/Router permanece dominante; não se justifica remover mocks, protócolo, fonte, imagens ou criar tela estática de auditoria.
+
+[12 HTML/12 JSON/tabela](audits/lighthouse-performance/README.md), [medianas/configurações/versões](audits/lighthouse-performance/summary.json), [cenário conferido nas requisições](audits/lighthouse-performance/scenario-check.json). Zero runtimeError/runWarnings. ConfigSettings iguais ao conjunto anterior: True. Fontes/artes/API200 presentes nas12; /api/session e /api/nfts usam o cenário padrão. /integration e testes verificam protocolo/funcionalidades; o relatório Lighthouse por si só não prova o fluxo inteiro. Explorações preservadas em audits/lighthouse-investigations, fora das medianas finais.
+
+Ambiente: Windows10.0.26300 x64, i5-12400F/16GB, Node22.14.0/npm11.2.0, Lighthouse12.8.2, Playwright1.64.0/Chrome156.0.8078.4. Preview4175; / e /nfts/emerald-042; build demo completo. Chrome temporário novo por run, reset/storage/cache frio, sem preaquecer. Simulate: mobile412x823/DPR1.75/RTT150ms/1638.4Kbps/CPU4x; desktop1350x940/DPR1/RTT40ms/10240Kbps/CPU1x. Headless/disable-gpu/no-first-run; E2E/capturas encerrados antes do conjunto final. Nenhuma latência ou funcionalidade alterada exclusivamente para audit.
+
+## Pendências de entrega
+
+Funcionais: sem nova lacuna nesta etapa, dentro do alcance dos testes locais; sessão/carrinho/pedidos/eventos preservados. Visuais: contexto/ícone original pendentes documentados em design-reference, sem reformulação. Acessibilidade: leitor de tela, alto contraste real Windows e text-only200% ainda exigem avaliação humana; zoom400% automatizado não certifica toda a experiência. Lighthouse: duas metas mobile abaixo90, demais metas cumpridas. Publicação: autenticação/importação/deploy Vercel e smoke da URL HTTPS pendentes. Não declarar desafio completo.
+
+Diagnósticos finais (execução2 mobile, fase simulada): início Render Delay2884ms/86%; detalhe Load Delay2411ms/69%, transferência205ms/6%, Render Delay417ms/12%. Descoberta tardia caiu de2954 para2411ms; a transferência varia entre execuções. JS não utilizado estimado110257/109757bytes, concentrado em MSW/browser e bootstrap. O LCP mediano do detalhe melhora302ms (~8%); início piora39ms e TBT mediano de65 para117ms. Não atribuir essa variação a uma causa isolada sem perfil controlado; meta mobile permanece pendente. Desktop99/99 continua acima90. Nenhuma imagem/feature/latência retirada para obter pontuação.

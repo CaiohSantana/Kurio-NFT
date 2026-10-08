@@ -1,5 +1,7 @@
 # Auditoria de qualidade e preparação da entrega
 
+Registro histórico da etapa anterior. O status mais recente, medições e verificações adicionais estão em [performance-closure.md](performance-closure.md); metas/publicação continuam condicionadas às evidências desse registro.
+
 Fonte: enunciado original §§8–12 e SPEC UI-03/QA-01/02/03/EL-01/DE-01/03. Esta etapa preserva contratos, fluxos, assets originais e identidade visual; não publica a aplicação. Resultados finais serão preenchidos após as execuções, sem extrapolar o score Lighthouse para certificação WCAG.
 
 ## Skips intencionais
