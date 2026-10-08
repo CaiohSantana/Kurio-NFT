@@ -9,6 +9,7 @@ test.beforeEach(async ({ page }) => {
 for (const [name, path] of [['home', '/'], ['detail', '/nfts/emerald-042']]) {
   test(`visual baseline ${name}`, async ({ page }) => {
     await page.goto(path)
+    await expect(page.getByTestId('cart-badge').first()).toHaveText('0')
     await expect(page.locator(name === 'home' ? '.catalog-results .card-name' : '.detail-info h1').first()).toBeVisible()
     if (name === 'detail') await expect(page.locator('.related .card-name')).toHaveCount(5)
     await expect(page.locator('.background-loading')).toHaveCount(0)
@@ -24,6 +25,7 @@ for (const name of ['login', 'signup', 'cart']) {
       await expect(page.getByText('Item adicionado ao carrinho.', { exact: false })).toBeVisible()
     }
     await page.goto(`/${name}`)
+    await expect(page.getByTestId('cart-badge').first()).toHaveText(name === 'cart' ? '2' : '0')
     if (name === 'cart') await expect(page.getByTestId('cart-total')).toHaveText('2.396 ETH')
     else await expect(page.getByLabel('E-mail', { exact: true })).toBeVisible()
     if (name === 'cart' || name !== 'cart' && test.info().project.name !== 'chromium-mobile') await expect(page.locator('.card-name').first()).toBeAttached()

@@ -1,8 +1,10 @@
 import { createContext, useContext, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router'
-import { Search, ShoppingCart, LogIn, Heart, Home, User, ScanLine } from 'lucide-react'
+import { Search, LogIn, Heart, Home, User, ScanLine } from 'lucide-react'
 import { Modal } from '@/shared/ui/modal'
 import { useCatalogSocket } from './use-catalog-socket'
+import { CatalogLink } from './CatalogLink'
+import { CartLink } from '@/features/cart/CartLink'
 import { defaultCatalogSearch } from './contracts'
 import { SessionProvider, useSession, replaceSession, scopedConfig, apiMessage } from '@/features/auth/session'
 import type { Session } from '@/features/auth/contracts'
@@ -32,8 +34,8 @@ function MarketContent() {
     <div className={`market ${pathname === '/' ? 'home-market' : 'detail-market'}`}>
       <header className="desktop-header">
         <Link to="/" search={defaultCatalogSearch} className="wordmark">KURIO</Link>
-        <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' ? 'active' : ''}>Início</Link><a href="/#catalog">Mercado</a><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
-        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><Link to="/cart" aria-label="Carrinho"><ShoppingCart size={24} /></Link>{session.user ? <button onClick={() => logout.mutate()} disabled={logout.isPending}>Sair ({session.user.username})</button> : <button className="login-button" onClick={login}><LogIn size={18} />Entrar</button>}</div>
+        <nav aria-label="Navegação principal"><Link to="/" search={defaultCatalogSearch} className={pathname === '/' ? 'active' : ''}>Início</Link><CatalogLink>Mercado</CatalogLink><button onClick={() => unavailable('Criadores')}>Criadores</button><button onClick={() => unavailable('Aprenda')}>Aprenda</button></nav>
+        <div className="header-actions"><button aria-label="Abrir busca" onClick={focusSearch}><Search size={20} /></button><CartLink />{session.user ? <button onClick={() => logout.mutate()} disabled={logout.isPending}>Sair ({session.user.username})</button> : <button className="login-button" onClick={login}><LogIn size={18} />Entrar</button>}</div>
       </header>
       <div className="sr-only" role="status" aria-live="polite">{realtime}</div>
       {realtime && <p className="realtime-notice" role="status">{realtime}</p>}
@@ -42,7 +44,7 @@ function MarketContent() {
       {session.user && <div className="session-controls"><p>Sessão: {session.user.username}</p><button onClick={() => logout.mutate()} disabled={logout.isPending}>Encerrar sessão</button><button onClick={login}>Trocar usuário</button></div>}
       <Footer />
       {pathname === '/' && <nav className="mobile-navigation" aria-label="Navegação mobile">
-        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><Link to="/cart" aria-label="Carrinho"><ShoppingCart size={20} /></Link><button aria-label="Perfil" onClick={session.user ? () => unavailable('Perfil') : login}><User size={20} /></button>
+        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><CartLink size={20} /><button aria-label="Perfil" onClick={session.user ? () => unavailable('Perfil') : login}><User size={20} /></button>
       </nav>}
       <Modal title="Funcionalidade indisponível" open={!!notice} onClose={() => setNotice('')}><p>{notice}</p></Modal>
     </div>

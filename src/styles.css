@@ -75,7 +75,9 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .hero-art img { width:100%; height:450px; object-fit:cover; border-radius:22px; }
 .hero-mini,.mobile-title { display:none; }
 .hero-dots { position:absolute; bottom:6px; left:600px; color:#d28a4c; font-size:22px; letter-spacing:3px; }
-.catalog-layout { display:grid; grid-template-columns:310px minmax(0,1fr); gap:48px; margin-top:96px; scroll-margin-top:24px; }
+.catalog-layout { display:grid; grid-template-columns:310px minmax(0,1fr); gap:48px; margin-top:96px; scroll-margin-top:72px; }
+.cart-nav-link { position:relative; display:inline-flex; align-items:center; }
+.cart-badge { position:absolute; top:-6px; right:-10px; min-width:16px; height:16px; padding:0 3px; border-radius:20px; background:#d28a4c; color:#140d0a; font-size:10px; font-weight:700; line-height:16px; text-align:center; }
 .filters-panel { background:#241612; padding:20px; min-height:785px; }
 .filters-panel fieldset { border:0; padding:0; margin:0 0 40px; }
 .filters-panel legend { font-size:18px; font-weight:700; line-height:20px; margin-bottom:12px; }

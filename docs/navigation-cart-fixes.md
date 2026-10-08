@@ -1,0 +1,13 @@
+# Correções Mercado e contador
+
+2026-10-08. Git inicialmente limpo. Causa de Mercado: link HTML `/#catalog` apagava search params e iniciava navegação de documento, desmontando Query/sessão/página. Durante o bootstrap, restauração de scroll podia executar antes de a consulta da sessão permitir montar `#catalog`. Hero/promoções usavam âncoras nativas e herdavam coordenação inconsistente.
+
+Correção: CatalogLink usa Router/hash, preserva busca/filtros/sort/page; cards carregam o contexto validado do catálogo no history.state até o detalhe. Efeito de layout no catálogo, executado quando seção/hash estão disponíveis, aplica scrollIntoView smooth ou instant conforme reduced-motion. Clique repetido no mesmo hash rola sem remount; Router conserva back/forward/restauração. scroll-margin-top72 reserva altura do header. Sem timeout de coordenação. Inclui Mercado, Explorar/hero/promoções, retornos do detalhe e continuar explorando do carrinho. Referência técnica: [TanStack scroll restoration](https://tanstack.com/router/latest/docs/guide/scroll-restoration).
+
+Causa do badge: existia somente ícone estático; a consulta de carrinho não tinha observador global. Correção: CartLink em navegação desktop/mobile usa cartOptions do Query, mesma chave privada por scope e deduplicação de GET. Contador = soma das quantidades (duas unidades mostram2), calculado da resposta do carrinho, sem contador/estado independente. Loading mostra…, resposta vazia0; aria-label informa quantidade. Mutations invalidam a mesma query; refresh recupera API; login/merge/logout/troca desmontam scope/cache antigos. Mocks continuam autoridade.
+
+Evidência: typecheck/lint passaram; build executado pelo runner;78/78 testes de navegação/badge+catálogo+commerce+prova nos três tamanhos passaram em4,1min. Novos casos verificam DOM preservado, hash/offset72, parâmetros/histórico, detalhe→catálogo, refresh, smooth/reduced-motion, promoções e badge fora de /cart, quantidade/remoção/refresh/merge/logout/A-B. Inspeção de screenshots390/1440 mostrou badge cobre sem alterações dos assets. Baselines atualizadas somente pela inclusão visual do contador e navegação; regressão sem update é registrada no acompanhamento posterior.
+
+Perfil/carteiras/checkout/pedidos foram autorizados, mas não são declarados implementados por esta correção. Lighthouse, publicação e fidelidade integral permanecem pendentes.
+
+Revisão final: typecheck/lint e build passaram;24/24 testes de navegação/badge e regressão visual passaram sem update em1,1min, após a rodada78/78 dos fluxos. Os93 casos distintos vigentes estão cobertos pelas duas execuções, com9 casos novos de regressões.

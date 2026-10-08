@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual abrange sessão, login, cadastro, favoritos e carrinho/cotação, API simulada/eventos, responsividade, testes, revisão visual e commits. Preservar catálogo, detalhe e /integration com suas verificações. Parar ao concluir esta etapa. Não implementar perfil, carteiras, envio de pedidos, pagamento ou confirmação nem edição administrativa do NFT; não alterar Figma. Publicação dependente de conta não está concluída por configuração local. O enunciado preservado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/design-reference.md.
+A autorização atual abrange primeiro corrigir/validar navegação Mercado e badge global com commit isolado; em seguida perfil, avatar/senha, carteiras, pagamento simulado, pedidos idempotentes e confirmação, com API/eventos, responsividade, testes, documentação e commits. Preservar os fluxos existentes e /integration. Não alterar Figma ou acrescentar edição administrativa de NFT, blockchain ou pagamento real. Lighthouse, publicação pública e ajustes visuais restantes ficam explicitamente para a etapa final; não declarar o desafio completo. O enunciado preservado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/design-reference.md.
 
 ## Organização e responsabilidades
 

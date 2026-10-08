@@ -1,5 +1,7 @@
 # Especificação do desafio
 
+Correções FL-01/FL-03/ST-02/03/UI-03: navegação Mercado e demais retornos ao catálogo preservam URL/histórico, DOM e scroll/reduced-motion; badge global soma quantidades da query do carrinho e respeita troca de sessão.78/78 testes comportamentais passaram, com evidência em docs/navigation-cart-fixes.md. Perfil/carteiras/pagamento/pedidos foram autorizados na sequência; não considerar sua autorização evidência de implementação.
+
 Status: base e prova de integração executadas em 2026-10-07. Evidências e alcance parcial em [docs/proof-validation.md](docs/proof-validation.md). Os nove fluxos, gates finais e critérios completos de marketplace permanecem pendentes; não extrapolar a prova de um NFT para a aplicação inteira.
 
 Etapa catálogo/detalhe anterior: comportamentos públicos FL-01 implementados e testados; FL-02 então parcial. Evidências históricas em [docs/catalog-validation.md](docs/catalog-validation.md); revisão/desvios em [docs/catalog-visual-review.md](docs/catalog-visual-review.md).

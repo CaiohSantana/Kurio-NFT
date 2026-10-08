@@ -1,5 +1,7 @@
 # Arquitetura — base e prova de integração
 
+Correções de navegação/badge em 2026-10-08: CatalogLink coordena hash/scroll na montagem do catálogo, respeita reduced-motion e preserva search/contexto no history do Router; CartLink observa a query global do carrinho por scope e soma quantities. Causas, contrato de acessibilidade e evidência78/78 em docs/navigation-cart-fixes.md. Nenhum contador local independente.
+
 Escopo atual: base, catálogo/detalhe, sessão, autenticação, favoritos e carrinho/cotação. A descrição inicial da prova é histórica; decisões atuais estão nas seções finais. Pagamento, perfil, carteiras, pedidos e confirmação ainda não estão implementados. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
 
 Atualização: catálogo e detalhe públicos implementados nesta etapa. A descrição da prova abaixo é histórica; o NFT da prova agora é uma projeção da mesma base canônica do catálogo. Contratos, cache, cenários e diferenças atuais estão na seção final.

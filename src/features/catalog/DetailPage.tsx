@@ -8,8 +8,9 @@ import { Button } from '@/shared/ui/button'
 import { Skeleton } from '@/shared/ui/skeleton'
 import { Modal } from '@/shared/ui/modal'
 import { catalogOptions, detailOptions } from './api'
-import { validateCatalogSearch, defaultCatalogSearch, type Nft } from './contracts'
+import { validateCatalogSearch, type Nft } from './contracts'
 import { useUnavailable } from './MarketShell'
+import { CatalogLink } from './CatalogLink'
 import { NftCard } from './NftCard'
 import { FavoriteButton } from '@/features/favorites/FavoriteButton'
 import { useCartMutation } from '@/features/cart/api'
@@ -21,7 +22,7 @@ export function DetailPage() {
   const query = useQuery(detailOptions(nftId))
   const related = useQuery({ ...catalogOptions(validateCatalogSearch({})), enabled: !!query.data })
   if (query.isPending) return <main className="detail-loading" role="status"><p>Carregando NFT…</p><Skeleton className="proof-skeleton" /></main>
-  if (!query.data) return <main className="empty-state" role="alert"><h1>{isAxiosError(query.error) && query.error.response?.status === 404 ? 'NFT não encontrado' : 'Não foi possível carregar o NFT'}</h1><Button onClick={() => void query.refetch()}>Tentar novamente</Button><Link to="/" search={defaultCatalogSearch}>Voltar ao catálogo</Link></main>
+  if (!query.data) return <main className="empty-state" role="alert"><h1>{isAxiosError(query.error) && query.error.response?.status === 404 ? 'NFT não encontrado' : 'Não foi possível carregar o NFT'}</h1><Button onClick={() => void query.refetch()}>Tentar novamente</Button><CatalogLink>Voltar ao catálogo</CatalogLink></main>
   const nft = query.data.nft
   return <main>
     {query.isFetching && <p className="background-loading" role="status">Atualizando NFT…</p>}
@@ -43,8 +44,8 @@ function DetailContent({ nft }: { nft: Nft }) {
   const max = Math.min(edition.available, edition.maxQuantity)
   const valid = Number.isInteger(quantity) && quantity >= 1 && quantity <= max
   return <>
-    <div className="detail-mobile-top"><Link to="/" search={defaultCatalogSearch} aria-label="Voltar ao catálogo"><ArrowLeft size={20} /></Link><FavoriteButton id={nft.id} name={nft.name} /></div>
-    <p className="breadcrumb"><Link to="/" search={defaultCatalogSearch}>Início</Link> / Mercado</p>
+    <div className="detail-mobile-top"><CatalogLink ariaLabel="Voltar ao catálogo"><ArrowLeft size={20} /></CatalogLink><FavoriteButton id={nft.id} name={nft.name} /></div>
+    <p className="breadcrumb"><CatalogLink>Início</CatalogLink> / Mercado</p>
     <section className="detail-top">
       <div className="gallery"><div className="gallery-thumbnails" aria-label="Galeria de imagens">{nft.gallery.map((asset, i) => <button key={i} aria-label={`Imagem ${i + 1}`} aria-pressed={image === i} onClick={() => setImage(i)}><img src={asset} alt="" width="100" height="100" /></button>)}</div><div className="gallery-main"><img src={nft.gallery[image]} alt={nft.name} width="450" height="450" fetchPriority="high" /><button aria-label="Ampliar imagem" onClick={() => setZoom(true)}><Search size={24} /></button></div></div>
       <div className="detail-info"><h1>{nft.name}</h1><div className="detail-price-review"><strong data-testid="detail-price">{nft.priceEth} ETH</strong><span aria-label="Avaliação 4,8 de 5, 19 avaliações"><span className="stars">★★★★★</span><span className="desktop-title">19 avaliações de colecionadores</span><span className="mobile-title">4.8(19)</span></span></div><h2 className="about-label">Sobre este NFT:</h2><p className="short-description"><span className="desktop-title">{nft.description.split('. ')[0]}.</span><span className="mobile-title">Um colecionável digital {edition.label} finalizado à mão da coleção Kurio Editions, verificado na {nft.network}.</span></p>

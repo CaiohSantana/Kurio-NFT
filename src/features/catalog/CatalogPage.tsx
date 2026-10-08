@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useNavigate, useSearch } from '@tanstack/react-router'
+import { useLocation, useNavigate, useSearch } from '@tanstack/react-router'
 import { Search, SlidersHorizontal } from 'lucide-react'
 import { Modal } from '@/shared/ui/modal'
 import { Button } from '@/shared/ui/button'
@@ -11,11 +11,14 @@ import { validateCatalogSearch } from './contracts'
 import { Filters } from './Filters'
 import { NftCard } from './NftCard'
 import { Hero, HomeSections } from './HomeSections'
+import { scrollToCatalog } from './CatalogLink'
 
 export function CatalogPage() {
   const search = validateCatalogSearch(useSearch({ strict: false })), navigate = useNavigate({ from: '/' })
   const query = useQuery(catalogOptions(search))
   const [filterOpen, setFilterOpen] = useState(false)
+  const location = useLocation()
+  useLayoutEffect(() => { if (location.pathname === '/' && location.hash === 'catalog') scrollToCatalog() }, [location.pathname, location.hash])
   const change = (patch: Partial<CatalogSearch>) => { void navigate({ search: { ...search, ...patch, page: patch.page ?? 1 } }) }
   return <main>
     <div className="catalog-search-row"><form key={search.q} onSubmit={(e) => { e.preventDefault(); change({ q: String(new FormData(e.currentTarget).get('q') ?? '') }) }}><Search size={22} /><label className="sr-only" htmlFor="catalog-search">Buscar NFTs</label><input id="catalog-search" name="q" defaultValue={search.q} placeholder="Explorar coleções" /><button className="sr-only" type="submit">Buscar</button></form><button className="filter-toggle" aria-label="Abrir filtros" onClick={() => setFilterOpen(true)}><SlidersHorizontal size={22} /></button></div>
