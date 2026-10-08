@@ -1,4 +1,5 @@
-@import "tailwindcss";
+/* Reports and test artifacts must not change the production utility CSS. */
+@import "tailwindcss" source("./");
 
 @font-face {
   font-family: "Roboto Mono";

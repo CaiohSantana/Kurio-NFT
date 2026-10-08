@@ -40,6 +40,8 @@ Correções aplicam à entrega inteira: WebP lossless original+450/900px com src
 
 Metas mobile de performance ainda não satisfeitas nas explorações após os ajustes. Relatórios apontam o caminho crítico de módulos React/Router/MSW e recuperação de sessão antes do conteúdo, seguido de consulta do detalhe; CPU4×/rede móvel simuladas. Mantida a arquitetura/funcionalidade; não criada uma versão estática exclusiva da auditoria. Avaliar o conjunto final antes de afirmar o status das metas.
 
+A instalação limpa revelou CSS extra originado das classes dos relatórios HTML. A descoberta do Tailwind agora tem base explícita em src, conforme a [documentação oficial](https://tailwindcss.com/docs/detecting-classes-in-source-files). Assim docs/relatórios não alteram o bundle auditado; não remove classes da UI nem cria CSS especial para auditoria.
+
 ## Resultados finais e instalação limpa
 
 Typecheck, lint sem warnings e build demo passaram. Suíte completa: **183 passaram,3 skips intencionais,4,6min**, sem retries/update;156 comportamentais+27 visuais. Relatório HTML entregue em audits/playwright/index.html. Roteiro direcionado após corrigir foco/conta mobile:12/12 em35,4s.
