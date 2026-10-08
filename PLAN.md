@@ -1,5 +1,9 @@
 # Plano de execução
 
+## Auditoria de qualidade vigente
+
+P14: corrigidas lacunas comprovadas de foco/nome/alvo/contraste; revisão de capturas/baselines em curso. P15: npm run audit instalado/configurado; rodada final12 ainda em execução, metas mobile permanecem abaixo nas explorações. P16: checkout temporário limpo e relatórios entregáveis em preparação; URL pública continua pendente. Parar após a etapa, sem deploy.
+
 ## Revisão final das nove telas — etapa atual
 
 Verificação consolidada: typecheck/lint/build passaram;180 testes passaram e3 skips intencionais em4.6min, incluindo27 visuais sem update.24 baselines afetadas foram revisadas antes de gerar; recibo intacto. Capturas36 telas nas quatro larguras e smoke de reflow/foco sem overflow. Limites/amostras/checklist em docs/final-screen-review.md.

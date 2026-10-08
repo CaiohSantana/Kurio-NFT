@@ -1,5 +1,9 @@
 # Especificação do desafio
 
+## Auditoria de qualidade vigente
+
+UI-03: contraste de campos, nome de quantidade, alvo favorito, seleção não apenas por cor, foco circular em diálogos e zoom nativo200% verificados de forma direcionada. QA-03: runner/lockfile preparados;12 medições finais e metas ainda dependem da execução. DE-01: checkout limpo ainda em verificação. Resultados em docs/quality-audit.md prevalecem sobre pendências históricas; não marcar EL/DE completos sem evidência/publicação.
+
 ## Revisão final das nove telas
 
 Verificação consolidada: typecheck/lint/build passaram;180 testes passaram e3 skips intencionais em4.6min, incluindo27 visuais sem update.24 baselines afetadas foram revisadas antes de gerar; recibo intacto. Capturas36 telas nas quatro larguras e smoke de reflow/foco sem overflow. Limites/amostras/checklist em docs/final-screen-review.md.

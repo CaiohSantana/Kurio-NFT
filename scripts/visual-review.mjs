@@ -1,24 +1,40 @@
-/* global process, fetch, document, innerWidth, console, getComputedStyle */
+/* global process, fetch, document, innerWidth, console, getComputedStyle, chrome, devicePixelRatio */
 import { chromium, expect } from '@playwright/test'
 import { mkdir, writeFile } from 'node:fs/promises'
+import path from 'node:path'
 
 // Captures the same API fixture before/after at CSS pixel scale 1; no UI setters.
 const phase = process.argv[2] ?? 'after', base = process.env.REVIEW_URL ?? 'http://127.0.0.1:4175'
 const directory = `artifacts/visual-review/${phase}`
 await mkdir(directory, { recursive: true })
-const browser = await chromium.launch(), measurements = []
-for (const width of [390, 414, 768, 1440]) {
+const nativeZoom = process.env.REVIEW_NATIVE_ZOOM === 'true'
+const extension = path.resolve('.tmp/zoom-extension')
+if (nativeZoom) {
+  await mkdir(extension, { recursive: true })
+  await writeFile(`${extension}/manifest.json`, JSON.stringify({ manifest_version: 3, name: 'Kurio native zoom verification', version: '1.0', permissions: ['tabs'], background: { service_worker: 'background.js' } }))
+  await writeFile(`${extension}/background.js`, 'chrome.runtime.onInstalled.addListener(() => {});')
+}
+const browser = nativeZoom ? null : await chromium.launch(), measurements = []
+for (const width of nativeZoom ? [768, 1440] : [390, 414, 768, 1440]) {
   const height = width === 1440 ? 1657 : width === 414 ? 896 : 1024
-  const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' }), page = await context.newPage()
+  const options = { viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' }
+  const context = nativeZoom ? await chromium.launchPersistentContext(`.tmp/zoom-review-${width}-${Date.now()}`, { ...options, channel: 'chromium', headless: true, args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`] }) : await browser.newContext(options)
+  const page = await context.newPage()
+  const extensionWorker = nativeZoom ? context.serviceWorkers()[0] ?? await context.waitForEvent('serviceworker') : null
+  const zoom = async factor => extensionWorker.evaluate(async ({ factor, base }) => { const tabs = await chrome.tabs.query({}); const tab = tabs.find(tab => tab.url.startsWith(base)); await chrome.tabs.setZoom(tab.id, factor); return chrome.tabs.getZoom(tab.id) }, { factor, base })
   await page.goto(`${base}/preparation`); await page.getByRole('link', { name: 'Abrir prova de integração' }).waitFor()
   const api = async (path, method = 'GET', body, scope) => page.evaluate(async ({ path, method, body, scope }) => { const r = await fetch(`/api${path}`, { method, headers: { 'Content-Type': 'application/json', ...(scope ? { 'X-Session-Scope': scope } : {}) }, body: body ? JSON.stringify(body) : undefined }); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json() }, { path, method, body, scope })
   const inspectReflow = async (ready) => {
     await page.keyboard.press('Tab')
     const focus = await page.evaluate(() => { const node = document.activeElement, style = getComputedStyle(node); return { element: node.tagName, outline: style.outlineWidth, shadow: style.boxShadow } })
     const reducedWidth = Math.max(320, Math.round(width / 2))
-    await page.setViewportSize({ width: reducedWidth, height: Math.max(640, Math.round(height / 2)) }); await page.reload(); await page.locator(ready).first().waitFor()
-    const reflow = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth }))
-    await page.setViewportSize({ width, height }); await page.reload(); await page.locator(ready).first().waitFor()
+    if (nativeZoom) await zoom(2)
+    else await page.setViewportSize({ width: reducedWidth, height: Math.max(640, Math.round(height / 2)) })
+    await page.reload(); await page.locator(ready).first().waitFor()
+    const reflow = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth, devicePixelRatio: devicePixelRatio }))
+    if (nativeZoom) await zoom(1)
+    else await page.setViewportSize({ width, height })
+    await page.reload(); await page.locator(ready).first().waitFor()
     return { focus, reflow }
   }
   await api('/__scenario/reset', 'POST')
@@ -69,4 +85,4 @@ for (const width of [390, 414, 768, 1440]) {
   Object.assign(measurements.at(-1), await inspectReflow('.receipt-card'))
   await context.close()
 }
-await browser.close(); await writeFile(`${directory}/measurements.json`, JSON.stringify(measurements, null, 2)); console.log(`${phase}: ${measurements.length} captures at deviceScaleFactor=1`)
+await browser?.close(); await writeFile(`${directory}/measurements.json`, JSON.stringify(measurements, null, 2)); console.log(`${phase}: ${measurements.length} captures; native zoom=${nativeZoom}`)

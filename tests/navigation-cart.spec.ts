@@ -28,8 +28,13 @@ test('catalog navigation keeps document, DOM, URL filters and history; reduced m
 })
 test('hero and promo anchors scroll smoothly without loading another document', async ({ page }) => {
   await page.goto('/'); await expect(page.getByTestId('nft-emerald-042')).toBeVisible()
+  await page.evaluate(() => { window.name = 'anchor-document' })
+  const positions = page.evaluate(async () => { const samples: number[] = []; for (let frame = 0; frame < 70; frame++) { await new Promise(requestAnimationFrame); samples.push(scrollY) } return samples })
   await page.locator('.hero-cta').click(); await expect(page).toHaveURL(/#catalog$/)
   await expect.poll(() => page.locator('#catalog').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBe(72)
+  const samples = await positions
+  expect(samples.some(value => value > 0 && value < Math.max(...samples) - 20)).toBe(true)
+  expect(await page.evaluate(() => window.name)).toBe('anchor-document')
   await page.locator('.promos a').first().click()
   await expect.poll(() => page.locator('#catalog').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBe(72)
 })

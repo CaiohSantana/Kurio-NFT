@@ -16,7 +16,8 @@
     "test:e2e:dev": "playwright test --config playwright.dev.config.ts",
     "test:e2e:ui": "playwright test --ui",
     "test:report": "playwright show-report",
-    "msw:init": "msw init public --save"
+    "msw:init": "msw init public --save",
+    "audit": "npm run build && node scripts/audit.mjs"
   },
   "dependencies": {
     "@fontsource-variable/roboto-mono": "5.3.0",
@@ -42,9 +43,12 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",
+    "chrome-launcher": "1.2.1",
     "eslint": "10.12.0",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "17.13.0",
+    "lighthouse": "12.8.2",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.1",
@@ -54,5 +58,11 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "overrides": {
+    "lighthouse": {
+      "@sentry/node": "10.54.0",
+      "puppeteer-core": "25.13.0"
+    }
   }
 }

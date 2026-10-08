@@ -7,6 +7,8 @@ for (const name of ['checkout', 'receipt']) {
     await setup(page); await connect(page); if (test.info().project.name === 'chromium-mobile') await page.locator('.checkout-collector>summary').click()
     if (name === 'receipt') {
       await purchase(page)
+      // Direct document load must bring receipt styles without visiting checkout.
+      await page.reload()
       await expect(page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' })).toBeVisible()
       await expect(page.getByTestId('cart-badge').first()).toHaveText('0')
     }

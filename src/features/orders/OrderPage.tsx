@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import '../checkout/checkout.css'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { isAxiosError } from 'axios'

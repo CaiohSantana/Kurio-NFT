@@ -48,6 +48,7 @@ Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia p�
 | `npm run test:e2e:ui` | Playwright UI |
 | `npm run test:report` | Relatório HTML completo em playwright-report |
 | `npx playwright show-report playwright-report-dev` | Relatório dev |
+| `npm run audit` | Build demo +12 auditorias Lighthouse; HTML/JSON/medianas em docs/audits/lighthouse |
 | `npm run msw:init` | Atualizar worker após mudar versão de MSW |
 
 Screenshots/traces de falhas ficam em test-results, ignorados pelo Git. Abrir trace com `npx playwright show-trace CAMINHO/trace.zip`. Cada teste usa contexto isolado e reset pelos handlers. A aplicação passa por Axios/MSW; os testes não usam page.route para substituir REST ou setters para simular Socket.IO.
@@ -121,8 +122,18 @@ Cache real: catálogo/detalhe/favoritos staleTime30s; recursos privados/cotaçã
 
 Roboto Mono local, origem/checksum/licença em [public/assets/fonts/README.md](public/assets/fonts/README.md). Quatro artes/exports originais preservados. Envelope reconstruído e documentado em public/assets/icons/README.md. Persistência multiaba e servidor real não fazem parte da simulação.
 
-## Auditorias e publicação pendentes
+## Auditorias e entrega
 
-O desafio ainda não está completo. Faltam instalação/validação de checkout limpo, auditoria integral de acessibilidade/contraste/zoom, runner/comando/configuração Lighthouse e12 medições com HTML/JSON/medianas/LCP/CLS/TBT, ajustes visuais finais documentados e URL pública HTTPS verificada. Não existe comando Lighthouse implementado nesta etapa.
+Runner em scripts/audit.mjs: Node22.14, Lighthouse12.8.2 e Chromium do Playwright. A versão mais recente de Lighthouse exige Node>=22.19; a versão fixada permite reproduzir neste ambiente. Dependências transitivas de desenvolvimento corrigidas via overrides no lockfile (Sentry10.54/Puppeteer25.13), verificadas pelo runner. Não instalar Chrome global: `npx playwright install chromium` disponibiliza o executável utilizado.
+
+```sh
+npm run audit
+```
+
+Porta4175 deve estar livre. O comando faz build, inicia/encerra seu próprio preview e executa sequencialmente início/detalhe × mobile/desktop × três. Cada execução usa perfil Chrome temporário novo, reset de storage padrão do Lighthouse e throttling simulado padrão de cada perfil; sem preaquecer nem mudar latências/cenários. Fontes/artes, REST/MSW e Socket.IO permanecem ativos. Feche outras auditorias/testes para evitar disputa de CPU. HTML/JSON e summary.json registram URLs/configurações/ambiente/commit; a tabela de medianas fica em docs/audits/lighthouse/README.md. Uma reexecução sobrescreve esses relatórios versionados.
+
+Medições, skips, acessibilidade, checkout limpo e pendências são consolidados em [docs/quality-audit.md](docs/quality-audit.md). A evidência Playwright entregue fica em docs/audits/playwright; a execução local continua gerando playwright-report e traces de falhas em test-results. Baselines permanecem versionadas. Leitor de tela e alto contraste do sistema exigem verificação manual; não equivalem ao score Lighthouse.
+
+O desafio não está completo enquanto metas pendentes e publicação não forem verificadas. Nenhuma URL pública foi publicada nesta etapa.
 
 Vercel já tem configuração em vercel.json: build Vite/demo, saída dist, fallback SPA e worker sem cache persistente. Nenhum push/deploy nesta etapa. Publicação depende da conta do usuário: enviar os commits para o origin configurado, importar na Vercel, usar Node22.x compatível e VITE_ENABLE_MOCKS=true no build; publicar e verificar rotas diretas/refresh, worker/assets, REST e Socket.IO. Registrar URL e commit. Passos em [docs/first-deploy.md](docs/first-deploy.md); preview local não equivale a deploy.

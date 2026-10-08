@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é a revisão final das nove telas e dos apontamentos do usuário: correções localizadas com exports originais, preservar comportamentos aprovados e arquitetura, capturas determinísticas, teclado/foco/reflow e testes afetados. Revisar visualmente antes de gerar baselines; executar a suíte completa uma vez ao consolidar os ajustes. Preservar sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Não alterar Figma nem acrescentar blockchain/pagamento real. Lighthouse e publicação ficam para próximas etapas; não declarar o desafio completo. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md, docs/design-reference.md, docs/functional-closure.md e docs/final-screen-review.md.
+A autorização atual é auditoria de qualidade e preparação da entrega: revisar skips/acessibilidade, configurar e executar Lighthouse (12 medições), validar checkout temporário limpo e consolidar evidências/documentos. Preservar fluxos/identidade visual; corrigir problemas comprovados de forma localizada. Manter sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Revisar visual antes de baselines. Não alterar Figma, adicionar pagamento/blockchain real ou publicar sem autorização. Não declarar completo com metas/auditorias/publicação pendentes. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/quality-audit.md; evidências anteriores permanecem históricas.
 
 ## Organização e responsabilidades
 

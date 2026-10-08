@@ -1,17 +1,17 @@
-import { createRootRoute, createRoute, createRouter, Link, Outlet } from '@tanstack/react-router'
-import { IntegrationProof } from '@/proof/IntegrationProof'
+import { createRootRoute, createRoute, createRouter, lazyRouteComponent, Link, Outlet } from '@tanstack/react-router'
+const IntegrationProof = lazyRouteComponent(() => import('@/proof/IntegrationProof'), 'IntegrationProof')
 import { CatalogPage } from '@/features/catalog/CatalogPage'
 import { DetailPage } from '@/features/catalog/DetailPage'
 import { MarketShell } from '@/features/catalog/MarketShell'
 import { validateCatalogSearch, defaultCatalogSearch } from '@/features/catalog/contracts'
-import { AuthPage } from '@/features/auth/AuthPage'
+const AuthPage = lazyRouteComponent(() => import('@/features/auth/AuthPage'), 'AuthPage')
 import { authSearch, safeReturn } from '@/features/auth/contracts'
-import { CartPage } from '@/features/cart/CartPage'
+const CartPage = lazyRouteComponent(() => import('@/features/cart/CartPage'), 'CartPage')
 import { RequireSession } from '@/features/auth/RequireSession'
-import { ProfilePage } from '@/features/profile/ProfilePage'
-import { WalletsPage } from '@/features/wallets/WalletsPage'
-import { CheckoutPage } from '@/features/checkout/CheckoutPage'
-import { OrderPage } from '@/features/orders/OrderPage'
+const ProfilePage = lazyRouteComponent(() => import('@/features/profile/ProfilePage'), 'ProfilePage')
+const WalletsPage = lazyRouteComponent(() => import('@/features/wallets/WalletsPage'), 'WalletsPage')
+const CheckoutPage = lazyRouteComponent(() => import('@/features/checkout/CheckoutPage'), 'CheckoutPage')
+const OrderPage = lazyRouteComponent(() => import('@/features/orders/OrderPage'), 'OrderPage')
 
 const rootRoute = createRootRoute({
   component: Outlet,

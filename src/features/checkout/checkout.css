@@ -10,7 +10,7 @@
 .checkout-layout .form-field label { margin-bottom:4px; line-height:20px; }
 .checkout-layout .form-field input,.checkout-layout .form-field select { height:40px; }
 .wallet-context { display:flex; align-items:center; gap:8px; margin:20px 0; min-height:28px; }.wallet-context span { font-size:22px; color:#d28a4c; }
-.observation { display:block; line-height:24px; }.observation textarea { display:block; width:100%; height:152px; border:1px solid #55321f; border-radius:3px; padding:12px; margin-top:6px; }
+.observation { display:block; line-height:24px; }.observation textarea { display:block; width:100%; height:152px; border:1px solid var(--control-border); border-radius:3px; padding:12px; margin-top:6px; }
 .checkout-review { min-width:0; }
 .purchase-items { width:100%; border-collapse:separate; border-spacing:0 12px; table-layout:auto; font-size:14px; margin-top:-12px; }
 .purchase-items th { font-size:16px; font-weight:500; text-align:left; border-bottom:1px solid #55321f; padding:0 0 8px; }.purchase-items th:last-child { text-align:right; }
@@ -27,7 +27,6 @@
 .checkout-page [role=alert] { color:#ffad97; line-height:20px; margin:12px 0; font-size:12px; }.attempt-recovery>a { display:block; margin:12px 0; color:#e89b55; text-decoration:underline; }
 .wallet-picker { display:grid; gap:16px; margin-bottom:24px; }.wallet-picker label { display:flex; align-items:center; gap:12px; padding:16px; background:#2f1d15; border-radius:12px; }.wallet-picker label>span { display:grid; gap:6px; min-width:0; }.wallet-picker span>span { overflow-wrap:anywhere; font-size:12px; color:#cfb28c; }.wallet-picker~a { color:#e89b55; text-decoration:underline; }.wallet-picker~button { display:block; margin-top:24px; }
 .market:has(.checkout-page) .market-footer { margin-top:96px; }
-.account-actions { display:grid; gap:16px; text-align:left; }.account-actions button { text-align:left; }
 .order-page { min-height:calc(100vh - 48px); }
 .market:has(.order-page) .desktop-header,.market:has(.order-page) .market-footer { display:none; }
 .market-modal.receipt-dialog { width:578px; max-width:calc(100vw - 32px); border:0; border-radius:0; padding:0; margin:min(10vh,166px) auto auto; max-height:calc(100dvh - min(10vh,166px) - 24px); background:#241612; }
@@ -46,9 +45,6 @@
 @media(max-width:1279px) { .purchase-nft strong { white-space:normal; }.purchase-value strong { font-size:16px; padding:0 8px; }.checkout-layout { grid-template-columns:minmax(0,1.65fr) minmax(0,1fr); gap:24px; }.checkout-total { padding-inline:12px; } }
 @media(min-width:640px) and (max-width:1023px) { .checkout-layout { grid-template-columns:1fr; }.checkout-review { width:100%; max-width:600px; margin:auto; }.checkout-collector { margin-bottom:32px; } }
 @media(max-width:639px) {
-  .mobile-account-button { display:flex; position:absolute; right:20px; top:12px; align-items:center; justify-content:center; min-width:36px; min-height:36px; border-radius:50%; color:#cfb28c; }
-  .market:has(.order-page) .mobile-account-button { display:none; }
-  .market:has(.detail-mobile-top) .mobile-account-button { right:88px; top:26px; z-index:2; background:#241612; border:1px solid #55321f; }
   .market:has(.checkout-page),.market:has(.order-page) { margin:28px; }
   .checkout-breadcrumb { display:none; }.checkout-mobile-title { display:flex; align-items:center; gap:24px; margin:32px 0 24px; }.checkout-mobile-title>a { display:flex; width:35px; height:35px; border-radius:50%; background:#38220f; color:#b39463; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }.checkout-mobile-title h1 { font-size:20px; font-weight:700; }
   .checkout-layout { display:flex; flex-direction:column; gap:32px; }.checkout-layout>section { width:100%; }.checkout-review { order:0; }.checkout-collector { order:1; }.checkout-collector .form-grid { grid-template-columns:1fr; gap:20px; }.checkout-layout .form-field input,.checkout-layout .form-field select { min-height:48px; }

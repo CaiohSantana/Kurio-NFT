@@ -1,4 +1,5 @@
 public/assets/figma/* -text
 public/assets/fonts/* -text
 *.png binary
+*.webp binary
 docs/challenge-original.md -text

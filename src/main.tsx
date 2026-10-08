@@ -1,6 +1,3 @@
-import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { RouterProvider } from '@tanstack/react-router'
 import './styles.css'
 
 async function start() {
@@ -15,9 +12,8 @@ async function start() {
   } })
   // engine.io-client captures WebSocket during module evaluation. Import the
   // router (and socket.io-client) only after MSW installs its interceptor.
-  const { router } = await import('./app/router')
-  const queryClient = new QueryClient()
-  createRoot(root).render(<QueryClientProvider client={queryClient}><RouterProvider router={router} /></QueryClientProvider>)
+  const { mount } = await import('./app/bootstrap')
+  mount(root)
 }
 
 void start().catch(() => {

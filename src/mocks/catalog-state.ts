@@ -3,18 +3,18 @@ import type { NftUpdated } from '@/shared/api/events'
 const storageKey = 'kurio-catalog-v1'
 const names = ['Emerald Ape #042', 'Sage Nomad #009', 'Neon Vessel #552', 'Cosmic Bloom #118', 'Violet Nomad #314', 'Ivory Baron #088', 'Golden Beat #207', 'Golden Frequency #071', 'Golden Signal #160']
 const ids = ['emerald-042', 'sage-009', 'neon-552', 'cosmic-118', 'violet-314', 'ivory-088', 'golden-207', 'frequency-071', 'signal-160']
-const art = ['8f387.png', '83794.png', '9add2.png', '83794.png', '83794.png', '9add2.png', 'b7cfc.png', 'b7cfc.png', 'b7cfc.png']
+const art = ['8f387-900.webp', '83794-900.webp', '9add2-900.webp', '83794-900.webp', '83794-900.webp', '9add2-900.webp', 'b7cfc-900.webp', 'b7cfc-900.webp', 'b7cfc-900.webp']
 const prices = ['1.19', '1.69', '1.99', '1.29', '1.39', '1.79', '0.99', '0.59', '0.39']
 const categories = Object.keys(collections) as Collection[]
 function fixtures(): Nft[] {
   return Array.from({ length: 45 }, (_, i) => {
-    const image = `/assets/figma/${art[i % 9]}`
+    const image = `/assets/optimized/${art[i % 9]}`
     return { id: i < 9 ? ids[i] : `kurio-${i + 1}`, name: i < 9 ? names[i] : `Kurio Edition #${String(i + 1).padStart(3, '0')}`, token: `#${i < 9 ? names[i].split('#')[1].padStart(4, '0') : String(i + 1).padStart(4, '0')}`, image, gallery: [image, image, image, image], priceEth: i < 9 ? prices[i] : `${1 + i % 6}.${String(i * 7 % 100).padStart(2, '0')}`, previousPrice: i === 2 ? '2.29' : undefined, available: 10, version: 1, collection: i < 9 ? 'digital' : categories[(i - 9) % 9], network: networks[i % 3],
       editions: [{ id: 'unique', label: '1/1', available: 0, maxQuantity: 1 }, { id: 'ten', label: '1/10', available: 4, maxQuantity: 4 }, { id: 'fifty', label: '1/50', available: 10, maxQuantity: 10 }, { id: 'open', label: 'ABERTA', available: 50, maxQuantity: 20 }], rare: i % 3 === 2, trending: i % 2 === 0, createdAt: new Date(Date.UTC(2026, 8, 30 - i)).toISOString(), description: 'Um colecionável digital finalizado à mão da coleção Kurio Editions, com arte desbloqueável e acesso para colecionadores. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.', contract: '0x7A42…19E8 · Contrato inteligente ERC-721', royalty: '5%' }
   })
 }
 function load(): Nft[] {
-  try { const value: unknown = JSON.parse(localStorage.getItem(storageKey) ?? 'null'); if (Array.isArray(value) && value.length === 45 && value.every((n) => n && typeof n.id === 'string' && Number.isInteger(n.version) && Array.isArray(n.editions))) return value as Nft[] } catch { /* malformed persistence resets */ }
+  try { const value: unknown = JSON.parse(localStorage.getItem(storageKey) ?? 'null'); if (Array.isArray(value) && value.length === 45 && value.every((n) => n && typeof n.id === 'string' && Number.isInteger(n.version) && Array.isArray(n.editions))) return (value as Nft[]).map(nft => ({ ...nft, image: nft.image.replace("/assets/figma/", "/assets/optimized/").replace(".png", "-900.webp"), gallery: nft.gallery.map(asset => asset.replace("/assets/figma/", "/assets/optimized/").replace(".png", "-900.webp")) })) } catch { /* malformed persistence resets */ }
   return fixtures()
 }
 let records = load(), reads = 0, revision = 1

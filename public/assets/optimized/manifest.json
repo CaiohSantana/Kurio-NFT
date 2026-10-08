@@ -1,0 +1,97 @@
+{
+  "encoder": "sharp 0.35.5; WebP lossless effort 6; full resolution plus 450/900px resamples; no artwork changes",
+  "assets": [
+    {
+      "source": "public/assets/figma/83794.png",
+      "target": "public/assets/optimized/83794.webp",
+      "sourceBytes": 2068526,
+      "targetBytes": 1380166,
+      "sourceSha256": "9b25d8d72395aa62f919f6ad33b95b7ba7bbfee6049e95cf159a319b03ecb8d9",
+      "targetSha256": "c0052210bd7d9a6d41dfafbf42c40b159d7ba5f78b6eba11444cc09214e59dd3",
+      "originalPixelsPreserved": true,
+      "variants": [
+        {
+          "width": 450,
+          "target": "public/assets/optimized/83794-450.webp",
+          "targetBytes": 192530,
+          "sha256": "273e961d1467140c583b021ac3277b72579753143132f091394b3da607cc5f58"
+        },
+        {
+          "width": 900,
+          "target": "public/assets/optimized/83794-900.webp",
+          "targetBytes": 743820,
+          "sha256": "dde00a64f2ab5787cba86c51e3f5fb4e5b98b044070a0ca2fc864877a2c1d1ec"
+        }
+      ]
+    },
+    {
+      "source": "public/assets/figma/8f387.png",
+      "target": "public/assets/optimized/8f387.webp",
+      "sourceBytes": 1885435,
+      "targetBytes": 1276290,
+      "sourceSha256": "f20b58b99de12b6eceede2090607e4b999275bba95de7674bb14f26b59666b21",
+      "targetSha256": "5b412bae6c2955f3efaac2e2d7ec2305e49e726a2ea7c22538ca4fe59da33502",
+      "originalPixelsPreserved": true,
+      "variants": [
+        {
+          "width": 450,
+          "target": "public/assets/optimized/8f387-450.webp",
+          "targetBytes": 183456,
+          "sha256": "aabcdcce783dfecc54d5f98cf1a25299a4554d12bc380e120ddb5471eaed863d"
+        },
+        {
+          "width": 900,
+          "target": "public/assets/optimized/8f387-900.webp",
+          "targetBytes": 713922,
+          "sha256": "b0e61715eb2c599919f47999f6db8fe32e3011277b909a3db6f62561906dad9f"
+        }
+      ]
+    },
+    {
+      "source": "public/assets/figma/9add2.png",
+      "target": "public/assets/optimized/9add2.webp",
+      "sourceBytes": 2027336,
+      "targetBytes": 1373616,
+      "sourceSha256": "326df4c1c08c31c88b9f407e51be3991e46667183af62aa1501927adc76f52b5",
+      "targetSha256": "22b2a575454c6742ab0a39f647aea6490f127fe44dc70b4ddd5bffb23ef68e4c",
+      "originalPixelsPreserved": true,
+      "variants": [
+        {
+          "width": 450,
+          "target": "public/assets/optimized/9add2-450.webp",
+          "targetBytes": 176868,
+          "sha256": "6b17be59b555afa0d776055403333f5723ae56b9be62a8e1657a52ec84617f14"
+        },
+        {
+          "width": 900,
+          "target": "public/assets/optimized/9add2-900.webp",
+          "targetBytes": 734488,
+          "sha256": "e0d49ce36a0ca0830e3e0ecd54c78e644fa9ef062e3914f3e7bd0b4d5ae70b42"
+        }
+      ]
+    },
+    {
+      "source": "public/assets/figma/b7cfc.png",
+      "target": "public/assets/optimized/b7cfc.webp",
+      "sourceBytes": 1978600,
+      "targetBytes": 1357702,
+      "sourceSha256": "2a42ba5adc341c3d0e1ad6905058e2762d995fc988113a7cd28b0d15f6a4ba28",
+      "targetSha256": "f2d2d5604c5fb27e2c28c23289d69b62d04e71fa5ec41c2588ebeadffeb8fd09",
+      "originalPixelsPreserved": true,
+      "variants": [
+        {
+          "width": 450,
+          "target": "public/assets/optimized/b7cfc-450.webp",
+          "targetBytes": 194874,
+          "sha256": "b35c18334db8aa826a9bbd7587364d0bc90f4bfd6141d802912fc86801ad8625"
+        },
+        {
+          "width": 900,
+          "target": "public/assets/optimized/b7cfc-900.webp",
+          "targetBytes": 745272,
+          "sha256": "fb7ec1bf391a45a9e5612583881a385cb9dfc683cd20ab77e75053c717e02d7b"
+        }
+      ]
+    }
+  ]
+}

@@ -41,6 +41,7 @@
   --secondary: #38220f;
   --muted-foreground: #cfb28c;
   --border: #55321f;
+  --control-border: #91623f;
 }
 
 body { margin: 0; min-width: 320px; }
@@ -85,6 +86,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .filters-panel legend { font-size:18px; font-weight:700; line-height:20px; margin-bottom:12px; }
 .filters-panel label { display:flex; align-items:center; gap:8px; line-height:40px; font-size:15px; color:#cfb28c; padding-left:12px; cursor:pointer; }
 .filters-panel label.selected { color:#e89b55; font-weight:700; }
+.filters-panel label.selected span:first-of-type::before { content:'✓ '; }
 .filters-panel label span:last-child { margin-left:auto; }
 .filters-panel input[type=checkbox] { position:absolute; opacity:0; width:1px; height:1px; }
 .filters-panel label:focus-within { outline:2px solid #e89b55; }
@@ -120,7 +122,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .rare-badge,.card-favorite { display:none; }
 .pagination { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-top:88px; }
 .pagination button { width:35px; height:35px; border:1px solid #3f2319; font-size:14px; }
-.pagination button[aria-current] { background:#d28a4c; color:#140d0a; }
+.pagination button[aria-current] { background:#d28a4c; color:#140d0a; font-weight:700; text-decoration:underline; }
 .pagination button:disabled { opacity:.4; }
 .promos { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:96px; }
 .promos article { background:#241612; height:250px; display:flex; align-items:center; border-radius:6px; overflow:hidden; }
@@ -190,7 +192,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .edition-picker { margin-top:12px; }
 .edition-picker legend { font-weight:700; margin-bottom:8px; }
 .edition-picker button { color:#cfb28c; border:1px solid #55321f; border-radius:18px; padding:3px 7px; margin-right:6px; }
-.edition-picker button[aria-pressed=true] { color:#e89b55; border-color:#d28a4c; }
+.edition-picker button[aria-pressed=true] { color:#e89b55; border-color:#d28a4c; box-shadow:inset 0 0 0 1px #d28a4c; font-weight:700; }
 .edition-picker button:disabled { opacity:.5; }
 .buy-controls { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; margin-top:16px; gap:12px; }
 .quantity-control { display:flex; align-items:center; gap:10px; }
@@ -201,6 +203,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .quantity-control button:disabled { opacity:.45; }
 .purchase-actions { display:flex; gap:8px; }
 .purchase-actions button { height:40px; }
+.purchase-actions .favorite-control>button { min-width:32px; }
 .quantity-feedback { width:100%; font-size:11px; color:#cfb28c; }
 .nft-attributes { margin-top:12px; color:#b39463; }
 .nft-attributes>div { display:flex; gap:8px; margin-bottom:10px; }
@@ -219,8 +222,9 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .related .card-art { height:255px; }
 .related .card-name { font-size:14px; }
 .detail-mobile-top,.mobile-unit-price { display:none; }
-.detail-loading { min-height:500px; }
 .detail-loading .proof-skeleton { height:450px; width:100%; }
+.detail-description-skeleton { min-height:600px; margin-top:96px; }
+.detail-description-skeleton .proof-skeleton { height:250px; }
 .zoom-image { width:100%; max-height:70vh; object-fit:contain; }
 .mobile-gallery { display:none; }
 .hero-copy { transform:translateY(-24px); }
@@ -237,7 +241,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .auth-field { margin-bottom:12px; }
 .auth-field label { display:block; font-size:12px; margin-bottom:6px; }
 .auth-field>div { position:relative; }
-.auth-field input { width:100%; border:1px solid #55321f; border-radius:6px; height:40px; padding:10px 40px 10px 14px; font-size:14px; }
+.auth-field input { width:100%; border:1px solid var(--control-border); border-radius:6px; height:40px; padding:10px 40px 10px 14px; font-size:14px; }
 .auth-field [aria-invalid=true] { border-color:#ffad97; }
 .auth-field button { position:absolute; right:12px; top:12px; }
 .auth-field p,.auth-form [role=alert],.cart-summary [role=alert] { color:#ffad97; font-size:12px; line-height:20px; margin:8px 0; }
@@ -306,7 +310,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 28px; }
 .form-field label,.avatar-field>label { display:block; margin-bottom:12px; }
 .form-field label span { color:#e89b55; }
-.form-field input,.form-field select { display:block; width:100%; min-width:0; height:40px; border:1px solid #55321f; border-radius:3px; background:#140d0a; padding:8px 12px; }
+.form-field input,.form-field select { display:block; width:100%; min-width:0; height:40px; border:1px solid var(--control-border); border-radius:3px; background:#140d0a; padding:8px 12px; }
 .form-field [aria-invalid=true] { border-color:#ffad97; }
 .field-control { position:relative; }.field-control:has(.password-visibility) input { padding-right:40px; }.password-visibility { display:flex; align-items:center; justify-content:center; position:absolute; right:4px; top:2px; width:36px; height:36px; color:#b39463; }
 .form-field p,.account-layout [role=alert] { color:#ffad97; font-size:12px; margin-top:8px; }
@@ -331,6 +335,12 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .avatar-field>div:focus-within .avatar-change { outline:2px solid #e89b55; outline-offset:4px; }
 .avatar-field button { border:0; background:none; box-shadow:none; color:#f5f1eb; padding:0 8px; }
 .mobile-account-button { display:none; }
+.account-actions { display:grid; gap:16px; text-align:left; }.account-actions button { text-align:left; }
+@media(max-width:639px) {
+  .mobile-account-button { display:flex; position:absolute; right:20px; top:12px; align-items:center; justify-content:center; min-width:36px; min-height:36px; border-radius:50%; color:#cfb28c; }
+  .market:has(.order-page) .mobile-account-button { display:none; }
+  .market:has(.detail-mobile-top) .mobile-account-button { right:88px; top:26px; z-index:2; background:#241612; border:1px solid #55321f; }
+}
 .password-form { max-width:417px; }
 .password-form .form-field { margin:24px 0; }
 .secondary-wallet { margin:24px 0; padding-top:24px; border-top:1px solid #55321f; }

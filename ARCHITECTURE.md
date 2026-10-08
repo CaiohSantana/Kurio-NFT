@@ -1,5 +1,9 @@
 # Arquitetura — marketplace simulado
 
+## Auditoria e carregamento vigente
+
+Bootstrap importa React/Query/Router após worker.start; modulepreload antecipa apenas downloads, sem avaliar socket.io-client antes da interceptação. lazyRouteComponent separa conta/auth/carrinho/checkout/recibo/prova; estilos compartilhados de conta ficam na base, recibo importa CSS também no acesso direto. Nenhuma mudança na autoridade REST, cache privado, tentativas/idempotência ou reconciliação. Assets WebP derivam das artes locais, com PNGs/exports preservados e migração somente dos caminhos de arte no catálogo persistido; snapshots antigos continuam imutáveis e seus PNGs disponíveis. Lighthouse usa build demo completo, cenário padrão e perfis novos por execução; nenhuma funcionalidade é desativada. A simulação segue documentada, sem avisos técnicos no produto. Evidências atuais: docs/quality-audit.md.
+
 ## Ajustes finais de composição e interação
 
 Decisões vigentes em docs/final-screen-review.md. Primitivas compartilhadas com reutilização concreta: EnsField em perfil/carteiras/pagamento (draft local de nome+sufixo; REST recebe ENS completo) e RelatedNfts em detalhe/carrinho (três grupos dos itens da API, sem novo estado remoto). Price interval mantém dois inputs nativos sobre uma trilha, sem dependências. CartLink transmite parâmetros validados do catálogo em history.state para Continuar explorando.
