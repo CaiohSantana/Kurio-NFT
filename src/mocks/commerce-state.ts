@@ -1,13 +1,15 @@
 import type { Credentials, Session, User } from '@/features/auth/contracts'
 import type { Cart, CartItem, Quote } from '@/features/cart/contracts'
 import { readCatalogNft } from './catalog-state'
+import type { Profile } from '@/features/profile/contracts'
+import type { Wallet } from '@/features/wallets/contracts'
 
-interface Account extends User { salt: string; hash: string; favorites: string[]; cart: Cart }
+export interface Account extends User { salt: string; hash: string; favorites: string[]; cart: Cart; profile?: Omit<Profile, keyof User>; wallets?: Wallet[]; reusePrimary?: boolean }
 interface Store { users: Account[]; guestId: string; guest: Cart; session: { token: string; userId: string; expiresAt: number; notices: string[] } | null; merged: string[]; expired?: boolean }
 const key = 'kurio-commerce-v1'
 const emptyCart = (): Cart => ({ items: [], coupon: '', version: 1 })
 const hex = (bytes: Uint8Array) => [...bytes].map((b) => b.toString(16).padStart(2, '0')).join('')
-async function hash(password: string, salt: string) {
+export async function hash(password: string, salt: string) {
   const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits'])
   return hex(new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: new TextEncoder().encode(salt), iterations: 100000 }, material, 256)))
 }
@@ -20,7 +22,7 @@ async function seed(): Promise<Store> {
 }
 let store: Store
 const ready = (async () => { try { const saved = JSON.parse(localStorage.getItem(key) ?? 'null') as Store | null; if (saved?.users?.length && saved.guest && saved.guestId) { store = saved; return } } catch { /* Reset corrupted demo persistence. */ } store = await seed(); save() })()
-function save() { localStorage.setItem(key, JSON.stringify(store)) }
+export function save() { localStorage.setItem(key, JSON.stringify(store)) }
 export class CommerceError extends Error { constructor(public status: number, public code: string, message: string, public fieldErrors?: Record<string, string>) { super(message) } }
 export async function session(): Promise<Session> {
   await ready
@@ -34,6 +36,8 @@ export async function authorize(scope: string | null, privateOnly = false) {
   if (!scope || scope !== current.scope || (privateOnly && !current.user)) throw new CommerceError(401, 'SESSION_EXPIRED', 'Sessão expirada. Entre novamente para continuar.')
   return current
 }
+export async function account(scope: string | null) { const s = await authorize(scope, true); return store.users.find((user) => user.id === s.user!.id)! }
+export async function allAccounts() { await ready; return store.users }
 function validate(body: Credentials, signup: boolean) {
   const errors: Record<string, string> = {}
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email ?? '')) errors.email = 'Informe um e-mail válido.'

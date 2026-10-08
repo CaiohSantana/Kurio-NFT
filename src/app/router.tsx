@@ -5,8 +5,11 @@ import { DetailPage } from '@/features/catalog/DetailPage'
 import { MarketShell } from '@/features/catalog/MarketShell'
 import { validateCatalogSearch } from '@/features/catalog/contracts'
 import { AuthPage } from '@/features/auth/AuthPage'
-import { authSearch } from '@/features/auth/contracts'
+import { authSearch, safeReturn } from '@/features/auth/contracts'
 import { CartPage } from '@/features/cart/CartPage'
+import { RequireSession } from '@/features/auth/RequireSession'
+import { ProfilePage } from '@/features/profile/ProfilePage'
+import { WalletsPage } from '@/features/wallets/WalletsPage'
 
 const rootRoute = createRootRoute({
   component: Outlet,
@@ -21,6 +24,8 @@ export const detailRoute = createRoute({ getParentRoute: () => marketRoute, path
 const loginRoute = createRoute({ getParentRoute: () => marketRoute, path: '/login', validateSearch: authSearch, component: AuthPage })
 const signupRoute = createRoute({ getParentRoute: () => marketRoute, path: '/signup', validateSearch: authSearch, component: () => <AuthPage signup /> })
 const cartRoute = createRoute({ getParentRoute: () => marketRoute, path: '/cart', component: CartPage })
+const profileRoute = createRoute({ getParentRoute: () => marketRoute, path: '/account/profile', component: () => <RequireSession><ProfilePage /></RequireSession> })
+const walletsRoute = createRoute({ getParentRoute: () => marketRoute, path: '/account/wallets', validateSearch: (raw: Record<string, unknown>) => ({ returnTo: safeReturn(raw.returnTo) }), component: () => <RequireSession><WalletsPage /></RequireSession> })
 const proofRoute = createRoute({ getParentRoute: () => rootRoute, path: '/integration', component: IntegrationProof })
-export const router = createRouter({ routeTree: rootRoute.addChildren([marketRoute.addChildren([catalogRoute, detailRoute, loginRoute, signupRoute, cartRoute]), preparationRoute, proofRoute]), scrollRestoration: true })
+export const router = createRouter({ routeTree: rootRoute.addChildren([marketRoute.addChildren([catalogRoute, detailRoute, loginRoute, signupRoute, cartRoute, profileRoute, walletsRoute]), preparationRoute, proofRoute]), scrollRestoration: true })
 declare module '@tanstack/react-router' { interface Register { router: typeof router } }

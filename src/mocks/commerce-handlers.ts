@@ -2,10 +2,13 @@ import { delay, http, HttpResponse, type JsonBodyType } from 'msw'
 import * as state from './commerce-state'
 import type { Credentials } from '@/features/auth/contracts'
 import type { CartItem } from '@/features/cart/contracts'
+import * as accounts from './account-state'
+import type { ProfileInput, PasswordInput } from '@/features/profile/contracts'
+import type { WalletInput } from '@/features/wallets/contracts'
 
 // Capture identity at request time. Reauthorize after latency, before any write:
 // an old request cannot acquire the user that logged in while it was waiting.
-async function run(request: Request, target: string, operation: (scope: string | null) => Promise<JsonBodyType>, anonymous = false) {
+export async function run(request: Request, target: string, operation: (scope: string | null) => Promise<JsonBodyType>, anonymous = false) {
   const scope = request.headers.get('X-Session-Scope'), failure = target !== 'scenario' && state.consumeCommerceFailure(target), latency = state.commerceDelay
   try {
     if (!anonymous) await state.authorize(scope)
@@ -19,6 +22,15 @@ async function run(request: Request, target: string, operation: (scope: string |
   }
 }
 export const commerceHandlers = [
+  http.get('/api/profile', ({ request }) => run(request, 'profile', (scope) => accounts.profile(scope))),
+  http.patch('/api/profile', async ({ request }) => { const body = await request.json() as ProfileInput; return run(request, 'profile', (scope) => accounts.editProfile(scope, body)) }),
+  http.put('/api/profile/avatar', async ({ request }) => { const body = await request.json() as { data: string }; return run(request, 'avatar', (scope) => accounts.avatar(scope, body.data)) }),
+  http.delete('/api/profile/avatar', ({ request }) => run(request, 'avatar', (scope) => accounts.avatar(scope, null))),
+  http.patch('/api/profile/password', async ({ request }) => { const body = await request.json() as PasswordInput; return run(request, 'password', (scope) => accounts.password(scope, body)) }),
+  http.get('/api/wallets', ({ request }) => run(request, 'wallets', (scope) => accounts.wallets(scope))),
+  http.post('/api/wallets', async ({ request }) => { const body = await request.json() as WalletInput; return run(request, 'wallets', (scope) => accounts.editWallet(scope, body)) }),
+  http.patch('/api/wallets/:id', async ({ request, params }) => { const body = await request.json() as WalletInput; return run(request, 'wallets', (scope) => accounts.editWallet(scope, body, String(params.id))) }),
+  http.patch('/api/wallet-preferences', async ({ request }) => { const body = await request.json() as { reusePrimary: boolean }; return run(request, 'wallets', (scope) => accounts.reusePrimary(scope, body.reusePrimary === true)) }),
   http.get('/api/session', ({ request }) => run(request, 'session', () => state.session(), true)),
   http.post('/api/session', async ({ request }) => { const body = await request.json() as Credentials; return run(request, 'login', () => state.authenticate(body, false), true) }),
   http.post('/api/accounts', async ({ request }) => { const body = await request.json() as Credentials; return run(request, 'signup', () => state.authenticate(body, true), true) }),

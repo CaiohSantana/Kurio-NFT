@@ -9,6 +9,7 @@ export const privateKey = (scope: string) => ['private', scope] as const
 export const activeScope = (client: QueryClient, scope: string) => client.getQueryData<Session>(sessionKey)?.scope === scope
 export const scopedConfig = (scope: string, signal?: AbortSignal) => ({ headers: { 'X-Session-Scope': scope }, signal })
 export function apiMessage(error: unknown) { return isAxiosError<ApiError>(error) ? error.response?.data.message ?? 'Falha de conexão. Tente novamente.' : 'Não foi possível concluir. Tente novamente.' }
+export function apiFields(error: unknown) { return isAxiosError<ApiError>(error) ? error.response?.data.fieldErrors ?? {} : {} }
 export function reportExpired(error: unknown, scope: string, favorite = '', enabled = true) {
   if (isAxiosError<ApiError>(error) && error.response?.data.code === 'SESSION_EXPIRED') window.dispatchEvent(new CustomEvent('session-expired', { detail: { scope, favorite, favoriteMode: enabled ? undefined : 'remove' } }))
 }

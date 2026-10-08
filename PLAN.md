@@ -1,5 +1,7 @@
 # Plano de execução
 
+P10/P11 executados para a simulação:12/12 testes de perfil/avatar/senha/carteiras passaram, com typecheck/build/lint. Ver docs/account-validation.md. P12/P13 seguem diretamente na mesma autorização; fidelidade integral e gates finais não estão concluídos.
+
 Nova autorização: corrigir Mercado/badge, validar e commitar isoladamente; depois executar P10–P13, preservando os fluxos existentes. Correções comportamentais passaram78/78; docs/navigation-cart-fixes.md registra causas/regras. Lighthouse/P15, publicação pública e refinamento visual restante ficam na etapa final.
 
 Status 2026-10-08: sessão/login/cadastro/favoritos/carrinho/cotação executados. P00/P01 concluídos; P02 nft.updated preservada, sem order.updated. P03 preparada sem URL pública. P04/P05 parciais; P06 concluída para os fluxos existentes (retomada de checkout futuro pendente); P07 preservada; P08 parcial com favorito/adicionar, sem checkout; P09 concluída para carrinho e cotação demonstrativa, sem vínculo a pedido. P10–P16 continuam pendentes ou parciais conforme abaixo. Verificações84/84 em docs/commerce-validation.md; parar ao fim desta etapa.

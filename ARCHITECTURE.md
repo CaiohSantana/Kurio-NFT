@@ -1,5 +1,7 @@
 # Arquitetura — base e prova de integração
 
+Perfil/carteiras: contratos e API em features/profile e features/wallets; regras em mocks/account-state, dados na mesma Account de commerce-state. Identidade canônica, avatar decodificado e hash de senha, scope verificado após async; carteiras por tipo/rede/endereço e preferência reusePrimary sem cópia. Consultas privadas Query, formulários HTML como drafts locais, erros por campo e guard consultando sessão/cache atual. Evidência12/12 em docs/account-validation.md; pagamento/pedidos seguem na etapa autorizada.
+
 Correções de navegação/badge em 2026-10-08: CatalogLink coordena hash/scroll na montagem do catálogo, respeita reduced-motion e preserva search/contexto no history do Router; CartLink observa a query global do carrinho por scope e soma quantities. Causas, contrato de acessibilidade e evidência78/78 em docs/navigation-cart-fixes.md. Nenhum contador local independente.
 
 Escopo atual: base, catálogo/detalhe, sessão, autenticação, favoritos e carrinho/cotação. A descrição inicial da prova é histórica; decisões atuais estão nas seções finais. Pagamento, perfil, carteiras, pedidos e confirmação ainda não estão implementados. A confirmação do marketplace continua dependente do pedido confirmed na simulação.

@@ -41,10 +41,10 @@ function MarketContent() {
       {realtime && <p className="realtime-notice" role="status">{realtime}</p>}
       {session.notices.filter((message) => message.startsWith('Não foi possível favoritar')).map((message) => <p role="alert" key={message}>{message}</p>)}
       <Outlet />
-      {session.user && <div className="session-controls"><p>Sessão: {session.user.username}</p><button onClick={() => logout.mutate()} disabled={logout.isPending}>Encerrar sessão</button><button onClick={login}>Trocar usuário</button></div>}
+      {session.user && <div className="session-controls"><p>Sessão: {session.user.username}</p><Link to="/account/profile">Meu perfil</Link><Link to="/account/wallets" search={{ returnTo: '/' }}>Carteiras</Link><button onClick={() => logout.mutate()} disabled={logout.isPending}>Encerrar sessão</button><button onClick={login}>Trocar usuário</button></div>}
       <Footer />
       {pathname === '/' && <nav className="mobile-navigation" aria-label="Navegação mobile">
-        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><CartLink size={20} /><button aria-label="Perfil" onClick={session.user ? () => unavailable('Perfil') : login}><User size={20} /></button>
+        <Link to="/" search={defaultCatalogSearch} aria-label="Início"><Home size={20} /></Link><button aria-label="Favoritos" onClick={() => unavailable('Lista de favoritos — use os corações nos NFTs')}><Heart size={20} /></button><button className="scan" aria-label="Scanner indisponível" onClick={() => unavailable('Scanner')}><ScanLine /></button><CartLink size={20} /><button aria-label="Perfil" onClick={session.user ? () => { void navigate({ to: '/account/profile' }) } : login}><User size={20} /></button>
       </nav>}
       <Modal title="Funcionalidade indisponível" open={!!notice} onClose={() => setNotice('')}><p>{notice}</p></Modal>
     </div>
