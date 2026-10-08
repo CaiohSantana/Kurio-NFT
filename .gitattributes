@@ -1,0 +1,4 @@
+public/assets/figma/* -text
+public/assets/fonts/* -text
+*.png binary
+docs/challenge-original.md -text

@@ -1,7 +1,8 @@
 import { delay, http, HttpResponse, ws } from 'msw'
 import { toSocketIo } from '@mswjs/socket.io-binding'
 import type { NftUpdated, ScenarioAction, ScenarioResult } from '@/proof/contracts'
-import { changeNft, consumeFailure, duplicateEvent, failNextRead, oldEvent, readNft, resetProof } from './proof-state'
+import { changeNft, consumeFailure, duplicateEvent, failNextRead, oldEvent, resetProof } from './proof-state'
+import { catalogDelay, configureCatalog, consumeCatalogFailure, getLastCatalogEvent, queryCatalog, readCatalogNft, resetCatalog, updateCatalogNft } from './catalog-state'
 
 // A dedicated transport path avoids MSW's normalization of /socket.io/ to /
 // and prevents matching Vite's own HMR connection. Namespace is still /.
@@ -34,11 +35,36 @@ export const handlers = [
       connections.delete(connection)
     })
   }),
-  http.get('/api/nfts/:id', async ({ params }) => {
-    await delay(650)
-    if (params.id !== 'emerald-042') return HttpResponse.json({ message: 'NFT inexistente.' }, { status: 404 })
+  http.get('/api/nfts', async ({ request }) => {
+    const search = Object.fromEntries(new URL(request.url).searchParams)
+    const result = queryCatalog(search)
+    const failure = consumeCatalogFailure()
+    await delay(search.q === 'Kurio' ? Math.max(catalogDelay, 900) : catalogDelay)
+    if (failure) return HttpResponse.json({ message: 'Falha transitória simulada.' }, { status: 503 })
+    return HttpResponse.json(result, { headers: { 'X-Mock-Handler': 'catalog', 'Cache-Control': 'no-store' } })
+  }),
+  http.get('/api/nfts/:id', async ({ params, request }) => {
+    const isProof = request.headers.get('X-Integration-Proof') === 'true'
+    const result = readCatalogNft(String(params.id))
+    const failure = consumeCatalogFailure()
+    await delay(isProof ? 650 : catalogDelay)
+    if (!result) return HttpResponse.json({ message: 'NFT inexistente.' }, { status: 404 })
     if (consumeFailure()) return HttpResponse.json({ message: 'Falha transitória simulada. Tente novamente.' }, { status: 503 })
-    return HttpResponse.json(readNft(), { headers: { 'X-Mock-Handler': 'proof-nft', 'Cache-Control': 'no-store' } })
+    if (failure) return HttpResponse.json({ message: 'Falha transitória simulada.' }, { status: 503 })
+    return HttpResponse.json(result, { headers: { 'X-Mock-Handler': isProof ? 'proof-nft' : 'nft', 'Cache-Control': 'no-store' } })
+  }),
+  http.post('/api/__catalog/scenario', async ({ request }) => {
+    const body = await request.json() as { action: string; id?: string; delay?: number }
+    const id = body.id ?? 'emerald-042'
+    if (body.action === 'reset') { resetCatalog(); outageUntil = 0 }
+    else if (body.action === 'slow') configureCatalog(body.delay ?? 1500)
+    else if (body.action === 'fail') configureCatalog(250, true)
+    else if (body.action === 'disconnect') { outageUntil = Date.now() + 2000; for (const c of connections) c.rawClient.close(1012, 'Mock interruption') }
+    else if (body.action === 'change' || body.action === 'sold-out') { const event = updateCatalogNft(id, body.action === 'sold-out'); if (event) broadcast(event) }
+    else if (body.action === 'duplicate') { const event = getLastCatalogEvent(); if (event) broadcast(event) }
+    else if (body.action === 'old') broadcast({ eventId: `old:${id}`, resourceId: id, version: 0 })
+    else return HttpResponse.json({ message: 'Cenário inválido.' }, { status: 400 })
+    return HttpResponse.json({ message: 'Cenário aplicado na API simulada.' })
   }),
   http.post('/api/__proof/scenario', async ({ request }) => {
     const { action } = await request.json() as { action: ScenarioAction }

@@ -4,7 +4,7 @@ import type { NftResponse, ScenarioAction, ScenarioResult } from './contracts'
 export const nftKey = ['integration-proof', 'nft', 'emerald-042'] as const
 
 export async function getProofNft(signal?: AbortSignal) {
-  const { data } = await http.get<NftResponse>('/nfts/emerald-042', { signal })
+  const { data } = await http.get<NftResponse>('/nfts/emerald-042', { signal, headers: { 'X-Integration-Proof': 'true' } })
   return data
 }
 

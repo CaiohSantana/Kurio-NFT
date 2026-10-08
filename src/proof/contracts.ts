@@ -12,13 +12,7 @@ export interface NftResponse {
   readCount: number
 }
 
-export interface NftUpdated {
-  eventId: string
-  resourceId: string
-  version: number
-}
+export type { NftUpdated, ServerEvents } from '@/shared/api/events'
 
 export type ScenarioAction = 'change' | 'duplicate' | 'old' | 'disconnect' | 'fail-next' | 'reset'
 export interface ScenarioResult { message: string }
-
-export interface ServerEvents { 'nft.updated': (event: NftUpdated) => void }

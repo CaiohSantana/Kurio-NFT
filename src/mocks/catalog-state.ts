@@ -1,0 +1,45 @@
+import { collections, networks, validateCatalogSearch, type Collection, type Nft, type CatalogResponse } from '@/features/catalog/contracts'
+import type { NftUpdated } from '@/shared/api/events'
+const storageKey = 'kurio-catalog-v1'
+const names = ['Emerald Ape #042', 'Sage Nomad #009', 'Neon Vessel #552', 'Cosmic Bloom #118', 'Violet Nomad #314', 'Ivory Baron #088', 'Golden Beat #207', 'Golden Frequency #071', 'Golden Signal #160']
+const ids = ['emerald-042', 'sage-009', 'neon-552', 'cosmic-118', 'violet-314', 'ivory-088', 'golden-207', 'frequency-071', 'signal-160']
+const art = ['8f387.png', '83794.png', '9add2.png', '83794.png', '83794.png', '9add2.png', 'b7cfc.png', 'b7cfc.png', 'b7cfc.png']
+const prices = ['1.19', '1.69', '1.99', '1.29', '1.39', '1.79', '0.99', '0.59', '0.39']
+const categories = Object.keys(collections) as Collection[]
+function fixtures(): Nft[] {
+  return Array.from({ length: 45 }, (_, i) => {
+    const image = `/assets/figma/${art[i % 9]}`
+    return { id: i < 9 ? ids[i] : `kurio-${i + 1}`, name: i < 9 ? names[i] : `Kurio Edition #${String(i + 1).padStart(3, '0')}`, token: `#${i < 9 ? names[i].split('#')[1].padStart(4, '0') : String(i + 1).padStart(4, '0')}`, image, gallery: [image, image, image, image], priceEth: i < 9 ? prices[i] : `${1 + i % 6}.${String(i * 7 % 100).padStart(2, '0')}`, previousPrice: i === 2 ? '2.29' : undefined, available: 10, version: 1, collection: i < 9 ? 'digital' : categories[(i - 9) % 9], network: networks[i % 3],
+      editions: [{ id: 'unique', label: '1/1', available: 0, maxQuantity: 1 }, { id: 'ten', label: '1/10', available: 4, maxQuantity: 4 }, { id: 'fifty', label: '1/50', available: 10, maxQuantity: 10 }, { id: 'open', label: 'ABERTA', available: 50, maxQuantity: 20 }], rare: i % 3 === 2, trending: i % 2 === 0, createdAt: new Date(Date.UTC(2026, 8, 30 - i)).toISOString(), description: 'Um colecionável digital finalizado à mão da coleção Kurio Editions, com arte desbloqueável e acesso para colecionadores. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.', contract: '0x7A42…19E8 · Contrato inteligente ERC-721', royalty: '5%' }
+  })
+}
+function load(): Nft[] {
+  try { const value: unknown = JSON.parse(localStorage.getItem(storageKey) ?? 'null'); if (Array.isArray(value) && value.length === 45 && value.every((n) => n && typeof n.id === 'string' && Number.isInteger(n.version) && Array.isArray(n.editions))) return value as Nft[] } catch { /* malformed persistence resets */ }
+  return fixtures()
+}
+let records = load(), reads = 0, revision = 1
+export let catalogDelay = Number(localStorage.getItem('kurio-catalog-delay') ?? 250)
+let failNext = localStorage.getItem('kurio-catalog-fail') === 'true'
+let lastEvent: NftUpdated | undefined
+export function resetCatalog() { records = fixtures(); reads = 0; revision = 1; catalogDelay = 250; failNext = false; lastEvent = undefined; localStorage.removeItem(storageKey); localStorage.removeItem('kurio-catalog-delay'); localStorage.removeItem('kurio-catalog-fail') }
+export function readCatalogNft(id: string) { reads++; const nft = records.find((n) => n.id === id); return nft ? { nft: structuredClone(nft), readCount: reads } : undefined }
+export function catalogNftVersion(id: string) { return records.find((n) => n.id === id)?.version ?? 0 }
+const units = (price: string) => { const [whole, fraction = ''] = price.split('.'); return BigInt(whole) * 10n ** 18n + BigInt(fraction.padEnd(18, '0')) }
+export function queryCatalog(raw: Record<string, unknown>): CatalogResponse {
+  const s = validateCatalogSearch(raw)
+  let result = records.filter((n) => n.name.toLowerCase().includes(s.q.toLowerCase()) && (!s.collections.length || s.collections.includes(n.collection)) && (!s.networks.length || s.networks.includes(n.network)) && units(n.priceEth) >= units(s.minPrice) && units(n.priceEth) <= units(s.maxPrice) && (s.tab !== 'trending' || n.trending) && (s.tab !== 'new' || n.createdAt >= '2026-09-15'))
+  result = [...result].sort((a, b) => s.sort === 'recent' ? b.createdAt.localeCompare(a.createdAt) : (units(a.priceEth) < units(b.priceEth) ? -1 : units(a.priceEth) > units(b.priceEth) ? 1 : a.id.localeCompare(b.id)) * (s.sort === 'price-desc' ? -1 : 1))
+  const facets = { collections: Object.fromEntries(categories.map((key) => [key, records.filter((n) => n.collection === key).length])) as Record<Collection, number>, networks: Object.fromEntries(networks.map((key) => [key, records.filter((n) => n.network === key).length])) as CatalogResponse['facets']['networks'] }
+  return { items: structuredClone(result.slice((s.page - 1) * 9, s.page * 9)), total: result.length, pages: Math.ceil(result.length / 9), page: s.page, revision, facets }
+}
+export function updateCatalogNft(id: string, soldOut = false): NftUpdated | undefined {
+  const nft = records.find((n) => n.id === id); if (!nft) return
+  const cents = (units(nft.priceEth) / 10n ** 16n + 10n).toString()
+  nft.priceEth = `${cents.slice(0, -2)}.${cents.slice(-2)}`; nft.version++; nft.available = soldOut ? 0 : Math.max(0, nft.available - 1)
+  nft.editions = nft.editions.map((e) => ({ ...e, available: soldOut ? 0 : Math.max(0, e.available - 1) }))
+  revision++; localStorage.setItem(storageKey, JSON.stringify(records))
+  lastEvent = { eventId: `nft:${id}:${nft.version}`, resourceId: id, version: nft.version }; return lastEvent
+}
+export function getLastCatalogEvent() { return lastEvent }
+export function configureCatalog(delayMs: number, failure = false) { catalogDelay = Math.max(0, Math.min(5000, delayMs)); failNext = failure; localStorage.setItem('kurio-catalog-delay', String(catalogDelay)); localStorage.setItem('kurio-catalog-fail', String(failure)) }
+export function consumeCatalogFailure() { const fail = failNext; failNext = false; localStorage.removeItem('kurio-catalog-fail'); return fail }
