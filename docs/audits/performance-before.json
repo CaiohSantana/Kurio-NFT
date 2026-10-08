@@ -1,0 +1,62 @@
+[
+  {
+    "page": "home",
+    "profile": "mobile",
+    "scores": {
+      "performance": 86,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcp": 3331.8444999999997,
+    "cls": 0.04860267314702309,
+    "tbt": 65,
+    "fcp": 3025.4755999999998,
+    "speedIndex": 3025.4755999999998
+  },
+  {
+    "page": "home",
+    "profile": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcp": 731.7917499999999,
+    "cls": 0.017985478945007478,
+    "tbt": 0,
+    "fcp": 625.0174,
+    "speedIndex": 625.0174
+  },
+  {
+    "page": "detail",
+    "profile": "mobile",
+    "scores": {
+      "performance": 83,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcp": 3795.7646000000004,
+    "cls": 0,
+    "tbt": 60,
+    "fcp": 3020.0914000000002,
+    "speedIndex": 3020.0914000000002
+  },
+  {
+    "page": "detail",
+    "profile": "desktop",
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcp": 831.9126000000001,
+    "cls": 0.01797752808988764,
+    "tbt": 0,
+    "fcp": 634.6084000000001,
+    "speedIndex": 634.6084000000001
+  }
+]

@@ -1,4 +1,4 @@
-/* global process, fetch, document, innerWidth, innerHeight, console, getComputedStyle, chrome, devicePixelRatio, requestAnimationFrame */
+/* global process, fetch, document, innerWidth, innerHeight, console, getComputedStyle, chrome, devicePixelRatio, requestAnimationFrame, matchMedia */
 import { chromium, expect } from '@playwright/test'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -8,6 +8,8 @@ const phase = process.argv[2] ?? 'after', base = process.env.REVIEW_URL ?? 'http
 const directory = `artifacts/visual-review/${phase}`
 await mkdir(directory, { recursive: true })
 const nativeZoom = process.env.REVIEW_NATIVE_ZOOM === 'true'
+const zoomFactor = Number(process.env.REVIEW_ZOOM_FACTOR ?? 2)
+if (![2, 4].includes(zoomFactor)) throw Error('Use REVIEW_ZOOM_FACTOR=2 or 4')
 const extension = path.resolve('.tmp/zoom-extension')
 if (nativeZoom) {
   await mkdir(extension, { recursive: true })
@@ -15,9 +17,9 @@ if (nativeZoom) {
   await writeFile(`${extension}/background.js`, 'chrome.runtime.onInstalled.addListener(() => {});')
 }
 const browser = nativeZoom ? null : await chromium.launch(), measurements = []
-for (const width of nativeZoom ? [768, 1440] : [390, 414, 768, 1440]) {
+for (const width of nativeZoom ? zoomFactor === 4 ? [1440] : [768, 1440] : [390, 414, 768, 1440]) {
   const height = width === 1440 ? 1657 : width === 414 ? 896 : 1024
-  const options = { viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' }
+  const options = { viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce', forcedColors: process.env.REVIEW_FORCED_COLORS === 'true' ? 'active' : 'none' }
   const context = nativeZoom ? await chromium.launchPersistentContext(`.tmp/zoom-review-${width}-${Date.now()}`, { ...options, channel: 'chromium', headless: true, args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`] }) : await browser.newContext(options)
   const page = await context.newPage()
   const extensionWorker = nativeZoom ? context.serviceWorkers()[0] ?? await context.waitForEvent('serviceworker') : null
@@ -28,12 +30,12 @@ for (const width of nativeZoom ? [768, 1440] : [390, 414, 768, 1440]) {
     await page.keyboard.press('Tab')
     const focus = await page.evaluate(() => { const node = document.activeElement, style = getComputedStyle(node); return { element: node.tagName, outline: style.outlineWidth, shadow: style.boxShadow } })
     const reducedWidth = Math.max(320, Math.round(width / 2))
-    if (nativeZoom) await zoom(2)
+    if (nativeZoom) await zoom(zoomFactor)
     else await page.setViewportSize({ width: reducedWidth, height: Math.max(640, Math.round(height / 2)) })
     if (!nativeZoom) await page.reload()
     await page.evaluate(() => new Promise(requestAnimationFrame))
     await page.locator(ready).first().waitFor()
-    const reflow = await page.evaluate(nativeZoom => { const dialog = document.querySelector('dialog[open]'), box = dialog?.getBoundingClientRect(); return { overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth, height: innerHeight, devicePixelRatio, withoutReload: nativeZoom, dialogFits: box ? box.top >= 0 && box.bottom <= innerHeight : null } }, nativeZoom)
+    const reflow = await page.evaluate(nativeZoom => { const dialog = document.querySelector('dialog[open]'), box = dialog?.getBoundingClientRect(); return { overflow: document.documentElement.scrollWidth > innerWidth, width: innerWidth, height: innerHeight, devicePixelRatio, forcedColors: matchMedia('(forced-colors: active)').matches, withoutReload: nativeZoom, dialogFits: box ? box.top >= 0 && box.bottom <= innerHeight : null } }, nativeZoom)
     if (nativeZoom && (reflow.overflow || reflow.dialogFits === false)) throw Error(`Native zoom lost content: ${JSON.stringify(reflow)}`)
     if (nativeZoom) await zoom(1)
     else await page.setViewportSize({ width, height })

@@ -55,6 +55,10 @@ button:disabled { cursor: not-allowed; }
 /* Marketplace: confirmed desktop/home measures; responsive adaptations below. */
 button, input, select, a { -webkit-tap-highlight-color: transparent; }
 :where(a,button,input,select,textarea,summary):focus-visible { outline: 2px solid #e89b55; outline-offset: 4px; }
+@media (forced-colors: active) {
+  .edition-picker button[aria-pressed=true], .gallery-thumbnails button[aria-pressed=true] { outline: 2px solid Highlight; outline-offset: 2px; }
+  .price-sliders:before { border-top: 2px solid CanvasText; }
+}
 .market { max-width: 1200px; margin: 24px auto; font-size: 14px; }
 .market button { font: inherit; }
 .desktop-header { display:flex; align-items:flex-start; justify-content:space-between; height:45px; border-bottom:1px solid #3f2319; margin-bottom:32px; }

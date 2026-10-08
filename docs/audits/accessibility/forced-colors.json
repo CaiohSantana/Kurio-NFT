@@ -1,0 +1,1362 @@
+[
+  {
+    "phase": "performance-forced-colors",
+    "name": "login",
+    "width": 390,
+    "height": 1024,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "signup",
+    "width": 390,
+    "height": 1024,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "home",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 6309,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 4249.59375,
+        "width": 342,
+        "height": 1919.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "detail",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 4584,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 0,
+        "y": 2530.5,
+        "width": 390,
+        "height": 1853.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "cart",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 3987,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 1987,
+        "width": 342,
+        "height": 1919.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "profile",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 1279,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 32,
+        "width": 342,
+        "height": 1223
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "wallets",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 2557,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 32,
+        "width": 342,
+        "height": 2501
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "checkout",
+    "width": 390,
+    "height": 1024,
+    "pageHeight": 1024,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": {
+        "x": 28,
+        "y": 91,
+        "width": 334,
+        "height": 796
+      },
+      ".checkout-review": {
+        "x": 28,
+        "y": 91,
+        "width": 334,
+        "height": 695
+      },
+      ".checkout-collector": {
+        "x": 28,
+        "y": 818,
+        "width": 334,
+        "height": 69
+      },
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "receipt",
+    "width": 390,
+    "height": 1024,
+    "overflow": false,
+    "rectangle": {
+      "x": 16,
+      "y": 24,
+      "width": 358,
+      "height": 894
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "3px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "login",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "signup",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "home",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 6288,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 4250.8125,
+        "width": 366,
+        "height": 1897.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "detail",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 3574,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 0,
+        "y": 1520.5,
+        "width": 414,
+        "height": 1853.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "cart",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 3945,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 1967,
+        "width": 366,
+        "height": 1897.5
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "profile",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 1279,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 32,
+        "width": 366,
+        "height": 1223
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "wallets",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 2557,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 32,
+        "width": 366,
+        "height": 2501
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "checkout",
+    "width": 414,
+    "height": 896,
+    "pageHeight": 915,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": {
+        "x": 28,
+        "y": 91,
+        "width": 358,
+        "height": 796
+      },
+      ".checkout-review": {
+        "x": 28,
+        "y": 91,
+        "width": 358,
+        "height": 695
+      },
+      ".checkout-collector": {
+        "x": 28,
+        "y": 818,
+        "width": 358,
+        "height": 69
+      },
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "receipt",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "rectangle": {
+      "x": 16,
+      "y": 24,
+      "width": 382,
+      "height": 894
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "3px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 320,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "login",
+    "width": 768,
+    "height": 1024,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "signup",
+    "width": 768,
+    "height": 1024,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "home",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 4397,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 3299.5,
+        "width": 720,
+        "height": 1073
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "detail",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 2884,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 1787,
+        "width": 720,
+        "height": 1073
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "cart",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 3071,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 1974,
+        "width": 720,
+        "height": 1073
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "profile",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 1024,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 101,
+        "width": 720,
+        "height": 871
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "wallets",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 1420,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 24,
+        "y": 101,
+        "width": 720,
+        "height": 1295
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "checkout",
+    "width": 768,
+    "height": 1024,
+    "pageHeight": 2869,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": {
+        "x": 24,
+        "y": 147,
+        "width": 720,
+        "height": 1529
+      },
+      ".checkout-review": {
+        "x": 84,
+        "y": 882,
+        "width": 600,
+        "height": 794
+      },
+      ".checkout-collector": {
+        "x": 24,
+        "y": 147,
+        "width": 720,
+        "height": 679
+      },
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 24,
+        "y": 1772,
+        "width": 720,
+        "height": 1073
+      },
+      ".desktop-header": {
+        "x": 24,
+        "y": 24,
+        "width": 720,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "receipt",
+    "width": 768,
+    "height": 1024,
+    "overflow": false,
+    "rectangle": {
+      "x": 95,
+      "y": 102.390625,
+      "width": 578,
+      "height": 821
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "3px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 384,
+      "height": 640,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "login",
+    "width": 1440,
+    "height": 1657,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "signup",
+    "width": 1440,
+    "height": 1657,
+    "overflow": false,
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "home",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 3745,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 120,
+        "y": 3073.5,
+        "width": 1200,
+        "height": 647
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "detail",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 1858,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 120,
+        "y": 1187,
+        "width": 1200,
+        "height": 647
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "cart",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 1887,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 120,
+        "y": 1216,
+        "width": 1200,
+        "height": 647
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "profile",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 1657,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 120,
+        "y": 101,
+        "width": 1200,
+        "height": 751
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "wallets",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 1657,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": null,
+      ".checkout-review": null,
+      ".checkout-collector": null,
+      ".receipt-card": null,
+      ".account-layout": {
+        "x": 120,
+        "y": 101,
+        "width": 1200,
+        "height": 1175
+      },
+      ".market-footer": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "checkout",
+    "width": 1440,
+    "height": 1657,
+    "pageHeight": 1708,
+    "overflow": false,
+    "rectangles": {
+      ".checkout-layout": {
+        "x": 120,
+        "y": 147,
+        "width": 1200,
+        "height": 794
+      },
+      ".checkout-review": {
+        "x": 915,
+        "y": 147,
+        "width": 405,
+        "height": 794
+      },
+      ".checkout-collector": {
+        "x": 120,
+        "y": 147,
+        "width": 763,
+        "height": 679
+      },
+      ".receipt-card": null,
+      ".account-layout": null,
+      ".market-footer": {
+        "x": 120,
+        "y": 1037,
+        "width": 1200,
+        "height": 647
+      },
+      ".desktop-header": {
+        "x": 120,
+        "y": 24,
+        "width": 1200,
+        "height": 45
+      }
+    },
+    "focus": {
+      "element": "A",
+      "outline": "2px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": null
+    }
+  },
+  {
+    "phase": "performance-forced-colors",
+    "name": "receipt",
+    "width": 1440,
+    "height": 1657,
+    "overflow": false,
+    "rectangle": {
+      "x": 431,
+      "y": 165.6875,
+      "width": 578,
+      "height": 821
+    },
+    "focus": {
+      "element": "BUTTON",
+      "outline": "3px",
+      "shadow": "none"
+    },
+    "reflow": {
+      "overflow": false,
+      "width": 720,
+      "height": 829,
+      "devicePixelRatio": 1,
+      "forcedColors": true,
+      "withoutReload": false,
+      "dialogFits": true
+    }
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "base": "http://127.0.0.1:4176",
+  "checks": [
+    {
+      "path": "/",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/nfts/emerald-042",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/nfts/inexistente",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/cart",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/login",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/signup",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/account/profile",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/account/wallets",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/checkout",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/integration",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/orders/ab4ab943-752c-444d-baac-2e70fb891d39",
+      "direct": 200,
+      "refresh": 200,
+      "receiptWidth": 578
+    }
+  ],
+  "resources": [
+    {
+      "path": "/mockServiceWorker.js",
+      "status": 200,
+      "type": "text/javascript",
+      "bytes": 9666
+    },
+    {
+      "path": "/assets/fonts/roboto-mono-latin.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 32796
+    },
+    {
+      "path": "/assets/optimized/8f387-450.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 183456
+    },
+    {
+      "path": "/assets/figma/8f387.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1885435
+    }
+  ],
+  "realUiPurchaseConfirmed": true
+}

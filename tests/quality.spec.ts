@@ -1,5 +1,19 @@
 import { expect, test } from '@playwright/test'
 
+test('forced colors preserve the selected edition and keyboard focus', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' })
+  await page.goto('/nfts/emerald-042')
+  const edition = page.getByRole('button', { name: 'Edição 1/10', exact: true })
+  await edition.click()
+  await edition.blur()
+  await expect(edition).toHaveAttribute('aria-pressed', 'true')
+  expect(await edition.evaluate(node => getComputedStyle(node).outlineStyle)).toBe('solid')
+  const quantity = page.getByRole('spinbutton', { name: 'Qtd.', exact: true })
+  await quantity.focus()
+  await expect(quantity).toBeFocused()
+  expect(await quantity.evaluate(node => getComputedStyle(node).outlineStyle)).toBe('solid')
+})
+
 test('authentication keeps its draft and keyboard CTA when the viewport shrinks without reload', async ({ page }) => {
   await page.goto('/signup')
   await page.getByLabel('Nome de usuário', { exact: true }).fill('zoom-draft')
