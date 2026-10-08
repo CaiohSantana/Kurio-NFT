@@ -1,23 +1,22 @@
 # Primeira publicação: preparada, ainda pendente
 
-Não há remote Git, projeto Vercel autenticado nem URL pública verificada. Configuração local não é deploy. vercel.json define framework Vite, `npm run build`, saída dist, fallback SPA e worker com no-cache. `.env.demo` ativa mocks no build; não é preciso backend/servidor Socket.IO.
+Remote atual: `https://github.com/CaiohSantana/Kurio-NFT.git`. Não há publicação/URL pública verificada nesta etapa. Configuração local não é deploy. vercel.json define framework Vite, `npm run build`, saída dist, fallback SPA e worker com no-cache. `.env.demo` ativa mocks no build; não é preciso backend/servidor Socket.IO.
 
 ## Passos na conta do usuário
 
-1. Criar um repositório vazio na própria conta GitHub (sem README/lockfile gerados pelo site para evitar conflito). Copiar a URL fornecida pelo site.
-2. Na pasta do projeto, depois dos commits desta etapa:
+1. Conferir `git remote -v`: origin já aponta para o repositório acima; não adicionar origin novamente.
+2. Na etapa final de publicação, na pasta do projeto, depois dos commits:
 
 ```sh
-git remote add origin <URL_DO_REPOSITORIO>
 git push -u origin main
 ```
 
-Substituir o marcador pela URL real. Autenticar no GitHub quando solicitado, sem pôr token no arquivo/URL/comando versionado. Nome/e-mail Git já estavam configurados no ambiente; não foram alterados.
+Autenticar no GitHub quando solicitado, sem pôr token no arquivo/URL/comando versionado. Nome/e-mail Git já estavam configurados no ambiente; não foram alterados. Esta etapa não executou push nem deploy.
 
 3. Entrar em vercel.com → Add New → Project → importar esse repositório. Autorizar leitura do repositório na própria conta. Root Directory: raiz; Framework: Vite; Build: npm run build; Output: dist; Install: npm ci; Node22.x ou versão compatível com engines do package.json. Variável de build `VITE_ENABLE_MOCKS=true` (Production e Preview). Não adicionar segredos para a demonstração.
-4. Deploy. Guardar a URL HTTPS retornada e o commit correspondente. Abrir diretamente `/`, `/nfts/emerald-042`, `/nfts/inexistente`, `/login`, `/signup`, `/cart`, `/integration` e atualizar cada rota.
+4. Na etapa final autorizada de publicação: Deploy. Guardar URL HTTPS e commit correspondente. Abrir diretamente `/`, `/nfts/emerald-042`, `/nfts/inexistente`, `/login`, `/signup`, `/cart`, `/account/profile`, `/account/wallets`, `/checkout`, `/integration` e atualizar cada rota. Criar pedido simulado e abrir/atualizar `/orders/ID_REAL_DA_SIMULACAO`; `/orders/inexistente` deve tratar404 após autenticação.
 5. Conferir `/mockServiceWorker.js` como JavaScript, fonte WOFF2 local, assets e filtros/histórico. Disparar change/duplicate/disconnect pelos controles da prova ou endpoint de cenário do README; verificar REST/evento/reconexão na publicação.
-6. Conferir login/cadastro/retorno/favoritos, carrinho visitante→login e isolamento entre as duas contas fictícias. Registrar URL/commit/resultados do smoke em docs/commerce-validation.md. Somente após essa verificação P03/DE-02 podem ser marcados concluídos.
+6. Conferir login/cadastro/retorno/favoritos, carrinho visitante→login, perfil/carteiras/pagamento/recibo e isolamento entre contas. Usar roteiro/cenários em docs/checkout-validation.md, inclusive pedido pending/timeout/reconnect. Registrar URL/commit/resultados do smoke. Somente após verificar URL pública P03/DE-02 podem ser marcados concluídos.
 
 ## Preview local
 

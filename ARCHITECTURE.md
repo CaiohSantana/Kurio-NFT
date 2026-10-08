@@ -1,4 +1,22 @@
-# Arquitetura — base e prova de integração
+# Arquitetura — marketplace simulado
+
+## Estado atual e pagamento/pedidos
+
+Catálogo, detalhe, sessão, favoritos, carrinho, perfil, carteiras, pagamento e recibo estão implementados na simulação. Os relatos anteriores são históricos; esta seção prevalece para o estado atual. Evidências e limites em docs/checkout-validation.md. Lighthouse, publicação e refinamento visual integral seguem pendentes.
+
+- Router mantém rotas/search/retomada; Query mantém recursos privados por scope e consultas canceláveis; Axios é o transporte REST. `checkout-state` aplica regras no mesmo Account persistido de commerce-state. React guarda apenas interação e drafts de campos.
+- REST: `/api/profile`, `/api/wallets`, `/api/wallet-connection`; POST `/api/checkout-quotes`; GET/PUT/DELETE `/api/order-attempt`; POST `/api/orders` com `Idempotency-Key`; GET `/api/orders/:id`. Erros tipados incluem422/409/401/403/404. Endpoints de cenário são exclusivos da demonstração/testes.
+- Carteira/rede selecionadas definem provider/endereço registrados. Editar esses dados desconecta a conexão anterior. Conexão pertence ao scope; mudança de sessão não reutiliza conexão alheia. Taxas demonstrativas Ethereum0.016/Polygon0.001/Solana0.0005, todas expressas em ETH por contrato, sem equivalência monetária real.
+- Cotação reutiliza o cálculo canônico do carrinho, com strings ETH e BigInt18. Contém ID/versão/fingerprint/validade120s e snapshot de itens/carteira/rede. Query key inclui scope/carteira/rede; eventos/mutations invalidam. Envio recota por REST e exige aceite explícito se o fingerprint mudar; API também revalida cotação, estoque, cupom e conexão.
+- Draft não sensível do checkout usa sessionStorage por userId: campos do colecionador e seleção de carteira/rede. Não replica carrinho, totais ou tentativa. Expiração retoma via guard/returnTo; outra conta lê seu próprio draft.
+- Tentativa/chave/payload/pedido vivem na API simulada persistida. Mesma chave/payload retorna mesmo pedido; diferente409. O backend verifica novamente a chave imediatamente antes da escrita após await, cobrindo criação concorrente. Pending diferente impede nova tentativa; terminal exige ação explícita para nova compra. Nenhum retry automático de POSTorders.
+- Timeout de cenário persiste pedido antes de atrasar resposta6s, excedendo Axios5s; GETattempt recupera ID e chave. Deadline e resultado simulado são persistidos. Timer pertence aos mocks; GET retoma após refresh, nunca confirma por navegação/temporizador de UI.
+- Pending só transita para confirmed/refused. Estoque não é reservado: confirmação revalida atomicamente todos os itens, recusando se insuficiente. Confirmed reduz estoque e subtrai somente as quantidades compradas do carrinho atual, uma vez; adições posteriores permanecem. Refused mantém carrinho. Snapshot/recibo permanecem imutáveis após alteração do catálogo.
+- `mocks/socket.ts` preserva Engine.IO/Socket.IO via MSW+binding0.2; cliente envia scope na conexão. nft.updated é público; order.updated é privado e filtrado também por scope/userId/versão no cliente. Eventos invalidam Query para ler REST, sem fabricar DTO/status. Reconexão reconcilia NFT/carrinho/cotações/conexão/tentativa/pedido. GETorder tem polling2s apenas enquanto pending como recuperação de evento perdido; resposta antiga não substitui versão mais nova/terminal.
+- Logout/troca cancela/remove cache e fecha subscription antiga. Handlers verificam scope antes/depois de atrasos; callbacks privados verificam scope ativo. Ordenação/ownership protegem contra respostas/eventos atrasados. Persistência e tokens são simulação local, não autenticação de produção.
+- Limitações mantidas: WebSocket explícito, namespace padrão/eventos JSON; sem polling de transporte Socket.IO, binários, ACKs, rooms ou servidor real. Scope na URL é filtro demonstrativo, não autorização segura de servidor. Links de transação SIM informam que não existe exploração blockchain real.
+
+## Registros históricos das etapas anteriores
 
 Perfil/carteiras: contratos e API em features/profile e features/wallets; regras em mocks/account-state, dados na mesma Account de commerce-state. Identidade canônica, avatar decodificado e hash de senha, scope verificado após async; carteiras por tipo/rede/endereço e preferência reusePrimary sem cópia. Consultas privadas Query, formulários HTML como drafts locais, erros por campo e guard consultando sessão/cache atual. Evidência12/12 em docs/account-validation.md; pagamento/pedidos seguem na etapa autorizada.
 

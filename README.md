@@ -2,7 +2,7 @@
 
 Credenciais fictícias: `ana@kurio.test` e `bruno@kurio.test`, senha `Kurio123!` para ambos. Cadastro cria outras contas locais. Cupom válido `KURIO10` (10%); expirado `DROP2025`; outros inválidos. Use exclusivamente dados fictícios na simulação.
 
-Esta entrega parcial contém catálogo `/`, detalhe `/nfts/emerald-042`, login `/login`, cadastro `/signup`, carrinho `/cart` e prova isolada `/integration`. Sessão e favoritos integram as telas públicas. Perfil, carteiras, pagamento e pedidos ainda não implementados. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); detalhes: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências atuais em [docs/commerce-validation.md](docs/commerce-validation.md), incluindo revisão visual e limites; etapas públicas anteriores em docs/catalog-validation.md.
+Esta entrega contém catálogo `/`, detalhe `/nfts/emerald-042`, login `/login`, cadastro `/signup`, carrinho `/cart`, perfil `/account/profile`, carteiras `/account/wallets`, pagamento `/checkout`, recibo privado `/orders/$orderId` e prova preservada `/integration`. Tudo é simulado localmente por MSW. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); decisões: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências e roteiro atual em [docs/checkout-validation.md](docs/checkout-validation.md). Lighthouse, publicação e refinamento visual finais pendentes.
 
 ## Executar
 
@@ -46,18 +46,18 @@ Roboto Mono é local, com origem, checksum e licença em [public/assets/fonts/RE
 
 Passos que dependem da conta do usuário:
 
-1. Criar/conectar um repositório remoto (Git local configurado; nenhum remote cadastrado).
+1. Conferir origin (`https://github.com/CaiohSantana/Kurio-NFT.git`) e enviar commits na etapa final de publicação, usando a própria autenticação.
 2. Importá-lo em um projeto Vercel usando a própria conta, Node 22.x ou superior compatível, build/output do vercel.json. Garantir `VITE_ENABLE_MOCKS=true` no ambiente de build.
 3. Publicar e verificar a URL HTTPS: abrir `/integration` diretamente e dar refresh; conferir `/mockServiceWorker.js` como JavaScript; executar alteração/duplicata/outage e conferir REST/reconexão. Conferir fonte local e rota inexistente.
 4. Registrar URL pública, commit publicado e resultados do smoke. Sem isso P03/DE-02 permanecem pendentes.
 
-Git inicializado localmente; ainda não existe remote/URL pública. Passos exatos em [docs/first-deploy.md](docs/first-deploy.md). Lighthouse e testes dos nove fluxos ficam pendentes. Baselines de início/detalhe/login/cadastro/carrinho versionadas após revisão manual; pagamento ainda não possui baseline.
+Git local e origin configurados; nenhuma URL pública foi verificada nesta etapa. Passos em [docs/first-deploy.md](docs/first-deploy.md), reservados à etapa final. Baselines de início/detalhe/login/cadastro/carrinho/pagamento/recibo versionadas após revisão manual. Baselines verificam regressões da implementação, não equivalência integral com Figma. Lighthouse e auditorias finais pendentes.
 
 ## Catálogo e detalhe: roteiro manual
 
 1. `npm run dev`: abrir http://localhost:5173/. Buscar Emerald com Enter; combinar coleções/redes no aside desktop ou botão de filtros mobile. Aplicar faixa de preço, ordenar e paginar; refresh/back/forward conservam estado da URL.
 2. Abrir um card ou `/nfts/emerald-042`; alternar galeria/ampliar, escolher1/10 e alterar quantidade. Quantidade5 excede limite4;1/1 está esgotada. Testar `/nfts/inexistente` e recuperação.
-3. Rolar no mobile para informações completas/rede/contrato/royalties/relacionados. Adicionar grava por API; COMPRAR adiciona e abre carrinho. Favoritar exige login e retoma a seleção. Checkout/perfil/carteiras continuam indisponíveis, sem sucesso fictício.
+3. Rolar no mobile para informações completas/rede/contrato/royalties/relacionados. Adicionar grava por API; COMPRAR adiciona e abre pagamento autenticado. Favoritar exige login e retoma a seleção. Criar carteira e seguir o roteiro de docs/checkout-validation.md para compra, pendência, recusa e timeout simulados.
 4. Para cenários de rede/eventos, executar no console do navegador (MSW já iniciado):
 
 ```js

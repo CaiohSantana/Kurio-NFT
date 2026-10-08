@@ -8,4 +8,4 @@ Guard usa sessão da API viaQuery; não renderiza recursos privados antes de aut
 
 Desktop usa sidebar310+gap28, duas colunas e campos40, RobotoMono/paleta existente. Mobile/tablet empilham navegação/formulários e preservam campos; mobile48px para toque. Exports de perfil/carteiras foram inspecionados; não há frame mobile. Avatar com seletor nativo, ações de senha separadas e rodapé global diferem da composição do export. Ajustes visuais/contraste/zoom/Lighthouse permanecem para final; não houve alteração de assets/Figma. Sem baseline nova aceita automaticamente.
 
-Carteiras estão disponíveis pela API para o pagamento, cuja implementação segue na mesma autorização. Não declarar compra/pedido/recibo concluídos com base nesta evidência.
+Atualização da mesma autorização: carteiras integradas ao pagamento, inclusive seleção secundária/rede/provider e taxa. Compra/pedido/recibo têm evidências próprias em docs/checkout-validation.md; não são deduzidos dos12 testes de conta. Revisão manual adicional capturou perfil/carteiras em390/768/1440 em artifacts/final-flow-review; regressão visual automatizada específica dessas duas páginas segue para consolidação final.

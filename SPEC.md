@@ -1,5 +1,20 @@
 # Especificação do desafio
 
+## Estado vigente — perfil, pagamento e pedidos
+
+Verificação executada: typecheck/lint/build passaram; suíte144/144 em6,1min no preview,390/768/1440, com33 pagamento/pedido,12 conta e21 regressões visuais. Relatório e composição em docs/checkout-validation.md. Esses resultados não substituem Lighthouse, auditorias finais ou publicação.
+
+FL-08/09 implementados e testados: perfil/avatar/senha/carteiras privadas. FL-02 agora inicia `/checkout` por COMPRAR; FL-03 integra cotação e limpeza parcial confirmada. FL-04/05 implementados na simulação: conexão/revisão/aceite, criação idempotente, pending/confirmed/refused, recuperação e snapshot. IN-06/07 e RT-01/02 incluem pedidos privados/versionamento/reconciliação. Evidências reais, limites e roteiro em [docs/checkout-validation.md](docs/checkout-validation.md). Gates finais EL-01, QA-03, DE-01/02 e fidelidade integral não concluídos.
+
+| Critérios | Evidência desta entrega | Limite de aceite |
+| --- | --- | --- |
+| FL-08/09 |12 E2E perfil/avatar/senha/carteiras, validação, persistência, isolamento; carteiras selecionáveis no pagamento. | Ajustes visuais e auditoria integral finais. |
+| FL-04/05; IN-04/06/07 | Compra, reaceite após preço/estoque, recusa/desconexão, concorrência409, timeout/refresh, snapshot, limpeza parcial. | Somente simulação; sem pagamento real. |
+| IN-02/05; RT-01/02 | Socket.IO público/privado, REST após reconnect, antigos/duplicados/terminais, ownership e sessão atrasada. | Transporte mock documentado; não servidor de produção. |
+| UI/QA parciais |390/768/1440, campos/teclado/foco, revisão PNG e baselines de pagamento/recibo. | Lighthouse, contraste/zoom e fidelidade restantes. |
+
+## Evidências históricas (não descrevem o estado atual)
+
 FL-08/09: perfil/avatar/senha e carteiras principal/secundária/reutilização, validação/persistência/isolamento e adaptação mobile implementados;12/12 E2E passaram. Evidência em docs/account-validation.md. Integração das carteiras no pagamento segue em execução; Lighthouse/publicação/ajustes visuais finais continuam pendentes.
 
 Correções FL-01/FL-03/ST-02/03/UI-03: navegação Mercado e demais retornos ao catálogo preservam URL/histórico, DOM e scroll/reduced-motion; badge global soma quantidades da query do carrinho e respeita troca de sessão.78/78 testes comportamentais passaram, com evidência em docs/navigation-cart-fixes.md. Perfil/carteiras/pagamento/pedidos foram autorizados na sequência; não considerar sua autorização evidência de implementação.

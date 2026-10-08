@@ -1,5 +1,13 @@
 # Plano de execução
 
+## Acompanhamento vigente
+
+Checks executados: typecheck/lint/build;144/144 E2E em6,1min, incluindo21 baselines sem update, no build preview e três tamanhos. P12/P13 verificadas para cenários documentados; P14 parcial pelas auditorias finais restantes. Origem Git já configurada; nenhum push/deploy executado.
+
+P10/P11 entregues no commit b0ef2cb, após12/12 E2E e checks. P12/P13 implementadas na simulação: cotação revisada, conexão, tentativas/pedidos idempotentes, estados/snapshot/eventos e recuperação; evidências em docs/checkout-validation.md. Correções Mercado/badge estão isoladas em c1534ed. P02 agora inclui order.updated sem substituir a prova original. P06/P08/P09 integram checkout e retomada/limpeza parcial. P14 ampliada com testes dos novos fluxos e baselines, mas auditoria integral/ajustes visuais seguem parciais. P03/DE-02 sem publicação HTTPS; P15/Lighthouse e P16/entrega final pendentes conforme pedido. Nenhuma funcionalidade futura é marcada por autorização ou baseline.
+
+## Acompanhamentos históricos (substituídos pelo vigente)
+
 P10/P11 executados para a simulação:12/12 testes de perfil/avatar/senha/carteiras passaram, com typecheck/build/lint. Ver docs/account-validation.md. P12/P13 seguem diretamente na mesma autorização; fidelidade integral e gates finais não estão concluídos.
 
 Nova autorização: corrigir Mercado/badge, validar e commitar isoladamente; depois executar P10–P13, preservando os fluxos existentes. Correções comportamentais passaram78/78; docs/navigation-cart-fixes.md registra causas/regras. Lighthouse/P15, publicação pública e refinamento visual restante ficam na etapa final.
