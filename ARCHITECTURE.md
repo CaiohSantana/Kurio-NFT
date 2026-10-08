@@ -1,5 +1,15 @@
 # Arquitetura — marketplace simulado
 
+## Ajustes finais de composição e interação
+
+Decisões vigentes em docs/final-screen-review.md. Primitivas compartilhadas com reutilização concreta: EnsField em perfil/carteiras/pagamento (draft local de nome+sufixo; REST recebe ENS completo) e RelatedNfts em detalhe/carrinho (três grupos dos itens da API, sem novo estado remoto). Price interval mantém dois inputs nativos sobre uma trilha, sem dependências. CartLink transmite parâmetros validados do catálogo em history.state para Continuar explorando.
+
+Checkout não tem checkbox de revisão nem conexão/recuperação permanentes. Selecionar carteira/provedor chama POSTconnection com argumentos explícitos; não depende de draft anterior ao render. Somente a resposta connected de scope/registro/rede/provider atuais habilita CTA. Primeiro Confirmar compra aprova o resumo exibido e recota por REST; fingerprint diferente abre confirmação contextual, que recota novamente. Stamp é metadata de revisão, não cópia dos valores da Query. Trava síncrona e idempotência persistida mantidas.
+
+GETattempt+GETorder recuperam pending automaticamente e navegam ao mesmo recibo; falha de consulta tem retry contextual. Submit também consulta tentativa antes de criar: se pending, retorna o pedido existente; se terminal e há nova compra válida/ação explícita, limpa tentativa na API e prepara nova chave. Não confirma sucesso por navegação. Timeout original ainda é observado como requestfailed do Axios, mesmo que evento/GET já tenha recuperado o pedido. A composição da confirmação e suas três baselines foram preservadas.
+
+Nome do perfil no pagamento usa collector.username e espelha Nome de usuário; não escreve nickname. Novas carteiras começam sem rede/provider; edição conserva dados registrados. ENS/indicação seguem opcionais apesar do asterisco visual do export, com informação acessível e sem alterar backend. Senha continua obrigatória apenas ao solicitar mudança, sem asteriscos visuais. Social usa vetores Figma locais e segue indisponível sem criar sessão.
+
 ## Fechamento funcional vigente
 
 Matriz conferida no código/testes em [docs/functional-closure.md](docs/functional-closure.md). Nenhuma nova composição visual ou infraestrutura. Nova trava síncrona `useRef` controla somente o gesto de enviar o formulário até a mutation terminar; tentativa, chave, cotação e pedido permanecem remotos. Backend ainda protege concorrência/replay e payload distinto409.

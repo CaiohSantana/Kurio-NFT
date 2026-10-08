@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é o fechamento funcional: conferir enunciado, código e testes, matriz de requisitos/evidências, corrigir lacunas obrigatórias e documentar cenários reproduzíveis, sem ampliar o escopo ou reformular o visual aprovado. Preservar catálogo, detalhe, carrinho, sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Não alterar Figma nem acrescentar blockchain/pagamento real. Lighthouse, auditorias integrais e publicação pública continuam pendentes; não declarar o desafio completo. O enunciado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md, docs/design-reference.md e docs/functional-closure.md.
+A autorização atual é a revisão final das nove telas e dos apontamentos do usuário: correções localizadas com exports originais, preservar comportamentos aprovados e arquitetura, capturas determinísticas, teclado/foco/reflow e testes afetados. Revisar visualmente antes de gerar baselines; executar a suíte completa uma vez ao consolidar os ajustes. Preservar sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Não alterar Figma nem acrescentar blockchain/pagamento real. Lighthouse e publicação ficam para próximas etapas; não declarar o desafio completo. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md, docs/design-reference.md, docs/functional-closure.md e docs/final-screen-review.md.
 
 ## Organização e responsabilidades
 

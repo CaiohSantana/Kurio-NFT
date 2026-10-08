@@ -28,7 +28,7 @@ Abra http://localhost:5173/. Credenciais fictícias: `ana@kurio.test` e `bruno@k
 | `/integration` | Prova independente REST/Socket.IO e diagnóstico |
 | `/preparation` | Entrada técnica sem consultas privadas; útil para reset |
 
-Para comprar: detalhe → adicionar → carrinho → Conectar e finalizar → login. Se não houver carteira, cadastre a principal e clique Retomar fluxo. Exemplo Ethereum/MetaMask: `0x1111111111111111111111111111111111111111`; secundária Polygon/Coinbase: `0x2222222222222222222222222222222222222222`. Endereços fictícios compatíveis com a validação, sem extensão real. Revise os dados, conecte, aceite a cotação e confirme. Sucesso aparece somente após a API confirmar o pedido.
+Para comprar: detalhe → adicionar → carrinho → Conectar e finalizar → login. Se não houver carteira, cadastre a principal e clique Retomar fluxo. Exemplo Ethereum/MetaMask: `0x1111111111111111111111111111111111111111`; secundária Polygon/Coinbase: `0x2222222222222222222222222222222222222222`. Endereços fictícios compatíveis com a validação, sem extensão real. Revise os dados e selecione o provedor da carteira cadastrada para iniciar a conexão. Aguarde a resposta e clique Confirmar compra; cotação alterada pede confirmação contextual. Sucesso aparece somente após a API confirmar o pedido.
 
 Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia página. Edição e quantidade válida ficam na URL do detalhe. Favoritar exige login e retoma a intenção. Logout cria visitante vazio e preserva os dados privados na API; outra conta não recebe esse carrinho. Login concilia o visitante uma única vez, somando itens por NFT+edição e mantendo excessos/esgotados para ajuste, sem cortes silenciosos. Repetir login não repete a transferência.
 
@@ -52,7 +52,9 @@ Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia p�
 
 Screenshots/traces de falhas ficam em test-results, ignorados pelo Git. Abrir trace com `npx playwright show-trace CAMINHO/trace.zip`. Cada teste usa contexto isolado e reset pelos handlers. A aplicação passa por Axios/MSW; os testes não usam page.route para substituir REST ou setters para simular Socket.IO.
 
-As27 baselines versionadas abrangem início, detalhe, login/cadastro, carrinho, pagamento, recibo, perfil e carteiras nas três larguras. Comparação com baseline é regressão da implementação, distinta da comparação manual com o Figma. Não gerar novas imagens para simplesmente aceitar uma falha. Nesta etapa as baselines foram preservadas.
+Checklist final, capturas e decisões em [docs/final-screen-review.md](docs/final-screen-review.md).
+
+As27 baselines versionadas abrangem início, detalhe, login/cadastro, carrinho, pagamento, recibo, perfil e carteiras nas três larguras. Comparação com baseline é regressão da implementação, distinta da comparação manual com o Figma. Não gerar novas imagens para simplesmente aceitar uma falha. Na revisão final24 baselines foram atualizadas somente após comparação; as três da confirmação foram preservadas.
 
 ## Cenários críticos sem editar código
 
@@ -91,19 +93,19 @@ Cada roteiro parte de reset, salvo indicação contrária:
 | Transporte REST indisponível | Em `/preparation`: `await kurioScenario('catalog','network-error')`; abrir `/nfts/emerald-042` | Falha de transporte interceptada, erro e retry. Para cotação: `await kurioScenario('commerce','network-error',{target:'quote'})`, abrir carrinho com itens |
 | Favorito otimista/rollback | Logado no detalhe: `await kurioScenario('commerce','slow',{delay:1200})`; `await kurioScenario('commerce','fail',{target:'favorites'})`; clicar coração | Estado muda antes da resposta e é restaurado após503; falha acessível |
 | Cadastro/validação | Criar e-mail já usado; preencher perfil/ENS/senha/carteira inválidos | 409/422 e erros associados, sem falso sucesso. API protege mesmo além da validação HTML |
-| Sessão expirada durante checkout | Com carteira conectada, draft editado e cotação aceita: `await kurioScenario('commerce','expire')`; Confirmar compra | Login explica expiração; retorno ao checkout mantém draft/carrinho e exige conexão/novo aceite |
-| Preço alterado no carrinho/checkout | `await kurioScenario('catalog','change',{id:'emerald-042'})` | nft.updated chega pelo cliente; REST recota; feedback e aceite anterior inválido |
+| Sessão expirada durante checkout | Com carteira conectada e draft editado: `await kurioScenario('commerce','expire')`; Confirmar compra | Login explica expiração; retorno ao checkout mantém draft/carrinho e exige seleção de provedor/revisão |
+| Preço alterado no carrinho/checkout | `await kurioScenario('catalog','change',{id:'emerald-042'})` | nft.updated chega pelo cliente; REST recota; feedback e reconfirmação contextual antes do envio |
 | Edição esgotada | `await kurioScenario('catalog','sold-out',{id:'emerald-042'})` | Item preservado, aviso/compra bloqueada |
 | Precisão18 | `await kurioScenario('catalog','price',{id:'emerald-042',priceEth:'0.123456789012345678'})` | Valor string preservado na API/UI; dois itens +KURIO10 +taxa Ethereum totalizam0.238222220222222221ETH |
 | Cupom | Aplicar BAD, DROP2025 e KURIO10 no carrinho | Inválido, expirado e desconto10%; remover recupera total sem desconto |
-| Cupom expira após revisão | Com KURIO10 já aplicado e aceite marcado: `await kurioScenario('commerce','coupon-expired')`; Confirmar compra | Fresh quote bloqueia, retira desconto e avisa; remover cupom no carrinho e revisar novamente |
-| Taxa muda sem evento | Cotação aceita: `await kurioScenario('checkout','fee-change')`; Confirmar compra | Taxa aumenta0.001ETH; não cria pedido até novo aceite |
-| Carteira recusa/desconecta | Antes de conectar: `await kurioScenario('checkout','connection-refused')`; Conectar. Liberar: connection-allowed. Para desconectar, Gerenciar → Desconectar | Recusa/desconexão bloqueiam envio. Selecionar rede incompatível retorna erro |
+| Cupom expira após revisão | Com KURIO10 já aplicado e valores revisados: `await kurioScenario('commerce','coupon-expired')`; Confirmar compra | Fresh quote bloqueia, retira desconto e avisa; remover cupom no carrinho e revisar novamente |
+| Taxa muda sem evento | Cotação exibida: `await kurioScenario('checkout','fee-change')`; Confirmar compra | Taxa aumenta0.001ETH; não cria pedido até novo aceite |
+| Carteira recusa/desconecta | Antes de conectar: `await kurioScenario('checkout','connection-refused')`; selecionar o radio do provedor. Liberar: connection-allowed. Para desconectar, Usar outra carteira? → Desconectar | Recusa/desconexão bloqueiam envio. Selecionar rede incompatível retorna erro |
 | Pagamento recusado | Antes de enviar: `await kurioScenario('checkout','order-refused')` | Pedido refused, carrinho preservado; Revisar pagamento inicia nova tentativa explícita. Usar auto antes da próxima compra para sucesso |
 | Clique repetido | Dblclick em Confirmar compra | Uma requisição de envio e um pedido; backend protege também replays/concorrência |
 | Pending/refresh/reconexão | Antes de enviar: `await kurioScenario('checkout','hold')`; enviar e guardar ID da URL `/orders/ID`; refresh. Reexecute helper se necessário | Mesmo pedido pendente; nenhum novo envio |
 | Confirmar durante outage | Na rota do pedido: `await kurioScenario('catalog','disconnect')`; `await kurioScenario('checkout','confirm',{id:location.pathname.split('/').pop()})` | Socket reconecta; GET recupera confirmed, mesmo ID |
-| Timeout após criação | Antes de enviar: `await kurioScenario('checkout','timeout')`; enviar, aguardar erro (>5s), refresh e Recuperar pedido | Pedido persistido pending, mesma tentativa/chave; confirmar por cenário com ID da URL |
+| Timeout após criação | Antes de enviar: `await kurioScenario('checkout','timeout')`; enviar; a resposta original falha após5s, mas evento/GET podem recuperar o pedido antes. Refresh ou abrir /checkout retomam automaticamente o ID | Pedido persistido pending, mesma tentativa/chave; confirmar por cenário com ID da URL |
 | Duplicata/antigo/terminal | No recibo: checkout duplicate/old/refuse com `{id:ID_DA_URL}` após confirmed | Sem regressão ou nova limpeza; snapshot permanece |
 | Adição posterior/snapshot | Criar hold; guardar ID; adicionar mais uma unidade da mesma edição no detalhe; voltar ao pedido; confirmar. Depois alterar preço e refresh | Remove somente quantidade comprada, mantém unidade acrescentada; recibo conserva preço anterior |
 | Ownership/isolamento | Guardar URL do recibo de Ana, trocar para Bruno no menu Minha conta; abrir URL antiga |403, sem dados de Ana; carrinho/favoritos/perfil/carteiras isolados |

@@ -1,5 +1,7 @@
 # Fechamento funcional — 2026-10-08
 
+Revisão posterior: [final-screen-review.md](final-screen-review.md) substitui as descrições de checkbox/conexão/recuperação permanentes. A revisão continua no resumo/CTA, com reconfirmação contextual; pending/timeout retomam a tentativa pela API. Contratos/critérios funcionais abaixo preservados; resultados desta página são históricos da etapa de fechamento, não a suíte mais recente.
+
 Fonte: [enunciado original](challenge-original.md), §§1–12; IDs da [SPEC](../SPEC.md). Inspeção do código e execução dos testes, sem nova reformulação visual. `verificado` significa o critério funcional observado no ambiente local descrito abaixo; não certifica produção, equivalência integral ao Figma ou auditorias ainda não executadas.
 
 ## Matriz obrigatória

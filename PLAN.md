@@ -1,5 +1,11 @@
 # Plano de execução
 
+## Revisão final das nove telas — etapa atual
+
+Verificação consolidada: typecheck/lint/build passaram;180 testes passaram e3 skips intencionais em4.6min, incluindo27 visuais sem update.24 baselines afetadas foram revisadas antes de gerar; recibo intacto. Capturas36 telas nas quatro larguras e smoke de reflow/foco sem overflow. Limites/amostras/checklist em docs/final-screen-review.md.
+
+P05/P12/P14: corrigir apontamentos localizados, preservar contratos/isolamento/pedidos/prova; revisar nove telas em390/414/768/1440, documentar método/limites, atualizar somente baselines afetadas após revisão e executar suíte completa única ao final. Checklist e evidências em docs/final-screen-review.md. P15/Lighthouse e publicação ficam para próximas etapas; auditoria integral, instalação limpa e entrega pública ainda não concluídas.
+
 ## Fechamento funcional — etapa atual
 
 P04/P06/P09/P12/P13 e parte funcional de P14 revisados no código/testes. Correções obrigatórias e matriz em docs/functional-closure.md; receitas de falha/reset no README, contratos/cache/cenários atualizados em ARCHITECTURE. Não houve nova reformulação visual ou update de baselines. Resultados executados estão na matriz; encerrar esta etapa após commits/checks. P14 ainda parcial por auditoria integral de acessibilidade/contraste/zoom/CLS; P15 Lighthouse não executada; P03/DE-02 sem URL pública; P16 sem instalação limpa/gates finais. Não declarar o desafio completo nem marcar tarefas futuras por autorização.

@@ -1,5 +1,7 @@
 # Referência visual — Kurio
 
+Revisão final dos apontamentos: [final-screen-review.md](final-screen-review.md). Exports confirmam trilha única de preço, token no carrinho desktop/edição mobile, indicadores, placeholders e ENS .eth+nome em perfil/carteiras. Seletores/asteriscos visuais não alteram regras opcionais do enunciado/SPEC. Medidas adicionais são estimativas dos exports/DOM, sem novo contexto após o limite já registrado. Confirmação preservada; comparações não certificam equivalência integral.
+
 Revisão implementada em2026-10-08: docs/visual-refinement.md separa medidas confirmadas, estimativas dos exports, capturas DOM e desvios necessários. Consulta adicional de pagamento bloqueada pelo limiteStarter; nada foi alterado no Figma. Propostas anteriores de banners/provedores “simulados” na UI foram substituídas por textos normais da referência e documentação da natureza simulada, conforme nova instrução do usuário.
 
 Análise registrada em 2026-10-07. Fonte visual: [cópia do Figma](https://www.figma.com/design/y1ACuUlG8c6eRylaa4qWI2/Frontend-Challenge--Copy-?node-id=0-1), página `0:1`, “Marketplace de NFTs GreenMint”. O enunciado em challenge-original.md define comportamento; medidas visuais não substituem suas regras. Nenhuma edição no Figma foi feita.

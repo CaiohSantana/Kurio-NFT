@@ -1,5 +1,11 @@
 # Especificação do desafio
 
+## Revisão final das nove telas
+
+Verificação consolidada: typecheck/lint/build passaram;180 testes passaram e3 skips intencionais em4.6min, incluindo27 visuais sem update.24 baselines afetadas foram revisadas antes de gerar; recibo intacto. Capturas36 telas nas quatro larguras e smoke de reflow/foco sem overflow. Limites/amostras/checklist em docs/final-screen-review.md.
+
+Apontamentos, decisões de obrigatoriedade/ENS, capturas, desvios e verificações em [docs/final-screen-review.md](docs/final-screen-review.md). Revisão usa exports, preserva contratos e comportamentos; nova conexão ocorre por seleção explícita de registro/provedor e resposta da API. CTA normal confirma o resumo e recota; alterações têm diálogo de nova confirmação. Pending é recuperado pela API após refresh/timeout, sem controls permanentes. UI-01/03 e QA-02 continuam parciais quanto à equivalência integral/contraste não textual/zoom nativo; Lighthouse e publicação não executados nesta etapa.
+
 ## Fechamento funcional vigente
 
 Matriz de requisitos, aceite, implementação conferida e testes em [docs/functional-closure.md](docs/functional-closure.md). Corrigidos precisão18 no incremento de preço, revalidação de cupom expirado/taxa mutável, falha real de transporte REST, reset integral, trava de clique repetido e shimmer comum. Novos testes cobrem envio com sessão expirada/retomada, cotação, precisão, reset e rede; feedback de expiração/estado do pedido acessível. Resultados reais estão na matriz, sem extrapolar para auditorias ou produção. Composição visual/baselines preservadas. EL-01 segue parcial porque Lighthouse ainda não participa efetivamente; QA-03, DE-02 e certificação de checkout limpo continuam pendentes.
