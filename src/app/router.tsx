@@ -1,6 +1,6 @@
 import { createRootRouteWithContext, createRoute, createRouter, lazyRouteComponent, Link, Outlet } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
-import { catalogOptions, detailOptions } from '@/features/catalog/api'
+import { detailOptions } from '@/features/catalog/api'
 import { sessionOptions } from '@/features/auth/session'
 const IntegrationProof = lazyRouteComponent(() => import('@/proof/IntegrationProof'), 'IntegrationProof')
 import { CatalogPage } from '@/features/catalog/CatalogPage'
@@ -24,7 +24,7 @@ const preparationRoute = createRoute({ getParentRoute: () => rootRoute, path: '/
   component: () => <main className="p-8"><h1 className="mb-4 text-2xl font-bold">Kurio · Preparação técnica</h1><Link to="/integration" className="text-primary underline">Abrir prova de integração</Link></main>,
 })
 const marketRoute = createRoute({ getParentRoute: () => rootRoute, id: 'market', component: MarketShell, beforeLoad: ({ context }) => { void context.queryClient?.prefetchQuery(sessionOptions()) } })
-export const catalogRoute = createRoute({ getParentRoute: () => marketRoute, path: '/', validateSearch: validateCatalogSearch, component: CatalogPage, beforeLoad: ({ context, search }) => { void context.queryClient?.prefetchQuery(catalogOptions(search)) } })
+export const catalogRoute = createRoute({ getParentRoute: () => marketRoute, path: '/', validateSearch: validateCatalogSearch, component: CatalogPage })
 export const detailRoute = createRoute({ getParentRoute: () => marketRoute, path: '/nfts/$nftId', validateSearch: (raw: Record<string, unknown>) => ({ edition: typeof raw.edition === 'string' && ['unique', 'ten', 'fifty', 'open'].includes(raw.edition) ? raw.edition : 'fifty', quantity: Number.isInteger(Number(raw.quantity)) && Number(raw.quantity) > 0 && Number(raw.quantity) <= 100 ? Number(raw.quantity) : 1 }), component: DetailPage, beforeLoad: ({ context, params }) => { void context.queryClient?.prefetchQuery(detailOptions(params.nftId)) } })
 const loginRoute = createRoute({ getParentRoute: () => marketRoute, path: '/login', validateSearch: authSearch, component: AuthPage })
 const signupRoute = createRoute({ getParentRoute: () => marketRoute, path: '/signup', validateSearch: authSearch, component: () => <AuthPage signup /> })
