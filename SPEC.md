@@ -4,6 +4,9 @@
 
 Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](docs/performance-closure.md). QA-03 parcial pelas duas metas mobile; UI-03 parcial pelas avaliações humanas; DE-02/P03 pendentes de URL HTTPS/smoke. DE-01 tem checkout limpo anterior b6fba35, com lockfile/dependências preservados; não foi repetido checkout limpo nesta etapa.
 
+
+Commits de implementação e relatórios enviados ao origin/main, confirmado por git ls-remote. Publicação da aplicação na Vercel ainda depende de autenticação/importação e validação da URL HTTPS; passos em docs/first-deploy.md.
+
 ## Auditoria de qualidade anterior
 
 ST/EL-01: stack efetivamente exercitada incluindo Lighthouse; critérios funcionais preservados. QA-01/02: checkout limpo da fonte b6fba35, 186 passados/3 skips, 27 baselines. UI-03: corrigidos contraste/nome/alvo/foco/zoom ao vivo; verificações manuais com leitor de tela/alto contraste permanecem pendentes. QA-03: 12 medições finais, A11y/BP/SEO 100; Performance início/detalhe mobile 86/83, desktop 100/99, portanto parcial. DE-01 verificado localmente; DE-02 URL pública pendente. Evidências atuais em docs/quality-audit.md prevalecem sobre as pendências históricas abaixo; desafio ainda não completo.

@@ -139,3 +139,6 @@ Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 9
 Performance mobile continua abaixo de 90. Leitor de tela/alto contraste real/text-only e publicação HTTPS ainda pendentes. Vercel exige login/importação na sua conta; passos exatos e smoke remoto em [docs/first-deploy.md](docs/first-deploy.md). Nenhuma URL pública verificada. O desafio ainda não está completo.
 
 Relatório final: `npx playwright show-report docs/audits/playwright-clean`. As baselines são Chromium/Windows; instalação/testes em outros sistemas não foram executados nesta etapa.
+
+
+Commits de implementação e relatórios enviados ao origin/main, confirmado por git ls-remote. Publicação da aplicação na Vercel ainda depende de autenticação/importação e validação da URL HTTPS; passos em docs/first-deploy.md.

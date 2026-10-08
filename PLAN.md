@@ -4,6 +4,9 @@
 
 Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](docs/performance-closure.md). P15: investigação encerrada com limitação documentada; P16: build/preview/evidências preparados. Vercel exige conta; não marcar publicação ou desafio completo. Histórico abaixo descreve etapas anteriores, não substitui este status.
 
+
+Commits de implementação e relatórios enviados ao origin/main, confirmado por git ls-remote. Publicação da aplicação na Vercel ainda depende de autenticação/importação e validação da URL HTTPS; passos em docs/first-deploy.md.
+
 ## Auditoria de qualidade anterior
 
 P14: correções localizadas validadas, 27 baselines preservadas após revisão, 186/3 no checkout limpo; acessibilidade manual ainda parcial. P15: runner e 12 medições HTML/JSON entregues; parcial pelas metas mobile 86/83. P16: instalação limpa/README/contratos/relatórios verificados; publicação HTTPS ainda pendente. Fonte auditada b6fba35; posteriores nesta etapa apenas documentação/evidências. Parar ao final, sem push/deploy.
