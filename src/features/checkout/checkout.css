@@ -19,7 +19,7 @@
 .purchase-value { white-space:nowrap; text-align:right; }.purchase-value strong { color:#e89b55; font-size:18px; font-weight:700; padding:0 12px; }.purchase-quantity { color:#cfb28c; font-size:13px; white-space:nowrap; }
 .checkout-coupon { display:block; text-align:right; margin:0 0 8px; font-size:14px; }
 .checkout-totals>div { display:flex; justify-content:space-between; gap:12px; margin:8px 0; line-height:24px; }.checkout-totals dd { white-space:nowrap; text-align:right; }.checkout-totals>div:first-child dd,.checkout-totals>div:last-child dd { font-size:18px; }
-.fee-hint { text-align:right; color:#e89b55; font-size:12px; margin:6px 0 8px; padding-right:15%; }
+.fee-hint { text-align:center; color:#e89b55; font-size:12px; margin:6px 0 8px; padding-right:0; }
 .checkout-total { display:flex; justify-content:space-between; border-top:1px solid #55321f; padding:8px 40px 0; font-size:18px; line-height:24px; }.checkout-total strong:last-child { color:#e89b55; }
 .provider-list { margin-top:8px; }.provider-list legend { font-size:18px; font-weight:700; text-align:center; width:100%; margin-bottom:12px; }.provider-list label { display:flex; align-items:center; gap:12px; height:45px; border:1px solid #55321f; border-radius:3px; margin:0 0 16px; padding:10px 12px; }.provider-list label:has(input:checked) { border-color:#d28a4c; }.provider-list input,.checkout-acceptance input,.wallet-picker input,.checkout-mobile-wallets input { accent-color:#d28a4c; }.provider-symbol { display:none; }
 .connection-actions { display:flex; justify-content:flex-end; margin:4px 0; font-size:12px; color:#cfb28c; }.connection-actions>button:not([data-slot]) { text-decoration:underline; }

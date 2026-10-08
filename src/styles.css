@@ -510,7 +510,7 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .carousel-indicators span { width:12px; height:12px; border:1px solid #d28a4c; border-radius:50%; }
 .carousel-indicators [aria-current=page] span { background:#d28a4c; }
 .ens-control { display:flex; gap:10px; min-width:0; }.ens-control select { width:78px; flex-shrink:0; }.ens-control input:not([type=hidden]) { flex:1; min-width:0; }.ens-control input[type=hidden] { display:none; }
-.form-field.placeholder-field { padding-top:28px; }.form-field label.sr-only,.auth-field label.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); }
+.form-field.placeholder-field { padding-top:0; }.form-field .placeholder-label { opacity:0; white-space:nowrap; overflow:hidden; }.form-field label.sr-only,.auth-field label.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); }
 .form-field select { appearance:none; padding-right:32px; background-image:url('/assets/figma/f7226.svg'); background-repeat:no-repeat; background-position:right 12px center; background-size:12px; }
 .form-field select:has(option:checked[value='']) { color:#b39463; }
 .checkout-collector .observation { max-width:369px; }.checkout-collector .observation textarea { width:100%; }
@@ -535,3 +535,13 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
 .market-modal:has(.auth-modal)>header { position:absolute; right:20px; top:12px; padding:0; }
 .market-modal:has(.auth-modal)>header button { width:24px; height:24px; padding:0; border:0; background:transparent; color:#d28a4c; font-size:24px; }
 .auth-modal { padding-top:26px; }
+
+@media(min-width:640px) {
+  .market-modal:has(.auth-modal) { padding-inline:0; }
+  .auth-modal { max-width:none; }
+  .auth-modal .auth-form { display:grid; grid-template-columns:minmax(24px,1fr) minmax(0,340px) minmax(24px,1fr); }
+  .auth-modal .auth-form>* { grid-column:2; }
+  .auth-modal .auth-social { grid-column:1/-1; }
+  .auth-modal .auth-social>* { width:min(100%,340px); justify-self:center; }
+  .auth-modal .auth-social>p { width:100%; }
+}
