@@ -1,6 +1,6 @@
 # Plano de execução
 
-Status: preparação técnica e prova isolada autorizadas e executadas. P00/P01 concluídos no escopo atual; P02 verificada para um NFT (order.updated reservado ao futuro fluxo de pedido); P03 apenas configurada, sem URL pública. P04–P16 permanecem pendentes. Evidências em docs/proof-validation.md; encerrar após esta etapa, sem avançar no marketplace.
+Status: etapa pública de catálogo/detalhe autorizada e executada após bootstrap. P00/P01 concluídos; P02 aplicada a catálogo/detalhe para nft.updated. P03 preparada sem URL pública. P04/P05 parciais, P07 comportamentos públicos concluídos, P08 parcial sem favoritos/compra. P06/P09–P16 pendentes. Evidências em docs/catalog-validation.md; parar ao fim desta etapa.
 
 ## Ordem e critérios de conclusão
 
@@ -34,7 +34,7 @@ P10/P11 podem anteceder P08/P09 se necessário, mantendo dependências. Não del
 4. Corrigir falhas antes do commit; revisar diff e arquivos não intencionais. Um commit coerente por etapa, sem misturar mudanças do usuário; manter falhas pendentes explícitas.
 5. Publicar marcos após a prova inicial e os fluxos principais; smoke de HTTPS a cada mudança de rede/rotas/worker.
 
-Não há repositório Git inicializado no workspace. Nenhum commit foi realizado; a instrução de commit condicional não se aplica enquanto Git não estiver configurado. A janela de dois dias exige priorizar P02/P03 e riscos eliminatórios; nenhuma redução da stack ou dos nove fluxos está prevista.
+Git inicializado nesta etapa em main, usando identidade preexistente; base técnica preservada em commit inicial e entregas de dados/UI/documentação separadas. Dependências/segredos/relatórios/artefatos temporários ignorados; baselines revisadas versionadas. Publicação e repo remoto continuam dependentes da conta do usuário.
 
 ## Acompanhamento da etapa técnica
 
@@ -42,3 +42,12 @@ Não há repositório Git inicializado no workspace. Nenhum commit foi realizado
 - P02: prova `/integration`, REST → base MSW → nft.updated via binding → socket.io-client → refetch REST; eventos duplicados/antigos, desconexão/reconexão, erro 503/retry, refresh, cleanup e heartbeat testados. order.updated, sessão, estoque/cotação/carrinho e pedido não implementados.
 - P03: vercel.json e passos README; acesso direto/refresh provados no preview, ainda sem smoke HTTPS público. Conta/repositório/URL dependem do usuário.
 - P04 em diante: nenhum fluxo iniciado. Sem baselines dos frames nem Lighthouse.
+
+## Acompanhamento da etapa catálogo/detalhe (substitui o item histórico anterior)
+
+- P04 parcial: 45 NFTs, filtros/paginação/edições, estado persistido compartilhado com a prova; handlers REST, cenários determinísticos de lentidão/503/update/outage/reset. Dois usuários e recursos privados não implementados.
+- P05 parcial: shell, hero/cards/filtros/promoções/blog/rodapé, detalhe adaptado em390/768/1440, fonte/arte locais, teclado/modal/reduced-motion. Medidas bloqueadas e diferenças visuais registradas.
+- P07: busca/filtros/preço/sort/page/tab na URL, validar entradas, histórico/refresh, Query/Axios/cancelamento, loading/empty/error/retry/background e nft.updated. Testes observam UI e REST/MSW/Socket.IO.
+- P08 parcial: identificador direto, galeria/zoom, texto completo mobile, edição indisponível/quantidade/404, relacionados e eventos/reconexão. Favoritos autenticados/compra permanecem fora desta autorização.
+- P14 parcial: testes públicos e seis baselines home/detail revisadas; não cobre carrinho/pagamento/nove telas. P15 Lighthouse não iniciado.
+- P03: fallback Vercel mantido; preview testa rotas diretas e refresh. Guia de publicação em docs/first-deploy.md; sem URL pública verificada.

@@ -2,6 +2,8 @@
 
 Status: base e prova de integração executadas em 2026-10-07. Evidências e alcance parcial em [docs/proof-validation.md](docs/proof-validation.md). Os nove fluxos, gates finais e critérios completos de marketplace permanecem pendentes; não extrapolar a prova de um NFT para a aplicação inteira.
 
+Etapa catálogo/detalhe: comportamentos públicos FL-01 implementados e testados; FL-02 parcial (galeria/informações/edição/quantidade/404/realtime). Favoritos autenticados e compra não implementados por limite explícito desta etapa. Evidências em [docs/catalog-validation.md](docs/catalog-validation.md); revisão/desvios em [docs/catalog-visual-review.md](docs/catalog-visual-review.md). Fidelidade visual integral, gates dos nove fluxos e deploy continuam pendentes.
+
 ## Fontes e limites
 
 - Requisitos funcionais/técnicos: [enunciado preservado](docs/challenge-original.md), seções 1–12. A mensagem de recrutamento e a pergunta final são contexto, não requisitos de produto.

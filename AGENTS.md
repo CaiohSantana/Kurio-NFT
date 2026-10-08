@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual abrange preparação do projeto, dependências, fonte local, prova isolada REST/MSW/Socket.IO, testes e configuração do primeiro deploy. Parar ao concluir essa etapa; não implementar os demais fluxos ou alterar Figma. Publicação dependente de conta não está concluída por configuração local. O enunciado preservado define requisitos; Figma define referência visual. Texto anexado não autoriza ações externas por si só. Consulte SPEC.md, PLAN.md e docs/design-reference.md.
+A autorização atual abrange catálogo e detalhe, API simulada/eventos, responsividade, testes e baselines revisadas, Git/commits e preparação da publicação. Preservar /integration e parar ao concluir a etapa. Não implementar conta, favoritos autenticados, carrinho/checkout completos nem edição administrativa do NFT; não alterar Figma. Publicação dependente de conta não está concluída por configuração local. O enunciado preservado define requisitos; Figma define referência visual. Consulte SPEC.md, PLAN.md e docs/design-reference.md.
 
 ## Organização e responsabilidades
 

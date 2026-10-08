@@ -2,6 +2,8 @@
 
 Escopo atual: bootstrap e prova de um NFT. A arquitetura futura de sessão, carrinho/cotação e pedidos está proposta em SPEC.md, ainda não implementada. A confirmação do marketplace continua dependente do pedido confirmed na simulação.
 
+Atualização: catálogo e detalhe públicos implementados nesta etapa. A descrição da prova abaixo é histórica; o NFT da prova agora é uma projeção da mesma base canônica do catálogo. Contratos, cache, cenários e diferenças atuais estão na seção final.
+
 ## Responsabilidades implementadas
 
 - `src/main.tsx`: ativação explícita por configuração; await worker.start antes de importar as rotas e o cliente Socket.IO.
@@ -57,3 +59,23 @@ Binding fornece handshake e codificação dos eventos. Não fornece heartbeat co
 - [shadcn/ui Vite](https://ui.shadcn.com/docs/installation/vite) — base/aliases/Tailwind.
 - [TanStack Query cancelamento](https://tanstack.com/query/latest/docs/framework/react/guides/query-cancellation) — signal para Axios.
 - Roboto Mono: Fontsource 5.3.0, SIL OFL 1.1; origem e licença integral em public/assets/fonts.
+
+## Catálogo e detalhe públicos
+
+`src/features/catalog` reúne tipos/validação, Axios/Query, componentes e socket; sem store global. `src/mocks/catalog-state.ts` é a fonte canônica de45 NFTs. `/`, `/nfts/$nftId` e o shell usam Router; `/integration` continua isolada visualmente e `/preparation` conserva a entrada mínima para a prova.
+
+Router valida q/collections/networks/minPrice/maxPrice/sort/page/tab, descarta valores desconhecidos e normaliza intervalo invertido/página inválida. Usa serialização JSON nativa (strings decimais aparecem entre aspas codificadas); URL malformada tem fallback seguro, sem reescrita automática até a próxima navegação. Alterar busca/filtro/sort/tab reinicia page=1. Draft de busca/preço é local até envio, sem duplicar os resultados remotos. Histórico/refresh reconstroem estado.
+
+Query keys: `['catalog', searchCompleta]` e `['nft', id]`. Axios recebe todos os parâmetros e AbortSignal. Consultas desta etapa têm staleTime30s e retryfalse, com retry acessível explícito, sem esconder falhas determinísticas. Refetch mantém dados existentes em background; mudança de parâmetros usa skeleton em vez de mostrar resultado de outro filtro. Detalhe aplica structural sharing monotônico.
+
+REST:
+
+- GET `/api/nfts`: busca case-insensitive; OR dentro de coleções/redes e AND entre grupos/preço/tab; sort recente/menor/maior; 9 itens/página. Retorna items,total,pages,page,revision,facets. Valores ETH strings e comparação em BigInt de18 casas. Contagens são do catálogo completo.
+- GET `/api/nfts/:id`: nft completo (identidade/token/artes/galeria/rede/coleção/preço/versão/edições/quantidades/descrição/contrato/royalties) e readCount. 404,503,latência configurável. Não há mutation administrativa; apenas endpoints de cenário internos aos mocks.
+- POST `/api/__catalog/scenario`: reset,slow(delay),fail(next503),change(id),sold-out(id),duplicate,old,disconnect. Configuração de latência/falha persiste até reset/consumo para reproduzir refresh. Estado de NFT persiste por origem; reset integral restaura fixture. Snapshot é capturado antes da latência, permitindo exercitar descarte de respostas antigas.
+
+`useCatalogSocket` reutiliza path/handshake/heartbeat validados, com um socket por shell. `nft.updated` invalida listas e recurso afetado, incluindo consultas filtradas que podem mudar ordem/composição. Descarta versão <= cache/listas/evento visto. Antes de refetch por evento ou reconexão, cancela consultas ativas, inclusive uma leitura inicial pendente com snapshot anterior à interrupção. Reconexão obtém REST; nunca injeta preço via setter local. Listeners são removidos no unmount. Metadados de versão por recurso não substituem cache de dados.
+
+Pontos de integração: DTOs de edição/quantidade/NFT fornecem seleção para futuro carrinho; nenhuma mutation de compra/favorito foi criada. Botões exibem indisponibilidade explícita em diálogo, sem sucesso fictício. Galeria/zoom e conteúdo completo funcionam no mobile. Seções editoriais/newsletter mantidas visualmente, sem novas páginas/falso cadastro. Detalhes visuais estimados/desvios e baselines constam em docs/catalog-visual-review.md.
+
+Referências técnicas consultadas: [Router search params](https://tanstack.com/router/latest/docs/framework/react/guide/search-params) e [Query paginação/keys](https://tanstack.com/query/latest/docs/framework/react/guides/paginated-queries). Bibliotecas e lockfile não foram alterados nesta etapa.

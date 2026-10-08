@@ -1,6 +1,6 @@
 # Kurio — preparação técnica
 
-Esta entrega parcial contém a base React/TypeScript e uma prova isolada em `/integration`. Os nove fluxos do marketplace ainda não estão implementados. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); detalhes: [ARCHITECTURE.md](ARCHITECTURE.md).
+Esta entrega parcial contém catálogo em `/`, detalhe em `/nfts/emerald-042` e prova isolada em `/integration`. Conta, favoritos autenticados, carrinho e checkout ainda não implementados. Requisitos: [SPEC.md](SPEC.md); acompanhamento: [PLAN.md](PLAN.md); detalhes: [ARCHITECTURE.md](ARCHITECTURE.md). Evidências públicas e diferenças visuais em docs/catalog-validation.md e docs/catalog-visual-review.md.
 
 ## Executar
 
@@ -49,4 +49,22 @@ Passos que dependem da conta do usuário:
 3. Publicar e verificar a URL HTTPS: abrir `/integration` diretamente e dar refresh; conferir `/mockServiceWorker.js` como JavaScript; executar alteração/duplicata/outage e conferir REST/reconexão. Conferir fonte local e rota inexistente.
 4. Registrar URL pública, commit publicado e resultados do smoke. Sem isso P03/DE-02 permanecem pendentes.
 
-Não foi criada conta, projeto remoto ou publicação nesta etapa. Lighthouse, regressão visual dos frames e testes dos nove fluxos ficam nas próximas etapas autorizadas.
+Git agora inicializado localmente; ainda não existe remote/URL pública. Passos exatos em [docs/first-deploy.md](docs/first-deploy.md). Lighthouse e testes dos nove fluxos ficam pendentes. Baselines de início/detalhe já versionadas após revisão manual; carrinho/pagamento ainda não possuem baselines.
+
+## Catálogo e detalhe: roteiro manual
+
+1. `npm run dev`: abrir http://localhost:5173/. Buscar Emerald com Enter; combinar coleções/redes no aside desktop ou botão de filtros mobile. Aplicar faixa de preço, ordenar e paginar; refresh/back/forward conservam estado da URL.
+2. Abrir um card ou `/nfts/emerald-042`; alternar galeria/ampliar, escolher1/10 e alterar quantidade. Quantidade5 excede limite4;1/1 está esgotada. Testar `/nfts/inexistente` e recuperação.
+3. Rolar no mobile para informações completas/rede/contrato/royalties/relacionados. Compra/favoritos/conta mostram indisponibilidade; não simulam sucesso.
+4. Para cenários de rede/eventos, executar no console do navegador (MSW já iniciado):
+
+```js
+fetch('/api/__catalog/scenario', {
+  method: 'POST', headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ action: 'change', id: 'emerald-042' })
+})
+```
+
+Trocar action por `duplicate`, `old`, `sold-out`, `disconnect`, `fail`, `slow` (adicionar delay:1500) ou `reset`. Cenários atuam na base/mock de rede; não alteram diretamente React/Query. Após reset, recarregue para limpar cache/eventos locais. Para observar503, selecionar um sort ainda não consultado ou recarregar após fail; retry explícito pela tela.
+
+Regressão visual: `npx playwright test tests/visual.spec.ts`. Baselines Chromium/Windows em390/768/1440. Gerar novas somente após revisão: `npx playwright test tests/visual.spec.ts --update-snapshots`. O teste compara a implementação com sua baseline, não certifica equivalência com Figma.
