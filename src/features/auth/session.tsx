@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, type ReactNode } from 'react'
-import { useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query'
+import { queryOptions, useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query'
 import { useNavigate, useRouter } from '@tanstack/react-router'
 import { isAxiosError } from 'axios'
 import { http } from '@/shared/api/http'
 import type { ApiError, Session } from './contracts'
 export const sessionKey = ['session'] as const
+export const sessionOptions = () => queryOptions({ queryKey: sessionKey, queryFn: async ({ signal }) => (await http.get<Session>('/session', { signal })).data, staleTime: Infinity, retry: false, retryOnMount: false, refetchOnWindowFocus: false })
 export const privateKey = (scope: string) => ['private', scope] as const
 export const activeScope = (client: QueryClient, scope: string) => client.getQueryData<Session>(sessionKey)?.scope === scope
 export const scopedConfig = (scope: string, signal?: AbortSignal) => ({ headers: { 'X-Session-Scope': scope }, signal })
@@ -23,7 +24,7 @@ const SessionContext = createContext<Session | null>(null)
 export function useSession() { const session = useContext(SessionContext); if (!session) throw new Error('SessionProvider required'); return session }
 export function SessionProvider({ children }: { children: ReactNode }) {
   const client = useQueryClient(), navigate = useNavigate(), router = useRouter()
-  const query = useQuery({ queryKey: sessionKey, queryFn: async ({ signal }) => (await http.get<Session>('/session', { signal })).data, staleTime: Infinity, retry: false, refetchOnWindowFocus: false })
+  const query = useQuery(sessionOptions())
   useEffect(() => {
     let pending = false, alive = true
     const expired = async (event: Event) => {

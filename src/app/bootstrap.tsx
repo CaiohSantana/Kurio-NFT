@@ -5,5 +5,5 @@ import { router } from './router'
 
 export function mount(root: HTMLElement) {
   const queryClient = new QueryClient()
-  createRoot(root).render(<QueryClientProvider client={queryClient}><RouterProvider router={router} /></QueryClientProvider>)
+  createRoot(root).render(<QueryClientProvider client={queryClient}><RouterProvider router={router} context={{ queryClient }} /></QueryClientProvider>)
 }
