@@ -9,6 +9,31 @@
 .auth-modal .auth-field:has(input[name=confirmation]) button { display:none; }
 
 @media(max-width:639px) {
+  /* Original fill is 414×94.95; its SVG includes 30px side/40px top shadow margins.
+     Keep the central curve at its original size; extend only the flat wings. */
+  .home-market .mobile-navigation {
+    height:calc(94.95px + env(safe-area-inset-bottom,0px));
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    background:transparent;
+    border-radius:0;
+    isolation:isolate;
+  }
+  .home-market .mobile-navigation::before,
+  .home-market .mobile-navigation::after {
+    content:''; position:absolute; inset:0; z-index:-1;
+    border-radius:28.93px 28.93px 0 0; pointer-events:none;
+  }
+  .home-market .mobile-navigation::before {
+    background:url('/assets/figma/3b81f.svg') center -40px / 474px 154.95px no-repeat;
+  }
+  .home-market .mobile-navigation::after {
+    background:linear-gradient(to right,#241612 0 calc(50% - 100px),transparent calc(50% - 100px) calc(50% + 100px),#241612 calc(50% + 100px) 100%),linear-gradient(to top,#241612 0 env(safe-area-inset-bottom,0px),transparent env(safe-area-inset-bottom,0px) 100%);
+  }
+  .home-market .mobile-navigation .scan {
+    flex-shrink:0; transform:translateY(-46.025px);
+    background:url('/assets/figma/b1ba5.svg') center / 65px 65px no-repeat;
+  }
+  .home-market { margin-bottom:calc(140px + env(safe-area-inset-bottom,0px)); }
   .mobile-account-button { display:none; }
   .market:has(.account-layout) .mobile-account-button { display:flex; }
   .mobile-navigation a,.mobile-navigation>button { min-width:44px; min-height:44px; display:flex; align-items:center; justify-content:center; }

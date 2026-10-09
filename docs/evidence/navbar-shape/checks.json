@@ -1,0 +1,60 @@
+[
+  {
+    "width": 414,
+    "height": 896,
+    "bar": {
+      "x": 0,
+      "y": 801.0625,
+      "width": 414,
+      "height": 94.9375
+    },
+    "circle": {
+      "x": 174.5,
+      "y": 770.0062255859375,
+      "width": 65,
+      "height": 65
+    },
+    "badge": 2,
+    "clicks": [
+      "home",
+      "favorites",
+      "scanner",
+      "cart",
+      "profile"
+    ],
+    "focusRestored": true,
+    "decorativePointerEvents": [
+      "none",
+      "none"
+    ]
+  },
+  {
+    "width": 440,
+    "height": 956,
+    "bar": {
+      "x": 0,
+      "y": 861.0625,
+      "width": 440,
+      "height": 94.9375
+    },
+    "circle": {
+      "x": 187.484375,
+      "y": 830.0062255859375,
+      "width": 65,
+      "height": 65
+    },
+    "badge": 2,
+    "clicks": [
+      "home",
+      "favorites",
+      "scanner",
+      "cart",
+      "profile"
+    ],
+    "focusRestored": true,
+    "decorativePointerEvents": [
+      "none",
+      "none"
+    ]
+  }
+]
