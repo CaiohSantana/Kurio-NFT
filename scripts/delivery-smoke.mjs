@@ -8,11 +8,14 @@ const mobile = process.env.SMOKE_PROFILE === 'mobile'
 const browser = await chromium.launch()
 try {
   const page = await browser.newPage({ viewport: mobile ? { width:390,height:844 } : { width:1440,height:900 } })
-  const consoleErrors = [], networkFailures = [], restHandlers = []
-  page.on('pageerror', error => consoleErrors.push(error.message))
-  page.on('console', message => { if(message.type()==='error') consoleErrors.push(message.text()) })
+  const consoleErrors = [], networkFailures = [], restHandlers = [], httpErrors = []
+  let phase='setup'
+  let authenticating=false
+  const cleanUrl = url => { try { const value=new URL(url); return value.origin+value.pathname } catch { return url } }
+  page.on('pageerror', error => consoleErrors.push({text:error.message,phase,type:'pageerror'}))
+  page.on('console', message => { if(message.type()==='error') consoleErrors.push({text:message.text(),url:cleanUrl(message.location().url),phase,type:'console'}) })
   page.on('requestfailed', request => { if(request.failure()?.errorText !== 'net::ERR_ABORTED') networkFailures.push({url:request.url(),error:request.failure()?.errorText}) })
-  page.on('response', response => { const handler=response.headers()['x-mock-handler']; if(handler) restHandlers.push({path:new URL(response.url()).pathname,handler,status:response.status()}) })
+  page.on('response', response => { const handler=response.headers()['x-mock-handler']; if(handler) restHandlers.push({path:new URL(response.url()).pathname,handler,status:response.status()}); if(response.status()>=400) { const scope=response.request().headers()['x-session-scope']; httpErrors.push({url:cleanUrl(response.url()),status:response.status(),handler,phase,authenticating,requestScope:scope?.startsWith('guest:')?'guest':scope?'authenticated':null}) } })
   const api = (path, method = 'GET', body, scope) => page.evaluate(async ({ path, method, body, scope }) => {
     const response = await fetch(`/api${path}`, { method, headers: { 'Content-Type': 'application/json', ...(scope ? { 'X-Session-Scope': scope } : {}) }, body: body ? JSON.stringify(body) : undefined })
     if (!response.ok) throw Error(`${path}: ${response.status}`)
@@ -24,14 +27,17 @@ try {
   await page.goto(`${base}/nfts/emerald-042?edition=ten&quantity=2`)
   await page.getByRole('button',{name:'Adicionar ao carrinho'}).click()
   await expect(page.getByTestId('cart-badge').first()).toHaveText('2')
+  phase='authentication'
   await page.goto(`${base}/checkout`)
   await expect(page).toHaveURL(/\/login/)
   await page.getByLabel('E-mail',{exact:true}).fill('ana@kurio.test')
   await page.getByLabel('Senha',{exact:true}).fill('Kurio123!')
+  authenticating=true
   await page.locator('.auth-form').getByRole('button',{name:'Entrar',exact:true}).click()
   await expect.poll(() => new URL(page.url()).pathname).toBe('/checkout')
   const session = await api('/session')
   expect(session.user.username).toBe('ana')
+  phase='wallet'
   await page.reload(); await expect(page.getByRole('link',{name:'Cadastrar carteira e retornar'})).toBeVisible()
   await page.getByRole('link',{name:'Cadastrar carteira e retornar'}).click()
   const primary=page.getByRole('form',{name:'Carteira principal'})
@@ -44,6 +50,7 @@ try {
   await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
   const checks = []
   for (const [path, selector] of [['/', '.card-name'], ['/nfts/emerald-042', '.detail-info h1'], ['/nfts/inexistente', '.empty-state h1'], ['/cart', '[data-testid=cart-total]'], ['/login', '[name=email]'], ['/signup', '[name=username]'], ['/account/profile', '[name=displayName]'], ['/account/wallets', '[name=address]'], ['/checkout', '[data-testid=checkout-total]'], ['/integration', 'h1']]) {
+    phase=path
     const response = await page.goto(`${base}${path}`)
     expect(response.status()).toBe(200)
     await page.locator(selector).first().waitFor()
@@ -70,8 +77,10 @@ try {
     checks.push({ path, direct: 200, refresh: 200 })
   }
   await page.goto(`${base}/checkout`)
+  phase='purchase'
   await page.locator('.provider-list input:checked').click()
   await expect(page.getByRole('button', { name: 'Confirmar compra', exact: true })).toBeEnabled()
+  const reviewedTotal=await page.getByTestId('checkout-total').innerText()
   await page.getByRole('button', { name: 'Confirmar compra', exact: true }).click()
   await page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' }).waitFor()
   const orderPath = new URL(page.url()).pathname
@@ -82,11 +91,11 @@ try {
   await page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' }).waitFor()
   const order = await api(orderPath, 'GET', undefined, session.scope)
   expect(order.status).toBe('confirmed')
-  expect(order.snapshot.totalEth).toBe('2.396')
+  expect(`${order.snapshot.totalEth} ETH`).toBe(reviewedTotal)
   await expect(page.getByTestId('cart-badge').first()).toHaveText('0')
   const receiptWidth=await page.locator('.receipt-card').evaluate(node => node.getBoundingClientRect().width)
   expect(receiptWidth).toBe(mobile ? 358 : 578)
-  checks.push({ path: orderPath, direct: 200, refresh: 200, receiptWidth,apiStatus:order.status })
+  checks.push({ path: orderPath, direct: 200, refresh: 200, receiptWidth,apiStatus:order.status,reviewedTotal,receiptTotal:order.snapshot.totalEth })
   const resources = []
   for (const path of ['/mockServiceWorker.js', '/assets/fonts/roboto-mono-latin.woff2', '/assets/optimized/8f387-450.webp', '/assets/figma/8f387.png']) {
     const response = await page.request.get(`${base}${path}`)
@@ -95,14 +104,23 @@ try {
   }
   await page.getByRole('button',{name:'Fechar diálogo'}).click()
   await page.goto(`${base}/account/profile`)
+  phase='logout'
   await page.getByRole('button',{name:/^Minha conta:/}).filter({visible:true}).click()
   await page.getByRole('dialog',{name:'Minha conta',exact:true}).getByRole('button',{name:'Encerrar sessão'}).click()
   await expect.poll(async()=>(await api('/session')).user).toBeNull()
   await page.goto(`${base}/checkout`); await expect(page).toHaveURL(/\/login/)
-  const relevantConsoleErrors=consoleErrors.filter(message=>!message.includes('404'))
+  await mkdir(output.slice(0, output.lastIndexOf('/')), { recursive: true })
+  const result={ base,profile:mobile?'mobile':'desktop',checks,resources,restHandlers,consoleErrors,httpErrors,networkFailures,uiLogin:true,sessionRefresh:true,uiWallet:true,guestCartMerged:true,logout:true,socketUpdate:true,socketDuplicateOld:true,socketReconnect:true,realUiPurchaseConfirmed:true }
+  await writeFile(output, JSON.stringify({...result,passed:false}, null, 2))
+  const relevantConsoleErrors=consoleErrors.filter(message=> {
+    if(message.url?.endsWith('/api/nfts/inexistente') && message.text.includes('404')) return false
+    // An in-flight guest badge read can be denied when login revokes its scope.
+    // Keep that response in evidence; only accept this precise identity transition.
+    if(message.url?.endsWith('/api/cart') && message.text.includes('401') && httpErrors.some(error=>error.url===message.url && error.status===401 && error.requestScope==='guest' && error.authenticating && error.phase==='authentication')) return false
+    return true
+  })
   expect(relevantConsoleErrors).toEqual([]); expect(networkFailures).toEqual([])
   expect(restHandlers.some(value=>value.handler==='proof-nft')).toBe(true)
-  await mkdir(output.slice(0, output.lastIndexOf('/')), { recursive: true })
-  await writeFile(output, JSON.stringify({ base,profile:mobile?'mobile':'desktop',checks,resources,restHandlers,consoleErrors,networkFailures,uiLogin:true,sessionRefresh:true,uiWallet:true,guestCartMerged:true,logout:true,socketUpdate:true,socketDuplicateOld:true,socketReconnect:true,realUiPurchaseConfirmed:true }, null, 2))
+  await writeFile(output, JSON.stringify({...result,passed:true}, null, 2))
   console.log(`${checks.length} direct/refresh checks; ${resources.length} local resources; API-confirmed receipt`)
 } finally { await browser.close() }

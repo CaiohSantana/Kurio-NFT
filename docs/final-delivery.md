@@ -1,6 +1,6 @@
 # Fechamento da entrega e publicação
 
-Layouts desktop/mobile aprovados pelo usuário, referência visual final d69af01. Nesta etapa não se alterou UI ou lógica dos fluxos. Publicação na Vercel autorizada; validação HTTPS e Lighthouse finais ainda em andamento neste registro.
+Layouts desktop/mobile aprovados pelo usuário, referência visual final d69af01. Nesta etapa não se alterou UI ou lógica dos fluxos. Publicação Vercel e smoke HTTPS desktop/mobile verificados. Lighthouse final em andamento neste registro; metas e avaliações humanas não foram antecipadas.
 
 ## Requisitos e gate local
 
@@ -18,7 +18,7 @@ Fonte: [enunciado original](challenge-original.md), [SPEC](../SPEC.md) e [matriz
 | Acessibilidade | quality e fluxos: labels, foco/trap, teclado, seleção, reduced-motion; auditorias e reflow anteriores. | Parcial: avaliações humanas de leitor de tela/alto contraste/text-only/Safari continuam pendentes |
 | Qualidade automatizada | Typecheck/build, execução completa e única baseline da barra revisada. | Verificado no alcance abaixo |
 | Lighthouse ≥90/95/95/90 | Rodada final prevista na URL HTTPS, 12 HTML/JSON e medianas. Histórico mobile 84 não atingiu 90. | Em andamento; não afirmar meta |
-| Publicação/entrega | Repo conectado à Vercel, instalação lockfile/mocks/SPA preparados; smoke remoto a seguir. | Em andamento; não afirmar URL validada |
+| Publicação/entrega | Repo/Vercel READY com commit confirmado; smoke HTTPS desktop/mobile, 11 rotas por perfil e recursos. | Verificado HTTPS; evidências abaixo |
 
 Typecheck executado uma vez, dentro de `npm run build`; build demo passou. Suíte completa executada uma vez sobre esse mesmo dist, com configuração temporária que troca somente o comando do webServer para preview, preservando três projetos/casos/reset. Primeira tentativa de inicialização do servidor teve cwd incorreto; nenhum teste havia iniciado; corrigido o cwd da configuração temporária.
 
@@ -34,6 +34,14 @@ Range Node anterior >=22.14 poderia sobrepor a versão escolhida na Vercel e sel
 
 Runner aceita AUDIT_URL para auditar produção sem iniciar preview e AUDIT_DEPLOYED_COMMIT para registrar o commit confirmado nos metadados Vercel. delivery-smoke verifica UI em desktop/mobile, login e refresh, carrinho visitante, cadastro de carteira, compra confirmada pela API, recibo, logout, rotas/recursos e eventos/duplicatas/reconexão. Scripts não substituem a API por dados locais na interface.
 
+## Publicação e smoke HTTPS
+
+URL pública: https://kurio-nft-delta.vercel.app/ . Repositório: https://github.com/CaiohSantana/Kurio-NFT . Primeiro commit publicado nesta etapa: `ceaab3f7b311ef8155f628f758f8d6c35184301e`, deploy `dpl_C16STGMoT8H42vB83r8XNgbvcLL2`, READY/Production. [Metadados filtrados da Vercel](audits/final-delivery/deployment.json), [HTTPS200 sem bypass TLS](audits/final-delivery/https.json). Nenhum segredo nos relatórios.
+
+Smoke [desktop1440×900](audits/final-delivery/public-desktop.json) e [mobile390×844](audits/final-delivery/public-mobile.json): ambos passaram. Por perfil, 11 rotas com entrada direta/refresh (início, detalhe válido/inexistente, carrinho, login, cadastro, perfil, carteiras, checkout, integration e pedido criado), quatro recursos locais200 (worker, fonte, WebP e PNG original); decodificação das imagens/fontes nas rotas. Login pela UI, visitante com duas unidades conciliadas, sessão após refresh, carteira pela UI, conexão/checkout, snapshot confirmado por REST, recibo após acesso direto e refresh, badge0 após compra, logout e guard retornando ao login. Headers dos handlers e métricas da prova comprovam REST/MSW, evento por socket.io-client, descarte de antigos/duplicados e reconciliação por REST após reconexão. Não repetimos a suíte completa no deploy.
+
+Sem pageerror ou falha de rede impeditiva. Registros mantêm 404 da consulta intencional ao NFT inexistente e um 401 de /api/cart com escopo guest invalidado durante autenticação: requisição antiga negada, dado da nova sessão não contaminado. A filtragem aceita somente esse endpoint/status/escopo/fase, sem ocultar outros erros. Quantidades/badge e compra corretos confirmados após a troca. Primeiros smokes detectaram asserções do próprio script: total estático2.396 ignorava as duas alterações da prova (API retornou corretamente2.796), e a classificação inicial tratava o401 esperado como impeditivo. Corrigimos o script para comparar cotado/recibo e registrar a transição; nenhuma alteração de produto.
+
 ## Pendências antes da conclusão
 
-Publicar a versão validada, conferir READY/commit/HTTPS e executar o smoke direcionado nos dois perfis; depois 12 Lighthouse no cenário padrão. Registrar resultados reais, sem otimização indefinida. Avaliações humanas permanecem distintas dos checks automatizados. Fonte/lockfile/assets/licenças/exports preservados; checkout limpo anterior em quality-audit (dependências não alteradas nesta etapa).
+Smoke e HTTPS concluídos; executar 12 Lighthouse públicos no cenário padrão e registrar commit publicado final após consolidar documentação. Registrar resultados reais, sem otimização indefinida. Avaliações humanas permanecem distintas dos checks automatizados. Fonte/lockfile/assets/licenças/exports preservados; checkout limpo anterior em quality-audit (dependências não alteradas nesta etapa).

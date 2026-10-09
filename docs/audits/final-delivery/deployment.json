@@ -1,0 +1,18 @@
+﻿{
+    "id":  "dpl_C16STGMoT8H42vB83r8XNgbvcLL2",
+    "url":  "kurio-hdqj6b2vk-caioh-santana.vercel.app",
+    "aliases":  [
+                    "kurio-nft-delta.vercel.app",
+                    "kurio-nft-caioh-santana.vercel.app",
+                    "kurio-nft-git-main-caioh-santana.vercel.app"
+                ],
+    "state":  "READY",
+    "target":  "production",
+    "commit":  "ceaab3f7b311ef8155f628f758f8d6c35184301e",
+    "branch":  "main",
+    "repo":  "Kurio-NFT",
+    "node":  "22.x",
+    "framework":  "vite",
+    "build":  "npm run build",
+    "install":  "npm ci"
+}

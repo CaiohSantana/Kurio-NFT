@@ -1,0 +1,747 @@
+{
+  "base": "https://kurio-nft-delta.vercel.app",
+  "profile": "mobile",
+  "checks": [
+    {
+      "path": "/",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/nfts/emerald-042",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/nfts/inexistente",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/cart",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/login",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/signup",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/account/profile",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/account/wallets",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/checkout",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/integration",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "direct": 200,
+      "refresh": 200,
+      "receiptWidth": 358,
+      "apiStatus": "confirmed",
+      "reviewedTotal": "2.796 ETH",
+      "receiptTotal": "2.796"
+    }
+  ],
+  "resources": [
+    {
+      "path": "/mockServiceWorker.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "bytes": 9666
+    },
+    {
+      "path": "/assets/fonts/roboto-mono-latin.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 32796
+    },
+    {
+      "path": "/assets/optimized/8f387-450.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 183456
+    },
+    {
+      "path": "/assets/figma/8f387.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1885435
+    }
+  ],
+  "restHandlers": [
+    {
+      "path": "/api/__scenario/reset",
+      "handler": "reset",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "nft",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts",
+      "handler": "catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/cart/items",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "login",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/checkout-quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts",
+      "handler": "catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/favorites",
+      "handler": "favorites",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts",
+      "handler": "catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/favorites",
+      "handler": "favorites",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "nft",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "nft",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts",
+      "handler": "catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/favorites",
+      "handler": "favorites",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts",
+      "handler": "catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/favorites",
+      "handler": "favorites",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/checkout-quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/checkout-quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "proof-nft",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "proof-nft",
+      "status": 200
+    },
+    {
+      "path": "/api/nfts/emerald-042",
+      "handler": "proof-nft",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/wallets",
+      "handler": "wallets",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/checkout-quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/wallet-connection",
+      "handler": "connection",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/checkout-quotes",
+      "handler": "quote",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/orders",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/order-attempt",
+      "handler": "attempt",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/orders/e3a66f73-5079-44a4-a984-8050a55a888a",
+      "handler": "order",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/cart",
+      "handler": "cart",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "handler": "profile",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "logout",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    },
+    {
+      "path": "/api/session",
+      "handler": "session",
+      "status": 200
+    }
+  ],
+  "consoleErrors": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "https://kurio-nft-delta.vercel.app/api/cart",
+      "phase": "authentication",
+      "type": "console"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "https://kurio-nft-delta.vercel.app/api/nfts/inexistente",
+      "phase": "/nfts/inexistente",
+      "type": "console"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "https://kurio-nft-delta.vercel.app/api/nfts/inexistente",
+      "phase": "/nfts/inexistente",
+      "type": "console"
+    }
+  ],
+  "httpErrors": [
+    {
+      "url": "https://kurio-nft-delta.vercel.app/api/cart",
+      "status": 401,
+      "phase": "authentication",
+      "authenticating": true,
+      "requestScope": "guest"
+    },
+    {
+      "url": "https://kurio-nft-delta.vercel.app/api/nfts/inexistente",
+      "status": 404,
+      "phase": "/nfts/inexistente",
+      "authenticating": true,
+      "requestScope": null
+    },
+    {
+      "url": "https://kurio-nft-delta.vercel.app/api/nfts/inexistente",
+      "status": 404,
+      "phase": "/nfts/inexistente",
+      "authenticating": true,
+      "requestScope": null
+    }
+  ],
+  "networkFailures": [],
+  "uiLogin": true,
+  "sessionRefresh": true,
+  "uiWallet": true,
+  "guestCartMerged": true,
+  "logout": true,
+  "socketUpdate": true,
+  "socketDuplicateOld": true,
+  "socketReconnect": true,
+  "realUiPurchaseConfirmed": true,
+  "passed": true
+}
