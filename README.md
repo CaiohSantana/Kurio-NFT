@@ -1,6 +1,6 @@
 # Kurio — marketplace de NFTs
 
-Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
+Histórico da revisão anterior: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
 
 Para guardar a auditoria nesta revisão, defina AUDIT_OUTPUT=docs/audits/lighthouse-final-polish antes de npm run audit; o runner padrão continua escrevendo lighthouse-performance. Comandos, tabela e roteiro em docs/final-polish.md.
 
@@ -10,7 +10,7 @@ O enunciado original é a fonte dos requisitos: [docs/challenge-original.md](doc
 
 ## Revisão mobile atual
 
-As seis telas foram ajustadas com os exports, capturas equivalentes em 414×896, 440×956 e 390×844 e controles funcionais preservados. Antes/depois, método, testes e limitações em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Vinte e uma baselines fora do escopo permaneceram iguais; somente seis mobile foram atualizadas após comparação visual. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; após correção de seletor, 9/9 quality passaram. Lighthouse final ainda pendente nesta revisão. A publicação não faz parte desta etapa.
+As seis telas foram ajustadas com os exports, capturas equivalentes em 414×896, 440×956 e 390×844 e controles funcionais preservados. Antes/depois, método, testes e limitações em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Vinte e uma baselines fora do escopo permaneceram iguais; somente seis mobile foram atualizadas após comparação visual. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; após correção de seletor, 9/9 quality passaram. Lighthouse final: 84/99 nas duas páginas e outras categorias 100, fonte 3fa8450, 12/12 relatórios em docs/audits/lighthouse-mobile-review. Após SVGs, 96/96 testes pertinentes passaram. Mobile abaixo da meta 90; verificações humanas e HTTPS permanecem pendentes. A publicação não faz parte desta etapa.
 
 ## Executar
 

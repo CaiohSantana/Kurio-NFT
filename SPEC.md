@@ -2,15 +2,15 @@
 
 ## Revisão mobile atual
 
-UI-01/02/03: seis telas revistas em 414×896, 440×956 e 390×844, com ordenação mobile no painel, navegação/galeria preservadas e senha de confirmação independente. Capturas antes/depois e limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Desktop/tablet e perfil/carteiras/recibo mobile: 21 baselines passaram sem alteração; seis baselines atualizadas após comparação visual. Typecheck/lint/build e verificações direcionadas passaram. QA-01: 221 passados/1 seletor antigo falhou/3 skips na execução completa; seletor corrigido e 9/9 quality passaram, sem mudar runtime. QA-03 final pendente de medição. UI-03 permanece parcial pelas verificações humanas; DE-02 pendente e sem autorização de deploy nesta revisão. Resultados abaixo são históricos.
+UI-01/02/03: seis telas revistas em 414×896, 440×956 e 390×844, com ordenação mobile no painel, navegação/galeria preservadas e senha de confirmação independente. Capturas antes/depois e limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Desktop/tablet e perfil/carteiras/recibo mobile: 21 baselines passaram sem alteração; seis baselines atualizadas após comparação visual. Typecheck/lint/build e verificações direcionadas passaram. QA-01: 221 passados/1 seletor antigo falhou/3 skips na execução completa; seletor corrigido e 9/9 quality passaram, sem mudar runtime. QA-03: 12/12 finais, fonte limpa 3fa8450, Performance 84/99 (início mobile/desktop) e 84/99 (detalhe), outras categorias 100; parcial pela meta mobile 90. Revalidação após SVGs: 96/96 testes pertinentes e 27 baselines passaram. UI-03 permanece parcial pelas verificações humanas; DE-02 pendente e sem autorização de deploy nesta revisão. Resultados abaixo são históricos.
 
-## Revisão localizada e carrossel vigentes
+## Revisão localizada e carrossel anteriores
 
 Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
 
 Status abaixo preserva o histórico das etapas anteriores.
 
-## Fechamento de performance vigente
+## Fechamento de performance anterior
 
 Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](docs/performance-closure.md). QA-03 parcial pelas duas metas mobile; UI-03 parcial pelas avaliações humanas; DE-02/P03 pendentes de URL HTTPS/smoke. DE-01 tem checkout limpo anterior b6fba35, com lockfile/dependências preservados; não foi repetido checkout limpo nesta etapa.
 

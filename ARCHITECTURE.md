@@ -2,7 +2,9 @@
 
 Revisão mobile: composição em `src/mobile-reference.css` e no CSS de checkout, sem mudar contratos/fontes de estado. Ordenação usa o mesmo parâmetro do Router/Query dentro dos filtros. Galeria e dados complementares continuam acessíveis por details; `CheckoutNfts` renderiza a mesma cotação em posições responsivas, sem cache duplicado. Perfil mobile abre o menu da conta existente, mantendo logout/troca e isolamento. Senha e confirmação têm visibilidade local independente. Método, comparação e limites: [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Sem publicação nesta etapa; evidências anteriores são históricas.
 
-## Revisão localizada e carrossel vigentes
+SVGs mobile pequenos são importados do public por Vite ?raw e embutidos como data URI; desenho/origem originais mantidos, 11 requisições iniciais eliminadas. Sem nova dependência ou alteração da API. Fonte final auditada 3fa8450: 12 medições, Performance 84 mobile/99 desktop nas duas páginas e demais categorias 100; 96 testes pertinentes passaram após o ajuste. Meta mobile/manual humano/publicação pendentes.
+
+## Revisão localizada e carrossel anteriores
 
 Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
 

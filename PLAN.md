@@ -2,15 +2,15 @@
 
 ## Revisão mobile atual
 
-P05/P12/P14: composição das seis telas corrigida com classes responsivas e assets locais; comparação 414/440/390 e 21 baselines fora do escopo preservadas. Seis baselines atualizadas após revisão dos exports. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; correção de seletor revalidada em 9/9 quality. Medições finais pendentes. Evidências/limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). P15 continua parcial até medir e conferir metas; P16/DE-02 não concluídos, sem publicação nesta etapa. Envio ao origin autorizado após validação. Histórico abaixo não substitui este acompanhamento.
+P05/P12/P14: composição das seis telas corrigida com classes responsivas e assets locais; comparação 414/440/390 e 21 baselines fora do escopo preservadas. Seis baselines atualizadas após revisão dos exports. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; correção de seletor revalidada em 9/9 quality. 12/12 medições finais: 84/99 nas duas páginas, outras categorias 100; fonte 3fa8450. Após SVGs, 96/96 testes pertinentes passaram com baselines intactas. Evidências/limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). P15 continua parcial pela meta mobile 90; P16/DE-02 não concluídos, sem publicação nesta etapa. Envio ao origin autorizado após validação. Histórico abaixo não substitui este acompanhamento.
 
-## Revisão localizada e carrossel vigentes
+## Revisão localizada e carrossel anteriores
 
 Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
 
 Status abaixo preserva o histórico das etapas anteriores.
 
-## Fechamento de performance vigente
+## Fechamento de performance anterior
 
 Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](docs/performance-closure.md). P15: investigação encerrada com limitação documentada; P16: build/preview/evidências preparados. Vercel exige conta; não marcar publicação ou desafio completo. Histórico abaixo descreve etapas anteriores, não substitui este status.
 

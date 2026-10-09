@@ -44,7 +44,7 @@ CSS da revisão em `src/mobile-reference.css`, delimitado a até 639 px; regras 
 - Suíte completa executada uma vez após consolidação: **221 passados, 1 falha, 3 skips**, em 9.3 minutos. A falha era o seletor de acessibilidade restrito ao favorito removido da área de compra. Selecionamos o favorito visível no cabeçalho mobile/área desktop, preservando medidas, foco, edição e zoom; **9/9** testes de quality passaram na revalidação. Sem mudança de runtime para corrigir o seletor; não repetimos a suíte completa nem declaramos a primeira execução inteiramente verde. [HTML completo](audits/playwright-mobile-review/full/index.html), [revalidação](audits/playwright-mobile-review/accessibility-fixed/index.html).
 - Os três skips continuam intencionais em final-review: Mercado desktop não se aplica ao projeto mobile (coberto por navigation-cart); o fluxo adicional de 414 px roda no mobile e é pulado nos outros dois projetos. Nenhum skip novo.
 - Após a otimização localizada dos SVGs, **96/96** testes pertinentes passaram: 27 baselines intactas, catálogo, carrossel, controles nas três larguras mobile, quality e REST/Socket.IO da prova. [HTML final pertinente](audits/playwright-mobile-review/icons-final/index.html). Capturas depois regeneradas com o build otimizado; conferência adicional em 440 px verificou três indicadores/CTAs, teclado, swipe touch CDP, hero estável e rota ativa ([registro](evidence/mobile-review/hero-440-controls.json)).
-- Typecheck/lint/build finais passaram; no script de capturas foi corrigida somente a declaração ESLint do global getComputedStyle. Lighthouse final pendente de execução.
+- Typecheck/lint/build finais passaram; no script de capturas foi corrigida somente a declaração ESLint do global getComputedStyle. Lighthouse final 12/12 concluído; medianas/limites abaixo.
 
 ## Impacto na performance
 
@@ -54,7 +54,21 @@ Evidência: network-requests do início mostra 11 novos SVGs antes da imagem pri
 
 Correção localizada: `src/shared/ui/mobile-icons.ts` importa os mesmos 11 SVGs originais com Vite `?raw` e os usa como data URI. Sem duplicar arquivos, mudar geometria, remover imagens ou adicionar bibliotecas; origens continuam no assets-manifest. Elimina requisições separadas, inclusive ocultas, ao custo de aproximadamente 4.2 kB gzip no chunk compartilhado de MarketShell. API, MSW, Socket.IO, fontes, WebPs, latências e cenário padrão preservados. Regeneração das capturas e 27 baselines iguais confirmam que o ajuste não alterou composição.
 
-Conjunto final de 12 medições após o ajuste ainda pendente de execução. Mesmas condições do runner; testes/capturas e seus previews encerrados antes da auditoria.
+Conjunto final: **12/12 medições**, fonte limpa `3fa84509ff18767acd1c987231225ccf1501e7d9` (runtime e08e579, posteriores apenas evidências/documentação). [HTML/JSON, medianas e configuração completa](audits/lighthouse-mobile-review/README.md). Accessibility, Best Practices e SEO **100** nas quatro combinações.
+
+| Página | Perfil | Performance | LCP ms | CLS | TBT ms | FCP ms | Speed Index ms |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| home | mobile | 84 | 3617 | 0.0486 | 34.5 | 3020 | 3020 |
+| home | desktop | 99 | 828 | 0.0180 | 0 | 626 | 626 |
+| detail | mobile | 84 | 3660 | 0.0000 | 9.5 | 3018 | 3018 |
+| detail | desktop | 99 | 787 | 0.0180 | 0 | 632 | 632 |
+
+Comparado à rodada anterior ao ajuste: início 81/95 → **84/99**, detalhe 85/99 → **84/99**. Comparado à entrega anterior 47469f7: mobile 85 → 84 nas duas páginas, desktop 99 mantido. Não declarar ausência de regressão mobile nem meta 90 atingida. No início, TBT caiu de 140.7 para 34.5 ms e LCP de 3712 para 3617 ms após embutir os SVGs; network-requests confirma **zero** requisições desses 11 arquivos. O detalhe melhorou TBT de 55.5 para 9.5 ms, mas LCP aumentou de 3559 para 3660 ms e manteve CLS zero. Não atribuir diferenças de um ponto exclusivamente à otimização: os perfis/CPU e grafo de recursos influenciam o modelo.
+
+Evidência dos relatórios finais: LCP mobile do início é `.home-hero` (87% render delay na execução 1); no detalhe é `.gallery-main > img` (76% load delay, 4% load time na execução 1). Bootstrap/MSW e runtime React/Query permanecem entre os principais custos de script; CSS inicial aparece como bloqueante (13.3 kB transferidos, estimativa de ~605 ms nessa execução). Imagem principal depende da resposta REST real dos mocks. Essas medições não justificam remover MSW/Socket.IO, fontes ou seções nem renderizar dados fictícios no cliente. Nenhuma otimização ampla foi feita nesta revisão visual.
+
+Ambiente: Node22.14/npm11.2, Lighthouse12.8.2, Playwright1.64/Chromium156, Windows10.0.26300 x64, i5-12400F/16 GB. Mobile412×823 DPR1.75/RTT150/1638.4 Kbps/CPU4; desktop1350×940 DPR1/RTT40/10240 Kbps/CPU1; throttling simulado padrão. Chrome temporário novo e reset storage por execução, sem prewarming. Mocks/cenário padrão e seus recursos reais preservados; sem testes/capturas concorrentes. URLs locais `http://127.0.0.1:4175/` e `/nfts/emerald-042`; nenhuma URL pública. Histórico completo preservado; sem repetição para selecionar scores favoráveis.
+
 
 ## Desvios e pendências
 
