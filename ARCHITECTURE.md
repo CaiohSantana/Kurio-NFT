@@ -1,5 +1,11 @@
 # Arquitetura — marketplace simulado
 
+## Revisão localizada e carrossel vigentes
+
+Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
+
+Status abaixo preserva o histórico das etapas anteriores.
+
 ## Carregamento e publicação vigentes
 
 Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](docs/performance-closure.md). beforeLoad do Router inicia prefetchQuery de sessão/detalhe com o QueryClient compartilhado. Query continua autoridade de cache, Axios REST/AbortSignal. Catálogo segue consulta pelo componente. retryOnMount=false conserva erro de prefetch para retry explícito. MSW.start precede avaliação do socket; privacidade/idempotência/versões inalteradas. Cores forçadas usam outline sistêmico apenas nesse media query.

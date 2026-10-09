@@ -1,0 +1,258 @@
+{
+  "standardScenario": true,
+  "settingsMatchPrevious": true,
+  "checks": [
+    {
+      "report": "detail-desktop-1.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "detail-desktop-2.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "detail-desktop-3.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "detail-mobile-1.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "detail-mobile-2.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "detail-mobile-3.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts/emerald-042",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-desktop-1.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-desktop-2.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-desktop-3.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-mobile-1.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-mobile-2.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    },
+    {
+      "report": "home-mobile-3.json",
+      "api": [
+        {
+          "url": "http://127.0.0.1:4175/api/session",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/cart",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4175/api/nfts?q=&collections=&networks=&minPrice=0.02&maxPrice=12.30&sort=recent&page=1&tab=all",
+          "status": 200
+        }
+      ],
+      "font": true,
+      "images": true
+    }
+  ]
+}

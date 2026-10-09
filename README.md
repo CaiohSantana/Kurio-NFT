@@ -1,5 +1,9 @@
 # Kurio — marketplace de NFTs
 
+Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
+
+Para guardar a auditoria nesta revisão, defina AUDIT_OUTPUT=docs/audits/lighthouse-final-polish antes de npm run audit; o runner padrão continua escrevendo lighthouse-performance. Comandos, tabela e roteiro em docs/final-polish.md.
+
 A aplicação usa dados locais simulados por MSW, incluindo REST e o protocolo Socket.IO. Contas, carteiras, cotações e pedidos não usam blockchain, extensões ou gateways reais. Referências `SIM-…` são fictícias; o explorador do recibo é local e identificado. Diagnósticos ficam em `/integration` ou no console do modo demo.
 
 O enunciado original é a fonte dos requisitos: [docs/challenge-original.md](docs/challenge-original.md). A matriz conferida no código/testes, resultados e pendências estão em [docs/functional-closure.md](docs/functional-closure.md). Consulte também [SPEC](SPEC.md), [PLAN](PLAN.md), [ARCHITECTURE](ARCHITECTURE.md) e a [revisão visual](docs/visual-refinement.md).

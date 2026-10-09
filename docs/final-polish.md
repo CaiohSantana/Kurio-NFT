@@ -34,3 +34,32 @@ Resultados finais e revisão fonte serão preenchidos após execução. Medidas 
 Suíte consolidada sobre CSS final:213 passados/3 skips/0 falhas/0 flaky em6,1min, incluindo27 visuais sem update. HTML/contagem em audits/playwright-final-polish. Uma checagem posterior com touch real encontrou Enter na arte bloqueado após swipe; a supressão agora exige event.detail>0 (clique por ponteiro), preservando click de teclado. Após esse ajuste12/12 testes do carrossel passaram, incluindo Enter na arte após swipe; HTML/contagem em audits/playwright-final-hero. Typecheck/lint/build passaram. A primeira consolidação foi interrompida para recompilar a extensão final do separador; não usada como evidência de suíte completa. Testes iniciais também tiveram seletores/regex excessivamente exatos (asterisco de label e URL canonicalizada), corrigidos antes da validação final.
 
 Desenvolvimento: três medições mobile do início, Performance85, LCP3381ms, CLS0.0486, TBT124ms, FCP/SI3065/3065ms. Fonte ainda não commitada (dirtyAtStart=true, HEAD visual f24e4f1): resultados em audits/lighthouse-hero-development; não substituem o conjunto final. Baseline anterior Performance85/LCP3371ms. Nenhum ajuste foi feito para escolher um run favorável. O conjunto final completo repetirá12 medições sobre commit limpo porque CSS, bootstrap e resposta do catálogo são compartilhados.
+
+## Auditoria definitiva da fonte 47469f7
+
+| Página/perfil | P antes → final | A/BP/SEO | LCP antes → final(ms) | CLS | TBT(ms) | FCP/SI(ms) |
+| --- | --- | --- | --- | --- | --- | --- |
+| home/mobile | 85 → 85 | 100/100/100 | 3371 → 3369 | 0.0486 | 102 | 3055/3055 |
+| home/desktop | 99 → 99 | 100/100/100 | 759 → 888 | 0.0180 | 5 | 659/659 |
+| detail/mobile | 85 → 85 | 100/100/100 | 3494 → 3501 | 0.0000 | 76 | 3041/3041 |
+| detail/desktop | 99 → 99 | 100/100/100 | 788 → 795 | 0.0180 | 0 | 644/644 |
+
+Fonte 47469f71ec6f01ad547ee49b2dac667651b0d573, dirtyAtStart=false. Três execuções por combinação;12 HTML/JSON, todas incluídas nas medianas. [Relatórios](audits/lighthouse-final-polish/README.md), [versões/condições/medianas](audits/lighthouse-final-polish/summary.json), [cenário conferido](audits/lighthouse-final-polish/scenario-check.json). Mesmos configSettings do conjunto anterior, API200/fontes/artes presentes em todas, zero runtimeError/runWarnings. Nenhuma execução de E2E/captura em paralelo aos15 audits desta etapa (3 desenvolvimento+12 finais).
+
+Home mobile: Performance mantida85, LCP3371→3369ms e TBT117→103ms; diferenças pequenas não sustentam atribuição causal de ganho. Desktop: score99 mantido, LCP759→888ms; imagem passou a aguardar os dados da API do catálogo. Relação com essa espera é inferência coerente com o caminho implementado, não um perfil isolado de causalidade. JS/CSS compartilhados justificaram repetir detalhe, que mantém85/99. Bootstrap gzip96.03kB exibidos pelo Vite (95.73 anterior) e CSS11.52kB (11.16 anterior): incremento pequeno, sem dependências novas. Performance mobile<90 permanece pendente, conforme documentação anterior; esta etapa não autoriza refatoração ampla.
+
+Ambiente/condições mantidos: Node22.14/npm11.2; Windows10.0.26300 x64/i5-12400F/16GB; Lighthouse12.8.2, Playwright1.64/Chromium156.0.8078.4. Preview4175, / e /nfts/emerald-042, build demo completo, mocks padrão, novo perfil/cache frio por run, reset/storage, simulate/CPU4x mobile e1x desktop, sem preaquecer ou alterar latências. Settings completos nos JSON.
+
+Commits separados: f24e4f1 (visuais, incluindo5 baselines de carteiras/checkout) e47469f7 (carrossel e3 baselines do início). Commits posteriores entregam relatórios/documentação, sem modificar a fonte auditada. Nada de serviços/dependências/edição administrativa, autoplay ou pagamento real foi acrescentado.
+
+Pendências: Performance mobile85/85 abaixo90; avaliações humanas de leitor de tela/alto contraste real/text-only; contexto/ícone original do Figma já documentados; publicação/validação de URL HTTPS dependem da conta Vercel. Não declarar desafio/publicação concluídos.
+
+Reproduzir audits finais sem sobrescrever o conjunto anterior (PowerShell):
+
+```powershell
+$env:AUDIT_OUTPUT = 'docs/audits/lighthouse-final-polish'
+npm run audit
+Remove-Item Env:AUDIT_OUTPUT
+```
+
+Roteiro curto: abrir /, escolher os três indicadores/CTAs; usar setas/Home/End e swipe mobile; ativar movimento reduzido. Logar Ana/Kurio123!, abrir Carteiras, salvar referência secundária/refresh e testar erro longo. Carrinho com NFT, checkout, expandir Seus NFTs no mobile e conferir taxa centralizada. Abrir /login e /signup diretamente e testar Tab/Escape/erro, sem mudança de campos/botões.
