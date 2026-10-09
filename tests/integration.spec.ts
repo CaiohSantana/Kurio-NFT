@@ -7,6 +7,32 @@ test.beforeEach(async ({ page }) => {
   expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200)
 })
 
+test('an event before the first REST response cancels the old snapshot and reconciles automatically', async ({ page }) => {
+  // Hold MSW's real 650 ms response timer, not the API or Socket.IO transport.
+  await page.clock.install()
+  await page.clock.pauseAt(new Date(Date.now() + 1000))
+  const firstRead = page.waitForRequest((request) => request.url().endsWith('/api/nfts/emerald-042') && request.headers()['x-integration-proof'] === 'true')
+  await page.goto('/integration')
+  await firstRead
+  await page.clock.runFor(100)
+  await expect(page.getByTestId('connection')).toHaveText('Conectado')
+  await expect(page.getByText('Carregando NFT por REST…')).toBeVisible()
+  await expect(page.getByTestId('version')).toHaveCount(0)
+
+  const updatedRest = page.waitForResponse((response) => response.url().endsWith('/api/nfts/emerald-042') && response.status() === 200)
+  await page.getByRole('button', { name: 'Alterar NFT', exact: true }).click()
+  await expect(page.getByTestId('received')).toHaveText('1')
+  await page.clock.runFor(1500)
+  const response = await updatedRest
+  expect(response.headers()['x-mock-handler']).toBe('proof-nft')
+  expect((await response.json()).nft).toMatchObject({ version: 2, priceEth: '1.29', available: 9 })
+  await expect(page.getByTestId('version')).toHaveText('2')
+  await expect(page.getByTestId('price')).toHaveText('1.29 ETH')
+  // Flush any timer belonging to the cancelled old read; it cannot regress UI.
+  await page.clock.runFor(1000)
+  await expect(page.getByTestId('version')).toHaveText('2')
+})
+
 test('REST, loading and Socket.IO updates; duplicate/old events cannot regress data', async ({ page }) => {
   const initialRest = page.waitForResponse((response) => response.url().endsWith('/api/nfts/emerald-042') && response.status() === 200)
   await page.goto('/integration')

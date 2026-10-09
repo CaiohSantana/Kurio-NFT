@@ -13,15 +13,22 @@ export function useNftSocket() {
   const [connections, setConnections] = useState(0)
 
   useEffect(() => {
+    let active = true
     const socket: Socket<ServerEvents> = io(window.location.origin, {
       path: '/proof-socket.io/', transports: ['websocket'], autoConnect: false, forceNew: true,
       reconnectionDelay: 300, reconnectionDelayMax: 300, randomizationFactor: 0,
     })
+    async function reconcile() {
+      // Invalidation alone reuses a first pending read with no cached data.
+      // Abort its snapshot before requesting the current state through REST.
+      await queryClient.cancelQueries({ queryKey: nftKey })
+      if (active) await queryClient.invalidateQueries({ queryKey: nftKey })
+    }
     function connected() {
       setStatus('Conectado')
       setConnections((count) => count + 1)
       // Both initial connection and reconnect reconcile the resource by REST.
-      void queryClient.invalidateQueries({ queryKey: nftKey })
+      void reconcile()
     }
     function disconnected() { setStatus('Desconectado') }
     function updated(event: NftUpdated) {
@@ -34,7 +41,7 @@ export function useNftSocket() {
       }
       highestEventVersion.current = event.version
       // Events contain identity/version only. REST supplies the authoritative data.
-      void queryClient.invalidateQueries({ queryKey: nftKey })
+      void reconcile()
     }
     socket.on('connect', connected)
     socket.on('disconnect', disconnected)
@@ -42,6 +49,7 @@ export function useNftSocket() {
     socket.on('nft.updated', updated)
     socket.connect()
     return () => {
+      active = false
       socket.off('connect', connected)
       socket.off('disconnect', disconnected)
       socket.off('connect_error', disconnected)
