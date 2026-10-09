@@ -1,0 +1,2963 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "browser": "154.0.8037.99",
+    "checks": [
+      "catalog-search-pagination-history",
+      "combined-filters-sort-dialog-keyboard",
+      "hero-indicators-and-cta",
+      "detail-edition-quantity-favorite-return",
+      "cart-quantity-coupons-persistence",
+      "profile-validation-persistence",
+      "wallet-validation-persistence",
+      "user-switch-isolation",
+      "purchase-receipt-refresh",
+      "logout-signup-validation-and-registration"
+    ],
+    "issues": [],
+    "console": [
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to update a ServiceWorker for scope ('https://kurio-nft-delta.vercel.app/') with script ('https://kurio-nft-delta.vercel.app/mockServiceWorker.js'): Not found"
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      }
+    ],
+    "requests": [
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "combined-filters-sort-dialog-keyboard",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/sage-009",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/neon-552",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites/emerald-042",
+        "method": "PUT",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart/items",
+        "method": "POST",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "GET",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "POST",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "PUT",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders",
+        "method": "POST",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/61edb68b-93c4-4b8b-85a4-2038f6ea5619",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/61edb68b-93c4-4b8b-85a4-2038f6ea5619",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/61edb68b-93c4-4b8b-85a4-2038f6ea5619",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/accounts",
+        "method": "POST",
+        "status": 409,
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/accounts",
+        "method": "POST",
+        "status": 200,
+        "handler": "signup",
+        "worker": true
+      }
+    ],
+    "overflow": [
+      {
+        "name": "home",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "overflow": false
+      },
+      {
+        "name": "detail",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "overflow": false
+      },
+      {
+        "name": "cart",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "overflow": false
+      },
+      {
+        "name": "profile",
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      },
+      {
+        "name": "wallets",
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      },
+      {
+        "name": "checkout",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "overflow": false
+      },
+      {
+        "name": "receipt",
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 414,
+    "height": 896,
+    "browser": "154.0.8037.99",
+    "checks": [
+      "catalog-search-pagination-history",
+      "combined-filters-sort-dialog-keyboard",
+      "hero-indicators-and-cta",
+      "detail-edition-quantity-favorite-return",
+      "cart-quantity-coupons-persistence",
+      "profile-validation-persistence",
+      "wallet-validation-persistence",
+      "user-switch-isolation",
+      "purchase-receipt-refresh"
+    ],
+    "issues": [
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[aria-label^=\"Minha conta:\"]:visible').first()\u001b[22m\n"
+      }
+    ],
+    "console": [
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      }
+    ],
+    "requests": [
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "combined-filters-sort-dialog-keyboard",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "combined-filters-sort-dialog-keyboard",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/sage-009",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/neon-552",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites/emerald-042",
+        "method": "PUT",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart/items",
+        "method": "POST",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "GET",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "POST",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "PUT",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders",
+        "method": "POST",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/3c399f7a-e518-4909-93b4-1ae56b478ffc",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/3c399f7a-e518-4909-93b4-1ae56b478ffc",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/3c399f7a-e518-4909-93b4-1ae56b478ffc",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      }
+    ],
+    "overflow": [
+      {
+        "name": "home",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "detail",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "cart",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "profile",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "wallets",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "checkout",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      },
+      {
+        "name": "receipt",
+        "width": 414,
+        "scrollWidth": 399,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 440,
+    "height": 956,
+    "browser": "154.0.8037.99",
+    "checks": [
+      "catalog-search-pagination-history",
+      "combined-filters-sort-dialog-keyboard",
+      "hero-indicators-and-cta",
+      "detail-edition-quantity-favorite-return",
+      "cart-quantity-coupons-persistence",
+      "profile-validation-persistence",
+      "wallet-validation-persistence",
+      "user-switch-isolation",
+      "purchase-receipt-refresh"
+    ],
+    "issues": [
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[aria-label^=\"Minha conta:\"]:visible').first()\u001b[22m\n"
+      }
+    ],
+    "console": [
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "message": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      }
+    ],
+    "requests": [
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "catalog-search-pagination-history",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "combined-filters-sort-dialog-keyboard",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "combined-filters-sort-dialog-keyboard",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/sage-009",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "hero-indicators-and-cta",
+        "path": "/api/nfts/neon-552",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites/emerald-042",
+        "method": "PUT",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart/items",
+        "method": "POST",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "detail-edition-quantity-favorite-return",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/items/emerald-042%3Aten",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart/coupon",
+        "method": "PUT",
+        "status": 200,
+        "handler": "coupon",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "cart-quantity-coupons-persistence",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "PATCH",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "profile-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 422,
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "POST",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "wallet-validation-persistence",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "user-switch-isolation",
+        "path": "/api/session",
+        "method": "POST",
+        "status": 200,
+        "handler": "login",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/profile",
+        "method": "GET",
+        "status": 200,
+        "handler": "profile",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallets",
+        "method": "GET",
+        "status": 200,
+        "handler": "wallets",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "GET",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/wallet-connection",
+        "method": "POST",
+        "status": 200,
+        "handler": "connection",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "PUT",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders",
+        "method": "POST",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/order-attempt",
+        "method": "GET",
+        "status": 200,
+        "handler": "attempt",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/checkout-quotes",
+        "method": "POST",
+        "status": 200,
+        "handler": "quote",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/433edcf4-15ab-4bf8-b1f4-7912b053b13c",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/433edcf4-15ab-4bf8-b1f4-7912b053b13c",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "purchase-receipt-refresh",
+        "path": "/api/orders/433edcf4-15ab-4bf8-b1f4-7912b053b13c",
+        "method": "GET",
+        "status": 200,
+        "handler": "order",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/cart",
+        "method": "GET",
+        "status": 200,
+        "handler": "cart",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/nfts",
+        "method": "GET",
+        "status": 200,
+        "handler": "catalog",
+        "worker": true
+      },
+      {
+        "phase": "logout-signup-validation-and-registration",
+        "path": "/api/favorites",
+        "method": "GET",
+        "status": 200,
+        "handler": "favorites",
+        "worker": true
+      }
+    ],
+    "overflow": [
+      {
+        "name": "home",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "detail",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "cart",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "profile",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "wallets",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "checkout",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      },
+      {
+        "name": "receipt",
+        "width": 440,
+        "scrollWidth": 425,
+        "overflow": false
+      }
+    ]
+  }
+]

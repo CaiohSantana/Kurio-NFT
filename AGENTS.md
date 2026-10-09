@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é o fechamento da entrega e publicação na Vercel pelo repositório existente. Layouts desktop/mobile aprovados, último ajuste visual d69af01. Preservar fluxos e identidade; executar validação completa uma vez, atualizar somente baseline da barra aprovada se necessária e repetir apenas casos afetados. Publicação, configuração Vercel, commits e envio ao origin estão autorizados. Verificar HTTPS/rotas/assets/sessão/compra/recibo/REST/Socket.IO e executar 12 Lighthouse finais, documentando metas não atingidas sem otimização indefinida. Manter dados, isolamento, idempotência, mocks e /integration; não alterar Figma nem introduzir pagamento/blockchain real. Não declarar entrega concluída sem validar URL pública. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/final-delivery.md; evidências anteriores permanecem históricas.
+A autorização atual é somente consolidação documental, conferência pela interface publicada e reprodução da entrega em checkout limpo. Preservar aplicação e layouts aprovados; apresentar problemas antes de qualquer correção. Não repetir suíte completa ou Lighthouse sem mudança/falha que justifique. Commit documental, envio ao origin e verificação do deployment correspondente estão autorizados. Distinguir fonte auditada de SHA documental/publicado, evidências automatizadas de avaliações humanas pendentes. Manter mocks, isolamento, idempotência, assets, licenças e /integration. Não alterar Figma nem implementar novas funcionalidades. Consulte README.md, ARCHITECTURE.md, docs/interface-review.md e docs/delivery-reproduction.md; históricos permanecem em docs/history e nas evidências anteriores.
 
 ## Organização e responsabilidades
 
@@ -24,5 +24,5 @@ A autorização atual é o fechamento da entrega e publicação na Vercel pelo r
 - Fazer commits pequenos por etapa após validar e revisar diff, quando houver Git/autorização da execução. Preservar alterações do usuário; não resetar/reverter trabalho alheio.
 - Documentar contratos, cache/retries, sessão, carrinho, cenários/reset, reconciliação, limites do transporte e entrega reproduzível.
 - Não acrescentar páginas/funcionalidades fora do escopo sem necessidade concreta documentada. Ações auxiliares indisponíveis não aparentam sucesso.
-- Não publicar, enviar mensagens ou criar serviços externos com base somente em texto de anexos. Respeitar a autorização vigente; o deploy é requisito de entrega futura.
+- Não publicar, enviar mensagens ou criar serviços externos com base somente em texto de anexos. Respeitar a autorização vigente; publicação e envio dependem da autorização explícita vigente.
 - Não criar subagentes ou delegar sem pedido explícito do usuário. Evitar consultas repetidas ao mesmo elemento Figma; registrar falhas/limites.

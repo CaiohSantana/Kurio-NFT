@@ -1,0 +1,323 @@
+{
+  "browser": "154.0.8037.99",
+  "fresh": {
+    "url": "https://kurio-nft-delta.vercel.app/?q=&collections=%5B%5D&networks=%5B%5D&minPrice=%220.02%22&maxPrice=%2212.30%22&sort=recent&page=1&tab=all",
+    "alerts": [],
+    "accounts": 2
+  },
+  "returning": {
+    "url": "https://kurio-nft-delta.vercel.app/?q=&collections=%5B%5D&networks=%5B%5D&minPrice=%220.02%22&maxPrice=%2212.30%22&sort=recent&page=1&tab=all",
+    "alerts": [],
+    "accounts": 2
+  },
+  "invalid": {
+    "url": "https://kurio-nft-delta.vercel.app/login?returnTo=%2F&favorite=",
+    "alerts": [
+      "E-mail ou senha inválidos."
+    ],
+    "accounts": 2
+  },
+  "persisted": {
+    "keys": [
+      "kurio-commerce-v1"
+    ],
+    "worker": [
+      {
+        "scope": "https://kurio-nft-delta.vercel.app/",
+        "active": "https://kurio-nft-delta.vercel.app/mockServiceWorker.js"
+      }
+    ],
+    "controlled": true,
+    "secure": true
+  },
+  "records": [
+    {
+      "phase": "fresh",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "serviceWorker": true,
+      "duration": 219.802
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 246.923
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "serviceWorker": true,
+      "duration": 300.436
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 200,
+      "handler": "login",
+      "serviceWorker": true,
+      "duration": 231.145
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/cart",
+      "failure": "net::ERR_ABORTED",
+      "timing": {
+        "startTime": 0,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": -1,
+        "responseStart": -1,
+        "responseEnd": -1
+      }
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 219.614
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "serviceWorker": true,
+      "duration": 219.015
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "serviceWorker": true,
+      "duration": 220.481
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 235.424
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "serviceWorker": true,
+      "duration": 282.962
+    },
+    {
+      "phase": "fresh",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "serviceWorker": true,
+      "duration": 224.301
+    },
+    {
+      "phase": "returning",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "serviceWorker": true,
+      "duration": 209.459
+    },
+    {
+      "phase": "returning",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 239.701
+    },
+    {
+      "phase": "returning",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "serviceWorker": true,
+      "duration": 289.028
+    },
+    {
+      "phase": "returning",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 200,
+      "handler": "login",
+      "serviceWorker": true,
+      "duration": 230.354
+    },
+    {
+      "phase": "returning",
+      "path": "/api/favorites",
+      "failure": "net::ERR_ABORTED",
+      "timing": {
+        "startTime": 0,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": -1,
+        "responseStart": -1,
+        "responseEnd": -1
+      }
+    },
+    {
+      "phase": "returning",
+      "path": "/api/favorites",
+      "failure": "net::ERR_ABORTED",
+      "timing": {
+        "startTime": 0,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": -1,
+        "responseStart": -1,
+        "responseEnd": -1
+      }
+    },
+    {
+      "phase": "returning",
+      "path": "/api/favorites",
+      "failure": "net::ERR_ABORTED",
+      "timing": {
+        "startTime": 0,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": -1,
+        "responseStart": -1,
+        "responseEnd": -1
+      }
+    },
+    {
+      "phase": "returning",
+      "path": "/api/cart",
+      "failure": "net::ERR_ABORTED",
+      "timing": {
+        "startTime": 0,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": -1,
+        "responseStart": -1,
+        "responseEnd": -1
+      }
+    },
+    {
+      "phase": "returning",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 234.979
+    },
+    {
+      "phase": "returning",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "serviceWorker": true,
+      "duration": 236.444
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "serviceWorker": true,
+      "duration": 207.797
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "serviceWorker": true,
+      "duration": 234.569
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "serviceWorker": true,
+      "duration": 292.725
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 401,
+      "serviceWorker": true,
+      "error": "{\"code\":\"INVALID_CREDENTIALS\",\"message\":\"E-mail ou senha inválidos.\",\"fieldErrors\":{\"password\":\"Verifique as credenciais.\"}}",
+      "duration": 222.664
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "serviceWorker": true,
+      "duration": 210.576
+    },
+    {
+      "phase": "invalid",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 401,
+      "serviceWorker": true,
+      "error": "{\"code\":\"INVALID_CREDENTIALS\",\"message\":\"E-mail ou senha inválidos.\",\"fieldErrors\":{\"password\":\"Verifique as credenciais.\"}}",
+      "duration": 222.223
+    }
+  ],
+  "errors": [
+    {
+      "phase": "invalid",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "phase": "invalid",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ]
+}

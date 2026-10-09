@@ -1,0 +1,187 @@
+{
+  "checks": [
+    "Bruno isolated empty cart and session restored",
+    "logout leaves guest cart empty",
+    "Ana retains her private cart after logout and switch",
+    "Ana session and cart survive refresh"
+  ],
+  "requests": [
+    {
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "session",
+      "duration": 221.035
+    },
+    {
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "cart",
+      "duration": 229.937
+    },
+    {
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "quote",
+      "duration": 229.589
+    },
+    {
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "catalog",
+      "duration": 288.821
+    },
+    {
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "favorites",
+      "duration": 214.833
+    },
+    {
+      "path": "/api/session",
+      "method": "DELETE",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "logout",
+      "duration": 212.288
+    },
+    {
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "session",
+      "duration": 208.763
+    },
+    {
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "cart",
+      "duration": 227.314
+    },
+    {
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "quote",
+      "duration": 227.181
+    },
+    {
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "catalog",
+      "duration": 285.581
+    },
+    {
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "session",
+      "duration": 213.776
+    },
+    {
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "cart",
+      "duration": 239.456
+    },
+    {
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "catalog",
+      "duration": 285.427
+    },
+    {
+      "path": "/api/session",
+      "method": "POST",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "login",
+      "duration": 224.9
+    },
+    {
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "cart",
+      "duration": 225.18
+    },
+    {
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "favorites",
+      "duration": 213.106
+    },
+    {
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "quote",
+      "duration": 212.811
+    },
+    {
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "session",
+      "duration": 216.195
+    },
+    {
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "cart",
+      "duration": 226.468
+    },
+    {
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "quote",
+      "duration": 226.526
+    },
+    {
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "catalog",
+      "duration": 272.535
+    },
+    {
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "fromServiceWorker": true,
+      "handler": "favorites",
+      "duration": 210.219
+    }
+  ],
+  "errors": []
+}

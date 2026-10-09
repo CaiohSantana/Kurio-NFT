@@ -1,0 +1,98 @@
+[
+  {
+    "base": "http://127.0.0.1:4186",
+    "early": true,
+    "initialPending": true,
+    "beforeManual": {
+      "version": "1",
+      "received": "1",
+      "price": "1.19 ETH"
+    },
+    "manualRecovery": "version 2",
+    "responses": [
+      {
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200
+      },
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 1
+      },
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 2
+      }
+    ]
+  },
+  {
+    "base": "https://kurio-nft-delta.vercel.app",
+    "early": true,
+    "initialPending": true,
+    "beforeManual": {
+      "version": "1",
+      "received": "1",
+      "price": "1.19 ETH"
+    },
+    "manualRecovery": "version 2",
+    "responses": [
+      {
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200
+      },
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 1
+      },
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 2
+      }
+    ]
+  },
+  {
+    "base": "https://kurio-nft-delta.vercel.app",
+    "early": false,
+    "initialPending": false,
+    "beforeManual": {
+      "version": "2",
+      "received": "1",
+      "price": "1.29 ETH"
+    },
+    "manualRecovery": "version 2",
+    "responses": [
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 1
+      },
+      {
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200
+      },
+      {
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "nftVersion": 2
+      }
+    ]
+  }
+]

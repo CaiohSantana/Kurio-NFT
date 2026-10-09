@@ -1,0 +1,299 @@
+{
+  "browser": "154.0.8037.99",
+  "checks": [
+    "Bruno restored after closing/reopening Chrome",
+    "visitor cart survives refresh",
+    "Ana login transfers visitor cart once and survives refresh"
+  ],
+  "requests": [
+    {
+      "phase": "returning-profile",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "fromServiceWorker": true,
+      "duration": 223.39
+    },
+    {
+      "phase": "returning-profile",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 248.646
+    },
+    {
+      "phase": "returning-profile",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "fromServiceWorker": true,
+      "duration": 306.645
+    },
+    {
+      "phase": "returning-profile",
+      "path": "/api/session",
+      "method": "DELETE",
+      "status": 200,
+      "handler": "logout",
+      "fromServiceWorker": true,
+      "duration": 206.851
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "fromServiceWorker": true,
+      "duration": 216.596
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/nfts/emerald-042",
+      "method": "GET",
+      "status": 200,
+      "handler": "nft",
+      "fromServiceWorker": true,
+      "duration": 259.971
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 217.496
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/cart/items",
+      "method": "POST",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 233.048
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "fromServiceWorker": true,
+      "duration": 284.324
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 216.558
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "fromServiceWorker": true,
+      "duration": 219.037
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/nfts/emerald-042",
+      "method": "GET",
+      "status": 200,
+      "handler": "nft",
+      "fromServiceWorker": true,
+      "duration": 265.51
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 220.021
+    },
+    {
+      "phase": "visitor-cart",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "fromServiceWorker": true,
+      "duration": 268.846
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "fromServiceWorker": true,
+      "duration": 214.915
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 232.662
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "fromServiceWorker": true,
+      "duration": 289.312
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 200,
+      "handler": "login",
+      "fromServiceWorker": true,
+      "duration": 222.477
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 218.465
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/session",
+      "method": "GET",
+      "status": 200,
+      "handler": "session",
+      "fromServiceWorker": true,
+      "duration": 211.606
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "handler": "quote",
+      "fromServiceWorker": true,
+      "duration": 228.042
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 228.274
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/nfts",
+      "method": "GET",
+      "status": 200,
+      "handler": "catalog",
+      "fromServiceWorker": true,
+      "duration": 275.557
+    },
+    {
+      "phase": "ana-merge",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "fromServiceWorker": true,
+      "duration": 215.854
+    },
+    {
+      "phase": "bruno-isolation",
+      "path": "/api/session",
+      "method": "POST",
+      "status": 200,
+      "handler": "login",
+      "fromServiceWorker": true,
+      "duration": 241.95
+    },
+    {
+      "phase": "bruno-isolation",
+      "path": "/api/cart",
+      "method": "GET",
+      "status": 200,
+      "handler": "cart",
+      "fromServiceWorker": true,
+      "duration": 232.269
+    },
+    {
+      "phase": "bruno-isolation",
+      "path": "/api/favorites",
+      "method": "GET",
+      "status": 200,
+      "handler": "favorites",
+      "fromServiceWorker": true,
+      "duration": 232.065
+    },
+    {
+      "phase": "bruno-isolation",
+      "path": "/api/quotes",
+      "method": "POST",
+      "status": 200,
+      "handler": "quote",
+      "fromServiceWorker": true,
+      "duration": 232.301
+    }
+  ],
+  "errors": [
+    {
+      "phase": "bruno-isolation",
+      "message": "Failed to update a ServiceWorker for scope ('https://kurio-nft-delta.vercel.app/') with script ('https://kurio-nft-delta.vercel.app/mockServiceWorker.js'): Not found"
+    },
+    {
+      "phase": "bruno-isolation",
+      "message": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Seu carrinho está vazio.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Seu carrinho está vazio.' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Seu carrinho está vazio.' })\n"
+    }
+  ],
+  "persistence": {
+    "scenario": {
+      "delay": null,
+      "networkFailure": null,
+      "failure": null
+    },
+    "workerControlled": true,
+    "workers": [],
+    "storeShape": {
+      "users": [
+        {
+          "id": "ana",
+          "hashType": "string",
+          "saltType": "string",
+          "cartItems": 1
+        },
+        {
+          "id": "bruno",
+          "hashType": "string",
+          "saltType": "string",
+          "cartItems": 0
+        }
+      ],
+      "mergedArray": true,
+      "guestItems": 0
+    }
+  }
+}

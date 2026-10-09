@@ -1,5 +1,7 @@
 # Fechamento funcional — 2026-10-08
 
+Atualização final de 09/10/2026: publicação/auditoria pública e checkout limpo estão comprovados em [final-delivery](final-delivery.md) e [delivery-reproduction](delivery-reproduction.md). A conferência adicional encontrou uma lacuna na prova `/integration`: evento durante a leitura inicial mantém snapshot antigo até consulta manual. [Passos/capturas](interface-review.md#pendência-funcional-confirmada-na-prova-técnica). Pendentes correção e teste dessa janela; não extrapolar os resultados históricos abaixo para cobertura integral. Marketplace passou nos percursos Chrome desktop/mobile; avaliações humanas continuam pendentes.
+
 Auditoria posterior: [quality-audit.md](quality-audit.md), fonte b6fba35, 186 testes passaram e 3 skips, 12 Lighthouse e checkout limpo. Metas mobile e publicação permanecem pendentes; resultados anteriores nesta página são históricos.
 
 Revisão posterior: [final-screen-review.md](final-screen-review.md) substitui as descrições de checkbox/conexão/recuperação permanentes. A revisão continua no resumo/CTA, com reconfirmação contextual; pending/timeout retomam a tentativa pela API. Contratos/critérios funcionais abaixo preservados; resultados desta página são históricos da etapa de fechamento, não a suíte mais recente.

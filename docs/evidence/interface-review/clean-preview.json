@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "path": "/",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/nfts/emerald-042",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/login",
+      "direct": 200,
+      "refresh": 200
+    },
+    {
+      "path": "/integration",
+      "direct": 200,
+      "refresh": 200
+    }
+  ],
+  "fonts": {
+    "loaded": "loaded",
+    "controlled": true
+  },
+  "resources": [
+    "/assets/index-Dw-nA6dA.css",
+    "/assets/index-C2UWwGDw.js",
+    "/assets/fonts/roboto-mono-latin.woff2",
+    "/assets/api-BXZmqtfV.js",
+    "/assets/esm-vP8kplIw.js",
+    "/assets/heart-BA4BuQMN.js",
+    "/assets/CarouselIndicators-vluwwAWN.js",
+    "/assets/modal-Bv6A822w.js",
+    "/assets/MarketShell-Dh27PIFr.js",
+    "/assets/contracts-BFrKFeqe.js",
+    "/assets/esm-VAFpjErP.js",
+    "/assets/skeleton-CygYjVjp.js",
+    "/assets/bootstrap-CY-G0ri1.js",
+    "/assets/browser-C13R53XS.js",
+    "/assets/optimized/83794-900.webp",
+    "/assets/figma/99280.svg",
+    "/assets/figma/d48dd.svg",
+    "/assets/figma/b4111.svg",
+    "/assets/figma/b8b84.svg",
+    "/assets/figma/ca2da.svg",
+    "/assets/optimized/8f387-450.webp",
+    "/assets/optimized/83794-450.webp",
+    "/assets/optimized/9add2-450.webp",
+    "/assets/optimized/b7cfc-450.webp",
+    "/assets/optimized/8f387-900.webp",
+    "/assets/optimized/8f387.webp",
+    "/assets/AuthPage-CnkbNKkv.js",
+    "/assets/eye-C8e8aqCu.js",
+    "/assets/figma/5f1dc.svg",
+    "/assets/figma/a3c98.svg",
+    "/assets/figma/88a3c.svg",
+    "/assets/figma/75804.svg",
+    "/assets/figma/1174b.svg",
+    "/assets/figma/5561e.svg",
+    "/assets/IntegrationProof-fU1qBpoT.js"
+  ],
+  "socketEvent": true
+}

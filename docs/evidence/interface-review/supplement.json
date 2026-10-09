@@ -1,0 +1,50 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "checks": [
+      "cart removal and badge",
+      "Enter login, mobile Perfil account menu, Tab/Shift+Tab trap, Escape and logout",
+      "signup conflict and successful registration",
+      "profile lower controls reachable by scroll"
+    ],
+    "zoom": {
+      "method": "Chrome Ctrl+Equal shortcut",
+      "before": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "after": {
+        "width": 1440,
+        "dpr": 1,
+        "overflow": false
+      },
+      "effective": false
+    },
+    "errors": []
+  },
+  {
+    "width": 414,
+    "height": 896,
+    "checks": [
+      "cart removal and badge",
+      "Enter login, mobile Perfil account menu, Tab/Shift+Tab trap, Escape and logout",
+      "signup conflict and successful registration",
+      "profile lower controls reachable by scroll"
+    ],
+    "zoom": null,
+    "errors": []
+  },
+  {
+    "width": 440,
+    "height": 956,
+    "checks": [
+      "cart removal and badge",
+      "Enter login, mobile Perfil account menu, Tab/Shift+Tab trap, Escape and logout",
+      "signup conflict and successful registration",
+      "profile lower controls reachable by scroll"
+    ],
+    "zoom": null,
+    "errors": []
+  }
+]

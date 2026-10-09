@@ -1,5 +1,11 @@
 # Especificação do desafio
 
+## Conferência documental final — 09/10/2026
+
+Aplicação preservada, fonte pública `5acbfaf`, código equivalente à auditoria `3242294`. Chrome 1440×900/414×896/440×956: percursos do marketplace passaram, com validações/isolamento/compra/refresh. Checkout limpo: npm ci/build/typecheck passaram. Suíte completa e Lighthouse não repetidos. [Resultados](docs/interface-review.md), [reprodução/artefatos](docs/delivery-reproduction.md).
+
+**RT-01/02 e IN-02: parcial no alcance da prova `/integration`**: evento durante a primeira leitura pode deixar snapshot antigo até consulta manual. Confirmado em preview limpo e HTTPS; listener da prova não cancela a leitura inicial, ao contrário do marketplace. Esse cenário não está coberto nos testes existentes. Correção/teste direcionado permanecem pendentes, pois esta etapa é documental; não declarar entrega integral concluída. UI-03 permanece parcial por verificações humanas não executadas. Os resultados anteriores abaixo continuam evidência histórica, sem suprimir o novo achado.
+
 ## Fechamento publicado
 
 DE-02 verificado: https://kurio-nft-delta.vercel.app/ , commit auditado3242294, READY/GitHub/main, smokes HTTPS desktop/mobile com 11 rotas/refresh e compra confirmada pela API. QA-03 verificado nas condições públicas:12 medições, Performance início91/100 e detalhe92/100 (mobile/desktop), demais categorias100. Histórico local abaixo90 preservado. Gate local: typecheck/build uma vez, suíte221 passados/1 baseline da barra aprovada/3 skips, somente essa baseline atualizada e caso1/1 passou. Nenhuma lacuna funcional conhecida nos critérios cobertos. UI-01 aprovado pelo usuário; UI-03 parcial por avaliações humanas não executadas. Matriz/evidências/limitações: [docs/final-delivery.md](docs/final-delivery.md). Consolidação posterior apenas documental; status abaixo é histórico.

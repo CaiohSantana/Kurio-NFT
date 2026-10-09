@@ -1,5 +1,11 @@
 # Plano de execução
 
+## Consolidação documental final — 09/10/2026
+
+Conferência Chrome visível desktop/414/440 concluída, marketplace preservado; README/ARCHITECTURE/deploy consolidados, históricos e artefatos preservados. npm ci/build/typecheck em checkout limpo `5acbfaf` passaram, sem repetir suíte completa/Lighthouse. Evidências: [interface-review](docs/interface-review.md), [delivery-reproduction](docs/delivery-reproduction.md). Commit documental/envio/verificação do deployment fazem parte desta execução.
+
+Pendência funcional apresentada antes de fechar: `/integration` perde atualização recebida durante a primeira leitura, mantendo versão anterior até consulta manual. Corrigir cancelamento/reconciliação e testar essa janela é uma etapa técnica futura necessária, sem autorização para alterar aplicação nesta consolidação. Avaliações humanas de acessibilidade ainda pendentes. Não usar os status históricos abaixo para declarar essa lacuna corrigida.
+
 ## Fechamento publicado
 
 P14: validação final local executada uma vez; única baseline da barra mobile aprovada atualizada e revalidada. P15:12 Lighthouse HTTPS concluídos, todas as medianas acima das metas (91/100 início,92/100 detalhe; outras100), sem otimização adicional. P16/DE-02: Vercel READY e URL pública validada, login/carrinho/carteira/compra/recibo/refresh/logout/REST/Socket.IO nos dois perfis. Commit auditado3242294; consolidação final somente docs/relatórios. Avaliações humanas de acessibilidade continuam pendentes; não confundir aprovação visual do usuário com certificação WCAG integral. Resultados e roteiro em [docs/final-delivery.md](docs/final-delivery.md); histórico abaixo preservado.

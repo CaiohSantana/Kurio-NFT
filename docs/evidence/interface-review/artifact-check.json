@@ -1,0 +1,14 @@
+{
+  "relativeLinks": 134,
+  "broken": [],
+  "lighthouseHtml": 12,
+  "lighthouseJson": 12,
+  "traces": [
+    {
+      "path": "docs\\audits\\final-delivery\\playwright-full\\data\\22b680d331ca469128cb59eb8598a194f1180f50.zip",
+      "badMember": null,
+      "entries": 52
+    }
+  ],
+  "baselineCount": 27
+}

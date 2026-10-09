@@ -1,23 +1,30 @@
+# Historical snapshot: README.md at 5acbfaf
+
+This snapshot preserves previous records, including superseded pending statuses. Current instructions are in the root README and ARCHITECTURE.
+
 # Kurio — marketplace de NFTs
 
-**[Aplicação publicada](https://kurio-nft-delta.vercel.app/)** · **[Repositório](https://github.com/CaiohSantana/Kurio-NFT)**
+## Entrega publicada e validada
 
-Catálogo, detalhe, login/cadastro, favoritos, carrinho, pagamento, confirmação, perfil e carteiras estão implementados com API simulada por MSW. REST usa Axios e eventos usam o protocolo Socket.IO pelo socket.io-client; não há backend privado, pagamento ou blockchain real. Dados persistem por origem/navegador; não são compartilhados entre dispositivos ou abas. O explorador do recibo é local e identifica a referência fictícia.
+**Aplicação: https://kurio-nft-delta.vercel.app/** · [Repositório](https://github.com/CaiohSantana/Kurio-NFT). Versão auditada/publicada: `3242294e1d4632b68fb9250bc6dc8460a8e473d3`; consolidação posterior apenas de documentos/relatórios, sem alterar runtime. Configuração/deploy e reprodução em [docs/first-deploy.md](../../docs/first-deploy.md); matriz/evidências e roteiro final em [docs/final-delivery.md](../../docs/final-delivery.md).
 
-## Versão entregue e evidências
+Typecheck/build passaram uma vez; suíte completa:221 passados/1 baseline antiga da barra/3 skips. Só a baseline do Início mobile foi revista/atualizada; caso pertinente1/1 passou. Nenhuma falha funcional encontrada. Smokes HTTPS desktop/mobile passaram: login, sessão/refresh/logout, carrinho/badge, carteira, compra, recibo/refresh, 11 rotas e recursos locais, REST/MSW e eventos por socket.io-client/duplicatas/reconexão.
 
-- **Commit auditado por Lighthouse:** `3242294e1d4632b68fb9250bc6dc8460a8e473d3`.
-- **Commit publicado na conferência desta entrega:** `5acbfaf02a6c0251644d221963bcfad47200270a`. O próximo deploy desta consolidação é somente documental; conferir seu SHA em Deployment Details ou `git log -1`. A comparação entre o commit auditado e o publicado não apresenta diferenças em `src`, `public`, lockfile, dependências, Vite, ambiente demo ou configuração Vercel. Portanto o código/configuração da aplicação é equivalente; o SHA documental é diferente.
-- **Validação final anterior:** typecheck/build passaram; suíte completa **221 passados, 1 diferença da baseline da barra mobile aprovada, 3 skips**. Somente essa baseline foi revisada/atualizada; o caso pertinente passou **1/1**. Não apresentar o primeiro resultado como uma execução inteira verde. [HTML completo e trace da diferença](docs/audits/final-delivery/playwright-full/index.html), [revalidação pontual](docs/audits/final-delivery/playwright-navbar-updated/index.html).
-- **Lighthouse público final:** início mobile/desktop **91/100**, detalhe **92/100**; Accessibility, Best Practices e SEO **100**. Três execuções por combinação, todas as 12 preservadas em HTML/JSON: [tabela, métricas e condições](docs/audits/lighthouse-public-final/README.md), [metadata](docs/audits/lighthouse-public-final/summary.json).
-- **Conferência adicional pela interface:** Chrome visível, desktop 1440×900, mobile 414×896 e 440×956; controles, validações, isolamento e compra/recibo passaram. Um erro de atualização do registro do Service Worker apareceu sem impedir operações. [Resultados, capturas e limites](docs/interface-review.md).
-- **Reprodução:** [instalação/build em checkout limpo](docs/delivery-reproduction.md). Não foram repetidos suíte completa ou Lighthouse nesta consolidação.
+Lighthouse público: **Início91 mobile/100 desktop; detalhe92/100; Accessibility/Best Practices/SEO100**, 12 execuções com HTML/JSON em [docs/audits/lighthouse-public-final](../../docs/audits/lighthouse-public-final/README.md). Início86/91/91, detalhe92/92/92; todas preservadas. Valores abaixo90 do preview são históricos. Leitor de tela, alto contraste real, texto ampliado e Safari/teclado iOS ainda exigem avaliação humana; não afirmar certificação WCAG integral. Mocks persistem por navegador; recibos não são compartilhados entre dispositivos.
 
-Fonte de requisitos: [enunciado original](docs/challenge-original.md), [SPEC](SPEC.md), [PLAN](PLAN.md), [matriz funcional](docs/functional-closure.md) e [fechamento com evidências finais](docs/final-delivery.md). Contratos e responsabilidades: [ARCHITECTURE](ARCHITECTURE.md). Publicação: [docs/first-deploy.md](docs/first-deploy.md).
+As seções anteriores e registros abaixo com publicação/metas pendentes são históricos; este fechamento prevalece. Use Node22.14+ da família22, conforme engines atual.
 
-Pendências humanas: leitor de tela, alto contraste real, ampliação apenas de texto, zoom nativo nesta conferência e Safari/iOS. Aprovação visual do usuário e score Lighthouse não equivalem a certificação WCAG integral. [Histórico preservado](docs/history/README-at-5acbfaf.md) contém as antigas metas/publicação/funcionalidades pendentes; esses registros não descrevem a versão atual.
+Histórico da revisão anterior: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](../../docs/final-polish.md).
 
-**Pendência funcional encontrada no fechamento:** em `/integration`, alterar o NFT durante a primeira consulta recebe o evento mas mantém o snapshot antigo até “Consultar REST”. Reproduzida em HTTPS e preview; [passos, causa e capturas](docs/interface-review.md#pendência-funcional-confirmada-na-prova-técnica). O fluxo após carregar os dados funciona. Não houve alteração de código nesta etapa documental; entrega integral ainda tem essa lacuna de reconciliação.
+Para guardar a auditoria nesta revisão, defina AUDIT_OUTPUT=docs/audits/lighthouse-final-polish antes de npm run audit; o runner padrão continua escrevendo lighthouse-performance. Comandos, tabela e roteiro em docs/final-polish.md.
+
+A aplicação usa dados locais simulados por MSW, incluindo REST e o protocolo Socket.IO. Contas, carteiras, cotações e pedidos não usam blockchain, extensões ou gateways reais. Referências `SIM-…` são fictícias; o explorador do recibo é local e identificado. Diagnósticos ficam em `/integration` ou no console do modo demo.
+
+O enunciado original é a fonte dos requisitos: [docs/challenge-original.md](../../docs/challenge-original.md). A matriz conferida no código/testes, resultados e pendências estão em [docs/functional-closure.md](../../docs/functional-closure.md). Consulte também [SPEC](../../SPEC.md), [PLAN](../../PLAN.md), [ARCHITECTURE](../../ARCHITECTURE.md) e a [revisão visual](../../docs/visual-refinement.md).
+
+## Revisão mobile anterior
+
+As seis telas foram ajustadas com os exports, capturas equivalentes em 414×896, 440×956 e 390×844 e controles funcionais preservados. Antes/depois, método, testes e limitações em [docs/mobile-fidelity-review.md](../../docs/mobile-fidelity-review.md). Vinte e uma baselines fora do escopo permaneceram iguais; somente seis mobile foram atualizadas após comparação visual. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; após correção de seletor, 9/9 quality passaram. Lighthouse final: 84/99 nas duas páginas e outras categorias 100, fonte 3fa8450, 12/12 relatórios em docs/audits/lighthouse-mobile-review. Após SVGs, 96/96 testes pertinentes passaram. Mobile abaixo da meta 90; verificações humanas e HTTPS permanecem pendentes. A publicação não faz parte desta etapa.
 
 ## Executar
 
@@ -57,6 +64,7 @@ Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia p�
 | `npm run build` | Typecheck e build otimizado demo |
 | `npm run preview` | Servir dist em http://localhost:4173 |
 | `npm run test:e2e` | Build/preview automático e Chromium390/768/1440 |
+| `npx playwright test --workers=6` | Mesma suíte com seis workers, como na execução consolidada |
 | `npx playwright test tests/functional-closure.spec.ts` | Cenários críticos acrescentados no fechamento |
 | `npm run test:e2e:dev` | Suíte no Vite dev, porta5174 |
 | `npm run test:e2e:ui` | Playwright UI |
@@ -67,9 +75,9 @@ Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia p�
 
 Screenshots/traces de falhas ficam em test-results, ignorados pelo Git. Abrir trace com `npx playwright show-trace CAMINHO/trace.zip`. Cada teste usa contexto isolado e reset pelos handlers. A aplicação passa por Axios/MSW; os testes não usam page.route para substituir REST ou setters para simular Socket.IO.
 
-Checklist final, capturas e decisões em [docs/final-screen-review.md](docs/final-screen-review.md).
+Checklist final, capturas e decisões em [docs/final-screen-review.md](../../docs/final-screen-review.md).
 
-As 27 baselines versionadas ficam em `tests/*-snapshots`. Regressão automatizada compara a implementação com essas imagens; a comparação com os exports do Figma é uma revisão visual distinta. A última revalidação alterou somente a baseline do Início mobile, conforme evidência acima.
+As27 baselines versionadas abrangem início, detalhe, login/cadastro, carrinho, pagamento, recibo, perfil e carteiras nas três larguras. Comparação com baseline é regressão da implementação, distinta da comparação manual com o Figma. Não gerar novas imagens para simplesmente aceitar uma falha. Na revisão final24 baselines foram atualizadas somente após comparação; as três da confirmação foram preservadas.
 
 ## Cenários críticos sem editar código
 
@@ -128,25 +136,31 @@ Cada roteiro parte de reset, salvo indicação contrária:
 
 Identificador interno do pedido vem da URL, não do ID abreviado da transação. Endpoints auxiliares de cenários são exclusivos dos mocks. HTTP4xx comuns são reproduzidos pela UI; os testes de conflito de idempotência e de ownership também verificam respostas dos handlers. A configuração persiste até consumo/reset: fail/network-error são one-shot; slow/coupon-expired/fee-change e hold persistem. `checkout auto` usa confirmed para próximas tentativas; pedidos já terminais não mudam. Não há retry automático de mutations.
 
+## Configuração e limites
 
-## Auditoria e artefatos da entrega
+`.env.demo`: `VITE_ENABLE_MOCKS=true` nos comandos dev/build. `.env.example` documenta override; variáveis são substituídas no build e exigem rebuild. Com false, a aplicação não inicia APIs/socket e informa ausência de backend. MSW começa antes de importar rotas/socket.io-client; requer localhost/HTTPS.
 
-O runner `scripts/audit.mjs` usa Lighthouse 12.8.2 e Chromium do Playwright (versões no lockfile). `npm run audit` faz build otimizado, inicia preview próprio na porta 4175 e executa início/detalhe × mobile/desktop × três. Cada execução usa perfil temporário, reset de storage padrão e throttling simulado, com mocks, Socket.IO, fontes e imagens ativos; não há versão simplificada. Feche testes/auditorias concorrentes. Defina uma pasta nova para não sobrescrever evidências:
+Cache real: catálogo/detalhe/favoritos staleTime30s; recursos privados/cotação staleTime0; sessão Infinity com timer/401 e recuperação inicial. Retryfalse nas queries/mutations, recuperação explícita por UI. Leituras recebem AbortSignal. Reconexão invalida recursos ativos; pedido tem polling2s somente enquanto pending. Contratos, validação de identidade e limites do transporte WebSocket em ARCHITECTURE. Estado de negócio persiste somente nos mocks; drafts de checkout não incluem senha.
 
-```powershell
-$env:AUDIT_OUTPUT = 'docs/audits/minha-auditoria'
+Roboto Mono local, origem/checksum/licença em [public/assets/fonts/README.md](../../public/assets/fonts/README.md). Quatro artes/exports originais preservados. Envelope reconstruído e documentado em public/assets/icons/README.md. Persistência multiaba e servidor real não fazem parte da simulação.
+
+## Auditorias e entrega
+
+Runner em scripts/audit.mjs: Node22.14, Lighthouse12.8.2 e Chromium do Playwright. A versão mais recente de Lighthouse exige Node>=22.19; a versão fixada permite reproduzir neste ambiente. Dependências transitivas de desenvolvimento corrigidas via overrides no lockfile (Sentry10.54/Puppeteer25.13), verificadas pelo runner. Não instalar Chrome global: `npx playwright install chromium` disponibiliza o executável utilizado.
+
+```sh
 npm run audit
 ```
 
-Para auditar HTTPS, defina também `AUDIT_URL=https://kurio-nft-delta.vercel.app` e `AUDIT_DEPLOYED_COMMIT` com o SHA confirmado no deployment. Resultados já entregues: [12 HTML/JSON públicos](docs/audits/lighthouse-public-final/README.md), [ambiente/medianas](docs/audits/lighthouse-public-final/summary.json). Não foi feita nova rodada nesta consolidação.
+Porta4175 deve estar livre. O comando faz build, inicia/encerra seu próprio preview e executa sequencialmente início/detalhe × mobile/desktop × três. Cada execução usa perfil Chrome temporário novo, reset de storage padrão do Lighthouse e throttling simulado padrão de cada perfil; sem preaquecer nem mudar latências/cenários. Fontes/artes, REST/MSW e Socket.IO permanecem ativos. Feche outras auditorias/testes para evitar disputa de CPU. HTML/JSON e summary.json registram URLs/configurações/ambiente/commit; a tabela final fica em docs/audits/lighthouse-performance/README.md. O conjunto anterior permanece em docs/audits/lighthouse. Para preservar outra rodada, defina AUDIT_OUTPUT para uma pasta nova; o padrão sobrescreve somente lighthouse-performance.
 
-Relatório Playwright da execução completa preservada:
+Medições, skips, acessibilidade, checkout limpo e pendências são consolidados em [docs/quality-audit.md](../../docs/quality-audit.md). O HTML final do checkout limpo está em docs/audits/playwright-clean (186 passados/3 skips); a primeira consolidação foi preservada em docs/audits/playwright. A execução local continua gerando playwright-report e traces de falhas em test-results. Baselines permanecem versionadas. Leitor de tela e alto contraste do sistema exigem verificação manual; não equivalem ao score Lighthouse.
 
-```sh
-npx playwright show-report docs/audits/final-delivery/playwright-full
-npx playwright show-trace docs/audits/final-delivery/playwright-full/data/22b680d331ca469128cb59eb8598a194f1180f50.zip
-```
+Performance final: início mobile 85 / desktop 99, detalhe mobile 85 / desktop 99; demais categorias 100. Fonte auditada 1a5dc91; 12 medições preservadas. Typecheck/lint/build passaram;186/3 na suíte completa, 36/36 após ajuste de cores forçadas e 24/24 após retirar prefetch do catálogo. Baselines intactas. Zoom nativo 400% nove telas e emulação forced-colors: 36 inspeções sem overflow. Relatórios, limites e antes/depois em [docs/performance-closure.md](../../docs/performance-closure.md).
 
-O HTML inclui anexos e trace da falha de baseline registrada. [Revalidação somente da baseline](docs/audits/final-delivery/playwright-navbar-updated/index.html). A configuração continua com `trace: retain-on-failure` e screenshot em falha; resultados temporários locais ficam ignorados, enquanto relatórios/traces exigidos estão versionados em `docs/audits`. Baselines são Chromium/Windows; execução em outros sistemas não foi comprovada.
+Performance mobile continua abaixo de 90. Leitor de tela/alto contraste real/text-only e publicação HTTPS ainda pendentes. Vercel exige login/importação na sua conta; passos exatos e smoke remoto em [docs/first-deploy.md](../../docs/first-deploy.md). Nenhuma URL pública verificada. O desafio ainda não está completo.
 
-Históricos completos: [README anterior](docs/history/README-at-5acbfaf.md), [arquitetura anterior](docs/history/ARCHITECTURE-at-5acbfaf.md), [publicação anterior](docs/history/first-deploy-at-5acbfaf.md). Mantêm evidências sem repetir pendências antigas como estado atual. Avaliações humanas ainda pendentes e roteiro: [conferência da interface](docs/interface-review.md#verificações-não-executadas--limites).
+Relatório final: `npx playwright show-report docs/audits/playwright-clean`. As baselines são Chromium/Windows; instalação/testes em outros sistemas não foram executados nesta etapa.
+
+
+Commits de implementação e relatórios enviados ao origin/main, confirmado por git ls-remote. Publicação da aplicação na Vercel ainda depende de autenticação/importação e validação da URL HTTPS; passos em docs/first-deploy.md.
