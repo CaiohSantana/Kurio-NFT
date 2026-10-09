@@ -1,0 +1,21 @@
+{
+  "viewport": {
+    "width": 440,
+    "height": 956
+  },
+  "reducedMotion": "reduce",
+  "destinations": [
+    "/nfts/emerald-042?edition=fifty&quantity=1",
+    "/nfts/sage-009?edition=fifty&quantity=1",
+    "/nfts/neon-552?edition=fifty&quantity=1"
+  ],
+  "stableHero": {
+    "x": 24,
+    "y": 101,
+    "width": 392,
+    "height": 190
+  },
+  "keyboard": true,
+  "swipe": "CDP touch events",
+  "activeNavigation": true
+}

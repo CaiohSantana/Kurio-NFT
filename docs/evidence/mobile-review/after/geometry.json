@@ -388,38 +388,7 @@
     "width": 440,
     "height": 956,
     "overflow": false,
-    "typography": [
-      {
-        "text": "Cosmic Bloom #118",
-        "weight": "400",
-        "size": "14px",
-        "line": "20px"
-      },
-      {
-        "text": "Violet Nomad #314",
-        "weight": "400",
-        "size": "14px",
-        "line": "20px"
-      },
-      {
-        "text": "Ivory Baron #088",
-        "weight": "400",
-        "size": "14px",
-        "line": "20px"
-      },
-      {
-        "text": "Golden Beat #207",
-        "weight": "400",
-        "size": "14px",
-        "line": "20px"
-      },
-      {
-        "text": "Golden Signal #160",
-        "weight": "400",
-        "size": "14px",
-        "line": "20px"
-      }
-    ]
+    "typography": []
   },
   {
     "name": "login",
