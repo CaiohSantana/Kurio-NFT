@@ -38,7 +38,7 @@ test('detail quantity has a name, favorite has a usable target and selection has
   await expect(quantity).toBeVisible()
   await quantity.focus(); await expect(quantity).toBeFocused()
   expect(await quantity.evaluate(node => getComputedStyle(node).outlineWidth)).toBe('2px')
-  const favorite = page.locator('.purchase-actions').getByRole('button', { name: 'Favoritar Emerald Ape #042' })
+  const favorite = page.locator('.detail-mobile-top,.purchase-actions').getByRole('button', { name: 'Favoritar Emerald Ape #042' }).filter({visible:true}).first()
   const box = await favorite.boundingBox()
   expect(box!.width).toBeGreaterThanOrEqual(24)
   expect(box!.height).toBeGreaterThanOrEqual(24)

@@ -1,4 +1,5 @@
 import './styles.css'
+import './mobile-reference.css'
 
 async function start() {
   const root = document.getElementById('root')!

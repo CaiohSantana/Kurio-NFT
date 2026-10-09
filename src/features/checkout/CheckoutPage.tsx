@@ -15,6 +15,7 @@ import { activeScope, apiFields, apiMessage, reportExpired, scopedConfig, useSes
 import { profileOptions } from '@/features/profile/api'
 import { walletsOptions } from '@/features/wallets/api'
 import { networks, defaultCatalogSearch } from '@/features/catalog/contracts'
+import type { Quote } from '@/features/cart/contracts'
 import { providers, type Wallet } from '@/features/wallets/contracts'
 import { cartKey } from '@/features/cart/api'
 import { orderOptions } from '@/features/orders/api'
@@ -83,15 +84,13 @@ function CheckoutContent({ profile, wallets }: { profile: Profile; wallets: Wall
         <section className="checkout-review">
           <section className="checkout-mobile-wallets"><header><h2>{connected ? 'Carteira conectada' : 'Carteiras cadastradas'}</h2><button type="button" aria-label="Usar outra carteira?" onClick={() => setChooseWallet(true)}>Trocar carteira</button></header><div>{[...wallets].sort((a, b) => a.kind === b.kind ? 0 : a.kind === 'secondary' ? -1 : 1).map((value) => <label key={value.id}><input type="radio" name="mobile-wallet" checked={draft.walletId === value.id} onChange={() => selectWallet(value)} /><span><strong>{value.kind === 'primary' ? 'Principal' : 'Reserva'}</strong><span title={value.address}>{value.ens || `${value.address.slice(0, 6)}…${value.address.slice(-4)}`}</span><span>Rede {value.network}</span></span></label>)}</div></section>
           {quote.isPending && wallet ? <div role="status"><span className="sr-only">Carregando revisão…</span><Skeleton className="cart-summary-skeleton" /></div> : !quote.data ? <div role="alert"><p>{wallet ? apiMessage(quote.error) : 'Selecione uma carteira cadastrada.'}</p><Button type="button" onClick={() => void quote.refetch()}>Tentar novamente</Button></div> : <>
-            <details className="checkout-nfts" open={matchMedia('(min-width:640px)').matches ? true : undefined}><summary><h2>Seus NFTs</h2></summary><PurchaseItems lines={quote.data.lines} />
-            <Link className="checkout-coupon" to="/cart">Tem um código promocional? Aplique aqui</Link>
-            <dl className="checkout-totals"><div><dt>Subtotal</dt><dd>{quote.data.subtotalEth} ETH</dd></div><div><dt>Desconto do lançamento</dt><dd>(−) {quote.data.discountEth} ETH</dd></div><div><dt>Taxa de rede</dt><dd>{quote.data.networkFeeEth} ETH</dd></div></dl><p className="fee-hint">Taxa estimada</p></details>
+            <CheckoutNfts quote={quote.data} className="desktop-review-only" />
             <div className="checkout-total"><strong>Total</strong><strong data-testid="checkout-total">{quote.data.totalEth} ETH</strong></div>
             {quote.data.warnings.map((warning) => <p role="alert" key={warning}>{warning}</p>)}
             {quote.isFetching && <span className="sr-only" role="status">Atualizando revisão…</span>}
             {accepted && accepted !== quote.data.fingerprint && <p role="alert">Cotação alterada. Revise os valores e confirme novamente.</p>}
           </>}
-          <fieldset className="provider-list"><legend>Carteira e rede</legend>{providers.map((provider) => <label key={provider}><input type="radio" name="provider" checked={provider === wallet?.provider} disabled={connect.isPending} onChange={() => {}} onClick={() => selectProvider(provider)} /><span className="provider-symbol" aria-hidden="true">{provider === 'Coinbase' ? '◫' : provider[0]}</span><span>{provider === 'Coinbase' ? 'Coinbase Wallet' : provider}</span></label>)}</fieldset>
+          <fieldset className="provider-list"><legend>Carteira e rede</legend>{[...providers].sort((a,b) => matchMedia('(max-width:639px)').matches ? ['WalletConnect','MetaMask','Coinbase'].indexOf(a)-['WalletConnect','MetaMask','Coinbase'].indexOf(b) : 0).map((provider) => <label key={provider} data-provider={provider}><input type="radio" name="provider" checked={provider === wallet?.provider} disabled={connect.isPending} onChange={() => {}} onClick={() => selectProvider(provider)} /><span className="provider-symbol" aria-hidden="true">{provider === 'Coinbase' ? <><span className="desktop-title">◫</span><img className="mobile-title" src="/assets/figma/75870.svg" width="26" height="26" alt="" /></> : provider[0]}</span><span>{provider === 'Coinbase' ? 'Coinbase Wallet' : provider}</span></label>)}</fieldset>
           {connect.isPending && <p role="status">Conectando carteira…</p>}
           {(connection.data?.status === 'refused' || connect.isError) && <div role="alert"><p>{connect.isError ? apiMessage(connect.error) : 'Conexão recusada. Tente novamente.'}</p><Button type="button" disabled={!wallet || connect.isPending} onClick={() => wallet && connect.mutate({ selected: wallet, network: draft.network })}>Tentar conectar novamente</Button></div>}
           {(attempt.isError || !!attempt.data?.orderId && previousOrder.isError) && <div role="alert"><p>Não foi possível recuperar sua tentativa.</p><Button type="button" onClick={() => { void attempt.refetch(); if (attempt.data?.orderId) void previousOrder.refetch() }}>Tentar novamente</Button></div>}
@@ -100,8 +99,13 @@ function CheckoutContent({ profile, wallets }: { profile: Profile; wallets: Wall
 
         </section>
       </form>
+      {quote.data && <CheckoutNfts quote={quote.data} className="mobile-review-only" />}
       <Modal title="Revisar cotação alterada" open={review} onClose={() => setReview(false)}><p role="alert">Cotação alterada. Revise os valores e confirme novamente.</p><p>Total: {quote.data?.totalEth} ETH</p>{quote.data?.warnings.map((warning) => <p role="alert" key={warning}>{warning}</p>)}<Button type="button" disabled={!quote.data?.purchasable || quote.isFetching || submit.isPending || !connected} onClick={() => { if (!submitting.current && quote.data) { const fingerprint = quote.data.fingerprint; setAccepted(fingerprint); setReview(false); submitting.current = true; submit.mutate(fingerprint) } }}>Confirmar nova cotação</Button></Modal>
       <Modal title="Carteiras cadastradas" open={chooseWallet} onClose={() => setChooseWallet(false)}><div className="wallet-picker">{wallets.map((value) => <label key={value.id}><input type="radio" name="registered-wallet" checked={draft.walletId === value.id} onChange={() => selectWallet(value)} /><span><strong>{value.kind === 'primary' ? 'Principal' : 'Reserva'} · {value.nickname}</strong><span>{value.address}</span><span>{value.network} · {value.provider}</span></span></label>)}</div><Link to="/account/wallets" search={{ returnTo: '/checkout' }}>Trocar ou editar carteira</Link>{connected && <Button type="button" variant="outline" disabled={connect.isPending} onClick={() => { if (wallet) connect.mutate({ selected: wallet, network: draft.network, disconnect: true }); setChooseWallet(false) }}>Desconectar</Button>}</Modal>
     </>}
   </main>
 }
+
+function CheckoutNfts({quote,className}: {quote:Quote;className:string}) { return <details className={`checkout-nfts ${className}`} open={className==='desktop-review-only'}><summary><h2>Seus NFTs</h2></summary><PurchaseItems lines={quote.lines} />
+            <Link className="checkout-coupon" to="/cart">Tem um código promocional? Aplique aqui</Link>
+            <dl className="checkout-totals"><div><dt>Subtotal</dt><dd>{quote.subtotalEth} ETH</dd></div><div><dt>Desconto do lançamento</dt><dd>(−) {quote.discountEth} ETH</dd></div><div><dt>Taxa de rede</dt><dd>{quote.networkFeeEth} ETH</dd></div></dl><p className="fee-hint">Taxa estimada</p></details> }

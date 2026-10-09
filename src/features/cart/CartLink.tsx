@@ -8,5 +8,5 @@ export function CartLink({ size = 24 }: { size?: number }) {
   const session = useSession(), query = useQuery(cartOptions(session.scope))
   const search = useCatalogDestination()
   const count = query.data?.items.reduce((sum, item) => sum + item.quantity, 0)
-  return <Link to="/cart" state={{ catalogSearch: search }} className="cart-nav-link" aria-label={count === undefined ? 'Carrinho, consultando quantidade' : `Carrinho, ${count} ${count === 1 ? 'item' : 'itens'}`}><ShoppingCart size={size} /><span aria-hidden="true" className="cart-badge" data-testid="cart-badge">{count ?? '…'}</span>{query.isError && <span className="sr-only">Falha ao consultar quantidade</span>}</Link>
+  return <Link to="/cart" state={{ catalogSearch: search }} className="cart-nav-link" aria-label={count === undefined ? 'Carrinho, consultando quantidade' : `Carrinho, ${count} ${count === 1 ? 'item' : 'itens'}`}><ShoppingCart className="cart-icon-default" size={size} /><img className="cart-icon-reference" src="/assets/figma/352b3.svg" width="20" height="20" alt="" /><span aria-hidden="true" className="cart-badge" data-testid="cart-badge">{count ?? '…'}</span>{query.isError && <span className="sr-only">Falha ao consultar quantidade</span>}</Link>
 }

@@ -5,8 +5,8 @@ for (const width of [390,414,768,1440]) {
   test(`field alignment, fee caption and social separator at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1024 })
     await resetCheckout(page); await setup(page)
-    const details=page.locator('.checkout-nfts'); if(await details.getAttribute('open')===null) await details.locator('summary').click()
-    const fee = page.locator('.fee-hint')
+    const details=page.locator('.checkout-nfts').filter({visible:true}); if(await details.getAttribute('open')===null) await details.locator('summary').click()
+    const fee = details.locator('.fee-hint')
     await expect(fee).toBeVisible()
     expect(await fee.evaluate(node => { const range=document.createRange(); range.selectNodeContents(node); const text=range.getBoundingClientRect(),block=node.getBoundingClientRect(); return Math.abs((text.left+text.right-block.left-block.right)/2) })).toBeLessThan(1)
     await page.screenshot({ path:`artifacts/final-polish-tax-${width}.png`,fullPage:true,animations:'disabled' })

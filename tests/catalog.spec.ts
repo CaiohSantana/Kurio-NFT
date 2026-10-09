@@ -10,6 +10,16 @@ async function openFilters(page: Page) {
   return page.locator('.catalog-sidebar')
 }
 async function closeFilters(page: Page) { const dialog = page.getByRole('dialog', { name: 'Filtros de NFTs' }); if (await dialog.isVisible()) await dialog.getByRole('button', { name: 'Ver resultados' }).click() }
+async function sortControl(page: Page) {
+  const inline = page.locator('.sort-control select').filter({visible:true})
+  if (await inline.count()) return inline
+  return (await openFilters(page)).getByLabel('Ordenar NFTs', {exact:true})
+}
+async function selectSort(page: Page, value: string) {
+  await (await sortControl(page)).selectOption(value)
+  await closeFilters(page)
+}
+
 test.beforeEach(async ({ page }) => { await page.goto('/preparation'); await expect(page.getByRole('link', { name: 'Abrir prova de integração' })).toBeVisible(); expect(await page.evaluate(async () => (await fetch('/api/__scenario/reset', { method: 'POST' })).status)).toBe(200) })
 
 test('malformed URL parameters are validated before reaching the API', async ({ page }) => {
@@ -19,7 +29,8 @@ test('malformed URL parameters are validated before reaching the API', async ({ 
   expect(params.get('page')).toBe('1'); expect(params.get('sort')).toBe('recent')
   expect(params.get('collections')).toBe(''); expect(params.get('networks')).toBe('')
   expect(params.get('minPrice')).toBe('1'); expect(params.get('maxPrice')).toBe('12')
-  await expect(page.getByLabel('Ordenar NFTs')).toHaveValue('recent')
+  await expect(await sortControl(page)).toHaveValue('recent')
+  await closeFilters(page)
   await expect(page.getByRole('button', { name: 'Página 1', exact: true })).toHaveAttribute('aria-current', 'page')
 })
 
@@ -49,14 +60,14 @@ test('combined URL filters, sorting, pagination, refresh and history', async ({ 
   await expect(page).toHaveURL(/digital/)
   await expect(page).toHaveURL(/Ethereum/)
   const descending = page.waitForResponse((response) => response.url().includes('/api/nfts?') && new URL(response.url()).searchParams.get('sort') === 'price-desc' && response.status() === 200)
-  await page.getByLabel('Ordenar NFTs').selectOption('price-desc')
+  await selectSort(page, 'price-desc')
   await expect(page).toHaveURL(/price-desc/)
   const names = ((await (await descending).json()) as { items: { name: string }[] }).items.map((item) => item.name)
   await expect(page.locator('.catalog-results .card-name')).toHaveText(names)
   await page.reload()
   await expect(page.locator('.catalog-results .card-name')).toHaveText(names)
   const ascending = page.waitForResponse((response) => response.url().includes('/api/nfts?') && new URL(response.url()).searchParams.get('sort') === 'price-asc' && response.status() === 200)
-  await page.getByLabel('Ordenar NFTs').selectOption('price-asc')
+  await selectSort(page, 'price-asc')
   await expect(page).toHaveURL(/price-asc/)
   const ascendingNames = ((await (await ascending).json()) as { items: { name: string }[] }).items.map((item) => item.name)
   await expect(page.locator('.catalog-results .card-name')).toHaveText(ascendingNames)
@@ -111,6 +122,8 @@ test('direct detail, gallery, edition/quantity validation, full mobile informati
   await expect(page.getByRole('alert')).toContainText('quantidade inteira')
   await qty.fill('2')
   await expect(page.getByRole('alert')).toHaveCount(0)
+  const tools = page.locator('.mobile-detail-tools')
+  if(await tools.getAttribute('open') === null) await tools.locator('summary').click()
   await page.getByRole('button', { name: 'Imagem 2', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Imagem 2', exact: true })).toHaveAttribute('aria-pressed', 'true')
   await page.getByRole('button', { name: 'Ampliar imagem' }).click()
@@ -133,7 +146,7 @@ test('slow loading, reduced motion, REST error and recovery on both screens', as
   await expect(page.locator('.nft-grid .proof-skeleton').first()).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.catalog-results .card-name')).toHaveCount(9)
   await scenario(page, 'fail')
-  await page.getByLabel('Ordenar NFTs').selectOption('price-asc')
+  await selectSort(page, 'price-asc')
   await expect(page.getByRole('alert')).toContainText('Não foi possível carregar o catálogo')
   await page.getByRole('button', { name: 'Tentar novamente' }).click()
   await expect(page.getByRole('alert')).toHaveCount(0)

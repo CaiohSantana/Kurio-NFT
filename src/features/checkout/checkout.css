@@ -60,3 +60,28 @@
   .provider-list legend { line-height:20px; }.checkout-total { border:0; }.checkout-nfts>summary { margin-top:8px; padding:8px 0; }.checkout-acceptance { margin:12px 0 8px; }.checkout-submit { margin-top:24px; }
   .market-modal.receipt-dialog { margin:24px auto auto; max-height:calc(100dvh - 48px); }.receipt-card>header { padding:24px 20px 20px; }.receipt-card h1 { font-size:16px; }.receipt-meta { grid-template-columns:1fr 1fr; padding:16px 20px; gap:16px; }.receipt-meta>div { border:0; padding:0; }.receipt-meta dd { font-size:12px; }.receipt-details { padding:20px 16px 32px; }.receipt-items .purchase-nft { gap:8px; }.receipt-items .purchase-value strong { font-size:14px; padding:0; }.receipt-items .purchase-quantity { font-size:11px; }.receipt-items th { font-size:12px; }.receipt-details>h2 { font-size:15px; }.receipt-result { font-size:12px; line-height:20px; }.receipt-totals { font-size:14px; }
 }
+
+/* Mobile wallet/provider composition; desktop remains unchanged. */
+@media(max-width:639px) {
+ .checkout-review { min-height:calc(100svh - 120px); }
+ .checkout-mobile-wallets label { align-items:flex-start; padding:14px 20px; gap:16px; }
+ .checkout-mobile-wallets label input { margin-top:24px; flex-shrink:0; }
+ .provider-list { display:flex; flex-direction:column; }
+ .provider-list label[data-provider=WalletConnect] { order:0; }
+ .provider-list label[data-provider=MetaMask] { order:1; }
+ .provider-list label[data-provider=Coinbase] { order:2; }
+ .provider-list label { font-weight:400; }
+ .provider-list input,.checkout-mobile-wallets input { appearance:none; width:16px; height:16px; border:1px solid #91623f; border-radius:50%; background:transparent; flex-shrink:0; }
+ .provider-list input:checked,.checkout-mobile-wallets input:checked { border-color:#d28a4c; background:#d28a4c; box-shadow:inset 0 0 0 3px #241612; }
+ .checkout-review .checkout-submit { order:3; margin-top:auto; padding:18px; }
+ .checkout-nfts { order:7; margin-top:20px; }
+ .checkout-review>[role=alert],.checkout-review>[role=status] { order:2; }
+ .checkout-total { margin-bottom:28px; }
+ .checkout-collector { margin-top:0; }
+ .provider-symbol { font-weight:500; }
+ .checkout-review .cart-summary-skeleton { min-height:0; }
+}
+@media(forced-colors:active) { .provider-list input:checked,.checkout-mobile-wallets input:checked { outline:2px solid Highlight; } }
+
+.mobile-review-only { display:none; }
+@media(max-width:639px) { .desktop-review-only { display:none; }.mobile-review-only { display:block; margin-top:24px; } }
