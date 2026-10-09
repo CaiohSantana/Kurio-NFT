@@ -1,5 +1,7 @@
 # Referência visual — Kurio
 
+Revisão mobile posterior: [mobile-fidelity-review.md](mobile-fidelity-review.md), seis telas em 414/440/390, antes/depois, assets de navegação locais e somente seis baselines alteradas após comparação. Consulta adicional bloqueada pelo limite Starter; medidas confirmadas abaixo preservadas, ajustes do detalhe/padding estimados dos exports identificados separadamente. Sem mudança no Figma nem certificação de equivalência integral.
+
 Revisão final dos apontamentos: [final-screen-review.md](final-screen-review.md). Exports confirmam trilha única de preço, token no carrinho desktop/edição mobile, indicadores, placeholders e ENS .eth+nome em perfil/carteiras. Seletores/asteriscos visuais não alteram regras opcionais do enunciado/SPEC. Medidas adicionais são estimativas dos exports/DOM, sem novo contexto após o limite já registrado. Confirmação preservada; comparações não certificam equivalência integral.
 
 Revisão implementada em2026-10-08: docs/visual-refinement.md separa medidas confirmadas, estimativas dos exports, capturas DOM e desvios necessários. Consulta adicional de pagamento bloqueada pelo limiteStarter; nada foi alterado no Figma. Propostas anteriores de banners/provedores “simulados” na UI foram substituídas por textos normais da referência e documentação da natureza simulada, conforme nova instrução do usuário.

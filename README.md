@@ -8,6 +8,10 @@ A aplicação usa dados locais simulados por MSW, incluindo REST e o protocolo S
 
 O enunciado original é a fonte dos requisitos: [docs/challenge-original.md](docs/challenge-original.md). A matriz conferida no código/testes, resultados e pendências estão em [docs/functional-closure.md](docs/functional-closure.md). Consulte também [SPEC](SPEC.md), [PLAN](PLAN.md), [ARCHITECTURE](ARCHITECTURE.md) e a [revisão visual](docs/visual-refinement.md).
 
+## Revisão mobile atual
+
+As seis telas foram ajustadas com os exports, capturas equivalentes em 414×896, 440×956 e 390×844 e controles funcionais preservados. Antes/depois, método, testes e limitações em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Vinte e uma baselines fora do escopo permaneceram iguais; somente seis mobile foram atualizadas após comparação visual. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; após correção de seletor, 9/9 quality passaram. Lighthouse final ainda pendente nesta revisão. A publicação não faz parte desta etapa.
+
 ## Executar
 
 Ambiente verificado: Windows/PowerShell, Node22.14.0 e npm11.2.0. Use Node >=22.14.0; versões estão fixadas em package.json/package-lock.json.

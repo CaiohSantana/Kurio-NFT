@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é auditoria de qualidade e preparação da entrega: revisar skips/acessibilidade, configurar e executar Lighthouse (12 medições), validar checkout temporário limpo e consolidar evidências/documentos. Preservar fluxos/identidade visual; corrigir problemas comprovados de forma localizada. Manter sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Revisar visual antes de baselines. Não alterar Figma, adicionar pagamento/blockchain real ou publicar sem autorização. Não declarar completo com metas/auditorias/publicação pendentes. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/quality-audit.md; evidências anteriores permanecem históricas.
+A autorização atual é a revisão de fidelidade das seis telas mobile: início, detalhe, carrinho, pagamento, login e cadastro. Comparar em 414×896 e adaptar 440×956/390; preservar desktop/tablet, acessibilidade e fluxos. Revisar exports antes de baselines; validar testes e impacto na performance. Commits e envio ao origin estão autorizados; publicação nesta etapa não está autorizada. Manter sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Não alterar Figma nem adicionar pagamento/blockchain real. Não declarar fidelidade integral ou desafio completo com limitações/auditorias/publicação pendentes. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/mobile-fidelity-review.md; evidências anteriores permanecem históricas.
 
 ## Organização e responsabilidades
 

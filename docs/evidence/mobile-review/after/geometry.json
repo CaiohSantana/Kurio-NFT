@@ -1,0 +1,516 @@
+[
+  {
+    "name": "home",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Emerald Ape #042",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Sage Nomad #009",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Neon Vessel #552",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Signal #160",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "detail",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": []
+  },
+  {
+    "name": "login",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "signup",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "cart",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "checkout",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "WalletConnect",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "MetaMask",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "Coinbase Wallet",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      }
+    ]
+  },
+  {
+    "name": "home",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Emerald Ape #042",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Sage Nomad #009",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Neon Vessel #552",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Signal #160",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "detail",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": []
+  },
+  {
+    "name": "login",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "signup",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "cart",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "checkout",
+    "width": 414,
+    "height": 896,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "WalletConnect",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "MetaMask",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "Coinbase Wallet",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      }
+    ]
+  },
+  {
+    "name": "home",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Emerald Ape #042",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Sage Nomad #009",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Neon Vessel #552",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Signal #160",
+        "weight": "400",
+        "size": "15px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "detail",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Signal #160",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "login",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "signup",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Ou continue com",
+        "weight": "400",
+        "size": "12px",
+        "line": "18px"
+      }
+    ]
+  },
+  {
+    "name": "cart",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "Cosmic Bloom #118",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Violet Nomad #314",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Ivory Baron #088",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Beat #207",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      },
+      {
+        "text": "Golden Frequency #071",
+        "weight": "400",
+        "size": "14px",
+        "line": "20px"
+      }
+    ]
+  },
+  {
+    "name": "checkout",
+    "width": 440,
+    "height": 956,
+    "overflow": false,
+    "typography": [
+      {
+        "text": "WalletConnect",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "MetaMask",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      },
+      {
+        "text": "Coinbase Wallet",
+        "weight": "400",
+        "size": "14px",
+        "line": "21px"
+      }
+    ]
+  }
+]

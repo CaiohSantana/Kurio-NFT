@@ -1,5 +1,9 @@
 # Plano de execução
 
+## Revisão mobile atual
+
+P05/P12/P14: composição das seis telas corrigida com classes responsivas e assets locais; comparação 414/440/390 e 21 baselines fora do escopo preservadas. Seis baselines atualizadas após revisão dos exports. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; correção de seletor revalidada em 9/9 quality. Medições finais pendentes. Evidências/limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). P15 continua parcial até medir e conferir metas; P16/DE-02 não concluídos, sem publicação nesta etapa. Envio ao origin autorizado após validação. Histórico abaixo não substitui este acompanhamento.
+
 ## Revisão localizada e carrossel vigentes
 
 Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).

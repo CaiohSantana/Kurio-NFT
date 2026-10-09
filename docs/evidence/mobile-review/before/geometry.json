@@ -1,0 +1,110 @@
+[
+  {
+    "name": "home",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "detail",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "login",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "signup",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "cart",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "checkout",
+    "width": 390,
+    "height": 844,
+    "overflow": false
+  },
+  {
+    "name": "home",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "detail",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "login",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "signup",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "cart",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "checkout",
+    "width": 414,
+    "height": 896,
+    "overflow": false
+  },
+  {
+    "name": "home",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  },
+  {
+    "name": "detail",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  },
+  {
+    "name": "login",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  },
+  {
+    "name": "signup",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  },
+  {
+    "name": "cart",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  },
+  {
+    "name": "checkout",
+    "width": 440,
+    "height": 956,
+    "overflow": false
+  }
+]

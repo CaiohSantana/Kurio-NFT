@@ -1,5 +1,9 @@
 # Especificação do desafio
 
+## Revisão mobile atual
+
+UI-01/02/03: seis telas revistas em 414×896, 440×956 e 390×844, com ordenação mobile no painel, navegação/galeria preservadas e senha de confirmação independente. Capturas antes/depois e limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Desktop/tablet e perfil/carteiras/recibo mobile: 21 baselines passaram sem alteração; seis baselines atualizadas após comparação visual. Typecheck/lint/build e verificações direcionadas passaram. QA-01: 221 passados/1 seletor antigo falhou/3 skips na execução completa; seletor corrigido e 9/9 quality passaram, sem mudar runtime. QA-03 final pendente de medição. UI-03 permanece parcial pelas verificações humanas; DE-02 pendente e sem autorização de deploy nesta revisão. Resultados abaixo são históricos.
+
 ## Revisão localizada e carrossel vigentes
 
 Revisão localizada final: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
