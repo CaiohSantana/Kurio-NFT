@@ -63,3 +63,5 @@ Remove-Item Env:AUDIT_OUTPUT
 ```
 
 Roteiro curto: abrir /, escolher os três indicadores/CTAs; usar setas/Home/End e swipe mobile; ativar movimento reduzido. Logar Ana/Kurio123!, abrir Carteiras, salvar referência secundária/refresh e testar erro longo. Carrinho com NFT, checkout, expandir Seus NFTs no mobile e conferir taxa centralizada. Abrir /login e /signup diretamente e testar Tab/Escape/erro, sem mudança de campos/botões.
+
+Entrega no GitHub: push efetivamente executado cf7ab8c..8135f85 para origin/main; conferido por git ls-remote. Fonte47469f7 permanece idêntica em src/public/lockfile/configuração/testes nos commits posteriores de documentos. Nenhuma URL pública da aplicação foi publicada/verificada nesta etapa.

@@ -1,6 +1,6 @@
 # Publicação preparada; URL ainda pendente
 
-Fonte atual pronta para deploy:47469f7, visuais/carrossel validados, Lighthouse85/99 em ambas as páginas. Revisão mais recente em final-polish.md; configuração Vercel/build/ambiente abaixo permanece igual. Registros de push antigos abaixo são históricos; os commits finais desta revisão serão enviados após consolidar relatórios. Nenhuma URL da aplicação foi verificada.
+Fonte atual pronta para deploy:47469f7, visuais/carrossel validados, Lighthouse85/99 em ambas as páginas. Revisão mais recente em final-polish.md; configuração Vercel/build/ambiente abaixo permanece igual. Registros de push antigos abaixo são históricos; o push dos commits finais foi executado para origin/main (8135f85 confirmado no remoto), incluindo fonte47469f7 e todos os relatórios. Commits posteriores deste registro alteram apenas documentos. Nenhuma URL da aplicação foi verificada.
 
 Repositório: https://github.com/CaiohSantana/Kurio-NFT.git. Nesta etapa o acesso de escrita foi confirmado por git push --dry-run e os commits foram efetivamente enviados para origin/main. git ls-remote confirmou a33fd5c20e0016e627c7ad4ed4420a5e89be4c4f no remoto; fonte auditada1a5dc91. Commits posteriores deste registro alteram apenas documentação, sem mudar o código auditado. Não há URL HTTPS da aplicação verificada. Preview/repositório não equivalem a deploy.
 
