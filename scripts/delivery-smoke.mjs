@@ -4,9 +4,15 @@ import { mkdir, writeFile } from 'node:fs/promises'
 
 const base = process.env.REVIEW_URL || 'http://127.0.0.1:4176'
 const output = process.env.SMOKE_OUTPUT || 'artifacts/delivery-smoke.json'
+const mobile = process.env.SMOKE_PROFILE === 'mobile'
 const browser = await chromium.launch()
 try {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const page = await browser.newPage({ viewport: mobile ? { width:390,height:844 } : { width:1440,height:900 } })
+  const consoleErrors = [], networkFailures = [], restHandlers = []
+  page.on('pageerror', error => consoleErrors.push(error.message))
+  page.on('console', message => { if(message.type()==='error') consoleErrors.push(message.text()) })
+  page.on('requestfailed', request => { if(request.failure()?.errorText !== 'net::ERR_ABORTED') networkFailures.push({url:request.url(),error:request.failure()?.errorText}) })
+  page.on('response', response => { const handler=response.headers()['x-mock-handler']; if(handler) restHandlers.push({path:new URL(response.url()).pathname,handler,status:response.status()}) })
   const api = (path, method = 'GET', body, scope) => page.evaluate(async ({ path, method, body, scope }) => {
     const response = await fetch(`/api${path}`, { method, headers: { 'Content-Type': 'application/json', ...(scope ? { 'X-Session-Scope': scope } : {}) }, body: body ? JSON.stringify(body) : undefined })
     if (!response.ok) throw Error(`${path}: ${response.status}`)
@@ -15,10 +21,27 @@ try {
   await page.goto(`${base}/preparation`)
   await page.getByRole('link', { name: 'Abrir prova de integração' }).waitFor()
   await api('/__scenario/reset', 'POST')
-  const session = await api('/session', 'POST', { email: 'ana@kurio.test', password: 'Kurio123!' })
-  const profile = await api('/profile', 'GET', undefined, session.scope)
-  await api('/wallets', 'POST', { ...profile, kind: 'primary', network: 'Ethereum', provider: 'MetaMask', address: `0x${'1'.repeat(40)}`, nickname: 'Principal', referral: '', secondaryReference: '' }, session.scope)
-  await api('/cart/items', 'POST', { nftId: 'emerald-042', editionId: 'ten', quantity: 2 }, session.scope)
+  await page.goto(`${base}/nfts/emerald-042?edition=ten&quantity=2`)
+  await page.getByRole('button',{name:'Adicionar ao carrinho'}).click()
+  await expect(page.getByTestId('cart-badge').first()).toHaveText('2')
+  await page.goto(`${base}/checkout`)
+  await expect(page).toHaveURL(/\/login/)
+  await page.getByLabel('E-mail',{exact:true}).fill('ana@kurio.test')
+  await page.getByLabel('Senha',{exact:true}).fill('Kurio123!')
+  await page.locator('.auth-form').getByRole('button',{name:'Entrar',exact:true}).click()
+  await expect.poll(() => new URL(page.url()).pathname).toBe('/checkout')
+  const session = await api('/session')
+  expect(session.user.username).toBe('ana')
+  await page.reload(); await expect(page.getByRole('link',{name:'Cadastrar carteira e retornar'})).toBeVisible()
+  await page.getByRole('link',{name:'Cadastrar carteira e retornar'}).click()
+  const primary=page.getByRole('form',{name:'Carteira principal'})
+  await primary.getByRole('combobox',{name:'Rede',exact:true}).selectOption('Ethereum')
+  await primary.getByLabel('Tipo de carteira').selectOption('MetaMask')
+  await primary.getByLabel('Endereço da carteira').fill(`0x${'1'.repeat(40)}`)
+  await primary.getByRole('button',{name:'Salvar carteira'}).click()
+  await expect(primary.getByRole('status')).toHaveText('Carteira salva.')
+  await page.getByRole('button',{name:'Retomar fluxo'}).click()
+  await expect(page.getByTestId('checkout-total')).toHaveText('2.396 ETH')
   const checks = []
   for (const [path, selector] of [['/', '.card-name'], ['/nfts/emerald-042', '.detail-info h1'], ['/nfts/inexistente', '.empty-state h1'], ['/cart', '[data-testid=cart-total]'], ['/login', '[name=email]'], ['/signup', '[name=username]'], ['/account/profile', '[name=displayName]'], ['/account/wallets', '[name=address]'], ['/checkout', '[data-testid=checkout-total]'], ['/integration', 'h1']]) {
     const response = await page.goto(`${base}${path}`)
@@ -34,6 +57,15 @@ try {
       await page.getByRole('button', { name: 'Alterar NFT', exact: true }).click()
       await expect(page.getByTestId('version')).toHaveText('2')
       await expect(page.getByTestId('received')).toHaveText('1')
+      await page.getByRole('button',{name:'Evento duplicado'}).click()
+      await page.getByRole('button',{name:'Evento antigo'}).click()
+      await expect(page.getByTestId('ignored')).toHaveText('2')
+      await expect(page.getByTestId('version')).toHaveText('2')
+      await page.getByRole('button',{name:'Interromper conexão'}).click()
+      await expect(page.getByTestId('connection')).toHaveText('Desconectado')
+      await page.getByRole('button',{name:'Alterar NFT',exact:true}).click()
+      await expect(page.getByTestId('connection')).toHaveText('Conectado',{timeout:15000})
+      await expect(page.getByTestId('version')).toHaveText('3')
     }
     checks.push({ path, direct: 200, refresh: 200 })
   }
@@ -48,15 +80,29 @@ try {
   await page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' }).waitFor()
   await page.reload()
   await page.getByRole('heading', { name: 'Seus NFTs agora estão na sua carteira' }).waitFor()
-  expect(await page.locator('.receipt-card').evaluate(node => node.getBoundingClientRect().width)).toBe(578)
-  checks.push({ path: orderPath, direct: 200, refresh: 200, receiptWidth: 578 })
+  const order = await api(orderPath, 'GET', undefined, session.scope)
+  expect(order.status).toBe('confirmed')
+  expect(order.snapshot.totalEth).toBe('2.396')
+  await expect(page.getByTestId('cart-badge').first()).toHaveText('0')
+  const receiptWidth=await page.locator('.receipt-card').evaluate(node => node.getBoundingClientRect().width)
+  expect(receiptWidth).toBe(mobile ? 358 : 578)
+  checks.push({ path: orderPath, direct: 200, refresh: 200, receiptWidth,apiStatus:order.status })
   const resources = []
   for (const path of ['/mockServiceWorker.js', '/assets/fonts/roboto-mono-latin.woff2', '/assets/optimized/8f387-450.webp', '/assets/figma/8f387.png']) {
     const response = await page.request.get(`${base}${path}`)
     expect(response.status()).toBe(200)
     resources.push({ path, status: response.status(), type: response.headers()['content-type'], bytes: (await response.body()).length })
   }
+  await page.getByRole('button',{name:'Fechar diálogo'}).click()
+  await page.goto(`${base}/account/profile`)
+  await page.getByRole('button',{name:/^Minha conta:/}).filter({visible:true}).click()
+  await page.getByRole('dialog',{name:'Minha conta',exact:true}).getByRole('button',{name:'Encerrar sessão'}).click()
+  await expect.poll(async()=>(await api('/session')).user).toBeNull()
+  await page.goto(`${base}/checkout`); await expect(page).toHaveURL(/\/login/)
+  const relevantConsoleErrors=consoleErrors.filter(message=>!message.includes('404'))
+  expect(relevantConsoleErrors).toEqual([]); expect(networkFailures).toEqual([])
+  expect(restHandlers.some(value=>value.handler==='proof-nft')).toBe(true)
   await mkdir(output.slice(0, output.lastIndexOf('/')), { recursive: true })
-  await writeFile(output, JSON.stringify({ base, checks, resources, realUiPurchaseConfirmed: true }, null, 2))
+  await writeFile(output, JSON.stringify({ base,profile:mobile?'mobile':'desktop',checks,resources,restHandlers,consoleErrors,networkFailures,uiLogin:true,sessionRefresh:true,uiWallet:true,guestCartMerged:true,logout:true,socketUpdate:true,socketDuplicateOld:true,socketReconnect:true,realUiPurchaseConfirmed:true }, null, 2))
   console.log(`${checks.length} direct/refresh checks; ${resources.length} local resources; API-confirmed receipt`)
 } finally { await browser.close() }

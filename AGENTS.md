@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é a revisão de fidelidade das seis telas mobile: início, detalhe, carrinho, pagamento, login e cadastro. Comparar em 414×896 e adaptar 440×956/390; preservar desktop/tablet, acessibilidade e fluxos. Revisar exports antes de baselines; validar testes e impacto na performance. Commits e envio ao origin estão autorizados; publicação nesta etapa não está autorizada. Manter sessão, idempotência, cotação, pedidos, isolamento, Socket.IO, assets e /integration. Não alterar Figma nem adicionar pagamento/blockchain real. Não declarar fidelidade integral ou desafio completo com limitações/auditorias/publicação pendentes. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/mobile-fidelity-review.md; evidências anteriores permanecem históricas.
+A autorização atual é o fechamento da entrega e publicação na Vercel pelo repositório existente. Layouts desktop/mobile aprovados, último ajuste visual d69af01. Preservar fluxos e identidade; executar validação completa uma vez, atualizar somente baseline da barra aprovada se necessária e repetir apenas casos afetados. Publicação, configuração Vercel, commits e envio ao origin estão autorizados. Verificar HTTPS/rotas/assets/sessão/compra/recibo/REST/Socket.IO e executar 12 Lighthouse finais, documentando metas não atingidas sem otimização indefinida. Manter dados, isolamento, idempotência, mocks e /integration; não alterar Figma nem introduzir pagamento/blockchain real. Não declarar entrega concluída sem validar URL pública. Consulte SPEC.md, PLAN.md, ARCHITECTURE.md e docs/final-delivery.md; evidências anteriores permanecem históricas.
 
 ## Organização e responsabilidades
 

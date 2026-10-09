@@ -1,4 +1,4 @@
-/* global process, console, fetch, setTimeout */
+/* global process, console, fetch, setTimeout, URL */
 import lighthouse from 'lighthouse'
 import desktop from 'lighthouse/core/config/desktop-config.js'
 import { launch } from 'chrome-launcher'
@@ -13,14 +13,14 @@ const pages = process.env.AUDIT_PAGE ? [process.env.AUDIT_PAGE] : ['home', 'deta
 const runs = Number(process.env.AUDIT_RUNS || 3)
 if (!profiles.every(profile => ['mobile', 'desktop'].includes(profile)) || !pages.every(page => ['home', 'detail'].includes(page)) || !Number.isInteger(runs) || runs < 1) throw Error('Invalid audit profile/page/runs')
 const revision = { commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), dirtyAtStart: !!execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim() }
-const base = 'http://127.0.0.1:4175'
-const preview = spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', '4175', '--strictPort'], { stdio: 'pipe', windowsHide: true })
+const base = process.env.AUDIT_URL ? new URL(process.env.AUDIT_URL).origin : 'http://127.0.0.1:4175'
+const preview = process.env.AUDIT_URL ? null : spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', '4175', '--strictPort'], { stdio: 'pipe', windowsHide: true })
 let serverError = ''
-preview.stderr.on('data', data => { serverError += data })
-preview.on('error', error => { serverError += error.message })
+preview?.stderr.on('data', data => { serverError += data })
+preview?.on('error', error => { serverError += error.message })
 try {
   for (let i = 0; ; i++) {
-    if (preview.exitCode !== null || i > 100) throw Error(`Preview failed: ${serverError}`)
+    if (preview && preview.exitCode !== null || i > 100) throw Error(`Audit URL unavailable: ${serverError}`)
     try { if ((await fetch(base)).ok) break } catch { /* waiting for preview */ }
     await new Promise(resolve => setTimeout(resolve, 100))
   }
@@ -47,7 +47,7 @@ try {
     const rows = results.filter(row => row.page === page && row.profile === profile)
     return { page, profile, scores: Object.fromEntries(Object.keys(rows[0].scores).map(category => [category, median(rows.map(row => row.scores[category]))])), lcp: median(rows.map(row => row.lcp)), cls: median(rows.map(row => row.cls)), tbt: median(rows.map(row => row.tbt)), fcp: median(rows.map(row => row.fcp)), speedIndex: median(rows.map(row => row.speedIndex)) }
   }))
-  const summary = { ...revision, generatedAt: new Date().toISOString(), node: process.version, os: `${os.type()} ${os.release()} ${os.arch()}`, cpu: os.cpus()[0].model, memoryGB: Math.round(os.totalmem() / 2 ** 30), cache: 'Fresh temporary Chrome profile for each run; default Lighthouse storage reset; default simulated throttling; standard demo mocks; no prewarming or scenario changes.', medians, results }
+  const summary = { ...revision, base, deployedCommit: process.env.AUDIT_DEPLOYED_COMMIT || null, generatedAt: new Date().toISOString(), node: process.version, os: `${os.type()} ${os.release()} ${os.arch()}`, cpu: os.cpus()[0].model, memoryGB: Math.round(os.totalmem() / 2 ** 30), cache: 'Fresh temporary Chrome profile for each run; default Lighthouse storage reset; default simulated throttling; standard demo mocks; no prewarming or scenario changes.', medians, results }
   await writeFile(`${output}/summary.json`, JSON.stringify(summary, null, 2))
   await writeFile(`${output}/README.md`, `# Lighthouse\n\nCommit auditado: ${revision.commit}. Dirty no início: ${revision.dirtyAtStart}.\n\n| Página | Perfil | Performance | Accessibility | Best Practices | SEO | LCP (ms) | CLS | TBT (ms) | FCP (ms) | Speed Index (ms) |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n${medians.map(row => `| ${row.page} | ${row.profile} | ${Object.values(row.scores).join(' | ')} | ${Math.round(row.lcp)} | ${row.cls.toFixed(4)} | ${Math.round(row.tbt)} | ${Math.round(row.fcp)} | ${Math.round(row.speedIndex)} |`).join('\n')}\n\nCada combinação tem ${runs} execuções. HTML/JSON com o mesmo nome identificam cada medição. Ambiente/configurações completos em summary.json e nos relatórios.\n`)
-} finally { preview.kill() }
+} finally { preview?.kill() }
