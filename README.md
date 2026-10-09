@@ -1,5 +1,15 @@
 # Kurio — marketplace de NFTs
 
+## Entrega publicada e validada
+
+**Aplicação: https://kurio-nft-delta.vercel.app/** · [Repositório](https://github.com/CaiohSantana/Kurio-NFT). Versão auditada/publicada: `3242294e1d4632b68fb9250bc6dc8460a8e473d3`; consolidação posterior apenas de documentos/relatórios, sem alterar runtime. Configuração/deploy e reprodução em [docs/first-deploy.md](docs/first-deploy.md); matriz/evidências e roteiro final em [docs/final-delivery.md](docs/final-delivery.md).
+
+Typecheck/build passaram uma vez; suíte completa:221 passados/1 baseline antiga da barra/3 skips. Só a baseline do Início mobile foi revista/atualizada; caso pertinente1/1 passou. Nenhuma falha funcional encontrada. Smokes HTTPS desktop/mobile passaram: login, sessão/refresh/logout, carrinho/badge, carteira, compra, recibo/refresh, 11 rotas e recursos locais, REST/MSW e eventos por socket.io-client/duplicatas/reconexão.
+
+Lighthouse público: **Início91 mobile/100 desktop; detalhe92/100; Accessibility/Best Practices/SEO100**, 12 execuções com HTML/JSON em [docs/audits/lighthouse-public-final](docs/audits/lighthouse-public-final/README.md). Início86/91/91, detalhe92/92/92; todas preservadas. Valores abaixo90 do preview são históricos. Leitor de tela, alto contraste real, texto ampliado e Safari/teclado iOS ainda exigem avaliação humana; não afirmar certificação WCAG integral. Mocks persistem por navegador; recibos não são compartilhados entre dispositivos.
+
+As seções anteriores e registros abaixo com publicação/metas pendentes são históricos; este fechamento prevalece. Use Node22.14+ da família22, conforme engines atual.
+
 Histórico da revisão anterior: campos de carteiras alinhados por labels, Taxa estimada central no resumo e separador social até a borda interna. Hero usa featured:Nft[] do catálogo; indicadores compartilhados com relacionados, swipe/teclado, fade180ms/reduced-motion, sem autoplay/dependências novas. Fonte auditada47469f7:213 E2E passados/3 skips;12/12 após ajuste de teclado/pointer,27 baselines verificadas e8 alteradas após revisão. Lighthouse final85/99 (início mobile/desktop) e85/99 (detalhe), demais categorias100. QA-03 continua parcial; URL HTTPS/manual humano permanecem pendentes. Evidências/capturas: [docs/final-polish.md](docs/final-polish.md).
 
 Para guardar a auditoria nesta revisão, defina AUDIT_OUTPUT=docs/audits/lighthouse-final-polish antes de npm run audit; o runner padrão continua escrevendo lighthouse-performance. Comandos, tabela e roteiro em docs/final-polish.md.
@@ -8,13 +18,13 @@ A aplicação usa dados locais simulados por MSW, incluindo REST e o protocolo S
 
 O enunciado original é a fonte dos requisitos: [docs/challenge-original.md](docs/challenge-original.md). A matriz conferida no código/testes, resultados e pendências estão em [docs/functional-closure.md](docs/functional-closure.md). Consulte também [SPEC](SPEC.md), [PLAN](PLAN.md), [ARCHITECTURE](ARCHITECTURE.md) e a [revisão visual](docs/visual-refinement.md).
 
-## Revisão mobile atual
+## Revisão mobile anterior
 
 As seis telas foram ajustadas com os exports, capturas equivalentes em 414×896, 440×956 e 390×844 e controles funcionais preservados. Antes/depois, método, testes e limitações em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Vinte e uma baselines fora do escopo permaneceram iguais; somente seis mobile foram atualizadas após comparação visual. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; após correção de seletor, 9/9 quality passaram. Lighthouse final: 84/99 nas duas páginas e outras categorias 100, fonte 3fa8450, 12/12 relatórios em docs/audits/lighthouse-mobile-review. Após SVGs, 96/96 testes pertinentes passaram. Mobile abaixo da meta 90; verificações humanas e HTTPS permanecem pendentes. A publicação não faz parte desta etapa.
 
 ## Executar
 
-Ambiente verificado: Windows/PowerShell, Node22.14.0 e npm11.2.0. Use Node >=22.14.0; versões estão fixadas em package.json/package-lock.json.
+Ambiente verificado: Windows/PowerShell, Node22.14.0 e npm11.2.0. Use Node >=22.14.0 e <23; versões estão fixadas em package.json/package-lock.json.
 
 ```sh
 npm ci
@@ -56,7 +66,7 @@ Busca/filtros/sort/página sobrevivem a refresh/back/forward; filtro reinicia p�
 | `npm run test:e2e:ui` | Playwright UI |
 | `npm run test:report` | Relatório HTML completo em playwright-report |
 | `npx playwright show-report playwright-report-dev` | Relatório dev |
-| `npm run audit` | Build demo +12 auditorias Lighthouse; HTML/JSON/medianas em docs/audits/lighthouse |
+| `npm run audit` | Build demo +12 auditorias Lighthouse; HTML/JSON/medianas em docs/audits/lighthouse-performance |
 | `npm run msw:init` | Atualizar worker após mudar versão de MSW |
 
 Screenshots/traces de falhas ficam em test-results, ignorados pelo Git. Abrir trace com `npx playwright show-trace CAMINHO/trace.zip`. Cada teste usa contexto isolado e reset pelos handlers. A aplicação passa por Axios/MSW; os testes não usam page.route para substituir REST ou setters para simular Socket.IO.

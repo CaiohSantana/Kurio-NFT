@@ -1,6 +1,10 @@
 # Plano de execução
 
-## Revisão mobile atual
+## Fechamento publicado
+
+P14: validação final local executada uma vez; única baseline da barra mobile aprovada atualizada e revalidada. P15:12 Lighthouse HTTPS concluídos, todas as medianas acima das metas (91/100 início,92/100 detalhe; outras100), sem otimização adicional. P16/DE-02: Vercel READY e URL pública validada, login/carrinho/carteira/compra/recibo/refresh/logout/REST/Socket.IO nos dois perfis. Commit auditado3242294; consolidação final somente docs/relatórios. Avaliações humanas de acessibilidade continuam pendentes; não confundir aprovação visual do usuário com certificação WCAG integral. Resultados e roteiro em [docs/final-delivery.md](docs/final-delivery.md); histórico abaixo preservado.
+
+## Revisão mobile anterior
 
 P05/P12/P14: composição das seis telas corrigida com classes responsivas e assets locais; comparação 414/440/390 e 21 baselines fora do escopo preservadas. Seis baselines atualizadas após revisão dos exports. Suíte completa: 221 passados/1 seletor antigo falhou/3 skips; correção de seletor revalidada em 9/9 quality. 12/12 medições finais: 84/99 nas duas páginas, outras categorias 100; fonte 3fa8450. Após SVGs, 96/96 testes pertinentes passaram com baselines intactas. Evidências/limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). P15 continua parcial pela meta mobile 90; P16/DE-02 não concluídos, sem publicação nesta etapa. Envio ao origin autorizado após validação. Histórico abaixo não substitui este acompanhamento.
 

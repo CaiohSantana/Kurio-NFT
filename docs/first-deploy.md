@@ -1,3 +1,38 @@
+# Publicação Vercel verificada
+
+**Aplicação: https://kurio-nft-delta.vercel.app/** · [Repositório](https://github.com/CaiohSantana/Kurio-NFT).
+
+Versão publicada/auditada: [3242294e1d4632b68fb9250bc6dc8460a8e473d3](https://github.com/CaiohSantana/Kurio-NFT/commit/3242294e1d4632b68fb9250bc6dc8460a8e473d3), deployment READY `dpl_3M242LpiWcgzrSnxU8YEwQuSxF8G`. Primeiro deployment validado nesta etapa: ceaab3f. Consolidação posterior de documentos/relatórios não altera runtime; o SHA atual consta em Deployment Details.
+
+Projeto existente `caioh-santana/kurio-nft`, GitHub/main, root `.`, Vite, Node22.x, instalação npm ci, build npm run build, saída dist. VITE_ENABLE_MOCKS=true em Production/Preview e .env.demo. Engines ≥22.14 e <23 evita escolher Node24 por range abrangente. Dependências intactas; credenciais/OIDC/.vercel fora do Git. Fallback SPA e worker no-cache preservados. Nenhum backend privado/extensão/pagamento real.
+
+Smokes desktop/mobile HTTPS passaram: 11 rotas por perfil com acesso direto/refresh, assets, login/sessão/logout, carrinho/badge, carteira, compra confirmada pela API, recibo e REST/Socket.IO/duplicatas/reconexão. [Resultados/matriz/limitações](final-delivery.md). Lighthouse público: início91 mobile/100 desktop, detalhe92/100, outras categorias100; [12 HTML/JSON](audits/lighthouse-public-final/README.md). Todas as execuções preservadas, incluindo início86/91/91. Verificações humanas ainda pendentes são distintas dessas evidências.
+
+## Reproduzir no deploy
+
+```powershell
+$env:REVIEW_URL='https://kurio-nft-delta.vercel.app'
+$env:SMOKE_PROFILE='desktop'
+$env:SMOKE_OUTPUT='artifacts/public-desktop.json'
+node scripts/delivery-smoke.mjs
+$env:SMOKE_PROFILE='mobile'
+$env:SMOKE_OUTPUT='artifacts/public-mobile.json'
+node scripts/delivery-smoke.mjs
+# Sem testes/smokes concorrentes:
+$env:AUDIT_URL='https://kurio-nft-delta.vercel.app'
+$env:AUDIT_OUTPUT='artifacts/lighthouse-public'
+$env:AUDIT_DEPLOYED_COMMIT='SHA_CONFIRMADO_EM_DEPLOYMENT_DETAILS'
+node scripts/audit.mjs
+```
+
+Smokes usam contextos novos e mocks locais ao navegador. Relatórios registram handlers e erros esperados:404 de NFT inexistente e401 da leitura antiga guest durante autenticação. Não mudam dados de outros visitantes. Login: ana@kurio.test ou bruno@kurio.test / Kurio123!. Carteira fictícia Ethereum/MetaMask:0x1111111111111111111111111111111111111111. Recibo depende da sessão e persistência do mesmo navegador.
+
+`git push origin main` publica pelo repositório conectado; confirmar READY/commit antes de validar HTTPS. Login futuro: `npx.cmd --yes vercel@63.1.0 login`, sem enviar senha/token no chat. Produção não depende do terminal local. Leitor de tela/alto contraste/text-only/Safari iOS exigem conferência humana conforme final-delivery.md.
+
+## Histórico anterior à publicação
+
+Os registros abaixo foram preservados como evidências anteriores e não descrevem o estado atual.
+
 # Publicação preparada; URL ainda pendente
 
 Fonte atual pronta para deploy:47469f7, visuais/carrossel validados, Lighthouse85/99 em ambas as páginas. Revisão mais recente em final-polish.md; configuração Vercel/build/ambiente abaixo permanece igual. Registros de push antigos abaixo são históricos; o push dos commits finais foi executado para origin/main (8135f85 confirmado no remoto), incluindo fonte47469f7 e todos os relatórios. Commits posteriores deste registro alteram apenas documentos. Nenhuma URL da aplicação foi verificada.

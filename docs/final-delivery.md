@@ -1,6 +1,6 @@
 # Fechamento da entrega e publicação
 
-Layouts desktop/mobile aprovados pelo usuário, referência visual final d69af01. Nesta etapa não se alterou UI ou lógica dos fluxos. Publicação Vercel e smoke HTTPS desktop/mobile verificados. Lighthouse final em andamento neste registro; metas e avaliações humanas não foram antecipadas.
+Layouts desktop/mobile aprovados pelo usuário, referência visual final d69af01. Nesta etapa não se alterou UI ou lógica dos fluxos. Publicação Vercel e smoke HTTPS desktop/mobile verificados. Lighthouse público final concluído com todas as medianas acima das metas; avaliações humanas de acessibilidade continuam pendentes. Publicação validada com essas ressalvas.
 
 ## Requisitos e gate local
 
@@ -17,7 +17,7 @@ Fonte: [enunciado original](challenge-original.md), [SPEC](../SPEC.md) e [matriz
 | Mocks, cenários e transporte | Resets determinísticos; fixtures 45 NFTs/duas contas; integration/functional-closure comprovam REST/MSW e protocolo Socket.IO. | Verificado localmente |
 | Acessibilidade | quality e fluxos: labels, foco/trap, teclado, seleção, reduced-motion; auditorias e reflow anteriores. | Parcial: avaliações humanas de leitor de tela/alto contraste/text-only/Safari continuam pendentes |
 | Qualidade automatizada | Typecheck/build, execução completa e única baseline da barra revisada. | Verificado no alcance abaixo |
-| Lighthouse ≥90/95/95/90 | Rodada final prevista na URL HTTPS, 12 HTML/JSON e medianas. Histórico mobile 84 não atingiu 90. | Em andamento; não afirmar meta |
+| Lighthouse ≥90/95/95/90 | 12 relatórios públicos: início91 mobile/100 desktop, detalhe92/100; outras categorias100. | Verificado nas condições finais, histórico local abaixo de90 preservado |
 | Publicação/entrega | Repo/Vercel READY com commit confirmado; smoke HTTPS desktop/mobile, 11 rotas por perfil e recursos. | Verificado HTTPS; evidências abaixo |
 
 Typecheck executado uma vez, dentro de `npm run build`; build demo passou. Suíte completa executada uma vez sobre esse mesmo dist, com configuração temporária que troca somente o comando do webServer para preview, preservando três projetos/casos/reset. Primeira tentativa de inicialização do servidor teve cwd incorreto; nenhum teste havia iniciado; corrigido o cwd da configuração temporária.
@@ -42,6 +42,32 @@ Smoke [desktop1440×900](audits/final-delivery/public-desktop.json) e [mobile390
 
 Sem pageerror ou falha de rede impeditiva. Registros mantêm 404 da consulta intencional ao NFT inexistente e um 401 de /api/cart com escopo guest invalidado durante autenticação: requisição antiga negada, dado da nova sessão não contaminado. A filtragem aceita somente esse endpoint/status/escopo/fase, sem ocultar outros erros. Quantidades/badge e compra corretos confirmados após a troca. Primeiros smokes detectaram asserções do próprio script: total estático2.396 ignorava as duas alterações da prova (API retornou corretamente2.796), e a classificação inicial tratava o401 esperado como impeditivo. Corrigimos o script para comparar cotado/recibo e registrar a transição; nenhuma alteração de produto.
 
-## Pendências antes da conclusão
+## Lighthouse público final
 
-Smoke e HTTPS concluídos; executar 12 Lighthouse públicos no cenário padrão e registrar commit publicado final após consolidar documentação. Registrar resultados reais, sem otimização indefinida. Avaliações humanas permanecem distintas dos checks automatizados. Fonte/lockfile/assets/licenças/exports preservados; checkout limpo anterior em quality-audit (dependências não alteradas nesta etapa).
+Fonte local limpa e commit publicado/auditado: **3242294e1d4632b68fb9250bc6dc8460a8e473d3**, deployment READY `dpl_3M242LpiWcgzrSnxU8YEwQuSxF8G`. [12 HTML/JSON e medianas](audits/lighthouse-public-final/README.md), [condições completas](audits/lighthouse-public-final/summary.json). Execução por `node scripts/audit.mjs`, sem reconstruir dist/rodar testes. As quatro medianas atingiram90/95/95/90; Accessibility/Best Practices/SEO100 em todos os relatórios.
+
+| Página | Perfil | Performance | LCP ms | CLS | TBT ms | FCP ms | Speed Index ms |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| home | mobile | 91 | 2946 | 0.0486 | 35.5 | 2435 | 2435 |
+| home | desktop | 100 | 646 | 0.0180 | 0 | 512 | 596 |
+| detail | mobile | 92 | 2855 | 0.0000 | 8.5 | 2435 | 2435 |
+| detail | desktop | 100 | 595 | 0.0180 | 0 | 512 | 518 |
+
+Início mobile: scores **86/91/91**, detalhe **92/92/92**. Nenhuma execução descartada ou repetida para favorecer a pontuação. Na primeira medição do início, Speed Index4408ms/LCP3246ms/FCP2674ms foram maiores que nas seguintes (SI2431/2435, LCP2946/2945, FCP2431/2435); o score86 individual ficou abaixo da meta, enquanto a mediana atingiu91. O histórico local84/84 permanece válido nas condições antigas, sem reclassificá-lo como aprovado.
+
+Evidência de diferença de entrega: relatórios mostram HTTP/1.1 no preview local e HTTP/2 na Vercel; o mesmo módulo MSW/browser-C13R53XS.js, recurso466167bytes, transferiu aproximadamente170657bytes local e106200bytes público na execução1. Compressão/transporte/CDN alteram o grafo usado na simulação. Atribuição de todos os pontos exclusivamente ao HTTP2 seria inferência; tempos reais/CPU e estado do CDN variam. LCP segue `.home-hero` no início e `.gallery-main > img` no detalhe; bootstrap/React/MSW e resposta REST ainda compõem o caminho crítico. Nenhuma funcionalidade removida, fixture/latência alterada ou versão especial de auditoria.
+
+Ambiente: Windows10.0.26300 x64, i5-12400F/16GB, Node22.14, Lighthouse12.8.2, Playwright1.64/Chrome156. Mobile412×823/DPR1.75, RTT150ms/1638.4Kbps/CPU4; desktop1350×940/DPR1, RTT40ms/10240Kbps/CPU1; throttling simulado padrão. Chrome temporário novo/reset storage a cada execução, cenário padrão dos mocks. Sem smokes/testes concorrentes ou prewarming intencional do navegador. Estado do CDN compartilhado não foi isolado; os smokes anteriores também acessaram a origem e HTTPS respondeu x-vercel-cache HIT. Dados completos nos JSONs; não confundir cache frio do navegador com CDN frio.
+
+## Pendências humanas e limitações
+
+Nenhuma lacuna funcional conhecida nos critérios testados. Publicação/smokes/12 auditorias concluídos; commits posteriores desta etapa apenas consolidam documentos/relatórios, sem alterar runtime. Conferir READY/commit e assets do último commit documental após push. Leitor de tela NVDA/VoiceOver, alto contraste real, ampliação somente de texto e teclado/Safari iOS reais não foram certificados; verificar conforme roteiro abaixo. Chrome emulado/zoom automatizado não equivale a essas avaliações. Não declarar certificação WCAG integral. Persistência simulada é por navegador/origem; recibos não são compartilhados entre dispositivos. Referências de transação/exploração permanecem locais e fictícias. Fonte/lockfile/assets/licenças/exports preservados; checkout limpo anterior em quality-audit (dependências não alteradas nesta etapa).
+
+
+## Última conferência manual
+
+1. Abra a URL pública em desktop e telefone. Explore destaque, busca/filtros/ordenação, detalhe/edição e a barra com recorte; atualize e use voltar/avançar.
+2. Adicione2unidades Emerald1/10, carrinho e finalizar. Login `ana@kurio.test` / `Kurio123!`; ou `bruno@kurio.test` com a mesma senha para isolamento. Cadastre Ethereum/MetaMask, endereço `0x1111111111111111111111111111111111111111`, Salvar e Retomar fluxo.
+3. Selecione MetaMask para conectar, confira a cotação e confirme. Aguarde pedido confirmado, copie a rota do recibo, atualize e confira valores/badge0. Logout em Meu perfil/Minha conta deve voltar ao visitante; Bruno não recebe dados privados de Ana.
+4. Para falhas, instale o helper de console documentado no README e use `await kurioScenario('commerce','expire')`, `await kurioScenario('checkout','timeout')` ou controles de /integration; receitas completas no README. Reset: POST `/api/__scenario/reset` e recarregar (bloco executável no README) restaura todo o cenário.
+5. Com teclado, percorra controles/diálogos e confirme foco/Escape. Com NVDA/VoiceOver, espere labels, erros e confirmação anunciados. Em alto contraste/texto ampliado/zoom400%, espere controles e seleções identificáveis e todo conteúdo acessível por rolagem. No Safari iOS, confira teclado aberto e área segura inferior. Esses resultados humanos ficam pendentes até sua execução.

@@ -1,6 +1,10 @@
 # Especificação do desafio
 
-## Revisão mobile atual
+## Fechamento publicado
+
+DE-02 verificado: https://kurio-nft-delta.vercel.app/ , commit auditado3242294, READY/GitHub/main, smokes HTTPS desktop/mobile com 11 rotas/refresh e compra confirmada pela API. QA-03 verificado nas condições públicas:12 medições, Performance início91/100 e detalhe92/100 (mobile/desktop), demais categorias100. Histórico local abaixo90 preservado. Gate local: typecheck/build uma vez, suíte221 passados/1 baseline da barra aprovada/3 skips, somente essa baseline atualizada e caso1/1 passou. Nenhuma lacuna funcional conhecida nos critérios cobertos. UI-01 aprovado pelo usuário; UI-03 parcial por avaliações humanas não executadas. Matriz/evidências/limitações: [docs/final-delivery.md](docs/final-delivery.md). Consolidação posterior apenas documental; status abaixo é histórico.
+
+## Revisão mobile anterior
 
 UI-01/02/03: seis telas revistas em 414×896, 440×956 e 390×844, com ordenação mobile no painel, navegação/galeria preservadas e senha de confirmação independente. Capturas antes/depois e limites em [docs/mobile-fidelity-review.md](docs/mobile-fidelity-review.md). Desktop/tablet e perfil/carteiras/recibo mobile: 21 baselines passaram sem alteração; seis baselines atualizadas após comparação visual. Typecheck/lint/build e verificações direcionadas passaram. QA-01: 221 passados/1 seletor antigo falhou/3 skips na execução completa; seletor corrigido e 9/9 quality passaram, sem mudar runtime. QA-03: 12/12 finais, fonte limpa 3fa8450, Performance 84/99 (início mobile/desktop) e 84/99 (detalhe), outras categorias 100; parcial pela meta mobile 90. Revalidação após SVGs: 96/96 testes pertinentes e 27 baselines passaram. UI-03 permanece parcial pelas verificações humanas; DE-02 pendente e sem autorização de deploy nesta revisão. Resultados abaixo são históricos.
 
