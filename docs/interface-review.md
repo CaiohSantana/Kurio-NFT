@@ -1,5 +1,7 @@
 # Conferência adicional da interface publicada
 
+**Atualização:** a falha da prova descrita neste registro histórico foi corrigida e validada na fonte `963d0e0`. [Resultados e evidências novas](integration-initial-rest-fix.md). Capturas/requisições abaixo pertencem à versão anterior; não são pendência funcional vigente.
+
 Em 09/10/2026, sobre https://kurio-nft-delta.vercel.app/, fonte publicada `5acbfaf`. Chrome instalado **154.0.8037.99**, visível e controlado por Playwright; perfis novos separados, sem acesso ao Chrome pessoal do usuário. Desktop **1440×900**; mobile **414×896 e 440×956**, emulação de viewport/touch, não aparelho Android/iOS real.
 
 Não houve alteração de código durante a conferência. As ações passaram pelos controles da UI, sem chamadas diretas à API, reset ou setters de estado. Observação de responses, geometria/DOM e capturas foi somente de leitura. Não houve suíte completa, Lighthouse ou atualização de baseline.

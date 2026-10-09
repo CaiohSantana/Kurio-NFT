@@ -2,7 +2,7 @@
 
 **[URL HTTPS](https://kurio-nft-delta.vercel.app/)** · **[Repositório](https://github.com/CaiohSantana/Kurio-NFT)**.
 
-Commit público conferido: `5acbfaf02a6c0251644d221963bcfad47200270a`, deployment READY `dpl_8XUUE3zkhT9ES3xjg4JCnar2AdvQ`. Fonte da auditoria Lighthouse pública: `3242294e1d4632b68fb9250bc6dc8460a8e473d3`, deployment `dpl_3M242LpiWcgzrSnxU8YEwQuSxF8G`. Código, lockfile, assets e configuração da aplicação são iguais nesses commits; a consolidação posterior é documental. O SHA final do fechamento é informado na execução e em Deployment Details, sem confundir com a fonte das medições.
+Fonte corrigida publicada e conferida: `963d0e00dff05dde3d94fef9f4b64152bddb939e`, deployment READY `dpl_7yYDhZVZ9Nz8XcuCLwB31uLW7VAP`. Corrige somente a reconciliação inicial de `/integration`; validação HTTPS desktop/mobile em [integration-initial-rest-fix](integration-initial-rest-fix.md). Commit documental posterior agrega evidências sem alterar essa fonte; SHA final consta no fechamento e Deployment Details. Fonte Lighthouse anterior: `3242294`, deployment `dpl_3M242LpiWcgzrSnxU8YEwQuSxF8G`; suas métricas não são novas medições da versão corrigida. `5acbfaf`/`8d0baa1` são versões anteriores, preservadas nos registros históricos.
 
 ## Configuração vigente
 

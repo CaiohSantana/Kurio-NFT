@@ -2,6 +2,8 @@
 
 **Atualização:** o usuário informou que o login funcionou e pediu retomada do fechamento documental. A causa da ocorrência anterior permanece indeterminada; não houve correção ou reset para atribuir a recuperação. O relato abaixo preserva as condições e pendências daquela investigação.
 
+Resultados comprovados separadamente: login Ana/Bruno via MSW 200; recuperação por refresh/reabertura; visitante conciliado uma vez; logout/troca e carrinhos isolados; credenciais inválidas 401 com mensagem adequada. As evidências abaixo pertencem à investigação da fonte `5acbfaf`. A correção posterior de `/integration` em `963d0e0` não altera autenticação e não é apresentada como causa ou solução do relato original. **Causa original não confirmada; funcionamento observado não equivale a diagnóstico conclusivo.**
+
 Falha informada pelo usuário: “Falha de conexão. Tente novamente.” ao entrar com Ana em https://kurio-nft-delta.vercel.app/. **Não reproduzida nas condições abaixo; causa ainda não confirmada. Não considerar resolvida.** Fechamento documental suspenso. Aplicação, dados do usuário e versão publicada não foram alterados.
 
 ## Condições e resultados

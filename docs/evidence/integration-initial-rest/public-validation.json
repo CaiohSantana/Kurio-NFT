@@ -1,0 +1,232 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "browser": "154.0.8037.99",
+    "commit": "963d0e00dff05dde3d94fef9f4b64152bddb939e",
+    "deployment": "dpl_7yYDhZVZ9Nz8XcuCLwB31uLW7VAP",
+    "https": true,
+    "entry": 200,
+    "refresh": 200,
+    "checks": [
+      "first pending read + event -> automatic REST version 2; no manual query and no late regression",
+      "normal update; duplicate/old ignored",
+      "lost event during outage -> reconnect REST version 4",
+      "direct HTTPS and refresh persist version 4",
+      "marketplace detail reads the same canonical state by REST"
+    ],
+    "responses": [
+      {
+        "phase": "early",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "early",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 2
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "normal",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 3
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 4
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 4
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true,
+        "version": 4
+      }
+    ],
+    "errors": []
+  },
+  {
+    "width": 414,
+    "height": 896,
+    "browser": "154.0.8037.99",
+    "commit": "963d0e00dff05dde3d94fef9f4b64152bddb939e",
+    "deployment": "dpl_7yYDhZVZ9Nz8XcuCLwB31uLW7VAP",
+    "https": true,
+    "entry": 200,
+    "refresh": 200,
+    "checks": [
+      "first pending read + event -> automatic REST version 2; no manual query and no late regression",
+      "normal update; duplicate/old ignored",
+      "lost event during outage -> reconnect REST version 4",
+      "direct HTTPS and refresh persist version 4",
+      "marketplace detail reads the same canonical state by REST"
+    ],
+    "responses": [
+      {
+        "phase": "early",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "early",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 2
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "normal",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 3
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "normal",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/__proof/scenario",
+        "method": "POST",
+        "status": 200,
+        "worker": true
+      },
+      {
+        "phase": "reconnect",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 4
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "proof-nft",
+        "worker": true,
+        "version": 4
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/session",
+        "method": "GET",
+        "status": 200,
+        "handler": "session",
+        "worker": true
+      },
+      {
+        "phase": "refresh",
+        "path": "/api/nfts/emerald-042",
+        "method": "GET",
+        "status": 200,
+        "handler": "nft",
+        "worker": true,
+        "version": 4
+      }
+    ],
+    "errors": []
+  }
+]

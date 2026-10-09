@@ -1,6 +1,6 @@
 # Arquitetura da versão entregue
 
-Aplicação: https://kurio-nft-delta.vercel.app/ · fonte publicada na conferência `5acbfaf` · auditoria pública `3242294`. A consolidação documental não altera código, dependências ou configuração da aplicação. [Evidências finais](docs/final-delivery.md), [conferência adicional](docs/interface-review.md) e [reprodução](docs/delivery-reproduction.md). Os relatos antigos, inclusive pagamento/publicação ainda pendentes, estão no [histórico integral](docs/history/ARCHITECTURE-at-5acbfaf.md).
+Aplicação: https://kurio-nft-delta.vercel.app/ · correção da prova publicada `963d0e0` · auditoria pública anterior `3242294`. A correção altera somente `src/proof/use-nft-socket.ts` e acrescenta cobertura; documentos posteriores não alteram runtime. Não atribuir os scores anteriores à fonte nova. [Correção/evidências](docs/integration-initial-rest-fix.md), [conferência anterior](docs/interface-review.md) e [reprodução anterior](docs/delivery-reproduction.md). Relatos antigos estão no [histórico integral](docs/history/ARCHITECTURE-at-5acbfaf.md).
 
 ## Organização e autoridade dos dados
 
@@ -78,7 +78,7 @@ Não há pagamento/blockchain/extensões reais, sincronização multiaba ou segu
 
 ## Qualidade e limitações da evidência
 
-Pendência confirmada: em `/integration`, `use-nft-socket` invalida sem cancelar a primeira leitura ainda sem cache; um evento nessa janela pode ser seguido pelo snapshot anterior, mantendo versão 1 até consulta manual. O listener do marketplace cancela antes de invalidar. Reprodução pública/local e evidência em [interface-review](docs/interface-review.md#pendência-funcional-confirmada-na-prova-técnica). Essa janela não está coberta pelo teste existente, que aguarda o primeiro dado. Código preservado nesta consolidação; não declarar reconciliação integralmente verificada.
+Falha inicial da prova corrigida em `963d0e0`: `use-nft-socket` aguarda cancelQueries antes de invalidateQueries tanto em evento aceito quanto em connect/reconnect; Axios usa AbortSignal. Assim, leitura inicial sem cache não reaproveita snapshot anterior. Guarda de efeito ativo evita nova leitura após desmontagem; structuralSharing monotônico e descarte de eventos continuam. Listener do marketplace já fazia cancelamento, sem mudança necessária. Teste novo mantém o primeiro timer MSW pendente, usa Socket.IO real e verifica resposta REST atual/ausência de regressão. Lint/typecheck/build e 27/27 testes afetados passaram; HTTPS 1440/414 confirmou a correção. [Relatório/trace](docs/integration-initial-rest-fix.md).
 
 Suíte completa anterior: 221 passados, 1 baseline antiga da barra mobile, 3 skips; baseline pertinente revisada e caso 1/1 passou. [HTML/trace](docs/audits/final-delivery/playwright-full/index.html). Os três skips são condicionais por viewport em `final-review.spec.ts`: Mercado desktop é coberto no desktop; caminhos mobile 414 são cobertos em mobile, não repetidos em desktop/tablet. Não foram removidos para alterar contagem.
 

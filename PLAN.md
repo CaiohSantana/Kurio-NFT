@@ -1,5 +1,9 @@
 # Plano de execução
 
+## Correção da pendência inicial — 09/10/2026
+
+Fonte `963d0e0` corrige cancelamento/reconciliação apenas na prova, com teste determinístico red/green; 27/27 casos afetados em três viewports, lint/typecheck/build e validação HTTPS 1440/414 passaram. Catálogo/detalhe/carrinho não exigiram mudança. [Registro](docs/integration-initial-rest-fix.md). Fonte já publicada READY; consolidação posterior das evidências não altera runtime. Pendência funcional abaixo resolvida no alcance testado; permanecem avaliações humanas e causa indeterminada do login anterior. Sem repetir suíte completa/Lighthouse.
+
 ## Consolidação documental final — 09/10/2026
 
 Conferência Chrome visível desktop/414/440 concluída, marketplace preservado; README/ARCHITECTURE/deploy consolidados, históricos e artefatos preservados. npm ci/build/typecheck em checkout limpo `5acbfaf` passaram, sem repetir suíte completa/Lighthouse. Evidências: [interface-review](docs/interface-review.md), [delivery-reproduction](docs/delivery-reproduction.md). Commit documental/envio/verificação do deployment fazem parte desta execução.

@@ -2,7 +2,7 @@
 
 ## Escopo vigente
 
-A autorização atual é somente consolidação documental, conferência pela interface publicada e reprodução da entrega em checkout limpo. Preservar aplicação e layouts aprovados; apresentar problemas antes de qualquer correção. Não repetir suíte completa ou Lighthouse sem mudança/falha que justifique. Commit documental, envio ao origin e verificação do deployment correspondente estão autorizados. Distinguir fonte auditada de SHA documental/publicado, evidências automatizadas de avaliações humanas pendentes. Manter mocks, isolamento, idempotência, assets, licenças e /integration. Não alterar Figma nem implementar novas funcionalidades. Consulte README.md, ARCHITECTURE.md, docs/interface-review.md e docs/delivery-reproduction.md; históricos permanecem em docs/history e nas evidências anteriores.
+A autorização atual é corrigir a reconciliação inicial de /integration, acrescentar teste direcionado, executar lint/typecheck/build e testes afetados, documentar, enviar commits e publicar/verificar HTTPS. Preservar layouts e fluxos; não repetir suíte completa ou Lighthouse sem necessidade. Manter transporte Axios/MSW/Socket.IO real, sem injetar DTOs ou fabricar eventos. Distinguir fonte da correção de relatórios anteriores e testes de login passados da causa original não confirmada. Consulte docs/integration-initial-rest-fix.md, SPEC.md e ARCHITECTURE.md. Não ampliar escopo nem alterar Figma; avaliações humanas pendentes continuam explícitas.
 
 ## Organização e responsabilidades
 

@@ -1,5 +1,9 @@
 # Especificação do desafio
 
+## Correção validada da prova inicial — 09/10/2026
+
+Lacuna descrita na conferência abaixo corrigida na fonte `963d0e0`: leitura inicial cancelada antes da reconciliação, sem DTO/setter artificial. IN-02/RT no alcance dessa janela comprovados por teste que falhou antes e passou depois; 27/27 testes direcionados, lint/typecheck/build e HTTPS desktop/mobile passaram. Catálogo/detalhe/carrinho preservados e testados por eventos/reconexão. [Evidências](docs/integration-initial-rest-fix.md). Lighthouse `3242294` e suíte completa anterior são históricos, sem repetição ou atribuição de novos scores. UI-03 continua parcial por avaliações humanas; causa da falha de login original não confirmada, apesar dos testes e do login informado pelo usuário terem passado.
+
 ## Conferência documental final — 09/10/2026
 
 Aplicação preservada, fonte pública `5acbfaf`, código equivalente à auditoria `3242294`. Chrome 1440×900/414×896/440×956: percursos do marketplace passaram, com validações/isolamento/compra/refresh. Checkout limpo: npm ci/build/typecheck passaram. Suíte completa e Lighthouse não repetidos. [Resultados](docs/interface-review.md), [reprodução/artefatos](docs/delivery-reproduction.md).

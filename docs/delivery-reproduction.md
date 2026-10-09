@@ -1,5 +1,7 @@
 # Reprodução da versão entregue em checkout limpo
 
+Registro histórico da fonte `5acbfaf`, anterior à correção de `/integration` em `963d0e0`. A correção teve checks/build e testes direcionados próprios em [integration-initial-rest-fix](integration-initial-rest-fix.md); não apresentar este checkout como instalação nova da fonte corrigida.
+
 Executada em 09/10/2026, worktree temporário detached do commit público **5acbfaf02a6c0251644d221963bcfad47200270a**, em `.tmp/delivery-clean-5acbfaf`. Diretório de trabalho principal preservado. Essa fonte tem o mesmo código/configuração do commit auditado `3242294`; a consolidação posterior altera somente documentos/evidências.
 
 | Verificação | Resultado |

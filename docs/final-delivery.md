@@ -1,5 +1,7 @@
 # Fechamento da entrega e publicação
 
+Correção posterior validada em HTTPS: `963d0e0` resolve a primeira leitura obsoleta de `/integration`; lint/typecheck/build e 27/27 casos direcionados passaram. [Causa/relatórios/capturas](integration-initial-rest-fix.md). Demais fluxos/layouts preservados; suíte completa e Lighthouse abaixo pertencem à versão anterior, sem nova execução. A pendência funcional histórica abaixo foi corrigida; avaliações humanas permanecem abertas.
+
 Atualização documental de 09/10/2026: [conferência adicional](interface-review.md) e [checkout limpo](delivery-reproduction.md) concluídos sobre a mesma aplicação `5acbfaf`, sem repetir suíte completa/Lighthouse. Os fluxos do marketplace passaram, mas há pendência confirmada em `/integration`: evento durante a primeira leitura pode manter snapshot antigo até consulta manual. Correção/teste direcionado e avaliações humanas continuam pendentes; a matriz/resultado anterior abaixo não elimina esse achado. Fonte auditada `3242294` difere do SHA documental/publicado, com código/configuração da aplicação equivalente.
 
 Layouts desktop/mobile aprovados pelo usuário, referência visual final d69af01. Nesta etapa não se alterou UI ou lógica dos fluxos. Publicação Vercel e smoke HTTPS desktop/mobile verificados. Lighthouse público final concluído com todas as medianas acima das metas; avaliações humanas de acessibilidade continuam pendentes. Publicação validada com essas ressalvas.
