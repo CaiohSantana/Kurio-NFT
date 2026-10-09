@@ -11,7 +11,7 @@ export interface Nft {
   rare: boolean; trending: boolean; createdAt: string; description: string; contract: string; royalty: string;
 }
 export interface NftResponse { nft: Nft; readCount: number }
-export interface CatalogResponse { items: Nft[]; total: number; pages: number; page: number; revision: number; facets: { collections: Record<Collection, number>; networks: Record<Network, number> } }
+export interface CatalogResponse { featured: Nft[]; items: Nft[]; total: number; pages: number; page: number; revision: number; facets: { collections: Record<Collection, number>; networks: Record<Network, number> } }
 const list = <T extends string>(value: unknown, allowed: readonly T[]): T[] => {
   const entries = Array.isArray(value) ? value : typeof value === 'string' ? value.split(',') : []
   return [...new Set(entries.filter((item): item is T => typeof item === 'string' && allowed.includes(item as T)))].sort()

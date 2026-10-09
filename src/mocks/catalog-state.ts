@@ -31,7 +31,7 @@ export function queryCatalog(raw: Record<string, unknown>): CatalogResponse {
   let result = records.filter((n) => n.name.toLowerCase().includes(s.q.toLowerCase()) && (!s.collections.length || s.collections.includes(n.collection)) && (!s.networks.length || s.networks.includes(n.network)) && units(n.priceEth) >= units(s.minPrice) && units(n.priceEth) <= units(s.maxPrice) && (s.tab !== 'trending' || n.trending) && (s.tab !== 'new' || n.createdAt >= '2026-09-15'))
   result = [...result].sort((a, b) => s.sort === 'recent' ? b.createdAt.localeCompare(a.createdAt) : (units(a.priceEth) < units(b.priceEth) ? -1 : units(a.priceEth) > units(b.priceEth) ? 1 : a.id.localeCompare(b.id)) * (s.sort === 'price-desc' ? -1 : 1))
   const facets = { collections: Object.fromEntries(categories.map((key) => [key, records.filter((n) => n.collection === key).length])) as Record<Collection, number>, networks: Object.fromEntries(networks.map((key) => [key, records.filter((n) => n.network === key).length])) as CatalogResponse['facets']['networks'] }
-  return { items: structuredClone(result.slice((s.page - 1) * 9, s.page * 9)), total: result.length, pages: Math.ceil(result.length / 9), page: s.page, revision, facets }
+  return { featured: structuredClone(ids.slice(0, 3).map(id => records.find(nft => nft.id === id)!)), items: structuredClone(result.slice((s.page - 1) * 9, s.page * 9)), total: result.length, pages: Math.ceil(result.length / 9), page: s.page, revision, facets }
 }
 export function updateCatalogNft(id: string, soldOut = false, priceEth?: string): NftUpdated | undefined {
   const nft = records.find((n) => n.id === id); if (!nft) return

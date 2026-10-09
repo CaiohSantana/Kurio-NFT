@@ -1,0 +1,8 @@
+{
+  "total": 12,
+  "expected": 12,
+  "unexpected": 0,
+  "flaky": 0,
+  "skipped": 0,
+  "ok": true
+}

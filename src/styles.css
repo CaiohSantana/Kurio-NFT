@@ -545,3 +545,27 @@ button, input, select, a { -webkit-tap-highlight-color: transparent; }
   .auth-modal .auth-social>* { width:min(100%,340px); justify-self:center; }
   .auth-modal .auth-social>p { width:100%; }
 }
+
+/* Same graphic centers as the exports, with separate 24px hit areas. */
+.home-hero { touch-action:pan-y; }
+.hero-copy h1,.hero-description { display:grid; }
+.hero-sizing,.hero-slide-copy { grid-area:1/1; }
+.hero-sizing { visibility:hidden; }
+.hero-art-placeholder { width:100%; aspect-ratio:1; }
+.hero-art>a { display:block; }
+.hero-changing { animation:hero-reveal 180ms ease-out; }
+@keyframes hero-reveal { from { opacity:.35; } to { opacity:1; } }
+.hero-dots { width:72px; height:24px; margin:0; bottom:35px; transform:translateX(-16px); }
+.hero-dots button { width:24px; height:24px; flex-shrink:0; }
+.hero-dots span { width:8px; height:8px; }
+.hero-dots button:first-child span { transform:translateX(8px); }
+.hero-dots button:last-child span { transform:translateX(-8px); }
+@media(max-width:639px) {
+ .hero-dots { bottom:-8.5px; transform:translateX(-19.5px); }
+ .hero-dots span { width:7px; height:7px; }
+ .hero-dots button:first-child span { transform:translateX(11px); }
+ .hero-dots button:last-child span { transform:translateX(-11px); }
+}
+@media(prefers-reduced-motion:reduce) { .hero-changing { animation:none; } }
+
+@media(forced-colors:active) { .carousel-indicators [aria-current=page] span { outline:2px solid Highlight; outline-offset:1px; } }

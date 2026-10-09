@@ -31,7 +31,7 @@ export function useCatalogSocket(scope: string) {
     const update = (event: NftUpdated) => {
       if (!active) return
       if (!event || typeof event.resourceId !== 'string' || !Number.isSafeInteger(event.version)) return
-      const cachedListVersion = Math.max(0, ...queryClient.getQueriesData<CatalogResponse>({ queryKey: catalogKey }).map(([, data]) => data?.items.find((nft) => nft.id === event.resourceId)?.version ?? 0))
+      const cachedListVersion = Math.max(0, ...queryClient.getQueriesData<CatalogResponse>({ queryKey: catalogKey }).map(([, data]) => [...(data?.items ?? []), ...(data?.featured ?? [])].find((nft) => nft.id === event.resourceId)?.version ?? 0))
       const current = Math.max(cachedListVersion, queryClient.getQueryData<NftResponse>(detailKey(event.resourceId))?.nft.version ?? 0)
       if (event.version <= Math.max(versions.get(event.resourceId) ?? 0, current)) return
       versions.set(event.resourceId, event.version)

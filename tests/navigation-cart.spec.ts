@@ -12,7 +12,7 @@ test('catalog navigation keeps document, DOM, URL filters and history; reduced m
   await expect(page.getByTestId('nft-emerald-042')).toBeVisible()
   await page.evaluate(() => { window.name = 'same-document'; document.getElementById('catalog')!.dataset.retained = 'yes' })
   const market = page.getByRole('link', { name: 'Mercado', exact: true })
-  if (await market.isVisible()) await market.click(); else await page.locator('.hero-cta').click()
+  if (await market.isVisible()) await market.click(); else await page.locator('.promos a').first().click()
   await expect(page).toHaveURL(/#catalog$/); await expect(page.locator('#catalog')).toHaveAttribute('data-retained', 'yes')
   await expect.poll(() => page.locator('#catalog').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBe(72)
   expect(new URL(page.url()).searchParams.get('q')).toBe('Emerald')
@@ -26,11 +26,11 @@ test('catalog navigation keeps document, DOM, URL filters and history; reduced m
   await page.reload(); await expect(page.getByTestId('nft-emerald-042')).toBeVisible()
   await expect.poll(() => page.locator('#catalog').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBe(72)
 })
-test('hero and promo anchors scroll smoothly without loading another document', async ({ page }) => {
+test('promo anchors scroll smoothly without loading another document', async ({ page }) => {
   await page.goto('/'); await expect(page.getByTestId('nft-emerald-042')).toBeVisible()
   await page.evaluate(() => { window.name = 'anchor-document' })
   const positions = page.evaluate(async () => { const samples: number[] = []; for (let frame = 0; frame < 70; frame++) { await new Promise(requestAnimationFrame); samples.push(scrollY) } return samples })
-  await page.locator('.hero-cta').click(); await expect(page).toHaveURL(/#catalog$/)
+  await page.locator('.promos a').first().click(); await expect(page).toHaveURL(/#catalog$/)
   await expect.poll(() => page.locator('#catalog').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBe(72)
   const samples = await positions
   expect(samples.some(value => value > 0 && value < Math.max(...samples) - 20)).toBe(true)
